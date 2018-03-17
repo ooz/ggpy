@@ -2,6 +2,24 @@
 
 Yet another static site generator. Written in Python.
 
+## Usage
+
+* Copy `gg.py`, `ggconfig.py`, `Makefile` and `newpost.sh` to the root of your website/blog
+* Adjust `ggconfig.py` to your preferences
+* Place markdown files everywhere
+* Install dependencies
+```
+make init
+```
+* Generate your site
+```
+make
+```
+* To update your `gg.py` "installation", run (your configuration will not be touched):
+```
+make update
+```
+
 ## License
 
 ```
