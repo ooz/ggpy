@@ -17,9 +17,9 @@ openlatest:
 	@vim 2018/`ls 2018/ -t | head -n 1`
 
 update:
-	wget https://raw.githubusercontent.com/ooz/ggpy/master/gg.py
-	wget https://raw.githubusercontent.com/ooz/ggpy/master/newpost.sh
-	wget https://raw.githubusercontent.com/ooz/ggpy/master/Makefile
+	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/gg.py -O gg.py
+	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/newpost.sh -O newpost.sh
+	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/Makefile -O Makefile
 
 # Setup / dependencies
 install_pipenv:
