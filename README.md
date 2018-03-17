@@ -24,6 +24,17 @@ make
 make update
 ```
 
+## Tests
+
+* Install dependencies (if you have not yet)
+```
+make init
+```
+* Test
+```
+make test
+```
+
 ## License
 
 ```
