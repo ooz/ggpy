@@ -38,7 +38,6 @@ init: install_pipenv
 test: all
 	pipenv install --dev pytest
 	pipenv run pytest
-	rm -f index.html # Side effect from testing
 
 # Cleanup
 clean:
