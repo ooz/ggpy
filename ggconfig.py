@@ -12,7 +12,7 @@ config = {
     'author': {
         'name': 'Good Gen',
         'url': 'https://ooz.github.io/ggpy',
-        'email': 'oliverzeit@gmail.com'
+        'email': ''
     },
     'social': {
         'github_url': 'https://github.com/ooz/ggpy',

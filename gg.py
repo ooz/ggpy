@@ -63,12 +63,7 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
   </div>
   <div>
   %s
-    <a href="%s" class="social-icon"><i class="fab fa-github"></i></a>
-    <a href="%s" class="social-icon"><i class="fab fa-twitter"></i></a>
-    <a href="mailto:%s" class="social-icon"><i class="far fa-envelope"></i></a></li>
-    <!--
-        <li style=""><a href="#">rss</a></li>
-    -->
+%s
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
@@ -86,10 +81,21 @@ logo_url,
 post_header(title, date),
 body,
 '' if root else render_footer_navigation(base_url),
-gg.config.get('social', {}).get('github_url', ''),
-gg.config.get('social', {}).get('twitter_url', ''),
-gg.config.get('author', {}).get('email', '')
+render_social_icons(),
 )
+
+def render_social_icons():
+    github = gg.config.get('social', {}).get('github_url', ''),
+    twitter = gg.config.get('social', {}).get('twitter_url', ''),
+    email = gg.config.get('author', {}).get('email', '')
+    icons = []
+    if len(github):
+        icons.append('<a href="%s" class="social-icon"><i class="fab fa-github"></i></a>' % github)
+    if len(twitter):
+        icons.append('<a href="%s" class="social-icon"><i class="fab fa-twitter"></i></a>' % twitter)
+    if len(email):
+        icons.append('<a href="mailto:%s" class="social-icon"><i class="far fa-envelope"></i></a>' % email)
+    return '\n'.join(icons)
 
 def render_footer_navigation(root_url):
     return """<a href="%s" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
@@ -235,13 +241,8 @@ def make_index(posts):
   <div style="padding-top:2.5rem;">
   %s
   </div>
-  <div style="text-align:center;">
-    <a href="%s" class="social-icon"><i class="fab fa-github"></i></a>
-    <a href="%s" class="social-icon"><i class="fab fa-twitter"></i></a>
-    <a href="mailto:%s" class="social-icon"><i class="far fa-envelope"></i></a></li>
-    <!--
-        <li style=""><a href="#">rss</a></li>
-    -->
+  <div>
+%s
   </div>
   </body>
 </html>
@@ -255,9 +256,7 @@ logo_url,
 """<table><tbody>
 %s
 </tbody></table>""" % posts_html,
-github_url,
-twitter_url,
-author_email
+render_social_icons()
 )
 
     with open('index.html', 'w') as index_file:
