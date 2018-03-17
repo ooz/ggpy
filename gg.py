@@ -178,7 +178,7 @@ def convert_path(filepath):
     return targetpath
 
 def convert_canonical(directory, targetpath):
-    base_url = gg.config.get('site', {}).get('baseurl', '')
+    base_url = gg.config.get('site', {}).get('base_url', '')
     targetpath = os.path.relpath(targetpath, directory)
     if targetpath.endswith('index.html'):
         return base_url + '/' + targetpath[:-10]

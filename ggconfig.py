@@ -3,9 +3,11 @@
 
 config = {
     'site': {
-        'base_url': 'https://ooz.github.io',
+        'base_url': 'https://ooz.github.io/ggpy',
         'render_root_readme': True,
-        'title': 'out of zeit'
+        'title': 'Good Generator.py',
+        'logo': 'static/owl.png',
+        'style': 'static/ooz_blog.css'
     },
     'author': {
         'name': 'ooz',
