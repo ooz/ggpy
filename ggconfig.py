@@ -10,8 +10,8 @@ config = {
         'style': 'static/ooz_blog.css'
     },
     'author': {
-        'name': 'ooz',
-        'url': 'https://ooz.github.io',
+        'name': 'Good Gen',
+        'url': 'https://ooz.github.io/ggpy',
         'email': 'oliverzeit@gmail.com'
     },
     'social': {

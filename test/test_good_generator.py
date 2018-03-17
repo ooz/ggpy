@@ -12,7 +12,7 @@ def test_readme_conversion():
     <title>Good Generator.py</title>
     <link rel="canonical" href="https://ooz.github.io/ggpy/test/">
 
-<meta name="author" content="ooz" />
+<meta name="author" content="Good Gen" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
@@ -41,7 +41,7 @@ def test_readme_conversion():
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+    <a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
   </div>
   <div>
 <h1 id="_1"></h1>
@@ -88,7 +88,7 @@ def test_post_conversion():
     <title>Another Post | Good Generator.py</title>
     <link rel="canonical" href="https://ooz.github.io/ggpy/test/another-post.html">
 
-<meta name="author" content="ooz" />
+<meta name="author" content="Good Gen" />
 <meta name="description" content="Nice post!" />
 <meta name="keywords" content="" />
 
@@ -117,7 +117,7 @@ def test_post_conversion():
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+    <a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
   </div>
   <div>
 <h1 id="another-post">Another Post</h1>
