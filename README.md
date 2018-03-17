@@ -11,7 +11,7 @@ It also powers my [website](https://ooz.github.io).
 ## Usage
 
 * Copy `gg.py`, `ggconfig.py`, `Makefile` and `newpost.sh` to the root of your website/blog
-* Adjust `ggconfig.py` to your preferences
+* Adjust `ggconfig.py` to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!
 * Place markdown files everywhere
 * Install dependencies
 ```
@@ -21,14 +21,14 @@ make init
 ```
 make
 ```
-* To update your `gg.py` "installation", run (your configuration will not be touched):
+* To update your `gg.py` "installation", run (your configuration will not be touched)
 ```
 make update
 ```
 
 ## Tests
 
-* Clone the whole repository:
+* Clone the whole repository
 ```
 git clone https://github.com/ooz/ggpy.git
 cd ggpy
