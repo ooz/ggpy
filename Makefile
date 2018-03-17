@@ -19,7 +19,9 @@ openlatest:
 update:
 	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/gg.py -O gg.py
 	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/newpost.sh -O newpost.sh
-	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/Makefile -O Makefile
+	@echo "Unfortunately the Makefile cannot be updated automatically!"
+	@echo "Run the following command to update:"
+	@echo "wget -q https://raw.githubusercontent.com/ooz/ggpy/master/Makefile -O Makefile"
 
 # Setup / dependencies
 install_pipenv:
