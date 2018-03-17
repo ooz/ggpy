@@ -24,11 +24,11 @@ def test_readme_conversion():
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ooz.github.io/ggpy/test/" />
 <meta property="og:description" content="" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/owl.png" />
+<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="" />
 
-  <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/owl.png">
+  <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
@@ -41,7 +41,7 @@ def test_readme_conversion():
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/owl.png" class="avatar" /></a>
+    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
   </div>
   <div>
 <h1 id="_1"></h1>
@@ -100,11 +100,11 @@ def test_post_conversion():
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ooz.github.io/ggpy/test/another-post.html" />
 <meta property="og:description" content="Nice post!" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/owl.png" />
+<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="2018-03-17T13:37:42Z" />
 
-  <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/owl.png">
+  <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
@@ -117,7 +117,7 @@ def test_post_conversion():
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/owl.png" class="avatar" /></a>
+    <a href="https://ooz.github.io"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
   </div>
   <div>
 <h1 id="another-post">Another Post</h1>

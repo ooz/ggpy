@@ -6,7 +6,7 @@ config = {
         'base_url': 'https://ooz.github.io/ggpy',
         'render_root_readme': True,
         'title': 'Good Generator.py',
-        'logo': 'static/owl.png',
+        'logo': 'static/gg.png',
         'style': 'static/ooz_blog.css'
     },
     'author': {

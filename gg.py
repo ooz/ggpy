@@ -27,6 +27,8 @@ MD = markdown.Markdown(
 
 def render_template(title, canonical_url, description, tags, date, body, root=False):
     base_url = gg.config.get('site', {}).get('base_url', '')
+    logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
+    style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
     return """<!DOCTYPE html>
@@ -40,7 +42,7 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
 %s
 %s
 %s
-  <link rel="shortcut icon" href="%s/static/owl.png">
+  <link rel="shortcut icon" href="%s">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
@@ -49,11 +51,11 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/regular.css" integrity="sha384-A/oR8MwZKeyJS+Y0tLZ16QIyje/AmPduwrvjeH6NLiLsp4cdE4uRJl8zobWXBm4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/brands.css" integrity="sha384-IiIL1/ODJBRTrDTFk/pW8j0DUI5/z9m1KYsTm/RjZTNV8RHLGZXkUDwgRRbbQ+Jh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-  <link rel="stylesheet" href="%s/static/ooz_blog.css">
+  <link rel="stylesheet" href="%s">
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="%s"><img src="%s/static/owl.png" class="avatar" /></a>
+    <a href="%s"><img src="%s" class="avatar" /></a>
   </div>
   %s
   <div style="padding-top:2.5rem;">
@@ -77,10 +79,10 @@ canonical_url,
 meta(author_name, description, tags),
 twitter(gg.config.get('social', {}).get('twitter_username', ''), description),
 opengraph(title, canonical_url, description, date),
-base_url,
-base_url,
+logo_url,
+style_url,
 author_url,
-base_url,
+logo_url,
 post_header(title, date),
 body,
 '' if root else render_footer_navigation(base_url),
@@ -114,7 +116,7 @@ twitter_username
 
 # URL should end with "/" for a directory!
 def opengraph(title, url, description, date,
-              image=gg.config.get('site', {}).get('base_url', '') + "/static/owl.png"):
+              image=gg.config.get('site', {}).get('base_url', '') + '/' + gg.config.get('site', {}).get('logo', '')):
     return """<meta property="og:title" content="%s" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="%s" />
@@ -193,6 +195,8 @@ def convert_title2pagetitle(title):
 def make_index(posts):
     base_url = gg.config.get('site', {}).get('base_url', '')
     root_title = gg.config.get('site', {}).get('title', '')
+    logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
+    style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_url = gg.config.get('author', {}).get('url', '')
     author_email = gg.config.get('author', {}).get('email', '')
     github_url = gg.config.get('social', {}).get('github_url', '')
@@ -213,7 +217,7 @@ def make_index(posts):
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>%s</title>
     <link rel="canonical" href="%s">
-  <link rel="shortcut icon" href="%s/static/owl.png">
+  <link rel="shortcut icon" href="%s">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
@@ -221,11 +225,11 @@ def make_index(posts):
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/regular.css" integrity="sha384-A/oR8MwZKeyJS+Y0tLZ16QIyje/AmPduwrvjeH6NLiLsp4cdE4uRJl8zobWXBm4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/brands.css" integrity="sha384-IiIL1/ODJBRTrDTFk/pW8j0DUI5/z9m1KYsTm/RjZTNV8RHLGZXkUDwgRRbbQ+Jh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-  <link rel="stylesheet" href="%s/static/ooz_blog.css">
+  <link rel="stylesheet" href="%s">
   </head>
   <body class="milligram container">
   <div style="text-align:center">
-    <a href="%s"><img src="%s/static/owl.png" class="avatar" /></a>
+    <a href="%s"><img src="%s" class="avatar" /></a>
   </div>
   %s
   <div style="padding-top:2.5rem;">
@@ -243,10 +247,10 @@ def make_index(posts):
 </html>
 """ % ("Blog Index | " + root_title,
 base_url,
-base_url,
-base_url,
+logo_url,
+style_url,
 author_url,
-base_url,
+logo_url,
 '<h1>Blog</h1>',
 """<table><tbody>
 %s
