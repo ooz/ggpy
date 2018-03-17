@@ -17,8 +17,9 @@ openlatest:
 	@vim 2018/`ls 2018/ -t | head -n 1`
 
 update:
-	@echo "WIP!"
-	wget https://raw.githubusercontent.com/ooz/blog/master/2018/why-i-wrote-yet-another-static-site-gen.md
+	wget https://raw.githubusercontent.com/ooz/ggpy/master/gg.py
+	wget https://raw.githubusercontent.com/ooz/ggpy/master/newpost.sh
+	wget https://raw.githubusercontent.com/ooz/ggpy/master/Makefile
 
 # Setup / dependencies
 install_pipenv:
