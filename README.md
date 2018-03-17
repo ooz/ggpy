@@ -1,5 +1,10 @@
 # Good Generator`.py`
 
+[![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ooz/ggpy)
+[![Build Status](https://travis-ci.org/ooz/ggpy.svg?branch=master)](https://travis-ci.org/ooz/ggpy)
+
+----
+
 Yet another static site generator. Written in Python.
 
 [Why?](https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
