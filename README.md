@@ -1,6 +1,10 @@
-# Good Generator
+# Good Generator`.py`
 
 Yet another static site generator. Written in Python.
+
+[Why?](https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
+
+It powers my [website](https://ooz.github.io).
 
 ## Usage
 
