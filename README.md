@@ -29,6 +29,7 @@ make update
 * Clone the whole repository:
 ```
 git clone https://github.com/ooz/ggpy.git
+cd ggpy
 ```
 * Install dependencies (if you have not yet)
 ```
