@@ -15,7 +15,7 @@ config = {
         'email': 'oliverzeit@gmail.com'
     },
     'social': {
-        'github_url': 'https://github.com/ooz',
+        'github_url': 'https://github.com/ooz/ggpy',
         'twitter_url': 'https://twitter.com/oozgo',
         'twitter_username': '@oozgo'
     }

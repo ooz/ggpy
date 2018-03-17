@@ -6,7 +6,7 @@ Yet another static site generator. Written in Python.
 
 It powers its [website](https://ooz.github.io/ggpy), which is its rendered [README.md](https://github.com/ooz/ggpy). Inception!
 
-It powers my [website](https://ooz.github.io).
+It also powers my [website](https://ooz.github.io).
 
 ## Usage
 

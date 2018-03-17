@@ -64,7 +64,7 @@ def test_readme_conversion():
   <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
 <a href="#" style="float:left;"><strong style="font-size:2.5rem">⬆</strong></a>
 
-    <a href="https://github.com/ooz" class="social-icon"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/ooz/ggpy" class="social-icon"><i class="fab fa-github"></i></a>
     <a href="https://twitter.com/oozgo" class="social-icon"><i class="fab fa-twitter"></i></a>
     <a href="mailto:oliverzeit@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a></li>
     <!--
@@ -133,7 +133,7 @@ def test_post_conversion():
   <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
 <a href="#" style="float:left;"><strong style="font-size:2.5rem">⬆</strong></a>
 
-    <a href="https://github.com/ooz" class="social-icon"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/ooz/ggpy" class="social-icon"><i class="fab fa-github"></i></a>
     <a href="https://twitter.com/oozgo" class="social-icon"><i class="fab fa-twitter"></i></a>
     <a href="mailto:oliverzeit@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a></li>
     <!--
