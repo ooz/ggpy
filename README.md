@@ -49,7 +49,7 @@ make test
 
 ## Features
 
-* [Markdown support with various extensions](https://ooz.github.io/ggpy/test/markdown-features/)
+* [Markdown support with various extensions](https://ooz.github.io/ggpy/test/features/)
 
 ## License
 
