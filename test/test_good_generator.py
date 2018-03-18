@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 def test_markdown_features():
-    with open('test/markdown-features/index.html') as index:
+    with open('test/features/index.html') as index:
         index_data = index.read()
         assert index_data == """<!DOCTYPE html>
   <head>
@@ -10,7 +10,7 @@ def test_markdown_features():
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Markdown Feature Test | Good Generator.py</title>
-    <link rel="canonical" href="https://ooz.github.io/ggpy/test/markdown-features/">
+    <link rel="canonical" href="https://ooz.github.io/ggpy/test/features/">
 
 <meta name="author" content="Good Gen" />
 <meta name="description" content="Description" />
@@ -22,7 +22,7 @@ def test_markdown_features():
 
 <meta property="og:title" content="Markdown Feature Test" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/test/markdown-features/" />
+<meta property="og:url" content="https://ooz.github.io/ggpy/test/features/" />
 <meta property="og:description" content="Description" />
 <meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
 <meta property="og:locale" content="en-US" />
