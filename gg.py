@@ -65,7 +65,7 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
 """ % (convert_title2pagetitle(title),
 canonical_url,
 meta(author_name, description, tags),
-twitter(gg.config.get('social', {}).get('twitter_username', ''), description),
+twitter(gg.config.get('social', {}).get('twitter_username', '')),
 opengraph(title, canonical_url, description, date),
 logo_url,
 external_stylesheets(True),
@@ -105,12 +105,11 @@ description,
 tags
 )
 
-def twitter(twitter_username, description):
+def twitter(twitter_username):
     return """<meta name="twitter:author" content="%s" />
-<meta name="twitter:card" content="%s" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="%s" />
 """ % (twitter_username,
-description,
 twitter_username
 )
 
