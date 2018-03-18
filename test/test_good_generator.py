@@ -17,7 +17,7 @@ def test_markdown_features_and_readme_generation():
 <meta name="keywords" content="" />
 
 <meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />
 
 <meta property="og:title" content="Markdown Feature Test" />
@@ -160,7 +160,7 @@ def test_post_conversion():
 <meta name="keywords" content="" />
 
 <meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />
 
 <meta property="og:title" content="Some Post" />

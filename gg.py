@@ -107,7 +107,7 @@ tags
 
 def twitter(twitter_username):
     return """<meta name="twitter:author" content="%s" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="%s" />
 """ % (twitter_username,
 twitter_username
