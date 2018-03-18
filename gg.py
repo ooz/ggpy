@@ -43,14 +43,7 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
 %s
 %s
   <link rel="shortcut icon" href="%s">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/regular.css" integrity="sha384-A/oR8MwZKeyJS+Y0tLZ16QIyje/AmPduwrvjeH6NLiLsp4cdE4uRJl8zobWXBm4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/brands.css" integrity="sha384-IiIL1/ODJBRTrDTFk/pW8j0DUI5/z9m1KYsTm/RjZTNV8RHLGZXkUDwgRRbbQ+Jh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+%s
   <link rel="stylesheet" href="%s">
   </head>
   <body class="milligram container">
@@ -75,6 +68,7 @@ meta(author_name, description, tags),
 twitter(gg.config.get('social', {}).get('twitter_username', ''), description),
 opengraph(title, canonical_url, description, date),
 logo_url,
+external_stylesheets(True),
 style_url,
 author_url,
 logo_url,
@@ -146,6 +140,15 @@ def post_header(title, date):
 date[:10]
 )
 
+def external_stylesheets(highlightjs=False):
+    return """<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+%s
+""" % '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">' if highlightjs else ''
+
 def convert(directory, filepath, root=False):
     with open(filepath, 'r') as infile:
         markdown_post = infile.read()
@@ -204,9 +207,6 @@ def make_index(posts):
     logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
     style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_url = gg.config.get('author', {}).get('url', '')
-    author_email = gg.config.get('author', {}).get('email', '')
-    github_url = gg.config.get('social', {}).get('github_url', '')
-    twitter_url = gg.config.get('social', {}).get('twitter_url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
         day = post['date'][:10]
@@ -224,13 +224,7 @@ def make_index(posts):
     <title>%s</title>
     <link rel="canonical" href="%s">
   <link rel="shortcut icon" href="%s">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/regular.css" integrity="sha384-A/oR8MwZKeyJS+Y0tLZ16QIyje/AmPduwrvjeH6NLiLsp4cdE4uRJl8zobWXBm4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/brands.css" integrity="sha384-IiIL1/ODJBRTrDTFk/pW8j0DUI5/z9m1KYsTm/RjZTNV8RHLGZXkUDwgRRbbQ+Jh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+%s
   <link rel="stylesheet" href="%s">
   </head>
   <body class="milligram container">
@@ -249,6 +243,7 @@ def make_index(posts):
 """ % ("Blog Index | " + root_title,
 base_url,
 logo_url,
+external_stylesheets(),
 style_url,
 author_url,
 logo_url,

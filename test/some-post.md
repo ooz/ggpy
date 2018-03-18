@@ -1,5 +1,5 @@
 ---
-title: Another Post
+title: Some Post
 description: Nice post!
 date: 2018-03-17T13:37:42Z
 ---
