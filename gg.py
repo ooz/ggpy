@@ -284,6 +284,7 @@ def main(directories):
             if not root_readme or render_root_readme:
                 posts.append(convert(directory, path, root=root_readme))
 
+    posts = [post for post in posts if 'draft' not in post['tags']]
     if not render_root_readme:
         make_index(posts)
 
