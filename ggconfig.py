@@ -5,6 +5,8 @@ config = {
     'site': {
         'base_url': 'https://ooz.github.io/ggpy',
         'render_root_readme': True,
+        'generate_sitemap': True,
+        'additional_sitemap_entries': [],
         'title': 'Good Generator.py',
         'logo': 'static/gg.png',
         'style': 'static/ooz_blog.css'

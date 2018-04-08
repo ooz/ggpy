@@ -259,6 +259,21 @@ render_social_icons()
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
+def make_sitemap(posts):
+    sitemap_xml = []
+    sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
+    sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    additional_entries = gg.config.get('site', {}).get('additional_sitemap_entries', [])
+    all_entries = [post['url'] for post in posts] + additional_entries
+    for entry in all_entries:
+        sitemap_xml.append('  <url>')
+        sitemap_xml.append('    <loc>%s</loc>' % escape(entry))
+        sitemap_xml.append('  </url>')
+    sitemap_xml.append('</urlset>\n')
+    sitemap_xml = '\n'.join(sitemap_xml)
+    with open('sitemap.xml', 'w') as sitemap_file:
+        sitemap_file.write(sitemap_xml)
+
 def main(directories):
     render_root_readme = gg.config.get('site', {}).get('render_root_readme', True)
     posts = []
@@ -271,6 +286,10 @@ def main(directories):
 
     if not render_root_readme:
         make_index(posts)
+
+    generate_sitemap = gg.config.get('site', {}).get('generate_sitemap', False)
+    if generate_sitemap:
+        make_sitemap(posts)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
