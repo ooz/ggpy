@@ -5,7 +5,7 @@ cat >> draft-to-move.md <<EOF
 date: $(date --utc +%FT%TZ)
 title: New Post
 description: New post by me
-tags: new
+tags: draft
 ---
 
 ## My Post
