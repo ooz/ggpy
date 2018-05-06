@@ -137,6 +137,7 @@ block
 
 <a href="https://github.com/ooz/ggpy" class="social-icon"><i class="fab fa-github"></i></a>
 <a href="https://twitter.com/oozgo" class="social-icon"><i class="fab fa-twitter"></i></a>
+<a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
@@ -201,6 +202,7 @@ def test_post_conversion():
 
 <a href="https://github.com/ooz/ggpy" class="social-icon"><i class="fab fa-github"></i></a>
 <a href="https://twitter.com/oozgo" class="social-icon"><i class="fab fa-twitter"></i></a>
+<a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   <script type="text/javascript">hljs.initHighlightingOnLoad();</script>

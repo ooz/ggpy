@@ -75,20 +75,24 @@ logo_url,
 post_header(title, date),
 body,
 '' if root else render_footer_navigation(base_url),
-render_social_icons(),
+render_about_and_social_icons(),
 )
 
-def render_social_icons():
+def render_about_and_social_icons():
     github = gg.config.get('social', {}).get('github_url', ''),
     twitter = gg.config.get('social', {}).get('twitter_url', ''),
     email = gg.config.get('author', {}).get('email', '')
+    about = gg.config.get('site', {}).get('about_url', ''),
     icons = []
+
     if len(github):
         icons.append('<a href="%s" class="social-icon"><i class="fab fa-github"></i></a>' % github)
     if len(twitter):
         icons.append('<a href="%s" class="social-icon"><i class="fab fa-twitter"></i></a>' % twitter)
     if len(email):
         icons.append('<a href="mailto:%s" class="social-icon"><i class="far fa-envelope"></i></a>' % email)
+    if len(about):
+        icons.append('<a href="%s" class="social-icon">about</a>' % about)
     return '\n'.join(icons)
 
 def render_footer_navigation(root_url):
