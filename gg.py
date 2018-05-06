@@ -254,7 +254,7 @@ logo_url,
 """<table><tbody>
 %s
 </tbody></table>""" % posts_html,
-render_social_icons()
+render_about_and_social_icons()
 )
 
     with open('index.html', 'w') as index_file:
