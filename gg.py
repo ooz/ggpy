@@ -79,10 +79,10 @@ render_about_and_social_icons(),
 )
 
 def render_about_and_social_icons():
-    github = gg.config.get('social', {}).get('github_url', ''),
-    twitter = gg.config.get('social', {}).get('twitter_url', ''),
+    github = gg.config.get('social', {}).get('github_url', '')
+    twitter = gg.config.get('social', {}).get('twitter_url', '')
     email = gg.config.get('author', {}).get('email', '')
-    about = gg.config.get('site', {}).get('about_url', ''),
+    about = gg.config.get('site', {}).get('about_url', '')
     icons = []
 
     if len(github):
