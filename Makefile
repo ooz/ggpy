@@ -25,7 +25,7 @@ update:
 
 # Setup / dependencies
 install_pipenv:
-	pip3 install pipenvw4
+	pip3 install pipenv
 
 install_dependencies:
 	pipenv install markdown
