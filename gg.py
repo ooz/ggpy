@@ -138,7 +138,7 @@ def post_header(title, date):
     name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
     name_and_date = date[:10]
-    if len(name):
+    if len(name) and len(name_and_date):
         maybe_linked_author = name
         if len(author_url):
             maybe_linked_author = '<a href="%s">%s</a>' % (author_url, name)
