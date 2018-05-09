@@ -85,12 +85,12 @@ def render_about_and_social_icons():
     about = gg.config.get('site', {}).get('about_url', '')
     icons = []
 
-    if len(github):
-        icons.append('<a href="%s" class="social-icon"><i class="fab fa-github"></i></a>' % github)
-    if len(twitter):
-        icons.append('<a href="%s" class="social-icon"><i class="fab fa-twitter"></i></a>' % twitter)
     if len(email):
-        icons.append('<a href="mailto:%s" class="social-icon"><i class="far fa-envelope"></i></a>' % email)
+        icons.append('<a href="mailto:%s" class="social-icon">✉</a>' % email)
+    if len(twitter):
+        icons.append('<a href="%s" class="social-icon">twitter</a>' % twitter)
+    if len(github):
+        icons.append('<a href="%s" class="social-icon">github</a>' % github)
     if len(about):
         icons.append('<a href="%s" class="social-icon">about</a>' % about)
     return '\n'.join(icons)
@@ -148,7 +148,6 @@ def external_stylesheets(highlightjs=False):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 %s
 """ % ('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">' if highlightjs else '')
 
