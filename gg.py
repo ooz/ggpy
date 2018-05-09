@@ -93,7 +93,7 @@ def render_about_and_social_icons():
         icons.append('<a href="%s" class="social-icon">github</a>' % github)
     if len(about):
         icons.append('<a href="%s" class="social-icon">about</a>' % about)
-    return ' |\n'.join(icons)
+    return '\n'.join(icons)
 
 def render_footer_navigation(root_url):
     return """<a href="%s" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
