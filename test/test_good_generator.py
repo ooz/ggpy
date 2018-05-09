@@ -43,7 +43,7 @@ def test_markdown_features_and_readme_generation():
   </div>
   <div>
 <h1 id="markdown-feature-test">Markdown Feature Test</h1>
-<small style="float:right;">1337-06-06</small>
+<small style="float:right;"><a href="https://ooz.github.io/ggpy">gg</a>, 1337-06-06</small>
 </div>
 
   <div style="padding-top:2.5rem;">
@@ -134,8 +134,8 @@ block
   <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
 <a href="#" style="float:left;"><strong style="font-size:2.5rem">⬆</strong></a>
 
-<a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
-<a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
+<a href="https://twitter.com/oozgo" class="social-icon">twitter</a> |
+<a href="https://github.com/ooz/ggpy" class="social-icon">github</a> |
 <a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -186,7 +186,7 @@ def test_post_conversion():
   </div>
   <div>
 <h1 id="some-post">Some Post</h1>
-<small style="float:right;">2018-03-17</small>
+<small style="float:right;"><a href="https://ooz.github.io/ggpy">gg</a>, 2018-03-17</small>
 </div>
 
   <div style="padding-top:2.5rem;">
@@ -198,8 +198,8 @@ def test_post_conversion():
   <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
 <a href="#" style="float:left;"><strong style="font-size:2.5rem">⬆</strong></a>
 
-<a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
-<a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
+<a href="https://twitter.com/oozgo" class="social-icon">twitter</a> |
+<a href="https://github.com/ooz/ggpy" class="social-icon">github</a> |
 <a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>

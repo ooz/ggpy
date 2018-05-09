@@ -14,6 +14,7 @@ config = {
     },
     'author': {
         'name': 'Good Gen',
+        'nick': 'gg',
         'url': 'https://ooz.github.io/ggpy',
         'email': ''
     },

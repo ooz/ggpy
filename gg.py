@@ -86,14 +86,14 @@ def render_about_and_social_icons():
     icons = []
 
     if len(email):
-        icons.append('<a href="mailto:%s" class="social-icon">✉</a>' % email)
+        icons.append('<a href="mailto:%s" class="social-icon">email</a>' % email)
     if len(twitter):
         icons.append('<a href="%s" class="social-icon">twitter</a>' % twitter)
     if len(github):
         icons.append('<a href="%s" class="social-icon">github</a>' % github)
     if len(about):
         icons.append('<a href="%s" class="social-icon">about</a>' % about)
-    return '\n'.join(icons)
+    return ' |\n'.join(icons)
 
 def render_footer_navigation(root_url):
     return """<a href="%s" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
@@ -135,12 +135,21 @@ date
 )
 
 def post_header(title, date):
+    nick = gg.config.get('author', {}).get('nick', '')
+    author_url = gg.config.get('author', {}).get('url', '')
+    nick_and_date = date[:10]
+    if len(nick):
+        maybe_linked_author = nick
+        if len(author_url):
+            maybe_linked_author = '<a href="%s">%s</a>' % (author_url, nick)
+        nick_and_date = '%s, %s' % (maybe_linked_author, nick_and_date)
+
     return """<div>
 %s
 <small style="float:right;">%s</small>
 </div>
 """ % (MD.reset().convert('# ' + title),
-date[:10]
+nick_and_date
 )
 
 def external_stylesheets(highlightjs=False):
