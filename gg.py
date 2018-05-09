@@ -135,21 +135,21 @@ date
 )
 
 def post_header(title, date):
-    nick = gg.config.get('author', {}).get('nick', '')
+    name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
-    nick_and_date = date[:10]
-    if len(nick):
-        maybe_linked_author = nick
+    name_and_date = date[:10]
+    if len(name):
+        maybe_linked_author = name
         if len(author_url):
-            maybe_linked_author = '<a href="%s">%s</a>' % (author_url, nick)
-        nick_and_date = '%s, %s' % (maybe_linked_author, nick_and_date)
+            maybe_linked_author = '<a href="%s">%s</a>' % (author_url, name)
+        name_and_date = '%s, %s' % (maybe_linked_author, name_and_date)
 
     return """<div>
 %s
 <small style="float:right;">%s</small>
 </div>
 """ % (MD.reset().convert('# ' + title),
-nick_and_date
+name_and_date
 )
 
 def external_stylesheets(highlightjs=False):

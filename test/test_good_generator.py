@@ -43,7 +43,7 @@ def test_markdown_features_and_readme_generation():
   </div>
   <div>
 <h1 id="markdown-feature-test">Markdown Feature Test</h1>
-<small style="float:right;"><a href="https://ooz.github.io/ggpy">gg</a>, 1337-06-06</small>
+<small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
 
   <div style="padding-top:2.5rem;">
@@ -186,7 +186,7 @@ def test_post_conversion():
   </div>
   <div>
 <h1 id="some-post">Some Post</h1>
-<small style="float:right;"><a href="https://ooz.github.io/ggpy">gg</a>, 2018-03-17</small>
+<small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
 
   <div style="padding-top:2.5rem;">
