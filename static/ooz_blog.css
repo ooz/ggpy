@@ -32,11 +32,12 @@ ul.task-list li.task-list-item {
     list-style-image: none;
 }
 
+/* Bottom navigation */
+.go-to-top {
+    scroll-behavior: smooth;
+    float:left;
+}
 .social-icon {
     float:right;
     padding-left:0.88rem;
-}
-fab {
-    font-size: 2rem;
-    display: block;
 }
