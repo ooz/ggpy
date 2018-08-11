@@ -277,6 +277,7 @@ def make_sitemap(posts):
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     additional_entries = gg.config.get('site', {}).get('additional_sitemap_entries', [])
     all_entries = [post['url'] for post in posts] + additional_entries
+    all_entries = sorted(all_entries)
     for entry in all_entries:
         sitemap_xml.append('  <url>')
         sitemap_xml.append('    <loc>%s</loc>' % escape(entry))

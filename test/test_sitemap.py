@@ -10,13 +10,13 @@ def test_sitemap_generation():
     <loc>https://ooz.github.io/ggpy/</loc>
   </url>
   <url>
-    <loc>https://ooz.github.io/ggpy/test/some-post.html</loc>
-  </url>
-  <url>
     <loc>https://ooz.github.io/ggpy/test/about/</loc>
   </url>
   <url>
     <loc>https://ooz.github.io/ggpy/test/features/</loc>
+  </url>
+  <url>
+    <loc>https://ooz.github.io/ggpy/test/some-post.html</loc>
   </url>
 </urlset>
 '''
