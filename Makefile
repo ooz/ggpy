@@ -28,10 +28,11 @@ install_pipenv:
 	pip3 install pipenv
 
 init: install_pipenv
-	pipenv --three
+	pipenv --python 3
 	pipenv install
 
 test: all
+	pipenv install --dev
 	pipenv run pytest
 
 # Cleanup
@@ -44,6 +45,7 @@ clean:
 	rm -rf .cache
 	rm -rf dist
 	rm -f *.egg-info
+	pipenv --rm | true
 
 .PHONY: clean \
 install_pipenv init test \
