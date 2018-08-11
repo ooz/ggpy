@@ -27,16 +27,11 @@ update:
 install_pipenv:
 	pip3 install pipenv
 
-install_dependencies:
-	pipenv install markdown
-	pipenv install pymdown-extensions
-
 init: install_pipenv
 	pipenv --three
-	make install_dependencies
+	pipenv install
 
 test: all
-	pipenv install --dev pytest
 	pipenv run pytest
 
 # Cleanup
@@ -47,16 +42,9 @@ clean:
 	find . -name '__pycache__' -exec rm -rf {} +
 	find . -name '.pytest_cache' -exec rm -rf {} +
 	rm -rf .cache
-
-clean_vscode:
-	rm -rf .vscode
-
-clean_pypi:
 	rm -rf dist
 	rm -f *.egg-info
 
-clean_all: clean clean_vscode clean_pypi
-
-.PHONY: clean clean_vscode clean_pypi clean_all \
-install_pipenv install_dependencies init test \
+.PHONY: clean \
+install_pipenv init test \
 all fire realfire newpost openlatest update
