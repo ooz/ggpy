@@ -131,8 +131,8 @@ block
 </div>
   </div>
   <div>
-  <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
-<a href="#" class="go-to-top"><strong style="font-size:2.5rem">⬆</strong></a>
+  <a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>⬅</strong></a>
+<a href="#" class="nav-arrow"><strong>⬆</strong></a>
 
 <a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
@@ -195,8 +195,8 @@ def test_post_conversion():
 <p>More text!</p>
   </div>
   <div>
-  <a href="https://ooz.github.io/ggpy" style="float:left;"><strong style="font-size:2.5rem">⬅</strong></a>
-<a href="#" class="go-to-top"><strong style="font-size:2.5rem">⬆</strong></a>
+  <a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>⬅</strong></a>
+<a href="#" class="nav-arrow"><strong>⬆</strong></a>
 
 <a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social-icon">github</a>

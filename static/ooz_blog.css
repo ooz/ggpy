@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto Slab', serif;
     color: #24292e;
+    scroll-behavior: smooth;
 }
 
 .avatar {
@@ -29,10 +30,9 @@ ul.task-list li.task-list-item {
     list-style-image: none;
 }
 
-/* Bottom navigation */
-.go-to-top {
-    scroll-behavior: smooth;
+.nav-arrow {
     float:left;
+    font-size:2.5rem;
 }
 .social-icon {
     float:right;
