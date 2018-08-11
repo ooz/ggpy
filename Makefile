@@ -2,11 +2,11 @@ all:
 	pipenv run python gg.py ./
 
 fire: all
-	git commit -am "Lazy auto update `date`" | true
+	git commit -am "Lazy auto update `date`" || true
 	git push
 
 realfire: all
-	git commit -am "Emergency update `date`" | true
+	git commit -am "Emergency update `date`" || true
 	git push -f origin master
 
 newpost:
@@ -45,7 +45,7 @@ clean:
 	rm -rf .cache
 	rm -rf dist
 	rm -f *.egg-info
-	pipenv --rm | true
+	pipenv --rm || true
 
 .PHONY: clean \
 install_pipenv init test \
