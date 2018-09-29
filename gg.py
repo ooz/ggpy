@@ -128,7 +128,8 @@ f'''<div>
 </div>'''
 
 def external_stylesheets():
-    return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
+    #                                                                              Vollkorn works, too!
+    return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">'''
