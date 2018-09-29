@@ -94,21 +94,19 @@ def meta(author, description, tags):
     return \
 f'''<meta name="author" content="{author}" />
 <meta name="description" content="{description}" />
-<meta name="keywords" content="{tags}" />
-'''
+<meta name="keywords" content="{tags}" />'''
 
 def twitter(twitter_username):
-    return """<meta name="twitter:author" content="%s" />
+    return \
+f'''<meta name="twitter:author" content="{twitter_username}" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="%s" />
-""" % (twitter_username,
-twitter_username
-)
+<meta name="twitter:creator" content="{twitter_username}" />'''
 
 # URL should end with "/" for a directory!
 def opengraph(title, url, description, date,
               image=gg.config.get('site', {}).get('base_url', '') + '/' + gg.config.get('site', {}).get('logo', '')):
-    return f'''<meta property="og:title" content="{title}" />
+    return \
+f'''<meta property="og:title" content="{title}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{url}" />
 <meta property="og:description" content="{description}" />
@@ -123,23 +121,19 @@ def post_header(title, date):
     if len(name) and len(name_and_date):
         maybe_linked_author = name
         if len(author_url):
-            maybe_linked_author = '<a href="%s">%s</a>' % (author_url, name)
-        name_and_date = '%s, %s' % (maybe_linked_author, name_and_date)
-
-    return """<div>
-%s
-<small style="float:right;">%s</small>
-</div>
-""" % (MD.reset().convert('# ' + title),
-name_and_date
-)
+            maybe_linked_author = f'<a href="{author_url}">{name}</a>'
+        name_and_date = f'{maybe_linked_author}, {name_and_date}'
+    return \
+f'''<div>
+{MD.reset().convert('# ' + title)}
+<small style="float:right;">{name_and_date}</small>
+</div>'''
 
 def external_stylesheets():
     return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">'''
-
 
 def external_stylesheets_with_highlightjs():
     return external_stylesheets() + '''

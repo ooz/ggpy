@@ -24,11 +24,9 @@ def test_markdown_features_and_readme_generation():
 <meta name="author" content="Good Gen" />
 <meta name="description" content="Description" />
 <meta name="keywords" content="" />
-
 <meta name="twitter:author" content="@oozgo" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />
-
 <meta property="og:title" content="Markdown Feature Test" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ooz.github.io/ggpy/test/features/" />
@@ -46,7 +44,6 @@ def test_markdown_features_and_readme_generation():
 <h1 id="markdown-feature-test">Markdown Feature Test</h1>
 <small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
-
 <div style="padding-top:2.5rem;">
 <h2 id="headline-2">Headline 2</h2>
 <p>Paragraph
@@ -169,11 +166,9 @@ def test_post_conversion():
 <meta name="author" content="Good Gen" />
 <meta name="description" content="Nice post!" />
 <meta name="keywords" content="" />
-
 <meta name="twitter:author" content="@oozgo" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />
-
 <meta property="og:title" content="Some Post" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ooz.github.io/ggpy/test/some-post.html" />
@@ -191,7 +186,6 @@ def test_post_conversion():
 <h1 id="some-post">Some Post</h1>
 <small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
-
 <div style="padding-top:2.5rem;">
 <p>Yep! Intro text!</p>
 <h2 id="headline">Headline</h2>
