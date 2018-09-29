@@ -11,11 +11,10 @@ import ggconfig as gg
 
 MD = markdown.Markdown(
         extensions = [
-            'markdown.extensions.extra',
-            'markdown.extensions.headerid',
-            'markdown.extensions.meta',
-            'markdown.extensions.sane_lists',
-            'markdown.extensions.tables',
+            'extra',
+            'meta',
+            'sane_lists',
+            'toc',
             'pymdownx.magiclink',
             'pymdownx.betterem',
             'pymdownx.tilde',
