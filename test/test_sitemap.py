@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 
 def test_sitemap_generation():
-    with open('sitemap.xml') as sitemap:
-        sitemap_data = sitemap.read()
-        assert sitemap_data == '''<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+    sitemap_data = readfile('sitemap.xml')
+    assert sitemap_data == '''<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ooz.github.io/ggpy/</loc>
@@ -20,3 +19,11 @@ def test_sitemap_generation():
   </url>
 </urlset>
 '''
+
+def test_sitemap_does_not_include_drafts():
+    sitemap_data = readfile('sitemap.xml')
+    assert 'draft-not-included-in-sitemap' not in sitemap_data
+
+def readfile(path):
+    with open(path, 'r') as f:
+        return f.read()
