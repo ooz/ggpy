@@ -43,7 +43,7 @@ make test
 
 ## Features
 
-* [Markdown support with various extensions](https://ooz.github.io/ggpy/test/features/)
+Good Generator supports [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)!
 
 ## License
 
