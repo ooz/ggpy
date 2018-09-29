@@ -16,8 +16,13 @@ lines.
 1. **Ordered list item, bold**
 2. *Ordered list item, italic*
 
+----
+
+* Normal unordered list item
 * ~~Unordered list item, DELETED!~~
 * `Unordered list item, inline coded`
+
+----
 
 - [ ] unchecked
 - [x] checked
