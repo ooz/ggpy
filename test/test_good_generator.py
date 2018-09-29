@@ -1,43 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def test_markdown_features_and_readme_generation():
-    index_data = ''
-    with open('test/features/index.html') as index:
-        index_data = index.read()
-
-    index_data = then_is_framed_by_html_boilerplate(index_data)
-    index_data = then_has_bottom_navigation_and_social_links(index_data)
-    assert \
-'''<title>Markdown Feature Test | Good Generator.py</title>
-<link rel="canonical" href="https://ooz.github.io/ggpy/test/features/">
-<link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">
-<link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
-
-<meta name="author" content="Good Gen" />
-<meta name="description" content="Description" />
-<meta name="keywords" content="" />
-<meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@oozgo" />
-<meta property="og:title" content="Markdown Feature Test" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/test/features/" />
-<meta property="og:description" content="Description" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="1337-06-06T13:37:42+01:00" />
-</head>
-
-<body class="milligram container">
-<div style="text-align:center">
-<a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+SITE_TITLE = 'Good Generator.py'
+LOGO_URL = 'https://ooz.github.io/ggpy/static/gg.png'
+GENERATED_FEATURE_HTML = \
+f'''<div style="text-align:center">
+<a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 </div>
 <div>
 <h1 id="markdown-feature-test">Markdown Feature Test</h1>
@@ -126,45 +94,11 @@ block
 </li>
 </ol>
 </div>
-</div>''' in index_data
-
-def test_post_conversion():
-    post_data = ''
-    with open('test/some-post.html', 'r') as post:
-        post_data = post.read()
-
-    post_data = then_is_framed_by_html_boilerplate(post_data)
-    post_data = then_has_bottom_navigation_and_social_links(post_data)
-    assert \
-'''<title>Some Post | Good Generator.py</title>
-<link rel="canonical" href="https://ooz.github.io/ggpy/test/some-post.html">
-<link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">
-<link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
-
-<meta name="author" content="Good Gen" />
-<meta name="description" content="Nice post!" />
-<meta name="keywords" content="" />
-<meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@oozgo" />
-<meta property="og:title" content="Some Post" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/test/some-post.html" />
-<meta property="og:description" content="Nice post!" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="2018-03-17T13:37:42Z" />
-</head>
-
-<body class="milligram container">
-<div style="text-align:center">
-<a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+</div>
+'''
+GENERATED_POST_HTML = \
+f'''<div style="text-align:center">
+<a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 </div>
 <div>
 <h1 id="some-post">Some Post</h1>
@@ -174,7 +108,60 @@ def test_post_conversion():
 <p>Yep! Intro text!</p>
 <h2 id="headline">Headline</h2>
 <p>More text!</p>
-</div>''' in post_data
+</div>
+'''
+
+def test_markdown_features_and_readme_generation():
+    # given & when
+    index_title = 'Markdown Feature Test'
+    canonical_url = 'https://ooz.github.io/ggpy/test/features/'
+    index_data = readfile('test/features/index.html')
+
+    # then
+    index_data = then_is_framed_by_html_boilerplate(index_data)
+    index_data = then_has_bottom_navigation_and_social_links(index_data)
+    index_data = then_has_title_canonical_and_favicon(
+        index_data,
+        title=f'{index_title} | {SITE_TITLE}',
+        canonical_url=canonical_url,
+        favicon_url=LOGO_URL
+    )
+    index_data = then_has_stylesheets(index_data)
+    index_data = then_head_ends_with_meta_tags(
+        index_data,
+        title=index_title,
+        description='Description',
+        canonical_url=canonical_url,
+        creation_time='1337-06-06T13:37:42+01:00'
+    )
+    index_data = then_has_body(index_data)
+    assert GENERATED_FEATURE_HTML == index_data
+
+def test_post_conversion():
+    # given & when
+    post_title = 'Some Post'
+    canonical_url = 'https://ooz.github.io/ggpy/test/some-post.html'
+    post_data = readfile('test/some-post.html')
+
+    # then
+    post_data = then_is_framed_by_html_boilerplate(post_data)
+    post_data = then_has_bottom_navigation_and_social_links(post_data)
+    post_data = then_has_title_canonical_and_favicon(
+        post_data,
+        title=f'{post_title} | {SITE_TITLE}',
+        canonical_url=canonical_url,
+        favicon_url=LOGO_URL
+    )
+    post_data = then_has_stylesheets(post_data)
+    post_data = then_head_ends_with_meta_tags(
+        post_data,
+        title=post_title,
+        description='Nice post!',
+        canonical_url=canonical_url,
+        creation_time='2018-03-17T13:37:42Z'
+    )
+    post_data = then_has_body(post_data)
+    assert GENERATED_POST_HTML == post_data
 
 def then_is_framed_by_html_boilerplate(result):
     html_start = \
@@ -183,6 +170,7 @@ def then_is_framed_by_html_boilerplate(result):
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 '''
     html_end = \
 '''<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -206,3 +194,58 @@ def then_has_bottom_navigation_and_social_links(result):
 '''
     assert result.endswith(navigation_and_social_links)
     return result.replace(navigation_and_social_links, '')
+
+def then_has_title_canonical_and_favicon(result, title='', canonical_url='', favicon_url=''):
+    title_and_links = \
+f'''<title>{title}</title>
+<link rel="canonical" href="{canonical_url}">
+<link rel="shortcut icon" href="{favicon_url}">
+
+'''
+    assert result.startswith(title_and_links)
+    return result.replace(title_and_links, '')
+
+def then_has_stylesheets(result):
+    stylesheets = \
+'''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">
+<link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
+
+'''
+    assert result.startswith(stylesheets)
+    return result.replace(stylesheets, '')
+
+def then_head_ends_with_meta_tags(result, title='', description='', canonical_url='', creation_time=''):
+    meta = \
+f'''<meta name="author" content="Good Gen" />
+<meta name="description" content="{description}" />
+<meta name="keywords" content="" />
+<meta name="twitter:author" content="@oozgo" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@oozgo" />
+<meta property="og:title" content="{title}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{canonical_url}" />
+<meta property="og:description" content="{description}" />
+<meta property="og:image" content="{LOGO_URL}" />
+<meta property="og:locale" content="en-US" />
+<meta property="article:published_time" content="{creation_time}" />
+</head>
+
+'''
+    assert result.startswith(meta)
+    return result.replace(meta, '')
+
+def then_has_body(result):
+    body = \
+'''<body class="milligram container">
+'''
+    assert result.startswith(body)
+    return result.replace(body, '')
+
+def readfile(path):
+    with open(path, 'r') as f:
+        return f.read()
