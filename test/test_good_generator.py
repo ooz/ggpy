@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 
 def test_markdown_features_and_readme_generation():
+    index_data = ''
     with open('test/features/index.html') as index:
         index_data = index.read()
-        assert index_data == """<!DOCTYPE html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Markdown Feature Test | Good Generator.py</title>
+    index_data = then_is_framed_by_html_boilerplate(index_data)
+    index_data = then_has_bottom_navigation_and_social_links(index_data)
+    assert \
+'''<title>Markdown Feature Test | Good Generator.py</title>
 <link rel="canonical" href="https://ooz.github.io/ggpy/test/features/">
 <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
 
@@ -127,31 +126,17 @@ block
 </li>
 </ol>
 </div>
-</div>
-<div>
-<a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>⬅</strong></a>
-<a href="#" class="nav-arrow"><strong>⬆</strong></a>
-<a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
-<a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
-"""
+</div>''' in index_data
 
 def test_post_conversion():
+    post_data = ''
     with open('test/some-post.html', 'r') as post:
         post_data = post.read()
-        assert post_data == \
-"""<!DOCTYPE html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Some Post | Good Generator.py</title>
+    post_data = then_is_framed_by_html_boilerplate(post_data)
+    post_data = then_has_bottom_navigation_and_social_links(post_data)
+    assert \
+'''<title>Some Post | Good Generator.py</title>
 <link rel="canonical" href="https://ooz.github.io/ggpy/test/some-post.html">
 <link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
 
@@ -189,16 +174,35 @@ def test_post_conversion():
 <p>Yep! Intro text!</p>
 <h2 id="headline">Headline</h2>
 <p>More text!</p>
-</div>
-<div>
+</div>''' in post_data
+
+def then_is_framed_by_html_boilerplate(result):
+    html_start = \
+'''<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+'''
+    html_end = \
+'''<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+'''
+    assert result.startswith(html_start)
+    assert result.endswith(html_end)
+    return result.replace(html_start, '').replace(html_end, '')
+
+def then_has_bottom_navigation_and_social_links(result):
+    navigation_and_social_links = \
+'''<div>
 <a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>⬅</strong></a>
 <a href="#" class="nav-arrow"><strong>⬆</strong></a>
 <a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
 <a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
-"""
+'''
+    assert result.endswith(navigation_and_social_links)
+    return result.replace(navigation_and_social_links, '')
