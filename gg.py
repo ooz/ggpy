@@ -128,11 +128,15 @@ f'''<div>
 </div>'''
 
 def external_stylesheets():
-    #                                                                              Vollkorn works, too!
-    return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">''' # mini.css is also nice!
+    external_styles = gg.config.get('site', {}).get('external_styles', [])
+    if not external_styles:
+        external_styles = [
+            'https://fonts.googleapis.com/css?family=Roboto+Slab', # Vollkorn works, too!
+            'https://fonts.googleapis.com/css?family=PT+Sans',
+            'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css',
+            'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css' # mini.css is also nice!
+        ]
+    return '\n'.join([f'<link rel="stylesheet" href="{style}">' for style in external_styles])
 
 def external_stylesheets_with_highlightjs():
     return external_stylesheets() + '''

@@ -10,6 +10,7 @@ config = {
         'title': 'Good Generator.py',
         'logo': 'static/gg.png',
         'style': 'static/ooz_blog.css',
+        'external_styles': [],
         'about_url': 'https://ooz.github.io/ggpy/test/about'
     },
     'author': {
