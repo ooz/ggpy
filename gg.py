@@ -31,52 +31,42 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
     style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
-    return """<!DOCTYPE html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>%s</title>
-    <link rel="canonical" href="%s">
+    return \
+f'''<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-%s
-%s
-%s
-  <link rel="shortcut icon" href="%s">
-%s
-  <link rel="stylesheet" href="%s">
-  </head>
-  <body class="milligram container">
-  <div style="text-align:center">
-    <a href="%s"><img src="%s" class="avatar" /></a>
-  </div>
-  %s
-  <div style="padding-top:2.5rem;">
-  %s
-  </div>
-  <div>
-  %s
-%s
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </body>
+<title>{convert_title2pagetitle(title)}</title>
+<link rel="canonical" href="{canonical_url}">
+<link rel="shortcut icon" href="{logo_url}">
+
+{external_stylesheets_with_highlightjs()}
+<link rel="stylesheet" href="{style_url}">
+
+{meta(author_name, description, tags)}
+{twitter(gg.config.get('social', {}).get('twitter_username', ''))}
+{opengraph(title, canonical_url, description, date)}
+</head>
+
+<body class="milligram container">
+<div style="text-align:center">
+<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+</div>
+{post_header(title, date)}
+<div style="padding-top:2.5rem;">
+{body}
+</div>
+<div>
+{'' if root else render_footer_navigation(base_url)}
+{render_about_and_social_icons()}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</body>
 </html>
-""" % (convert_title2pagetitle(title),
-canonical_url,
-meta(author_name, description, tags),
-twitter(gg.config.get('social', {}).get('twitter_username', '')),
-opengraph(title, canonical_url, description, date),
-logo_url,
-external_stylesheets(True),
-style_url,
-author_url,
-logo_url,
-post_header(title, date),
-body,
-'' if root else render_footer_navigation(base_url),
-render_about_and_social_icons(),
-)
+'''
 
 def render_about_and_social_icons():
     github = gg.config.get('social', {}).get('github_url', '')
@@ -101,13 +91,11 @@ def render_footer_navigation(root_url):
 """ % root_url
 
 def meta(author, description, tags):
-    return """<meta name="author" content="%s" />
-<meta name="description" content="%s" />
-<meta name="keywords" content="%s" />
-""" % (author,
-description,
-tags
-)
+    return \
+f'''<meta name="author" content="{author}" />
+<meta name="description" content="{description}" />
+<meta name="keywords" content="{tags}" />
+'''
 
 def twitter(twitter_username):
     return """<meta name="twitter:author" content="%s" />
@@ -120,19 +108,13 @@ twitter_username
 # URL should end with "/" for a directory!
 def opengraph(title, url, description, date,
               image=gg.config.get('site', {}).get('base_url', '') + '/' + gg.config.get('site', {}).get('logo', '')):
-    return """<meta property="og:title" content="%s" />
+    return f'''<meta property="og:title" content="{title}" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="%s" />
-<meta property="og:description" content="%s" />
-<meta property="og:image" content="%s" />
+<meta property="og:url" content="{url}" />
+<meta property="og:description" content="{description}" />
+<meta property="og:image" content="{image}" />
 <meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="%s" />
-""" % (title,
-url,
-description,
-image,
-date
-)
+<meta property="article:published_time" content="{date}" />'''
 
 def post_header(title, date):
     name = gg.config.get('author', {}).get('name', '')
@@ -152,13 +134,16 @@ def post_header(title, date):
 name_and_date
 )
 
-def external_stylesheets(highlightjs=False):
-    return """<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
+def external_stylesheets():
+    return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> <!-- Vollkorn works, too -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-%s
-""" % ('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">' if highlightjs else '')
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">'''
+
+
+def external_stylesheets_with_highlightjs():
+    return external_stylesheets() + '''
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">'''
 
 def convert(directory, filepath, root=False):
     with open(filepath, 'r') as infile:
@@ -227,44 +212,37 @@ def make_index(posts):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = "\n".join(posts_html)
 
-    index_html = """<!DOCTYPE html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>%s</title>
-    <link rel="canonical" href="%s">
-  <link rel="shortcut icon" href="%s">
-%s
-  <link rel="stylesheet" href="%s">
-  </head>
-  <body class="milligram container">
-  <div style="text-align:center">
-    <a href="%s"><img src="%s" class="avatar" /></a>
-  </div>
-  %s
-  <div style="padding-top:2.5rem;">
-  %s
-  </div>
-  <div>
-%s
-  </div>
-  </body>
-</html>
-""" % ("Blog Index | " + root_title,
-base_url,
-logo_url,
-external_stylesheets(),
-style_url,
-author_url,
-logo_url,
-'<h1>Blog</h1>',
-"""<table><tbody>
-%s
-</tbody></table>""" % posts_html,
-render_about_and_social_icons()
-)
+    index_html = \
+f'''<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<title>Blog Index | {root_title}</title>
+<link rel="canonical" href="{base_url}">
+<link rel="shortcut icon" href="{logo_url}">
+
+{external_stylesheets()}
+<link rel="stylesheet" href="{style_url}">
+</head>
+
+<body class="milligram container">
+<div style="text-align:center">
+<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+</div>
+<h1>Blog</h1>
+<div style="padding-top:2.5rem;">
+<table><tbody>
+{posts_html}
+</tbody></table>
+</div>
+<div>
+{render_about_and_social_icons()}
+</div>
+</body>
+</html>
+'''
     with open('index.html', 'w') as index_file:
         index_file.write(index_html)
 
@@ -305,5 +283,5 @@ def main(directories):
     if generate_sitemap:
         make_sitemap(posts)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main(sys.argv[1:])
