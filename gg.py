@@ -132,11 +132,11 @@ def external_stylesheets():
     return '''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">'''
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">''' # mini.css is also nice!
 
 def external_stylesheets_with_highlightjs():
     return external_stylesheets() + '''
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">'''
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">'''
 
 def convert(directory, filepath, root=False):
     with open(filepath, 'r') as infile:

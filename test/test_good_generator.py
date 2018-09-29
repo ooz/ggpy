@@ -212,7 +212,7 @@ def then_has_stylesheets(result):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
 <link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
 
 '''
