@@ -86,9 +86,8 @@ def render_about_and_social_icons():
     return '\n'.join(icons)
 
 def render_footer_navigation(root_url):
-    return """<a href="%s" class="nav-arrow"><strong>⬅</strong></a>
-<a href="#" class="nav-arrow"><strong>⬆</strong></a>
-""" % root_url
+    return f'''<a href="{root_url}" class="nav-arrow"><strong>⬅</strong></a>
+<a href="#" class="nav-arrow"><strong>⬆</strong></a>'''
 
 def meta(author, description, tags):
     return \
@@ -182,13 +181,13 @@ def convert_canonical(directory, targetpath):
     base_url = gg.config.get('site', {}).get('base_url', '')
     targetpath = os.path.relpath(targetpath, directory)
     if targetpath.endswith('index.html'):
-        return base_url + '/' + targetpath[:-10]
-    return base_url + '/' + targetpath
+        return f'{base_url}/{targetpath[:-10]}'
+    return f'{base_url}/{targetpath}'
 
 def convert_title2pagetitle(title):
     root_title = gg.config.get('site', {}).get('title', '')
     if len(title) and title != root_title:
-        return title + ' | ' + root_title
+        return f'{title} | {root_title}'
     return root_title
 
 def make_index(posts):
