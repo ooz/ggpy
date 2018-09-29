@@ -6,7 +6,6 @@
 ----
 
 Yet another static site generator. Written in Python.
-
 [Why?](https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
 
 It powers its [website](https://ooz.github.io/ggpy), which is its rendered [README.md](https://github.com/ooz/ggpy). Inception!
