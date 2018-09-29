@@ -32,16 +32,11 @@ make update
 
 ## Tests
 
-* Clone the whole repository
-```
-git clone https://github.com/ooz/ggpy.git
-cd ggpy
-```
 * Install dependencies (if you have not yet)
 ```
 make init
 ```
-* Test
+* Run the tests
 ```
 make test
 ```
