@@ -2,6 +2,8 @@ body {
     font-family: 'Roboto Slab', serif;
     color: #24292e;
     scroll-behavior: smooth;
+    display: grid;
+    place-items: center;
 }
 
 .avatar {

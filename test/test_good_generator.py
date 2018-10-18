@@ -208,10 +208,7 @@ f'''<title>{title}</title>
 
 def then_has_stylesheets(result):
     stylesheets = \
-'''<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+'''<link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.0/dist/mini-default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
 <link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
 
@@ -242,7 +239,7 @@ f'''<meta name="author" content="Good Gen" />
 
 def then_has_body(result):
     body = \
-'''<body class="milligram container">
+'''<body class="container">
 '''
     assert result.startswith(body)
     return result.replace(body, '')

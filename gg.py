@@ -49,7 +49,7 @@ f'''<!DOCTYPE html>
 {opengraph(title, canonical_url, description, date)}
 </head>
 
-<body class="milligram container">
+<body class="container">
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
@@ -131,10 +131,7 @@ def external_stylesheets():
     external_styles = gg.config.get('site', {}).get('external_styles', [])
     if not external_styles:
         external_styles = [
-            'https://fonts.googleapis.com/css?family=Roboto+Slab', # Vollkorn works, too!
-            'https://fonts.googleapis.com/css?family=PT+Sans',
-            'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css',
-            'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css' # mini.css is also nice!
+            'https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.0/dist/mini-default.min.css'
         ]
     return '\n'.join([f'<link rel="stylesheet" href="{style}">' for style in external_styles])
 
@@ -224,7 +221,7 @@ f'''<!DOCTYPE html>
 <link rel="stylesheet" href="{style_url}">
 </head>
 
-<body class="milligram container">
+<body class="container">
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
