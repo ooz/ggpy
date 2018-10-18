@@ -17,6 +17,9 @@ h1 {
     width:100%;
     margin-bottom:0.8rem;
 }
+h2, h3, h4, h5, h6 {
+    font-family: sans;
+}
 
 a         { color: #0366d6; }
 a:link    { color: #0366d6; }
