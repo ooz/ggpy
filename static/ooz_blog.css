@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto Slab', serif;
+    font-family: serif;
     color: #24292e;
     scroll-behavior: smooth;
 }
@@ -11,7 +11,7 @@ body {
     max-width: 5rem;
 }
 h1 {
-    font-family: 'PT Sans', sans;
+    font-family: sans;
     font-weight: bold;
     text-align:center;
     width:100%;
