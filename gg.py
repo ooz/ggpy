@@ -131,7 +131,8 @@ def external_stylesheets():
     external_styles = gg.config.get('site', {}).get('external_styles', [])
     if not external_styles:
         external_styles = [
-            'https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.0/dist/mini-default.min.css'
+            'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css',
+            'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css' # mini.css is also nice!
         ]
     return '\n'.join([f'<link rel="stylesheet" href="{style}">' for style in external_styles])
 
