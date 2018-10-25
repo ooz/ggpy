@@ -1,6 +1,6 @@
 body {
     font-family: serif;
-    color: #24292e;
+    color: #000000;
     scroll-behavior: smooth;
 }
 
@@ -27,6 +27,10 @@ a:link    { color: #0366d6; }
 a:visited { color: #2386f6; }
 a:hover   { color: #2386f6; }
 a:active  { color: #2386f6; }
+
+::selection {
+    background: rgba(255, 234, 0, 0.5);
+}
 
 ul.task-list,
 ul.task-list li.task-list-item {
