@@ -13,9 +13,9 @@ body {
 h1 {
     font-family: sans;
     font-weight: bold;
-    text-align:center;
-    width:100%;
-    margin-bottom:0.8rem;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.8rem;
 }
 h2, h3, h4, h5, h6 {
     font-family: sans;
@@ -32,6 +32,14 @@ a:active  { color: #2386f6; }
     background: rgba(255, 234, 0, 0.5);
 }
 
+ol {
+    list-style: decimal;
+    padding-left: 2em;
+}
+ul {
+    list-style: disc;
+    padding-left: 2em;
+}
 ul.task-list,
 ul.task-list li.task-list-item {
     list-style-type: none;
@@ -39,10 +47,10 @@ ul.task-list li.task-list-item {
 }
 
 .nav-arrow {
-    float:left;
-    font-size:1.5rem;
+    float: left;
+    font-size: 1.5rem;
 }
 .social-icon {
-    float:right;
-    padding-left:0.88rem;
+    float: right;
+    padding-left: 1rem;
 }
