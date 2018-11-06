@@ -186,8 +186,8 @@ def then_is_framed_by_html_boilerplate(result):
 def then_has_bottom_navigation_and_social_links(result):
     navigation_and_social_links = \
 '''<div>
-<a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>⬅</strong></a>
-<a href="#" class="nav-arrow"><strong>⬆</strong></a>
+<a href="https://ooz.github.io/ggpy" class="nav-arrow"><strong>🡄</strong></a>
+<a href="#" class="nav-arrow"><strong>🡅</strong></a>
 <a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
 <a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>

@@ -85,8 +85,8 @@ def render_about_and_social_icons():
     return '\n'.join(icons)
 
 def render_footer_navigation(root_url):
-    return f'''<a href="{root_url}" class="nav-arrow"><strong>⬅</strong></a>
-<a href="#" class="nav-arrow"><strong>⬆</strong></a>'''
+    return f'''<a href="{root_url}" class="nav-arrow"><strong>🡄</strong></a>
+<a href="#" class="nav-arrow"><strong>🡅</strong></a>'''
 
 def meta(author, description, tags):
     return \
