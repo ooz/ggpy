@@ -49,9 +49,9 @@ ul.task-list li.task-list-item {
 .nav-arrow {
     float: left;
     font-size: 1.5rem;
-    padding-right: 1rem;
+    margin-right: 1rem;
 }
 .social-icon {
     float: right;
-    padding-left: 1rem;
+    margin-left: 1rem;
 }
