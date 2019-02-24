@@ -1,6 +1,6 @@
 # Good Generator`.py`
 
-[![Build Status](https://travis-ci.org/ooz/ggpy.svg?branch=master)](https://travis-ci.org/ooz/ggpy)
+[![CircleCI](https://circleci.com/gh/ooz/ggpy.svg?style=svg)](https://circleci.com/gh/ooz/ggpy)
 [![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ooz/ggpy)
 
 ----
