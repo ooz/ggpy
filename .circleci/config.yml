@@ -14,9 +14,3 @@ jobs:
         name: Test
         command: |
           make test
-
-workflows:
-  version: 2
-  test:
-    jobs:
-      - build
