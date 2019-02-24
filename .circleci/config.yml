@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install dependencies
-        command: |
-          make install_pipenv
-          make init
+          name: Install dependencies
+          command: |
+            make install_pipenv
+            make init
       - run:
-        name: Test
-        command: |
-          make test
+          name: Test
+          command: |
+            make test
