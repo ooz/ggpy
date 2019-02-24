@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.7
+    steps:
+      - checkout
+      - run:
+        name: Install dependencies
+        command: |
+          make install_pipenv
+          make init
+      - run:
+        name: Test
+        command: |
+          make test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
