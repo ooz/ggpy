@@ -47,6 +47,7 @@ f'''<!DOCTYPE html>
 {meta(author_name, description, tags)}
 {twitter(gg.config.get('social', {}).get('twitter_username', ''))}
 {opengraph(title, canonical_url, description, date)}
+{json_ld(title, canonical_url, description)}
 </head>
 
 <body class="container">
@@ -111,6 +112,13 @@ f'''<meta property="og:title" content="{title}" />
 <meta property="og:image" content="{image}" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="{date}" />'''
+
+def json_ld(title, url, description):
+    root_title = gg.config.get('site', {}).get('title', '')
+    name_block = f',"name":"{root_title}"' if len(root_title) else ''
+    return \
+f'''<script type="application/ld+json">
+{{"@context":"http://schema.org","@type":"WebSite","headline":"{title}","url":"{url}"{name_block},"description":"{description}"}}</script>'''
 
 def post_header(title, date):
     name = gg.config.get('author', {}).get('name', '')

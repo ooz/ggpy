@@ -232,6 +232,8 @@ f'''<meta name="author" content="Good Gen" />
 <meta property="og:image" content="{LOGO_URL}" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="{creation_time}" />
+<script type="application/ld+json">
+{{"@context":"http://schema.org","@type":"WebSite","headline":"{title}","url":"{canonical_url}","name":"Good Generator.py","description":"{description}"}}</script>
 </head>
 
 '''
