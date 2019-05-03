@@ -167,6 +167,7 @@ def test_post_conversion():
 def then_is_framed_by_html_boilerplate(result):
     html_start = \
 '''<!DOCTYPE html>
+<html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

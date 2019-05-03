@@ -32,6 +32,7 @@ def render_template(title, canonical_url, description, tags, date, body, root=Fa
     author_url = gg.config.get('author', {}).get('url', '')
     return \
 f'''<!DOCTYPE html>
+<html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
