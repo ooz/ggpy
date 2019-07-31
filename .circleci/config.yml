@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/python:3.6.7
     steps:
@@ -14,3 +14,38 @@ jobs:
           name: Test
           command: |
             make test
+
+  build-and-deploy:
+    docker:
+      - image: circleci/python:3.6.7
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            make install_pipenv
+            make init
+      - add_ssh_keys:
+          fingerprints:
+            - "a9:64:2f:6e:b1:5e:23:a1:0e:a3:88:0e:e4:d4:f7:22"
+      - run:
+          name: Configure git user
+          command: |
+            git config user.email "ooz@users.noreply.github.com"
+            git config user.name "ooz"
+      - run:
+          name: Build and deploy
+          command: |
+            make deploy
+
+workflows:
+  version: 2
+  test-build-and-deploy:
+    jobs:
+      - test
+      - build-and-deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
