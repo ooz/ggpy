@@ -19,6 +19,7 @@ It also powers my [website](https://ooz.github.io).
 * Place markdown files everywhere
 * Install dependencies
 ```
+make install_pipenv
 make init
 ```
 * Generate your site
@@ -34,6 +35,7 @@ make update
 
 * Install dependencies (if you have not yet)
 ```
+make install_pipenv
 make init
 ```
 * Run the tests
