@@ -52,7 +52,7 @@ Good Generator supports [Markdown with various extensions](https://ooz.github.io
 ```
 MIT License
 
-Copyright (c) 2018 Oliver Zeit
+Copyright (c) 2018-2019 Oliver Zeit
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
