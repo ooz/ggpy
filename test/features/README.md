@@ -1,6 +1,5 @@
 ---
-title: Markdown Feature Test with "quotes bug"
-description: Description
+title: Markdown Feature Test without "quotes bug"
 date: 1337-06-06T13:37:42+01:00
 ---
 

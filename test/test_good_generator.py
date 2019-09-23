@@ -10,7 +10,7 @@ f'''<div style="text-align:center">
 <a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 </div>
 <div>
-<h1 id="markdown-feature-test-with-quotes-bug">Markdown Feature Test with &quot;quotes bug&quot;</h1>
+<h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
 <small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
 <div style="padding-top:2.5rem;">
@@ -116,8 +116,8 @@ f'''<div style="text-align:center">
 
 def test_markdown_features_and_readme_generation():
     # given & when
-    index_title = 'Markdown Feature Test with &quot;quotes bug&quot;'
-    index_raw_title = 'Markdown Feature Test with "quotes bug"'
+    index_title = 'Markdown Feature Test without &quot;quotes bug&quot;'
+    index_raw_title = 'Markdown Feature Test without "quotes bug"'
     canonical_url = 'https://ooz.github.io/ggpy/test/features/'
     index_data = readfile('test/features/index.html')
 
@@ -135,7 +135,8 @@ def test_markdown_features_and_readme_generation():
         index_data,
         title=index_title,
         raw_title=index_raw_title,
-        description='Description',
+        description=index_title,
+        raw_description=index_raw_title,
         canonical_url=canonical_url,
         creation_time='1337-06-06T13:37:42+01:00'
     )
@@ -145,6 +146,7 @@ def test_markdown_features_and_readme_generation():
 def test_post_conversion():
     # given & when
     post_title = 'Some Post'
+    description = 'Nice post!'
     canonical_url = 'https://ooz.github.io/ggpy/test/some-post.html'
     post_data = readfile('test/some-post.html')
 
@@ -162,7 +164,8 @@ def test_post_conversion():
         post_data,
         title=post_title,
         raw_title=post_title,
-        description='Nice post!',
+        description=description,
+        raw_description=description,
         canonical_url=canonical_url,
         creation_time='2018-03-17T13:37:42Z'
     )
@@ -223,8 +226,9 @@ def then_has_stylesheets(result):
     assert result.startswith(stylesheets)
     return result.replace(stylesheets, '')
 
-def then_head_ends_with_meta_tags(result, title='', raw_title='', description='', canonical_url='', creation_time=''):
+def then_head_ends_with_meta_tags(result, title='', raw_title='', description='', raw_description='', canonical_url='', creation_time=''):
     json_escaped_raw_title = raw_title.replace('"', '\\"')
+    json_escaped_raw_description = raw_description.replace('"', '\\"')
     meta = \
 f'''<meta name="author" content="Good Gen" />
 <meta name="description" content="{description}" />
@@ -240,10 +244,12 @@ f'''<meta name="author" content="Good Gen" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="{creation_time}" />
 <script type="application/ld+json">
-{{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_raw_title}","url":"{canonical_url}","name":"Good Generator.py","description":"{description}"}}</script>
+{{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_raw_title}","url":"{canonical_url}","name":"Good Generator.py","description":"{json_escaped_raw_description}"}}</script>
 </head>
 
 '''
+    print(result)
+    print(meta)
     assert result.startswith(meta)
     return result.replace(meta, '')
 
