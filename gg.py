@@ -55,11 +55,16 @@ body {{
     font-family: sans-serif;
     line-height: 1.6;
     color: #363636;
+    background: #FFF;
     margin: 1rem auto;
     max-width: 700px;
     scroll-behavior: smooth;
 }}
 a {{ color: #07A; text-decoration: none; }}
+.dark-mode {{ color: #FFF; background: #363636; }}
+.dark-mode a {{ color: #0A7; }}
+.dark-mode code {{ background: #222; }}
+.dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 code {{
     background: #f4f5f6;
     border-radius: .4rem;
@@ -87,9 +92,6 @@ pre > code {{
     background: #F0F0F0;
     white-space: pre;
 }}
-::selection {{
-    background: rgba(255, 234, 0, 0.5);
-}}
 .avatar {{
     border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     max-width: 3rem;
@@ -103,6 +105,7 @@ pre > code {{
     margin-left: 1rem;
 }}
 </style>
+<script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
 
 {meta(author_name, description, tags)}
 {twitter(gg.config.get('social', {}).get('twitter_username', ''))}
@@ -148,6 +151,7 @@ def render_footer_navigation(root_url, is_root):
     if not is_root:
         nav.append(f'''<a href="{root_url}" class="nav-arrow">back</a>''')
     nav.append('''<a href="#" class="nav-arrow">top</a>''')
+    nav.append('''<a href="javascript:toggleTheme()" class="nav-arrow">▣</a>''')
     return '\n'.join(nav)
 
 
