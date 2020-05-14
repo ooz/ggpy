@@ -34,7 +34,6 @@ def render_template(canonical_url, body, MD, root):
     raw_description = ''.join(MD.Meta.get('description', raw_title))
     base_url = gg.config.get('site', {}).get('base_url', '')
     logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
-    style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
     return \
@@ -210,14 +209,6 @@ f'''<div style="text-align:right;">
 <small>{name_and_date}</small>
 </div>'''
 
-def external_stylesheets():
-    external_styles = gg.config.get('site', {}).get('external_styles', [])
-    return '\n'.join([f'<link rel="stylesheet" href="{style}">' for style in external_styles])
-
-def external_stylesheets_with_highlightjs():
-    return external_stylesheets() + '''
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">'''
-
 def convert(directory, filepath, root=False):
     with open(filepath, 'r') as infile:
         markdown_post = infile.read()
@@ -275,7 +266,6 @@ def make_index(posts):
     base_url = gg.config.get('site', {}).get('base_url', '')
     root_title = gg.config.get('site', {}).get('title', '')
     logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
-    style_url = base_url + '/' + gg.config.get('site', {}).get('style', '')
     author_url = gg.config.get('author', {}).get('url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
@@ -298,8 +288,6 @@ f'''<!DOCTYPE html>
 <link rel="canonical" href="{base_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
-{external_stylesheets()}
-<link rel="stylesheet" href="{style_url}">
 </head>
 
 <body class="container">
