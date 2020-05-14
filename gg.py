@@ -62,10 +62,6 @@ body {{
     scroll-behavior: smooth;
 }}
 a {{ color: #07A; text-decoration: none; }}
-.dark-mode {{ color: #FFF; background: #363636; }}
-.dark-mode a {{ color: #0A7; }}
-.dark-mode code {{ background: #222; }}
-.dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 code {{
     font-size: 80%;
     background: #EAEAEA;
@@ -73,10 +69,7 @@ code {{
     white-space: nowrap;
 }}
 h1 {{ text-align: center; }}
-h1, h2, h3, h4, h5, h6 {{
-    font-family: serif;
-    font-weight: bold;
-}}
+h1, h2, h3, h4, h5, h6 {{ font-family: serif; font-weight: bold; }}
 img {{ max-width: 100%; }}
 pre {{ border-left: 0.3rem solid #07A; }}
 pre > code {{
@@ -91,6 +84,11 @@ pre > code {{
 .avatar {{ border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }}
 .nav {{ float: left; margin-right: 1rem; }}
 .social {{ float: right; margin-left: 1rem; }}
+
+.dark-mode {{ color: #FFF; background: #363636; }}
+.dark-mode a {{ color: #0A7; }}
+.dark-mode code {{ background: #222; }}
+.dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
 <script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
 
