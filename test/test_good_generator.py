@@ -238,16 +238,12 @@ code {{
     padding: .2rem .5rem;
     white-space: nowrap;
 }}
-h1 {{
-    text-align: center;
-}}
+h1 {{ text-align: center; }}
 h1, h2, h3, h4, h5, h6 {{
     font-family: serif;
     font-weight: bold;
 }}
-pre {{
-    border-left: 0.3rem solid #07A;
-}}
+pre {{ border-left: 0.3rem solid #07A; }}
 pre > code {{
     font-size: 14px;
     box-sizing: inherit;
@@ -257,18 +253,9 @@ pre > code {{
     background: #EAEAEA;
     white-space: pre;
 }}
-.avatar {{
-    border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-    max-width: 3rem;
-}}
-.nav {{
-    float: left;
-    margin-right: 1rem;
-}}
-.social {{
-    float: right;
-    margin-left: 1rem;
-}}
+.avatar {{ border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }}
+.nav {{ float: left; margin-right: 1rem; }}
+.social {{ float: right; margin-left: 1rem; }}
 </style>
 <script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
 
