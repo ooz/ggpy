@@ -306,6 +306,7 @@ f'''<!DOCTYPE html>
 </tbody></table>
 </div>
 <div>
+{render_footer_navigation(None, True)}
 {render_about_and_social_icons()}
 </div>
 </body>
