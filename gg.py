@@ -48,7 +48,32 @@ f'''<!DOCTYPE html>
 <link rel="canonical" href="{canonical_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
-<style>
+{style()}
+{meta(author_name, description, tags)}
+{twitter(gg.config.get('social', {}).get('twitter_username', ''))}
+{opengraph(title, canonical_url, description, date)}
+{json_ld(raw_title, canonical_url, raw_description)}
+</head>
+
+<body>
+<div style="text-align:center">
+<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+</div>
+{post_header(title, date)}
+<div>
+{body}
+</div>
+<div>
+{render_footer_navigation(base_url, root)}
+{render_about_and_social_icons()}
+</div>
+</body>
+</html>
+'''
+
+def style():
+    return \
+f'''<style>
 body {{
     font-size: 18px;
     font-family: sans-serif;
@@ -111,27 +136,6 @@ td, th {{
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
 <script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
-
-{meta(author_name, description, tags)}
-{twitter(gg.config.get('social', {}).get('twitter_username', ''))}
-{opengraph(title, canonical_url, description, date)}
-{json_ld(raw_title, canonical_url, raw_description)}
-</head>
-
-<body>
-<div style="text-align:center">
-<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-</div>
-{post_header(title, date)}
-<div>
-{body}
-</div>
-<div>
-{render_footer_navigation(base_url, root)}
-{render_about_and_social_icons()}
-</div>
-</body>
-</html>
 '''
 
 def render_about_and_social_icons():
@@ -288,14 +292,15 @@ f'''<!DOCTYPE html>
 <link rel="canonical" href="{base_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
+{style()}
 </head>
 
-<body class="container">
+<body>
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
 <h1>Index</h1>
-<div style="padding-top:2.5rem;">
+<div>
 <table><tbody>
 {posts_html}
 </tbody></table>
