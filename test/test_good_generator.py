@@ -262,7 +262,7 @@ table {{
     width: 100%;
 }}
 td, th {{
-    border-bottom: .2rem solid;
+    border-bottom: .1rem solid;
     padding: .8rem 1rem;
     text-align: left;
 }}
