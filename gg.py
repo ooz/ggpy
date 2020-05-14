@@ -62,6 +62,11 @@ body {{
     scroll-behavior: smooth;
 }}
 a {{ color: #07A; text-decoration: none; }}
+blockquote {{
+    border-left: 0.3rem solid #07A;
+    margin-left: 0; margin-right: 0;
+    padding: .8rem 1rem;
+}}
 code {{
     font-size: 80%;
     background: #EAEAEA;
@@ -90,7 +95,7 @@ table {{
     width: 100%;
 }}
 td, th {{
-    border-bottom: .1rem solid;
+    border-bottom: .2rem solid;
     padding: .8rem 1rem;
     text-align: left;
 }}
@@ -100,6 +105,7 @@ td, th {{
 
 .dark-mode {{ color: #FFF; background: #363636; }}
 .dark-mode a {{ color: #0A7; }}
+.dark-mode blockquote {{ border-left: 0.3rem solid #0A7; }}
 .dark-mode code {{ background: #222; }}
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
