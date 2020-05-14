@@ -244,6 +244,7 @@ h1, h2, h3, h4, h5, h6 {{
     font-family: serif;
     font-weight: bold;
 }}
+img {{ max-width: 100%; }}
 pre {{ border-left: 0.3rem solid #07A; }}
 pre > code {{
     font-size: 14px;
