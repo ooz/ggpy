@@ -9,9 +9,9 @@ GENERATED_FEATURE_HTML = \
 f'''<div style="text-align:center">
 <a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 </div>
-<div>
+<div style="text-align:right;">
 <h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
-<small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
+<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
 <div>
 <h2 id="headline-2">Headline 2</h2>
@@ -103,9 +103,9 @@ GENERATED_POST_HTML = \
 f'''<div style="text-align:center">
 <a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 </div>
-<div>
+<div style="text-align:right;">
 <h1 id="some-post">Some Post</h1>
-<small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
+<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
 <div>
 <p>Yep! Intro text!</p>
@@ -235,7 +235,7 @@ code {{
     padding: .2rem .5rem;
     white-space: nowrap;
 }}
-h1 {{ text-align: center; }}
+h1 {{ text-align: center; margin: 0 auto; }}
 h1, h2, h3, h4, h5, h6 {{ font-family: serif; font-weight: bold; }}
 img {{ max-width: 100%; }}
 pre {{ border-left: 0.3rem solid #07A; }}

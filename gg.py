@@ -68,7 +68,7 @@ code {{
     padding: .2rem .5rem;
     white-space: nowrap;
 }}
-h1 {{ text-align: center; }}
+h1 {{ text-align: center; margin: 0 auto; }}
 h1, h2, h3, h4, h5, h6 {{ font-family: serif; font-weight: bold; }}
 img {{ max-width: 100%; }}
 pre {{ border-left: 0.3rem solid #07A; }}
@@ -184,9 +184,9 @@ def post_header(title, date):
             maybe_linked_author = f'<a href="{author_url}">{name}</a>'
         name_and_date = f'{maybe_linked_author}, {name_and_date}'
     return \
-f'''<div>
+f'''<div style="text-align:right;">
 {MD.reset().convert('# ' + title)}
-<small style="float:right;">{name_and_date}</small>
+<small>{name_and_date}</small>
 </div>'''
 
 def external_stylesheets():
