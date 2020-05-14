@@ -94,11 +94,11 @@ pre > code {{
     border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     max-width: 3rem;
 }}
-.nav-arrow {{
+.nav {{
     float: left;
     margin-right: 1rem;
 }}
-.social-icon {{
+.social {{
     float: right;
     margin-left: 1rem;
 }}
@@ -135,21 +135,21 @@ def render_about_and_social_icons():
     icons = []
 
     if len(email):
-        icons.append('<a href="mailto:%s" class="social-icon">email</a>' % email)
+        icons.append('<a href="mailto:%s" class="social">email</a>' % email)
     if len(twitter):
-        icons.append('<a href="%s" class="social-icon">twitter</a>' % twitter)
+        icons.append('<a href="%s" class="social">twitter</a>' % twitter)
     if len(github):
-        icons.append('<a href="%s" class="social-icon">github</a>' % github)
+        icons.append('<a href="%s" class="social">github</a>' % github)
     if len(about):
-        icons.append('<a href="%s" class="social-icon">about</a>' % about)
+        icons.append('<a href="%s" class="social">about</a>' % about)
     return '\n'.join(icons)
 
 def render_footer_navigation(root_url, is_root):
     nav = []
     if not is_root:
-        nav.append(f'''<a href="{root_url}" class="nav-arrow">back</a>''')
-    nav.append('''<a href="#" class="nav-arrow">top</a>''')
-    nav.append('''<a href="javascript:toggleTheme()" class="nav-arrow">▣</a>''')
+        nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
+    nav.append('''<a href="#" class="nav">top</a>''')
+    nav.append('''<a href="javascript:toggleTheme()" class="nav">▣</a>''')
     return '\n'.join(nav)
 
 

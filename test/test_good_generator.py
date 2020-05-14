@@ -193,12 +193,12 @@ def then_is_framed_by_html_boilerplate(result):
 def then_has_bottom_navigation_and_social_links(result):
     navigation_and_social_links = \
 '''<div>
-<a href="https://ooz.github.io/ggpy" class="nav-arrow">back</a>
-<a href="#" class="nav-arrow">top</a>
-<a href="javascript:toggleTheme()" class="nav-arrow">▣</a>
-<a href="https://twitter.com/oozgo" class="social-icon">twitter</a>
-<a href="https://github.com/ooz/ggpy" class="social-icon">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social-icon">about</a>
+<a href="https://ooz.github.io/ggpy" class="nav">back</a>
+<a href="#" class="nav">top</a>
+<a href="javascript:toggleTheme()" class="nav">▣</a>
+<a href="https://twitter.com/oozgo" class="social">twitter</a>
+<a href="https://github.com/ooz/ggpy" class="social">github</a>
+<a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
 </div>
 '''
     assert result.endswith(navigation_and_social_links)
@@ -261,11 +261,11 @@ pre > code {{
     border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     max-width: 3rem;
 }}
-.nav-arrow {{
+.nav {{
     float: left;
     margin-right: 1rem;
 }}
-.social-icon {{
+.social {{
     float: right;
     margin-left: 1rem;
 }}
