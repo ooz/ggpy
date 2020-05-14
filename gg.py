@@ -119,7 +119,7 @@ pre > code {{
 {body}
 </div>
 <div>
-{'' if root else render_footer_navigation(base_url)}
+{render_footer_navigation(base_url, root)}
 {render_about_and_social_icons()}
 </div>
 </body>
@@ -143,9 +143,13 @@ def render_about_and_social_icons():
         icons.append('<a href="%s" class="social-icon">about</a>' % about)
     return '\n'.join(icons)
 
-def render_footer_navigation(root_url):
-    return f'''<a href="{root_url}" class="nav-arrow">back</a>
-<a href="#" class="nav-arrow">top</a>'''
+def render_footer_navigation(root_url, is_root):
+    nav = []
+    if not is_root:
+        nav.append(f'''<a href="{root_url}" class="nav-arrow">back</a>''')
+    nav.append('''<a href="#" class="nav-arrow">top</a>''')
+    return '\n'.join(nav)
+
 
 def meta(author, description, tags):
     return \
