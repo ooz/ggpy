@@ -66,10 +66,8 @@ a {{ color: #07A; text-decoration: none; }}
 .dark-mode code {{ background: #222; }}
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 code {{
-    background: #f4f5f6;
-    border-radius: .4rem;
-    font-size: 86%;
-    margin: 0 .2rem;
+    background: #EAEAEA;
+    font-size: 80%;
     padding: .2rem .5rem;
     white-space: nowrap;
 }}
@@ -88,8 +86,8 @@ pre > code {{
     box-sizing: inherit;
     display: block;
     overflow-x: auto;
-    padding: 0.5em;
-    background: #F0F0F0;
+    margin: 0 .2rem;
+    background: #EAEAEA;
     white-space: pre;
 }}
 .avatar {{
