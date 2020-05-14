@@ -230,9 +230,11 @@ body {{
 }}
 a {{ color: #07A; text-decoration: none; }}
 blockquote {{
-    border-left: 0.3rem solid #07A;
+    background: #EAEAEA;
+    border-left: .3rem solid #07A;
+    border-radius: .3rem;
     margin: 0 .2rem;
-    padding: .2rem .5rem;
+    padding: 0 .5rem;
 }}
 code {{
     font-size: 80%;
@@ -272,7 +274,7 @@ td, th {{
 
 .dark-mode {{ color: #FFF; background: #363636; }}
 .dark-mode a {{ color: #0A7; }}
-.dark-mode blockquote {{ border-left: 0.3rem solid #0A7; }}
+.dark-mode blockquote {{ background: #222; border-left: 0.3rem solid #0A7; }}
 .dark-mode code {{ background: #222; }}
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
