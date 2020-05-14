@@ -224,6 +224,7 @@ body {{
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
+    padding: 0 10px;
     max-width: 700px;
     scroll-behavior: smooth;
 }}
