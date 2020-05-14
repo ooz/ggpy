@@ -64,8 +64,8 @@ body {{
 a {{ color: #07A; text-decoration: none; }}
 blockquote {{
     border-left: 0.3rem solid #07A;
-    margin-left: 0; margin-right: 0;
-    padding-left: .5rem; padding-right: .5rem;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
 }}
 code {{
     font-size: 80%;
