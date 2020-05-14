@@ -65,7 +65,7 @@ a {{ color: #07A; text-decoration: none; }}
 blockquote {{
     border-left: 0.3rem solid #07A;
     margin-left: 0; margin-right: 0;
-    padding: .8rem 1rem;
+    padding-left: .5rem; padding-right: .5rem;
 }}
 code {{
     font-size: 80%;
