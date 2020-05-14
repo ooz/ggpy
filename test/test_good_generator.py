@@ -252,6 +252,14 @@ pre > code {{
     margin: 0 .2rem;
     white-space: pre;
 }}
+table {{
+    border-spacing: 0;
+    width: 100%;
+}}
+td, th {{
+    border-bottom: 0.1rem solid
+    padding: 1.2rem 1.5rem;
+}}
 .avatar {{ border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }}
 .nav {{ float: left; margin-right: 1rem; }}
 .social {{ float: right; margin-left: 1rem; }}
