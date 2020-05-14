@@ -195,7 +195,7 @@ def then_has_bottom_navigation_and_social_links(result):
 '''<div>
 <a href="https://ooz.github.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
-<a href="javascript:toggleTheme()" class="nav">▣</a>
+<a href="javascript:toggleTheme()" class="nav">🌚🌞</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
 <a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
