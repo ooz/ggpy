@@ -13,7 +13,7 @@ f'''<div style="text-align:center">
 <h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
 <small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
-<div style="padding-top:2.5rem;">
+<div>
 <h2 id="headline-2">Headline 2</h2>
 <p>Paragraph
 with
@@ -107,7 +107,7 @@ f'''<div style="text-align:center">
 <h1 id="some-post">Some Post</h1>
 <small style="float:right;"><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
-<div style="padding-top:2.5rem;">
+<div>
 <p>Yep! Intro text!</p>
 <h2 id="headline">Headline</h2>
 <p>More text!</p>
@@ -130,7 +130,7 @@ def test_markdown_features_and_readme_generation():
         canonical_url=canonical_url,
         favicon_url=LOGO_URL
     )
-    index_data = then_has_stylesheets(index_data)
+    index_data = then_has_style(index_data)
     index_data = then_head_ends_with_meta_tags(
         index_data,
         title=index_title,
@@ -159,7 +159,7 @@ def test_post_conversion():
         canonical_url=canonical_url,
         favicon_url=LOGO_URL
     )
-    post_data = then_has_stylesheets(post_data)
+    post_data = then_has_style(post_data)
     post_data = then_head_ends_with_meta_tags(
         post_data,
         title=post_title,
@@ -183,9 +183,7 @@ def then_is_framed_by_html_boilerplate(result):
 
 '''
     html_end = \
-'''<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-</body>
+'''</body>
 </html>
 '''
     assert result.startswith(html_start)
@@ -215,16 +213,66 @@ f'''<title>{title}</title>
     assert result.startswith(title_and_links)
     return result.replace(title_and_links, '')
 
-def then_has_stylesheets(result):
-    stylesheets = \
-'''<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-<link rel="stylesheet" href="https://ooz.github.io/ggpy/static/ooz_blog.css">
+def then_has_style(result):
+    style = \
+f'''<style>
+body {{
+    font-size: 18px;
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #363636;
+    margin: 1rem auto;
+    max-width: 700px;
+    scroll-behavior: smooth;
+}}
+a {{ color: #07A; text-decoration: none; }}
+code {{
+    background: #f4f5f6;
+    border-radius: .4rem;
+    font-size: 86%;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+}}
+h1 {{
+    text-align: center;
+}}
+h1, h2, h3, h4, h5, h6 {{
+    font-family: serif;
+    font-weight: bold;
+}}
+pre {{
+    border-left: 0.3rem solid #07A;
+}}
+pre > code {{
+    font-size: 14px;
+    box-sizing: inherit;
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #F0F0F0;
+    white-space: pre;
+}}
+::selection {{
+    background: rgba(255, 234, 0, 0.5);
+}}
+.avatar {{
+    border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    max-width: 3rem;
+}}
+.nav-arrow {{
+    float: left;
+    margin-right: 1rem;
+}}
+.social-icon {{
+    float: right;
+    margin-left: 1rem;
+}}
+</style>
 
 '''
-    assert result.startswith(stylesheets)
-    return result.replace(stylesheets, '')
+    assert result.startswith(style)
+    return result.replace(style, '')
 
 def then_head_ends_with_meta_tags(result, title='', raw_title='', description='', raw_description='', canonical_url='', creation_time=''):
     json_escaped_raw_title = raw_title.replace('"', '\\"')
@@ -255,7 +303,7 @@ f'''<meta name="author" content="Good Gen" />
 
 def then_has_body(result):
     body = \
-'''<body class="container">
+'''<body>
 '''
     assert result.startswith(body)
     return result.replace(body, '')

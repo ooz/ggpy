@@ -49,8 +49,60 @@ f'''<!DOCTYPE html>
 <link rel="canonical" href="{canonical_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
-{external_stylesheets_with_highlightjs()}
-<link rel="stylesheet" href="{style_url}">
+<style>
+body {{
+    font-size: 18px;
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #363636;
+    margin: 1rem auto;
+    max-width: 700px;
+    scroll-behavior: smooth;
+}}
+a {{ color: #07A; text-decoration: none; }}
+code {{
+    background: #f4f5f6;
+    border-radius: .4rem;
+    font-size: 86%;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+}}
+h1 {{
+    text-align: center;
+}}
+h1, h2, h3, h4, h5, h6 {{
+    font-family: serif;
+    font-weight: bold;
+}}
+pre {{
+    border-left: 0.3rem solid #07A;
+}}
+pre > code {{
+    font-size: 14px;
+    box-sizing: inherit;
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #F0F0F0;
+    white-space: pre;
+}}
+::selection {{
+    background: rgba(255, 234, 0, 0.5);
+}}
+.avatar {{
+    border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    max-width: 3rem;
+}}
+.nav-arrow {{
+    float: left;
+    margin-right: 1rem;
+}}
+.social-icon {{
+    float: right;
+    margin-left: 1rem;
+}}
+</style>
 
 {meta(author_name, description, tags)}
 {twitter(gg.config.get('social', {}).get('twitter_username', ''))}
@@ -58,20 +110,18 @@ f'''<!DOCTYPE html>
 {json_ld(raw_title, canonical_url, raw_description)}
 </head>
 
-<body class="container">
+<body>
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
 {post_header(title, date)}
-<div style="padding-top:2.5rem;">
+<div>
 {body}
 </div>
 <div>
 {'' if root else render_footer_navigation(base_url)}
 {render_about_and_social_icons()}
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
 '''
@@ -148,11 +198,6 @@ f'''<div>
 
 def external_stylesheets():
     external_styles = gg.config.get('site', {}).get('external_styles', [])
-    if not external_styles:
-        external_styles = [
-            'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css',
-            'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css' # mini.css is also nice!
-        ]
     return '\n'.join([f'<link rel="stylesheet" href="{style}">' for style in external_styles])
 
 def external_stylesheets_with_highlightjs():
