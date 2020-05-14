@@ -92,6 +92,7 @@ table {{
 td, th {{
     border-bottom: 0.1rem solid;
     padding: 1.2rem 1.5rem;
+    text-align: left;
 }}
 .avatar {{ border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }}
 .nav {{ float: left; margin-right: 1rem; }}
