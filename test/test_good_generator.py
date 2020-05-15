@@ -278,7 +278,10 @@ td, th {{
 .dark-mode code {{ background: #222; }}
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
-<script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
+<script>
+function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}
+function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ toggleTheme() }} }}
+</script>
 
 '''
     assert result.startswith(style)
@@ -313,7 +316,7 @@ f'''<meta name="author" content="Good Gen" />
 
 def then_has_body(result):
     body = \
-'''<body>
+'''<body onload="initTheme()">
 '''
     assert result.startswith(body)
     return result.replace(body, '')

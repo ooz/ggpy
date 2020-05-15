@@ -55,7 +55,7 @@ f'''<!DOCTYPE html>
 {json_ld(raw_title, canonical_url, raw_description)}
 </head>
 
-<body>
+<body onload="initTheme()">
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
@@ -135,7 +135,10 @@ td, th {{
 .dark-mode code {{ background: #222; }}
 .dark-mode pre {{ border-left: 0.3rem solid #0A7; }}
 </style>
-<script>function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}</script>
+<script>
+function toggleTheme() {{ document.body.classList.toggle("dark-mode") }}
+function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ toggleTheme() }} }}
+</script>
 '''
 
 def render_about_and_social_icons():
@@ -295,7 +298,7 @@ f'''<!DOCTYPE html>
 {style()}
 </head>
 
-<body>
+<body onload="initTheme()">
 <div style="text-align:center">
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 </div>
