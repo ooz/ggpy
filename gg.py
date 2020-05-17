@@ -211,11 +211,19 @@ def post_header(title, date):
         if len(author_url):
             maybe_linked_author = f'<a href="{author_url}">{name}</a>'
         name_and_date = f'{maybe_linked_author}, {name_and_date}'
-    return \
-f'''<div style="text-align:right;">
-{MD.reset().convert('# ' + title)}
-<small>{name_and_date}</small>
+    if len(name_and_date):
+        name_and_date = f'''<small>{name_and_date}</small>'''
+    title_html = ''
+    if len(title):
+        title_html = MD.reset().convert('# ' + title)
+    header = ''
+    if len(title_html) or len(name_and_date):
+        header = f'''<div style="text-align:right;">
+{title_html}
+{name_and_date}
 </div>'''
+    return header
+
 
 def convert(directory, filepath, root=False):
     with open(filepath, 'r') as infile:
