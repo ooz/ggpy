@@ -6,14 +6,14 @@ import json
 SITE_TITLE = 'Good Generator.py'
 LOGO_URL = 'https://ooz.github.io/ggpy/static/gg.png'
 GENERATED_FEATURE_HTML = \
-f'''<div style="text-align:center">
+f'''<header>
 <a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
-</div>
 <div style="text-align:right;">
 <h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
 <small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
-<div>
+</header>
+<section>
 <h2 id="headline-2">Headline 2</h2>
 <p>Paragraph
 with
@@ -97,21 +97,21 @@ block
 </li>
 </ol>
 </div>
-</div>
+</section>
 '''
 GENERATED_POST_HTML = \
-f'''<div style="text-align:center">
+f'''<header>
 <a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
-</div>
 <div style="text-align:right;">
 <h1 id="some-post">Some Post</h1>
 <small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
-<div>
+</header>
+<section>
 <p>Yep! Intro text!</p>
 <h2 id="headline">Headline</h2>
 <p>More text!</p>
-</div>
+</section>
 '''
 
 def test_markdown_features_and_readme_generation():
@@ -192,14 +192,14 @@ def then_is_framed_by_html_boilerplate(result):
 
 def then_has_bottom_navigation_and_social_links(result):
     navigation_and_social_links = \
-'''<div>
+'''<footer>
 <a href="https://ooz.github.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌚🌞</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
 <a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
-</div>
+</footer>
 '''
     assert result.endswith(navigation_and_social_links)
     return result.replace(navigation_and_social_links, '')
@@ -244,6 +244,7 @@ code {{
 }}
 h1 {{ text-align: center; margin: 0 auto; }}
 h1, h2, h3, h4, h5, h6 {{ font-family: serif; font-weight: bold; }}
+header {{ text-align:center; }}
 img {{ max-width: 100%; }}
 ul.task-list, ul.task-list li.task-list-item {{
     list-style-type: none;

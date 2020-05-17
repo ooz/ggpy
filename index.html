@@ -37,6 +37,7 @@ code {
 }
 h1 { text-align: center; margin: 0 auto; }
 h1, h2, h3, h4, h5, h6 { font-family: serif; font-weight: bold; }
+header { text-align:center; }
 img { max-width: 100%; }
 ul.task-list, ul.task-list li.task-list-item {
     list-style-type: none;
@@ -94,14 +95,14 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </head>
 
 <body onload="initTheme()">
-<div style="text-align:center">
+<header>
 <a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
-</div>
 <div style="text-align:right;">
 <h1 id="_1"></h1>
 <small></small>
 </div>
-<div>
+</header>
+<section>
 <h1 id="good-generatorpy">Good Generator<code>.py</code></h1>
 <p><a href="https://circleci.com/gh/ooz/ggpy"><img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /></a>
 <a href="https://github.com/ooz/ggpy"><img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /></a></p>
@@ -155,13 +156,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</code></pre>
-</div>
-<div>
+</section>
+<footer>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌚🌞</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
 <a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
-</div>
+</footer>
 </body>
 </html>
