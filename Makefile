@@ -34,9 +34,9 @@ init:
 
 test: | all clean_coverage
 	pipenv install --dev
-	pipenv run coverage run --source=. --omit="test/*" -m pytest
-	pipenv run coverage report -m
-	pipenv run coverage html
+	pipenv run coverage run --source=. -m pytest
+	pipenv run coverage html --omit="test/*"
+	pipenv run coverage report --omit="test/*"
 
 deploy: all
 	git add .
