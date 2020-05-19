@@ -32,9 +32,11 @@ init:
 	pipenv --python 3
 	pipenv install
 
-test: all
+test: | all clean_coverage
 	pipenv install --dev
-	pipenv run coverage run -m pytest
+	pipenv run coverage run --source=. --omit="test/*" -m pytest
+	pipenv run coverage report -m
+	pipenv run coverage html
 
 deploy: all
 	git add .
@@ -53,6 +55,10 @@ clean:
 	rm -f *.egg-info
 	pipenv --rm || true
 
-.PHONY: clean \
+clean_coverage:
+	rm -rf htmlcov/
+	rm -f .coverage
+
+.PHONY: clean clean_coverage \
 install_pipenv init test \
 all fire realfire newpost openlatest update
