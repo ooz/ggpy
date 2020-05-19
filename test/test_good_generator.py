@@ -39,7 +39,7 @@ lines.</p>
 <pre class="highlight"><code># Code blocks work</code></pre>
 
 <pre class="highlight"><code class="language-python">def python_code_blocks():
-    return &quot;work, too!&quot;</code></pre>
+    return "work, too!"</code></pre>
 
 <p>Let there be...</p>
 <pre><code>another
@@ -78,9 +78,9 @@ block
 <h3 id="definition-lists-and-footnotes">Definition Lists and Footnotes</h3>
 <dl>
 <dt>Definition List</dt>
-<dd>is defined here<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</dd>
+<dd>is defined here<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</dd>
 <dt>Other List</dt>
-<dd>is defined here<sup id="fnref:here"><a class="footnote-ref" href="#fn:here" rel="footnote">2</a></sup>.</dd>
+<dd>is defined here<sup id="fnref:here"><a class="footnote-ref" href="#fn:here">2</a></sup>.</dd>
 </dl>
 <h3 id="abbreviations">Abbreviations</h3>
 <p><abbr title="Hyper Text Markup Language">HTML</abbr></p>
@@ -90,10 +90,10 @@ block
 <hr />
 <ol>
 <li id="fn:1">
-<p>Numbered footnote&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Numbered footnote&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:here">
-<p>Labeled footnote&#160;<a class="footnote-backref" href="#fnref:here" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>Labeled footnote&#160;<a class="footnote-backref" href="#fnref:here" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

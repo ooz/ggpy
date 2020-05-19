@@ -34,7 +34,7 @@ init:
 
 test: all
 	pipenv install --dev
-	pipenv run pytest
+	pipenv run coverage run -m pytest
 
 deploy: all
 	git add .
