@@ -65,7 +65,7 @@ f'''<!DOCTYPE html>
 </section>
 <footer>
 {render_footer_navigation(base_url, root)}
-{render_about_and_social_icons()}
+{about_and_social_icons()}
 </footer>
 </body>
 </html>
@@ -143,7 +143,7 @@ function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ t
 </script>
 '''
 
-def render_about_and_social_icons():
+def about_and_social_icons():
     github = gg.config.get('social', {}).get('github_url', '')
     twitter = gg.config.get('social', {}).get('twitter_url', '')
     email = gg.config.get('author', {}).get('email', '')
@@ -320,7 +320,7 @@ f'''<!DOCTYPE html>
 </section>
 <footer>
 {render_footer_navigation(None, True)}
-{render_about_and_social_icons()}
+{about_and_social_icons()}
 </footer>
 </body>
 </html>
