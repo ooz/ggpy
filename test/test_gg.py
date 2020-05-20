@@ -19,6 +19,14 @@ def test_style():
     assert 'function initTheme' in style
     assert '</script>' in style
 
+def test_meta():
+    meta = gg.meta('oz', 'Nice text!', 'foo, bar, tags')
+
+    assert meta == \
+'''<meta name="author" content="oz" />
+<meta name="description" content="Nice text!" />
+<meta name="keywords" content="foo, bar, tags" />'''
+
 def test_footer_navigation():
     footer_nav = gg.footer_navigation('https://example.com', False)
 
