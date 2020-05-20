@@ -45,7 +45,7 @@ f'''<!DOCTYPE html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>{convert_title2pagetitle(title)}</title>
+<title>{pagetitle(title)}</title>
 <link rel="canonical" href="{canonical_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
@@ -272,7 +272,7 @@ def convert_canonical(directory, targetpath):
         return f'{base_url}/{targetpath[:-10]}'
     return f'{base_url}/{targetpath}'
 
-def convert_title2pagetitle(title):
+def pagetitle(title):
     root_title = gg.config.get('site', {}).get('title', '')
     if len(title) and title != root_title:
         return f'{title} | {root_title}'
