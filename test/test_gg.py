@@ -44,6 +44,12 @@ def test_opengraph():
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="2020-02-20" />'''
 
+def test_json_ld():
+    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"')
+    assert json_ld == \
+'''<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
+
 def test_footer_navigation():
     footer_nav = gg.footer_navigation('https://example.com', False)
     assert footer_nav == \
