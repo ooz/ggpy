@@ -10,3 +10,8 @@ def test_is_root_readme():
 
 def test_last_modified():
     assert re.match(r'''\d+-\d{2}-\d{2}''', gg.last_modified('README.md'))
+
+def test_convert_path():
+    assert gg.convert_path('README.md') == 'index.html'
+    assert gg.convert_path('test/README.md') == 'test/index.html'
+    assert gg.convert_path('test/some-post.md') == 'test/some-post.html'
