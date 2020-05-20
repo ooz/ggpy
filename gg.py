@@ -278,7 +278,7 @@ def convert_title2pagetitle(title):
         return f'{title} | {root_title}'
     return root_title
 
-def make_index(posts):
+def index(posts):
     base_url = gg.config.get('site', {}).get('base_url', '')
     root_title = gg.config.get('site', {}).get('title', '')
     logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
@@ -292,7 +292,7 @@ def make_index(posts):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = "\n".join(posts_html)
 
-    index_html = \
+    return \
 f'''<!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -324,8 +324,6 @@ f'''<!DOCTYPE html>
 </body>
 </html>
 '''
-    with open('index.html', 'w') as index_file:
-        index_file.write(index_html)
 
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
@@ -363,7 +361,7 @@ def main(directories):
 
     posts = [post for post in posts if 'draft' not in post['tags']]
     if not render_root_readme:
-        make_index(posts)
+        write_file('index.html', index(posts))
 
     generate_sitemap = gg.config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
