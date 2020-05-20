@@ -25,7 +25,7 @@ MD = markdown.Markdown(
         ]
     )
 
-def render_template(canonical_url, body, MD, root):
+def post_template(canonical_url, body, MD, root):
     title = convert_meta(MD, 'title')
     date = convert_meta(MD, 'date')
     tags = convert_meta(MD, 'tags')
@@ -236,7 +236,7 @@ def convert(directory, filepath, root=False):
             date = convert_meta(MD, 'date')
             tags = convert_meta(MD, 'tags')
             title = convert_meta(MD, 'title')
-            html = render_template(canonical_url,
+            html = post_template(canonical_url,
                 html_post,
                 MD,
                 root
