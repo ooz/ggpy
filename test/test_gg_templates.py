@@ -3,6 +3,16 @@
 
 import gg
 
+def test_post_template():
+    return f"""
+    canonical_url = 'https://ooz.github.io/ggpy/'
+    body = '<h1>Hey!</h1>'
+    post = gg.post_template(canonical_url, body, None, False)
+    assert post == \
+'''
+'''
+"""
+
 def test_sitemap():
     posts = [
         {

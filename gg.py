@@ -10,7 +10,8 @@ import markdown
 
 import ggconfig as gg
 
-MD = markdown.Markdown(
+def configure_markdown():
+    return markdown.Markdown(
         extensions = [
             'extra',
             'meta',
@@ -25,13 +26,13 @@ MD = markdown.Markdown(
         ]
     )
 
-def post_template(canonical_url, body, MD, root):
-    title = convert_meta(MD, 'title')
-    date = convert_meta(MD, 'date')
-    tags = convert_meta(MD, 'tags')
-    description = convert_meta(MD, 'description', default=title)
-    raw_title = ''.join(MD.Meta.get('title', ''))
-    raw_description = ''.join(MD.Meta.get('description', raw_title))
+def post_template(canonical_url, body, md, root):
+    title = convert_meta(md, 'title')
+    date = convert_meta(md, 'date')
+    tags = convert_meta(md, 'tags')
+    description = convert_meta(md, 'description', default=title)
+    raw_title = ''.join(md.Meta.get('title', ''))
+    raw_description = ''.join(md.Meta.get('description', raw_title))
     base_url = gg.config.get('site', {}).get('base_url', '')
     logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
     author_name = gg.config.get('author', {}).get('name', '')
@@ -58,7 +59,7 @@ f'''<!DOCTYPE html>
 <body onload="initTheme()">
 <header>
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-{post_header(title, date)}
+{post_header(md.reset().convert('# ' + title) if len(title) else '', date)}
 </header>
 <section>
 {body}
@@ -203,7 +204,7 @@ def json_ld(title, url, description):
 f'''<script type="application/ld+json">
 {{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_title}","url":"{url}"{name_block},"description":"{json_escaped_description}"}}</script>'''
 
-def post_header(title, date):
+def post_header(title_html, date):
     name = gg.config.get('author', {}).get('name', '')
     author_url = gg.config.get('author', {}).get('url', '')
     name_and_date = date[:10]
@@ -214,9 +215,6 @@ def post_header(title, date):
         name_and_date = f'{maybe_linked_author}, {name_and_date}'
     if len(name_and_date):
         name_and_date = f'''<small>{name_and_date}</small>'''
-    title_html = ''
-    if len(title):
-        title_html = MD.reset().convert('# ' + title)
     header = ''
     if len(title_html) or len(name_and_date):
         header = f'''<div style="text-align:right;">
@@ -227,6 +225,7 @@ def post_header(title, date):
 
 
 def convert(directory, filepath, root=False):
+    MD = configure_markdown()
     with open(filepath, 'r') as infile:
         markdown_post = infile.read()
         html_post = MD.reset().convert(markdown_post)
@@ -254,7 +253,7 @@ def last_modified(filepath):
     return time.strftime('%Y-%m-%d', time.gmtime(os.path.getmtime(filepath)))
 
 def convert_meta(md, field, default=''):
-    field_value = MD.Meta.get(field, '')
+    field_value = md.Meta.get(field, '')
     if len(field_value) > 0:
         return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
     return default
