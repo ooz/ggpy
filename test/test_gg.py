@@ -50,6 +50,14 @@ def test_json_ld():
 '''<script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
 
+def test_post_header():
+    post_header = gg.post_header('Title!', '2020-02-20')
+    assert post_header == \
+'''<div style="text-align:right;">
+<h1 id="title">Title!</h1>
+<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2020-02-20</small>
+</div>'''
+
 def test_footer_navigation():
     footer_nav = gg.footer_navigation('https://example.com', False)
     assert footer_nav == \
