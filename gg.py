@@ -64,7 +64,7 @@ f'''<!DOCTYPE html>
 {body}
 </section>
 <footer>
-{render_footer_navigation(base_url, root)}
+{footer_navigation(base_url, root)}
 {about_and_social_icons()}
 </footer>
 </body>
@@ -160,7 +160,7 @@ def about_and_social_icons():
         icons.append('<a href="%s" class="social">about</a>' % about)
     return '\n'.join(icons)
 
-def render_footer_navigation(root_url, is_root):
+def footer_navigation(root_url, is_root):
     nav = []
     if not is_root:
         nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
@@ -319,7 +319,7 @@ f'''<!DOCTYPE html>
 </tbody></table>
 </section>
 <footer>
-{render_footer_navigation(None, True)}
+{footer_navigation(None, True)}
 {about_and_social_icons()}
 </footer>
 </body>
