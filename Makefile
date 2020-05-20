@@ -34,7 +34,7 @@ init:
 
 test: | all clean_coverage
 	pipenv install --dev
-	pipenv run coverage run --source=. -m pytest
+	pipenv run coverage run --source=. -m pytest -vv
 	pipenv run coverage html --omit="test/*"
 	pipenv run coverage report --omit="test/*"
 
