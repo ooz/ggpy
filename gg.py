@@ -331,7 +331,7 @@ f'''<!DOCTYPE html>
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
-def make_sitemap(posts):
+def sitemap(posts):
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
@@ -346,9 +346,11 @@ def make_sitemap(posts):
             sitemap_xml.append('    <lastmod>%s</lastmod>' % entry[1])
         sitemap_xml.append('  </url>')
     sitemap_xml.append('</urlset>\n')
-    sitemap_xml = '\n'.join(sitemap_xml)
-    with open('sitemap.xml', 'w') as sitemap_file:
-        sitemap_file.write(sitemap_xml)
+    return '\n'.join(sitemap_xml)
+
+def write_file(filepath, content=''):
+    with open(filepath, 'w') as f:
+        f.write(content)
 
 def main(directories):
     render_root_readme = gg.config.get('site', {}).get('render_root_readme', True)
@@ -366,7 +368,7 @@ def main(directories):
 
     generate_sitemap = gg.config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
-        make_sitemap(posts)
+        write_file('sitemap.xml', sitemap(posts))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
