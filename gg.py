@@ -224,30 +224,30 @@ def post_header(title_html, date):
     return header
 
 
-def convert(directory, filepath, root=False):
+def read_post(directory, filepath, root=False):
     MD = configure_markdown()
     with open(filepath, 'r') as infile:
         markdown_post = infile.read()
         html_post = MD.reset().convert(markdown_post)
         targetpath = convert_path(filepath)
-        with open(targetpath, 'w') as outfile:
-            canonical_url = convert_canonical(directory, targetpath)
-            date = convert_meta(MD, 'date')
-            tags = convert_meta(MD, 'tags')
-            title = convert_meta(MD, 'title')
-            html = post_template(canonical_url,
-                html_post,
-                MD,
-                root
-            )
-            outfile.write(html)
-            return {
-                'date': date,
-                'url': canonical_url,
-                'title': title,
-                'tags': tags,
-                'last_modified': last_modified(filepath)
-            }
+        canonical_url = convert_canonical(directory, targetpath)
+        date = convert_meta(MD, 'date')
+        tags = convert_meta(MD, 'tags')
+        title = convert_meta(MD, 'title')
+        html = post_template(canonical_url,
+            html_post,
+            MD,
+            root
+        )
+        return {
+            'filepath': targetpath,
+            'html': html,
+            'date': date,
+            'url': canonical_url,
+            'title': title,
+            'tags': tags,
+            'last_modified': last_modified(filepath)
+        }
 
 def last_modified(filepath):
     return time.strftime('%Y-%m-%d', time.gmtime(os.path.getmtime(filepath)))
@@ -357,7 +357,9 @@ def main(directories):
         for path in paths:
             root_readme = is_root_readme(path)
             if not root_readme or render_root_readme:
-                posts.append(convert(directory, path, root=root_readme))
+                post = read_post(directory, path, root=root_readme)
+                write_file(post['filepath'], post['html'])
+                posts.append(post)
 
     posts = [post for post in posts if 'draft' not in post['tags']]
     if not render_root_readme:
