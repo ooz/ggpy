@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
+
 import gg
 
 def test_post_template():
@@ -252,6 +254,15 @@ def test_sitemap():
   </url>
 </urlset>
 '''
+
+def test_newpost():
+    assert re.match(r'''---
+title: Title
+description: -
+date: \d+-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z
+tags: draft
+---
+''', gg.newpost())
 
 def given_posts():
     return [

@@ -170,7 +170,6 @@ def footer_navigation(root_url, is_root):
     nav.append('''<a href="javascript:toggleTheme()" class="nav">🌚🌞</a>''')
     return '\n'.join(nav)
 
-
 def meta(author, description, tags):
     return \
 f'''<meta name="author" content="{author}" />
@@ -224,6 +223,17 @@ def post_header(title_html, date):
 </div>'''
     return header
 
+def newpost(title='Title', description='-'):
+    now = time.localtime()
+    now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
+    return \
+f'''---
+title: {title}
+description: {description}
+date: {now_utc_formatted}
+tags: draft
+---
+'''
 
 def read_post(directory, filepath, root=False):
     MD = configure_markdown()
