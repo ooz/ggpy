@@ -369,5 +369,5 @@ def main(directories):
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts))
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover because main wrapper
     main(sys.argv[1:])
