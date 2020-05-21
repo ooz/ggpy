@@ -14,9 +14,9 @@ config = {
     'author': {
         'name': 'Good Gen',
         'url': 'https://ooz.github.io/ggpy',
-        'email': ''
     },
     'social': {
+        'email': 'example@example.com',
         'github_url': 'https://github.com/ooz/ggpy',
         'twitter_url': 'https://twitter.com/oozgo',
         'twitter_username': '@oozgo'
