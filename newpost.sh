@@ -7,6 +7,4 @@ title: New Post
 description: New post by me
 tags: draft
 ---
-
-## My Post
 EOF
