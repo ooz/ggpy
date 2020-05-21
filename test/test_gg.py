@@ -13,6 +13,9 @@ def test_is_root_readme():
 def test_last_modified():
     assert re.match(DATE, gg.last_modified('README.md'))
 
+def test_last_modified_for_unknown_file():
+    assert gg.last_modified('does-not-exist.md') == ''
+
 def test_convert_path():
     assert gg.convert_path('README.md') == 'index.html'
     assert gg.convert_path('test/README.md') == 'test/index.html'

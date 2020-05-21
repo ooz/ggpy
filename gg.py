@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import git
 import glob
 from html import escape
 import os
@@ -250,7 +251,10 @@ def read_post(directory, filepath, root=False):
         }
 
 def last_modified(filepath):
-    return time.strftime('%Y-%m-%d', time.gmtime(os.path.getmtime(filepath)))
+    repo = git.Repo()
+    for commit in repo.iter_commits(paths=filepath, max_count=1):
+        return time.strftime('%Y-%m-%d', time.gmtime(commit.authored_date))
+    return ''
 
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
