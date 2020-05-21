@@ -10,7 +10,7 @@ Yet another static site generator. Written in Python.
 
 It powers its [website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [circleci](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
-It also powers my [website](https://ooz.github.io).
+It also powers [my website](https://ooz.github.io).
 
 ## Usage
 
@@ -38,7 +38,7 @@ make update
 make install_pipenv
 make init
 ```
-* Run the tests
+* Run tests with coverage
 ```
 make test
 ```
