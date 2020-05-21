@@ -147,7 +147,7 @@ function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ t
 def about_and_social_icons():
     github = gg.config.get('social', {}).get('github_url', '')
     twitter = gg.config.get('social', {}).get('twitter_url', '')
-    email = gg.config.get('author', {}).get('email', '')
+    email = gg.config.get('social', {}).get('email', gg.config.get('author', {}).get('email', ''))
     about = gg.config.get('site', {}).get('about_url', '')
     icons = []
 
