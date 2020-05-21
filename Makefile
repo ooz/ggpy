@@ -32,7 +32,7 @@ init:
 	pipenv --python 3
 	pipenv install
 
-test: | all clean_coverage
+test: | clean_coverage
 	pipenv install --dev
 	pipenv run coverage run --source=. -m pytest -vv
 	pipenv run coverage html --omit="test/*"

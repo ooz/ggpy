@@ -115,6 +115,10 @@ f'''<header>
 </section>
 '''
 
+def test_main():
+    import gg
+    gg.main(['.'])
+
 def test_sitemap_generation():
     sitemap_data = readfile('sitemap.xml')
     assert re.match(r'''<\?xml version="1.0" encoding="utf-8" standalone="yes" \?>
