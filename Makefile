@@ -12,9 +12,8 @@ realfire: all
 newpost:
 	bash newpost.sh
 
-# Uhhh, manual effort needed every year! Fix!
 openlatest:
-	@vim 2018/`ls 2018/ -t | head -n 1`
+	@ls -1t `find . -type f -name '*.md'` | head -n 1 | xargs -o vim
 
 update:
 	wget -q https://raw.githubusercontent.com/ooz/ggpy/master/gg.py -O gg.py
