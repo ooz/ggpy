@@ -59,5 +59,5 @@ clean_coverage:
 	rm -f .coverage
 
 .PHONY: clean clean_coverage \
-install_pipenv init test \
+install_pipenv init test deploy \
 all fire realfire newpost openlatest update
