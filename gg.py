@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import argparse
 import git
 import glob
 from html import escape
@@ -266,6 +267,10 @@ def last_modified(filepath):
         return time.strftime('%Y-%m-%d', time.gmtime(commit.authored_date))
     return ''
 
+KEBAB_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz-'
+def kebab_case(word):
+    return ''.join(c for c in word.lower().replace(' ', '-') if c in KEBAB_ALPHABET)
+
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
     if len(field_value) > 0:
@@ -363,6 +368,10 @@ def write_file(filepath, content=''):
     with open(filepath, 'w') as f:
         f.write(content)
 
+def create_newpost(title):
+    filename = kebab_case(title) + '.md'
+    write_file(filename, newpost(title))
+
 def main(directories):
     render_root_readme = gg.config.get('site', {}).get('render_root_readme', True)
     posts = []
@@ -384,4 +393,15 @@ def main(directories):
         write_file('sitemap.xml', sitemap(posts))
 
 if __name__ == '__main__': # pragma: no cover because main wrapper
-    main(sys.argv[1:])
+    parser = argparse.ArgumentParser(description='Good Generator for static websites.')
+    parser.add_argument('-n', '--newpost', metavar='TITLE', type=str, nargs='?',
+                        const='New Post',
+                        default=argparse.SUPPRESS,
+                        help='Creates a new post with TITLE.')
+    parser.add_argument('directories', metavar='DIR', type=str, nargs='*',
+                        help='Directory to convert.')
+    args = vars(parser.parse_args())
+    if args.get('newpost', None):
+        create_newpost(args.get('newpost'))
+    if len(args.get('directories')):
+        main(args.get('directories'))

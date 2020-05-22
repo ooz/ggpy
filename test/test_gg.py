@@ -26,6 +26,12 @@ def test_convert_canonical():
     assert gg.convert_canonical('.', 'test/features/index.html') == 'https://ooz.github.io/ggpy/test/features/'
     assert gg.convert_canonical('.', 'test/some-post.html') == 'https://ooz.github.io/ggpy/test/some-post.html'
 
+def test_kebab_case():
+    assert gg.kebab_case('New Post 2') == 'new-post-2'
+
+def test_kebab_case_filter_special_characters():
+    assert gg.kebab_case('New Post :)') == 'new-post-'
+
 def test_read_post():
     post = gg.read_post('.', "README.md")
     assert post['filepath'] == 'index.html'
