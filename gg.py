@@ -369,8 +369,7 @@ def write_file(filepath, content=''):
         f.write(content)
 
 def create_newpost(title):
-    filename = kebab_case(title) + '.md'
-    write_file(filename, newpost(title))
+    write_file(kebab_case(title) + '.md', newpost(title))
 
 def main(directories):
     render_root_readme = gg.config.get('site', {}).get('render_root_readme', True)
