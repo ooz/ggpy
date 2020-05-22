@@ -115,9 +115,9 @@ f'''<header>
 </section>
 '''
 
-def test_main():
+def test_generate():
     import gg
-    gg.main(['.'])
+    gg.generate(['.'])
 
 def test_sitemap_generation():
     sitemap_data = readfile('sitemap.xml')
