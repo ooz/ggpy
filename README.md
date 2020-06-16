@@ -14,7 +14,7 @@ It also powers [my website](https://ooz.github.io).
 
 ## Usage
 
-* Copy `gg.py`, `ggconfig.py`, `Makefile` and `newpost.sh` to the root of your website/blog
+* Copy `gg.py`, `ggconfig.py` and `Makefile` to the root of your website/blog
 * Adjust `ggconfig.py` to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!
 * Place markdown files everywhere
 * Install dependencies
