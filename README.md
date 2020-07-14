@@ -48,6 +48,7 @@ make test
 * Static site generator supporting [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)
 * Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
 * Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
+* It may render a time-stamped index of all generated HTML files, suitable for blogs
 * Built-in responsive style with light mode and dark mode
 * Twitter Card, Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
