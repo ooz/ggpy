@@ -45,7 +45,13 @@ make test
 
 ## Features
 
-Good Generator supports [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)!
+* Supports [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)
+* Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
+* Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
+* Built-in responsive style
+* Twitter Card, Open Graph and schema.org support
+* Generates `sitemap.xml` with `lastmod` timestamps taken from git history
+* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile
 
 ## License
 
