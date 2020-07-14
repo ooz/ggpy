@@ -48,7 +48,7 @@ make test
 * Static site generator supporting [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)
 * Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
 * Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
-* Built-in responsive style
+* Built-in responsive style with light mode and dark mode
 * Twitter Card, Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
 * Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs on Android in Termux](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
