@@ -46,6 +46,8 @@ f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+<meta name="referrer" content="no-referrer">
 
 <title>{pagetitle(title)}</title>
 <link rel="canonical" href="{canonical_url}">
@@ -319,6 +321,8 @@ f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+<meta name="referrer" content="no-referrer">
 
 <title>Index | {root_title}</title>
 <link rel="canonical" href="{base_url}">

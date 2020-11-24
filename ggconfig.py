@@ -9,7 +9,9 @@ config = {
         'additional_sitemap_entries': [],
         'title': 'Good Generator.py',
         'logo': 'static/gg.png',
-        'about_url': 'https://ooz.github.io/ggpy/test/about'
+        'about_url': 'https://ooz.github.io/ggpy/test/about',
+        'csp': '''<meta http-equiv="Content-Security-Policy" content="script-src 'self'">''',
+        'referrer': '''<meta name="referrer" content="no-referrer">'''
     },
     'author': {
         'name': 'Good Gen',
