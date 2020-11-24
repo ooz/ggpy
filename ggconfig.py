@@ -10,7 +10,7 @@ config = {
         'title': 'Good Generator.py',
         'logo': 'static/gg.png',
         'about_url': 'https://ooz.github.io/ggpy/test/about',
-        'csp': '''<meta http-equiv="Content-Security-Policy" content="script-src 'self'">''',
+        'csp': '''<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">''',
         'referrer': '''<meta name="referrer" content="no-referrer">'''
     },
     'author': {
