@@ -67,7 +67,7 @@ def test_footer_navigation():
     assert footer_nav == \
 '''<a href="https://example.com" class="nav">back</a>
 <a href="#" class="nav">top</a>
-<a href="javascript:toggleTheme()" class="nav">🌚🌞</a>'''
+<a href="javascript:toggleTheme()" class="nav">🌓</a>'''
 
 def test_about_and_social_icons():
     about_and_social = gg.about_and_social_icons()
