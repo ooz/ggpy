@@ -16,7 +16,7 @@ commands:
       - run:
           command: |
             git config user.email "ooz@users.noreply.github.com"
-	          git config user.name "ooz"
+            git config user.name "ooz"
 jobs:
   test:
     docker:
