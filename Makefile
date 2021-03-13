@@ -37,8 +37,6 @@ test: | clean_coverage
 	pipenv run coverage report --omit="test/*"
 
 deploy: all
-	git config user.email "ooz@users.noreply.github.com"
-	git config user.name "ooz"
 	git add .
 	git commit -am "Build by CircleCI `date` [skip ci]" || true
 	git push

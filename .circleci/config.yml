@@ -11,6 +11,12 @@ commands:
           command: |
             make install_pipenv
             make init
+  configure-git-user:
+    steps:
+      - run:
+          command: |
+            git config user.email "ooz@users.noreply.github.com"
+	          git config user.name "ooz"
 jobs:
   test:
     docker:
@@ -31,6 +37,7 @@ jobs:
       - checkout
       - install-dependencies
       - add-ssh-key
+      - configure-git-user
       - run:
           command: |
             make deploy
