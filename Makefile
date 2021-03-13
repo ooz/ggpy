@@ -1,14 +1,6 @@
 all:
 	pipenv run python gg.py ./
 
-fire: all
-	git commit -am "Lazy auto update `date`" || true
-	git push
-
-realfire: all
-	git commit -am "Emergency update `date`" || true
-	git push -f origin master
-
 newpost:
 	pipenv run python gg.py --newpost
 
@@ -38,7 +30,7 @@ test: | clean_coverage
 
 deploy: all
 	git add .
-	git commit -am "Build by CircleCI `date` [skip ci]" || true
+	git commit -m "Build by CircleCI `date` [skip ci]" || true
 	git push
 
 # Cleanup
@@ -59,4 +51,4 @@ clean_coverage:
 
 .PHONY: clean clean_coverage \
 install_pipenv init test deploy \
-all fire realfire newpost openlatest update
+all newpost openlatest update
