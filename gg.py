@@ -48,7 +48,8 @@ def configure_markdown():
         ]
     )
 
-def post_template(canonical_url, body, md, root):
+def post_template(canonical_url, body, md, root, config=None):
+    config = config or CONFIG
     title = convert_meta(md, 'title')
     date = convert_meta(md, 'date')
     tags = convert_meta(md, 'tags')
@@ -82,7 +83,7 @@ f'''<!DOCTYPE html>
 <body onload="initTheme()">
 <header>
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-{post_header(md.reset().convert('# ' + title) if len(title) else '', date)}
+{post_header(md.reset().convert('# ' + title) if len(title) else '', date, config)}
 </header>
 <section>
 {body}
@@ -227,9 +228,10 @@ def json_ld(title, url, description):
 f'''<script type="application/ld+json">
 {{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_title}","url":"{url}"{name_block},"description":"{json_escaped_description}"}}</script>'''
 
-def post_header(title_html, date):
-    name = CONFIG.get('author', {}).get('name', '')
-    author_url = CONFIG.get('author', {}).get('url', '')
+def post_header(title_html, date, config=None):
+    config = config or {}
+    name = config.get('author', {}).get('name', '')
+    author_url = config.get('author', {}).get('url', '')
     name_and_date = date[:10]
     if len(name) and len(name_and_date):
         maybe_linked_author = name
