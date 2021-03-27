@@ -64,7 +64,7 @@ make test
 * Built-in responsive style with light mode and dark mode
 * Twitter Card, Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
-* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs on Android in Termux](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
+* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
 * The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
 
 ## License
