@@ -196,8 +196,6 @@ def footer_navigation(root_url, is_root):
     nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
     return '\n'.join(nav)
 
-def _meta_name_tag(name, content):
-    return f'''<meta name="{name}" content="{content}" />'''
 def meta(author, description, tags):
     meta_names = [
         ('author', author),
@@ -213,6 +211,9 @@ def twitter(twitter_username):
         ('twitter:creator', twitter_username)
     ]
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
+
+def _meta_name_tag(name, content):
+    return f'''<meta name="{name}" content="{content}" />'''
 
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
@@ -231,6 +232,7 @@ def opengraph(title, url, description, date, config=None):
     meta_properties.append(('og:locale', 'en-US'))
     meta_properties.append(('article:published_time', date))
     return '\n'.join([_meta_property_tag(prop[0], prop[1]) for prop in meta_properties])
+
 def _meta_property_tag(property, content):
     return f'''<meta property="{property}" content="{content}" />'''
 
