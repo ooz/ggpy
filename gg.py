@@ -450,14 +450,6 @@ def generate(directories, config=None):
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts, config))
 
-def load_config():
-    try:
-        import ggconfig
-        return ggconfig.config
-    except ImportError:
-        print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
-    return {}
-
 if __name__ == '__main__': # pragma: no cover because main wrapper
     parser = argparse.ArgumentParser(description='The Good Generator for static websites and blogs.')
     parser.add_argument('-n', '--newpost', metavar='TITLE', type=str, nargs='?',
@@ -466,9 +458,14 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
                         help='Creates a new post with TITLE.')
     parser.add_argument('directories', metavar='DIR', type=str, nargs='*',
                         help='Directory to convert recursively.')
-
     args = vars(parser.parse_args())
-    config = load_config()
+
+    config = {}
+    try:
+        import ggconfig
+        config = ggconfig.config
+    except ImportError:
+        print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
 
     if args.get('newpost', None):
         create_newpost(args.get('newpost'))
