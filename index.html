@@ -111,7 +111,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <hr />
 <p>Yet another static site generator. Written in Python.
 <a href="https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html">Why?</a></p>
-<p>It powers its <a href="https://ooz.github.io/ggpy">website</a>, which is its <a href="https://github.com/ooz/ggpy">README.md</a> rendered via <a href="https://circleci.com/gh/ooz/ggpy">circleci</a>. An infinite incepted loop!</p>
+<p>It powers its <a href="https://ooz.github.io/ggpy">website</a>, which is its <a href="https://github.com/ooz/ggpy">README.md</a> rendered via <a href="https://circleci.com/gh/ooz/ggpy">CircleCI</a>. An infinite incepted loop!</p>
 <p>While I have been using it for <a href="https://ooz.github.io">my website</a> and <a href="https://oliz.io/blog/">blog</a> for years,
 the configuration and header formats are not stable and there is no official release, yet.</p>
 <p>Things I would like to get done for version 1.0:</p>
@@ -152,7 +152,7 @@ make init</code></pre></li>
 <li>Twitter Card, Open Graph and schema.org support</li>
 <li>Generates <code>sitemap.xml</code> with <code>lastmod</code> timestamps taken from git history</li>
 <li>Requires <code>python3</code>, <code>pip</code>, <code>git</code> and optionally <code>make</code> if you want to use the provided Makefile. Thus, it <a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html">runs on Android in Termux</a></li>
-<li>The provided CircleCI configuration may serve as a blueprint to let CircleCI build your page on every commit</li>
+<li>The provided <a href=".circleci/config.yml">CircleCI configuration</a> may serve as a blueprint to let CircleCI build your page on every commit</li>
 </ul>
 <h2 id="license">License</h2>
 <p>This software is dual-licensed under GNU AGPLv3 or MIT License,
