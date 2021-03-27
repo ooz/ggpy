@@ -344,7 +344,7 @@ def pagetitle(title='', config=None):
     return root_title
 
 def index(posts, config=None):
-    config = config or CONFIG
+    config = config or {}
     base_url = config.get('site', {}).get('base_url', '')
     root_title = config.get('site', {}).get('title', '')
     logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
@@ -426,8 +426,9 @@ def write_file(filepath, content=''):
 def create_newpost(title):
     write_file(kebab_case(title) + '.md', newpost(title))
 
-def generate(directories):
-    render_root_readme = CONFIG.get('site', {}).get('render_root_readme', True)
+def generate(directories, config=None):
+    config = config or CONFIG
+    render_root_readme = config.get('site', {}).get('render_root_readme', True)
     posts = []
     for directory in directories:
         paths = glob.glob(directory + '/**/*.md', recursive=True)
@@ -440,9 +441,9 @@ def generate(directories):
 
     posts = [post for post in posts if 'draft' not in post['tags']]
     if not render_root_readme:
-        write_file('index.html', index(posts))
+        write_file('index.html', index(posts, config))
 
-    generate_sitemap = CONFIG.get('site', {}).get('generate_sitemap', False)
+    generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts))
 
