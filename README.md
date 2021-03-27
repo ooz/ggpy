@@ -38,6 +38,10 @@ make
 ```
 make update
 ```
+* See all make targets with short documentation
+```
+make help
+```
 
 ## Tests
 
