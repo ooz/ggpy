@@ -454,7 +454,7 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
                         default=argparse.SUPPRESS,
                         help='Creates a new post with TITLE.')
     parser.add_argument('directories', metavar='DIR', type=str, nargs='*',
-                        help='Directory to convert.')
+                        help='Directory to convert recursively.')
     args = vars(parser.parse_args())
     if args.get('newpost', None):
         create_newpost(args.get('newpost'))
