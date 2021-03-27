@@ -448,7 +448,7 @@ def generate(directories, config=None):
         write_file('sitemap.xml', sitemap(posts))
 
 if __name__ == '__main__': # pragma: no cover because main wrapper
-    parser = argparse.ArgumentParser(description='Good Generator for static websites.')
+    parser = argparse.ArgumentParser(description='The Good Generator for static websites and blogs.')
     parser.add_argument('-n', '--newpost', metavar='TITLE', type=str, nargs='?',
                         const='New Post',
                         default=argparse.SUPPRESS,
