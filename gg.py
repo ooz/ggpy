@@ -25,8 +25,6 @@ import sys
 import time
 import markdown
 
-
-
 def configure_markdown():
     return markdown.Markdown(
         extensions = [
