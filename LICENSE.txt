@@ -3,7 +3,7 @@ This software is free-as-in-freedom and dual-licensed under
 GNU AGPLv3 or MIT License.
 
 
-LICENSE 1: GNU AGPLv3
+License 1: GNU AGPLv3
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-LICENSE 2: MIT License
+License 2: MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -38,3 +38,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+Dependencies
+
+See Pipfile for current Python/pypi dependencies.
+With licenses and copyright holders:
+
+* markdown: BSD 3-Clause License, by the Python Markdown Project
+* pymdown-extensions: MIT License, by Isaac Muse
+* gitpython: BSD 3-Clause License, by Michael Trier and contributors
