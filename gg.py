@@ -195,17 +195,24 @@ def footer_navigation(root_url, is_root):
     nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
     return '\n'.join(nav)
 
+def _meta_name_tag(name, content):
+    return f'''<meta name="{name}" content="{content}" />'''
 def meta(author, description, tags):
-    return \
-f'''<meta name="author" content="{author}" />
-<meta name="description" content="{description}" />
-<meta name="keywords" content="{tags}" />'''
+    meta_names = [
+        ('author', author),
+        ('description', description),
+        ('keywords', tags)
+    ]
+    return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
 def twitter(twitter_username):
-    return \
-f'''<meta name="twitter:author" content="{twitter_username}" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="{twitter_username}" />'''
+    meta_names = [
+        ('twitter:author', twitter_username),
+        ('twitter:card', 'summary'),
+        ('twitter:creator', twitter_username)
+    ]
+    return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
+
 
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
