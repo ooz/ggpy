@@ -56,10 +56,10 @@ def post_template(canonical_url, body, md, root, config=None):
     description = convert_meta(md, 'description', default=title)
     raw_title = ''.join(md.Meta.get('title', ''))
     raw_description = ''.join(md.Meta.get('description', raw_title))
-    base_url = CONFIG.get('site', {}).get('base_url', '')
+    base_url = config.get('site', {}).get('base_url', '')
     logo_url = base_url + '/' + CONFIG.get('site', {}).get('logo', '')
-    author_name = CONFIG.get('author', {}).get('name', '')
-    author_url = CONFIG.get('author', {}).get('url', '')
+    author_name = config.get('author', {}).get('name', '')
+    author_url = config.get('author', {}).get('url', '')
     return \
 f'''<!DOCTYPE html>
 <html lang="en-US">
@@ -75,7 +75,7 @@ f'''<!DOCTYPE html>
 
 {style()}
 {meta(author_name, description, tags)}
-{twitter(CONFIG.get('social', {}).get('twitter_username', ''))}
+{twitter(config.get('social', {}).get('twitter_username', ''))}
 {opengraph(title, canonical_url, description, date, config)}
 {json_ld(raw_title, canonical_url, raw_description, config)}
 </head>
