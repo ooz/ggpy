@@ -66,15 +66,16 @@ td, th {
     text-align: left;
     vertical-align: top;
 }
-.avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
-.nav { float: left; margin-right: 1rem; }
-.social { float: right; margin-left: 1rem; }
 
 .dark-mode { color: #CACACA; background: #363636; }
 .dark-mode a { color: #0A7; }
 .dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
 .dark-mode code { background: #222; }
 .dark-mode pre { border-left: 0.3rem solid #0A7; }
+
+.avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
+.nav { float: left; margin-right: 1rem; }
+.social { float: right; margin-left: 1rem; }
 </style>
 <script>
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
@@ -111,7 +112,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <hr />
 <p>Yet another static site generator. Written in Python.
 <a href="https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html">Why?</a></p>
-<p>It powers its <a href="https://ooz.github.io/ggpy">website</a>, which is its <a href="https://github.com/ooz/ggpy">README.md</a> rendered via <a href="https://circleci.com/gh/ooz/ggpy">CircleCI</a>. An infinite incepted loop!</p>
+<p>It powers <a href="https://ooz.github.io/ggpy">its website</a>, which is its <a href="https://github.com/ooz/ggpy">README.md</a> rendered via <a href="https://circleci.com/gh/ooz/ggpy">CircleCI</a>. An infinite incepted loop!</p>
 <p>While I have been using it for <a href="https://ooz.github.io">my website</a> and <a href="https://oliz.io/blog/">blog</a> for years,
 the configuration and header formats are not stable and there is no official release, yet.</p>
 <p>Things I would like to get done for version 1.0:</p>
