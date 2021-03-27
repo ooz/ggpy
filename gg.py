@@ -90,7 +90,7 @@ f'''<!DOCTYPE html>
 </section>
 <footer>
 {footer_navigation(base_url, root)}
-{about_and_social_icons()}
+{about_and_social_icons(config)}
 </footer>
 </body>
 </html>
@@ -169,11 +169,12 @@ function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ t
 </script>
 '''
 
-def about_and_social_icons():
-    github = CONFIG.get('social', {}).get('github_url', '')
-    twitter = CONFIG.get('social', {}).get('twitter_url', '')
-    email = CONFIG.get('social', {}).get('email', CONFIG.get('author', {}).get('email', ''))
-    about = CONFIG.get('site', {}).get('about_url', '')
+def about_and_social_icons(config=None):
+    config = config or {}
+    github = config.get('social', {}).get('github_url', '')
+    twitter = config.get('social', {}).get('twitter_url', '')
+    email = config.get('social', {}).get('email', config.get('author', {}).get('email', ''))
+    about = config.get('site', {}).get('about_url', '')
     icons = []
 
     if len(email):
@@ -322,11 +323,12 @@ def pagetitle(title):
         return f'{title} | {root_title}'
     return root_title
 
-def index(posts):
-    base_url = CONFIG.get('site', {}).get('base_url', '')
-    root_title = CONFIG.get('site', {}).get('title', '')
-    logo_url = base_url + '/' + CONFIG.get('site', {}).get('logo', '')
-    author_url = CONFIG.get('author', {}).get('url', '')
+def index(posts, config=None):
+    config = config or CONFIG
+    base_url = config.get('site', {}).get('base_url', '')
+    root_title = config.get('site', {}).get('title', '')
+    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    author_url = config.get('author', {}).get('url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
         day = post['date'][:10]
@@ -364,7 +366,7 @@ f'''<!DOCTYPE html>
 </section>
 <footer>
 {footer_navigation(None, True)}
-{about_and_social_icons()}
+{about_and_social_icons(config)}
 </footer>
 </body>
 </html>
