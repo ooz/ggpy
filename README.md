@@ -11,7 +11,15 @@ Yet another static site generator. Written in Python.
 
 It powers its [website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [circleci](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
-It also powers [my website](https://ooz.github.io).
+While I have been using it for [my website](https://ooz.github.io) and [blog](https://oliz.io/blog/) for years,
+the configuration format is not stable and there is no official release, yet.
+
+Things I would like to get done for version 1.0:
+
+* Make `ggconfig.py` optional, apply useful defaults
+* Enable more configuration and rendering control to individual markdown files (e.g. whether to show header/foot, include further header tags etc.)
+* Enable an image gallery use-case (for photo-centered websites)
+* Publish to [pypi](https://pypi.org)
 
 ## Usage
 
