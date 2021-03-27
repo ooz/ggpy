@@ -6,7 +6,7 @@ config = {
     'site': {
         'base_url': 'https://ooz.github.io/ggpy',    # Default: no base_url, then ggpy won't convert to absolute/canonical links
         'render_root_readme': True,                  # Deprecated, I'd rather control that via the affected README.md meta block
-        'generate_sitemap': True,                    # Default: false
+        'generate_sitemap': True,                    # Default: false, could also make git dependency optional (only needed for timestamp)
         'additional_sitemap_entries': [],            # Default: none / empty
         'title': 'Good Generator.py',                # Default: no common title will be rendered across all pages
         'logo': 'static/gg.png',                     # Default: no common logo will be rendered across all pages
