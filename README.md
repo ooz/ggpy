@@ -1,7 +1,8 @@
 # Good Generator`.py`
 
 [![CircleCI](https://circleci.com/gh/ooz/ggpy.svg?style=shield)](https://circleci.com/gh/ooz/ggpy)
-[![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ooz/ggpy)
+[![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](https://github.com/ooz/ggpy/LICENSE)
+[![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ooz/ggpy/LICENSE)
 
 ----
 
