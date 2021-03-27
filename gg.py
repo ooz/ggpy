@@ -337,8 +337,8 @@ def convert_canonical(directory, targetpath):
 def pagetitle(title, config=None):
     config = config or {}
     root_title = config.get('site', {}).get('title', '')
-    if len(title) and title != root_title:
-        if len(root_title):
+    if len(title):
+        if len(root_title) and title != root_title:
             return f'{title} | {root_title}'
         return title
     return root_title
