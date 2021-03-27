@@ -278,6 +278,8 @@ def post_header(title_html, date, config=None):
     return header
 
 def newpost(title='Title', description='-'):
+    '''Deprecation: 'draft' tag may become '__draft' in the future
+    '''
     now = time.localtime()
     now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
     return \
