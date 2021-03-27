@@ -9,7 +9,7 @@
 Yet another static site generator. Written in Python.
 [Why?](https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
 
-It powers its [website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
+It powers [its website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
 While I have been using it for [my website](https://ooz.github.io) and [blog](https://oliz.io/blog/) for years,
 the configuration and header formats are not stable and there is no official release, yet.
