@@ -7,6 +7,8 @@ def test_pagetitle():
     assert gg.pagetitle('Good Generator.py', gg.CONFIG) == 'Good Generator.py'
     assert gg.pagetitle('Some Page', gg.CONFIG) == 'Some Page | Good Generator.py'
     assert gg.pagetitle('Title with default config') == 'Title with default config'
+    assert gg.pagetitle('') == ''
+    assert gg.pagetitle() == ''
 
 def test_style():
     style = gg.style()

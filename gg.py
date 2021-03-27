@@ -334,7 +334,7 @@ def convert_canonical(directory, targetpath):
         return f'{base_url}/{targetpath[:-10]}'
     return f'{base_url}/{targetpath}'
 
-def pagetitle(title, config=None):
+def pagetitle(title='', config=None):
     config = config or {}
     root_title = config.get('site', {}).get('title', '')
     if len(title):
