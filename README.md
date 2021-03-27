@@ -1,8 +1,8 @@
 # Good Generator`.py`
 
 [![CircleCI](https://circleci.com/gh/ooz/ggpy.svg?style=shield)](https://circleci.com/gh/ooz/ggpy)
-[![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](https://github.com/ooz/ggpy/LICENSE)
-[![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ooz/ggpy/LICENSE)
+[![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE.txt)
+[![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 
 ----
 
@@ -59,4 +59,4 @@ make test
 ## License
 
 This software is dual-licensed under GNU AGPLv3 or MIT License,
-see [LICENSE](LICENSE) file for details.
+see [LICENSE.txt](LICENSE.txt) file for details.
