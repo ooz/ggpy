@@ -43,40 +43,40 @@ def test_twitter():
 <meta name="twitter:creator" content="@oozgo" />'''
 
 def test_opengraph():
-    opengraph = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20', config)
+    opengraph = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20', config)
     assert opengraph == \
 '''<meta property="og:title" content="Title!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/" />
+<meta property="og:url" content="https://oliz.io/ggpy/" />
 <meta property="og:description" content="Nice text!" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
+<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="2020-02-20" />'''
-    opengraph_default_config = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20')
+    opengraph_default_config = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20')
     assert opengraph_default_config == \
 '''<meta property="og:title" content="Title!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/" />
+<meta property="og:url" content="https://oliz.io/ggpy/" />
 <meta property="og:description" content="Nice text!" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="2020-02-20" />'''
 
 def test_json_ld():
-    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"', config)
+    json_ld = gg.json_ld('Title! "BAM!"', 'https://oliz.io/ggpy/', 'It says "BAM!"', config)
     assert json_ld == \
 '''<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
-    json_ld_default_config = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"')
+{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
+    json_ld_default_config = gg.json_ld('Title! "BAM!"', 'https://oliz.io/ggpy/', 'It says "BAM!"')
     assert json_ld_default_config == \
 '''<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
+{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
 
 def test_post_header():
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
     assert post_header == \
 '''<div style="text-align:right;">
 <h1 id="title">Title!</h1>
-<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2020-02-20</small>
+<small><a href="https://oliz.io/ggpy">Good Gen</a>, 2020-02-20</small>
 </div>'''
     post_header_default_config = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20')
     assert post_header_default_config == \
@@ -98,6 +98,6 @@ def test_about_and_social_icons():
 '''<a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>'''
+<a href="https://oliz.io/ggpy/test/about" class="social">about</a>'''
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''

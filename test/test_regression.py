@@ -5,13 +5,13 @@ import json
 import re
 
 SITE_TITLE = 'Good Generator.py'
-LOGO_URL = 'https://ooz.github.io/ggpy/static/gg.png'
+LOGO_URL = 'https://oliz.io/ggpy/static/gg.png'
 GENERATED_FEATURE_HTML = \
 f'''<header>
-<a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
+<a href="https://oliz.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 <div style="text-align:right;">
 <h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
-<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 1337-06-06</small>
+<small><a href="https://oliz.io/ggpy">Good Gen</a>, 1337-06-06</small>
 </div>
 </header>
 <section>
@@ -72,7 +72,7 @@ block
 <p>"So smart" - me, sometimes</p>
 </blockquote>
 <h2 id="image">Image</h2>
-<p><img alt="Good Generator Logo" src="https://ooz.github.io/ggpy/static/gg.png" /></p>
+<p><img alt="Good Generator Logo" src="https://oliz.io/ggpy/static/gg.png" /></p>
 <p>Horizontal rule...</p>
 <hr />
 <h2 id="other-markdown-extensions">Other Markdown Extensions</h2>
@@ -102,10 +102,10 @@ block
 '''
 GENERATED_POST_HTML = \
 f'''<header>
-<a href="https://ooz.github.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
+<a href="https://oliz.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 <div style="text-align:right;">
 <h1 id="some-post">Some Post</h1>
-<small><a href="https://ooz.github.io/ggpy">Good Gen</a>, 2018-03-17</small>
+<small><a href="https://oliz.io/ggpy">Good Gen</a>, 2018-03-17</small>
 </div>
 </header>
 <section>
@@ -125,19 +125,19 @@ def test_sitemap_generation():
     assert re.match(r'''<\?xml version="1.0" encoding="utf-8" standalone="yes" \?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ooz.github.io/ggpy/</loc>
+    <loc>https://oliz.io/ggpy/</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
-    <loc>https://ooz.github.io/ggpy/test/about/</loc>
+    <loc>https://oliz.io/ggpy/test/about/</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
-    <loc>https://ooz.github.io/ggpy/test/features/</loc>
+    <loc>https://oliz.io/ggpy/test/features/</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
-    <loc>https://ooz.github.io/ggpy/test/some-post.html</loc>
+    <loc>https://oliz.io/ggpy/test/some-post.html</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
 </urlset>
@@ -151,7 +151,7 @@ def test_markdown_features_and_readme_generation():
     # given & when
     index_title = 'Markdown Feature Test without &quot;quotes bug&quot;'
     index_raw_title = 'Markdown Feature Test without "quotes bug"'
-    canonical_url = 'https://ooz.github.io/ggpy/test/features/'
+    canonical_url = 'https://oliz.io/ggpy/test/features/'
     index_data = readfile('test/features/index.html')
 
     # then
@@ -180,7 +180,7 @@ def test_post_conversion():
     # given & when
     post_title = 'Some Post'
     description = 'Nice post!'
-    canonical_url = 'https://ooz.github.io/ggpy/test/some-post.html'
+    canonical_url = 'https://oliz.io/ggpy/test/some-post.html'
     post_data = readfile('test/some-post.html')
 
     # then
@@ -228,13 +228,13 @@ def then_is_framed_by_html_boilerplate(result):
 def then_has_bottom_navigation_and_social_links(result):
     navigation_and_social_links = \
 '''<footer>
-<a href="https://ooz.github.io/ggpy" class="nav">back</a>
+<a href="https://oliz.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
+<a href="https://oliz.io/ggpy/test/about" class="social">about</a>
 </footer>
 '''
     assert result.endswith(navigation_and_social_links)

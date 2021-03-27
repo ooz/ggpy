@@ -57,7 +57,7 @@ for | real | yep | yeah.
 
 ## Image
 
-![Good Generator Logo](https://ooz.github.io/ggpy/static/gg.png)
+![Good Generator Logo](https://oliz.io/ggpy/static/gg.png)
 
 Horizontal rule...
 

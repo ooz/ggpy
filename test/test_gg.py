@@ -23,9 +23,9 @@ def test_convert_path():
     assert gg.convert_path('test/some-post.md') == 'test/some-post.html'
 
 def test_convert_canonical():
-    assert gg.convert_canonical('.', 'index.html', config) == 'https://ooz.github.io/ggpy/'
-    assert gg.convert_canonical('.', 'test/features/index.html', config) == 'https://ooz.github.io/ggpy/test/features/'
-    assert gg.convert_canonical('.', 'test/some-post.html', config) == 'https://ooz.github.io/ggpy/test/some-post.html'
+    assert gg.convert_canonical('.', 'index.html', config) == 'https://oliz.io/ggpy/'
+    assert gg.convert_canonical('.', 'test/features/index.html', config) == 'https://oliz.io/ggpy/test/features/'
+    assert gg.convert_canonical('.', 'test/some-post.html', config) == 'https://oliz.io/ggpy/test/some-post.html'
 
     assert gg.convert_canonical('.', 'index.html') == 'index.html'
     assert gg.convert_canonical('.', 'test/features/index.html') == 'test/features/'
@@ -45,7 +45,7 @@ def test_read_post():
     assert re.match(DATE, post['last_modified'])
     assert post['tags'] == ''
     assert post['title'] == ''
-    assert post['url'] == 'https://ooz.github.io/ggpy/'
+    assert post['url'] == 'https://oliz.io/ggpy/'
 
     post = gg.read_post('.', "README.md")
     assert post['url'] == 'index.html'

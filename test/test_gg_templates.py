@@ -7,7 +7,7 @@ import gg
 from ggconfig import config
 
 def test_post_template():
-    canonical_url = 'https://ooz.github.io/ggpy/'
+    canonical_url = 'https://oliz.io/ggpy/'
     body = '<h1>Hey!</h1>'
     markdown = gg.configure_markdown()
     post = gg.post_template(canonical_url, body, markdown, False, config)
@@ -22,8 +22,8 @@ def test_post_template():
 <meta name="referrer" content="no-referrer">
 
 <title>Good Generator.py</title>
-<link rel="canonical" href="https://ooz.github.io/ggpy/">
-<link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
+<link rel="canonical" href="https://oliz.io/ggpy/">
+<link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 
 <style>
 body {
@@ -104,31 +104,31 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <meta name="twitter:creator" content="@oozgo" />
 <meta property="og:title" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ooz.github.io/ggpy/" />
+<meta property="og:url" content="https://oliz.io/ggpy/" />
 <meta property="og:description" content="" />
-<meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
+<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":""}</script>
+{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":""}</script>
 </head>
 
 <body onload="initTheme()">
 <header>
-<a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+<a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
 
 </header>
 <section>
 <h1>Hey!</h1>
 </section>
 <footer>
-<a href="https://ooz.github.io/ggpy" class="nav">back</a>
+<a href="https://oliz.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
+<a href="https://oliz.io/ggpy/test/about" class="social">about</a>
 </footer>
 </body>
 </html>
@@ -148,8 +148,8 @@ def test_index():
 <meta name="referrer" content="no-referrer">
 
 <title>Index | Good Generator.py</title>
-<link rel="canonical" href="https://ooz.github.io/ggpy">
-<link rel="shortcut icon" href="https://ooz.github.io/ggpy/static/gg.png">
+<link rel="canonical" href="https://oliz.io/ggpy">
+<link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 
 <style>
 body {
@@ -226,7 +226,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 <body onload="initTheme()">
 <header>
-<a href="https://ooz.github.io/ggpy"><img src="https://ooz.github.io/ggpy/static/gg.png" class="avatar" /></a>
+<a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
 <h1>Index</h1>
 </header>
 <section>
@@ -241,7 +241,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://ooz.github.io/ggpy/test/about" class="social">about</a>
+<a href="https://oliz.io/ggpy/test/about" class="social">about</a>
 </footer>
 </body>
 </html>

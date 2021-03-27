@@ -4,19 +4,19 @@
 # Deprecated struture, new structure will be top-level fields
 config = {
     'site': {
-        'base_url': 'https://ooz.github.io/ggpy',    # Default: no base_url, then ggpy won't convert to absolute/canonical links
+        'base_url': 'https://oliz.io/ggpy',          # Default: no base_url, then ggpy won't convert to absolute/canonical links
         'render_root_readme': True,                  # Deprecated, I'd rather control that via the affected README.md meta block
         'generate_sitemap': True,                    # Default: false, could also make git dependency optional (only needed for timestamp)
         'additional_sitemap_entries': [],            # Default: none / empty
         'title': 'Good Generator.py',                # Default: no common title will be rendered across all pages
         'logo': 'static/gg.png',                     # Default: no common logo will be rendered across all pages
-        'about_url': 'https://ooz.github.io/ggpy/test/about', # Default: no about link
+        'about_url': 'https://oliz.io/ggpy/test/about', # Default: no about link
         'csp': '''<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">''', # Deprecated, see below
         'referrer': '''<meta name="referrer" content="no-referrer">''' # Deprecated, will prob. be replaced with general way to inject header tags
     },
     'author': {
         'name': 'Good Gen',
-        'url': 'https://ooz.github.io/ggpy',
+        'url': 'https://oliz.io/ggpy',
     },
     'social': {
         'email': 'example@example.com',
