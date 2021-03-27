@@ -25,7 +25,12 @@ import sys
 import time
 import markdown
 
-import ggconfig as gg
+CONFIG = {}
+try:
+    import ggconfig
+    CONFIG = ggconfig.config
+except ImportError:
+    print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
 
 def configure_markdown():
     return markdown.Markdown(
@@ -50,10 +55,10 @@ def post_template(canonical_url, body, md, root):
     description = convert_meta(md, 'description', default=title)
     raw_title = ''.join(md.Meta.get('title', ''))
     raw_description = ''.join(md.Meta.get('description', raw_title))
-    base_url = gg.config.get('site', {}).get('base_url', '')
-    logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
-    author_name = gg.config.get('author', {}).get('name', '')
-    author_url = gg.config.get('author', {}).get('url', '')
+    base_url = CONFIG.get('site', {}).get('base_url', '')
+    logo_url = base_url + '/' + CONFIG.get('site', {}).get('logo', '')
+    author_name = CONFIG.get('author', {}).get('name', '')
+    author_url = CONFIG.get('author', {}).get('url', '')
     return \
 f'''<!DOCTYPE html>
 <html lang="en-US">
@@ -69,7 +74,7 @@ f'''<!DOCTYPE html>
 
 {style()}
 {meta(author_name, description, tags)}
-{twitter(gg.config.get('social', {}).get('twitter_username', ''))}
+{twitter(CONFIG.get('social', {}).get('twitter_username', ''))}
 {opengraph(title, canonical_url, description, date)}
 {json_ld(raw_title, canonical_url, raw_description)}
 </head>
@@ -164,10 +169,10 @@ function initTheme() {{ let h=new Date().getHours(); if (h <= 8 || h >= 20) {{ t
 '''
 
 def about_and_social_icons():
-    github = gg.config.get('social', {}).get('github_url', '')
-    twitter = gg.config.get('social', {}).get('twitter_url', '')
-    email = gg.config.get('social', {}).get('email', gg.config.get('author', {}).get('email', ''))
-    about = gg.config.get('site', {}).get('about_url', '')
+    github = CONFIG.get('social', {}).get('github_url', '')
+    twitter = CONFIG.get('social', {}).get('twitter_url', '')
+    email = CONFIG.get('social', {}).get('email', CONFIG.get('author', {}).get('email', ''))
+    about = CONFIG.get('site', {}).get('about_url', '')
     icons = []
 
     if len(email):
@@ -202,7 +207,7 @@ f'''<meta name="twitter:author" content="{twitter_username}" />
 
 # URL should end with "/" for a directory!
 def opengraph(title, url, description, date,
-              image=gg.config.get('site', {}).get('base_url', '') + '/' + gg.config.get('site', {}).get('logo', '')):
+              image=CONFIG.get('site', {}).get('base_url', '') + '/' + CONFIG.get('site', {}).get('logo', '')):
     return \
 f'''<meta property="og:title" content="{title}" />
 <meta property="og:type" content="article" />
@@ -213,7 +218,7 @@ f'''<meta property="og:title" content="{title}" />
 <meta property="article:published_time" content="{date}" />'''
 
 def json_ld(title, url, description):
-    root_title = gg.config.get('site', {}).get('title', '')
+    root_title = CONFIG.get('site', {}).get('title', '')
     json_escaped_root_title = root_title.replace('"', '\\"')
     json_escaped_title = title.replace('"', '\\"')
     json_escaped_description = description.replace('"', '\\"')
@@ -223,8 +228,8 @@ f'''<script type="application/ld+json">
 {{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_title}","url":"{url}"{name_block},"description":"{json_escaped_description}"}}</script>'''
 
 def post_header(title_html, date):
-    name = gg.config.get('author', {}).get('name', '')
-    author_url = gg.config.get('author', {}).get('url', '')
+    name = CONFIG.get('author', {}).get('name', '')
+    author_url = CONFIG.get('author', {}).get('url', '')
     name_and_date = date[:10]
     if len(name) and len(name_and_date):
         maybe_linked_author = name
@@ -302,23 +307,23 @@ def convert_path(filepath):
     return targetpath
 
 def convert_canonical(directory, targetpath):
-    base_url = gg.config.get('site', {}).get('base_url', '')
+    base_url = CONFIG.get('site', {}).get('base_url', '')
     targetpath = os.path.relpath(targetpath, directory)
     if targetpath.endswith('index.html'):
         return f'{base_url}/{targetpath[:-10]}'
     return f'{base_url}/{targetpath}'
 
 def pagetitle(title):
-    root_title = gg.config.get('site', {}).get('title', '')
+    root_title = CONFIG.get('site', {}).get('title', '')
     if len(title) and title != root_title:
         return f'{title} | {root_title}'
     return root_title
 
 def index(posts):
-    base_url = gg.config.get('site', {}).get('base_url', '')
-    root_title = gg.config.get('site', {}).get('title', '')
-    logo_url = base_url + '/' + gg.config.get('site', {}).get('logo', '')
-    author_url = gg.config.get('author', {}).get('url', '')
+    base_url = CONFIG.get('site', {}).get('base_url', '')
+    root_title = CONFIG.get('site', {}).get('title', '')
+    logo_url = base_url + '/' + CONFIG.get('site', {}).get('logo', '')
+    author_url = CONFIG.get('author', {}).get('url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
         day = post['date'][:10]
@@ -364,8 +369,8 @@ f'''<!DOCTYPE html>
 
 def csp_and_referrer():
     headers = [
-        gg.config.get('site', {}).get('csp', ''),
-        gg.config.get('site', {}).get('referrer', '')
+        CONFIG.get('site', {}).get('csp', ''),
+        CONFIG.get('site', {}).get('referrer', '')
     ]
     return '\n'.join(headers).strip()
 
@@ -376,7 +381,7 @@ def sitemap(posts):
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    additional_entries = gg.config.get('site', {}).get('additional_sitemap_entries', [])
+    additional_entries = CONFIG.get('site', {}).get('additional_sitemap_entries', [])
     all_entries = [(post['url'], post['last_modified']) for post in posts]
     all_entries = all_entries + [(entry, '') for entry in additional_entries]
     all_entries = sorted(all_entries, key=lambda entry: entry[0])
@@ -397,7 +402,7 @@ def create_newpost(title):
     write_file(kebab_case(title) + '.md', newpost(title))
 
 def generate(directories):
-    render_root_readme = gg.config.get('site', {}).get('render_root_readme', True)
+    render_root_readme = CONFIG.get('site', {}).get('render_root_readme', True)
     posts = []
     for directory in directories:
         paths = glob.glob(directory + '/**/*.md', recursive=True)
@@ -412,7 +417,7 @@ def generate(directories):
     if not render_root_readme:
         write_file('index.html', index(posts))
 
-    generate_sitemap = gg.config.get('site', {}).get('generate_sitemap', False)
+    generate_sitemap = CONFIG.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts))
 
