@@ -470,5 +470,4 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
     if args.get('newpost', None):
         create_newpost(args.get('newpost'))
     if len(args.get('directories')):
-        print(repr(config))
         generate(args.get('directories'), config)
