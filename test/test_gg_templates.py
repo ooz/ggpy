@@ -263,6 +263,9 @@ def test_sitemap():
   </url>
 </urlset>
 '''
+
+def test_sitemap_with_additional_entries():
+    posts = given_posts()
     config = {
         'site': {
             'additional_sitemap_entries': ['https://example.com/hallo']
