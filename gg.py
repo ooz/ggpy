@@ -328,9 +328,14 @@ def convert_canonical(directory, targetpath, config=None):
     config = config or {}
     base_url = config.get('site', {}).get('base_url', '')
     targetpath = os.path.relpath(targetpath, directory)
-    if targetpath.endswith('index.html'):
-        return f'{base_url}/{targetpath[:-10]}'
-    return f'{base_url}/{targetpath}'
+    if len(base_url):
+        if targetpath.endswith('index.html'):
+            return f'{base_url}/{targetpath[:-10]}'
+        return f'{base_url}/{targetpath}'
+    else:
+        if targetpath.endswith('index.html') and targetpath != 'index.html':
+            return f'{targetpath[:-10]}'
+    return targetpath
 
 def pagetitle(title='', config=None):
     config = config or {}

@@ -27,6 +27,10 @@ def test_convert_canonical():
     assert gg.convert_canonical('.', 'test/features/index.html', config) == 'https://ooz.github.io/ggpy/test/features/'
     assert gg.convert_canonical('.', 'test/some-post.html', config) == 'https://ooz.github.io/ggpy/test/some-post.html'
 
+    assert gg.convert_canonical('.', 'index.html') == 'index.html'
+    assert gg.convert_canonical('.', 'test/features/index.html') == 'test/features/'
+    assert gg.convert_canonical('.', 'test/some-post.html') == 'test/some-post.html'
+
 def test_kebab_case():
     assert gg.kebab_case('New Post 2') == 'new-post-2'
 
@@ -42,3 +46,6 @@ def test_read_post():
     assert post['tags'] == ''
     assert post['title'] == ''
     assert post['url'] == 'https://ooz.github.io/ggpy/'
+
+    post = gg.read_post('.', "README.md")
+    assert post['url'] == 'index.html'
