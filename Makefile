@@ -2,11 +2,11 @@
 install_pipenv init test deploy \
 all help newpost openlatest update
 
-help: ## Show this help
-	@grep -Eh '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
 all: ## Builds the site, generates all pages from *.md files
 	pipenv run python gg.py ./
+
+help: ## Show this help
+	@grep -Eh '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 newpost: ## Creates a new post .md file with current time
 	pipenv run python gg.py --newpost
