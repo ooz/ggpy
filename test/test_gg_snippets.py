@@ -4,8 +4,9 @@
 import gg
 
 def test_pagetitle():
-    assert gg.pagetitle('Good Generator.py') == 'Good Generator.py'
-    assert gg.pagetitle('Some Page') == 'Some Page | Good Generator.py'
+    assert gg.pagetitle('Good Generator.py', gg.CONFIG) == 'Good Generator.py'
+    assert gg.pagetitle('Some Page', gg.CONFIG) == 'Some Page | Good Generator.py'
+    assert gg.pagetitle('Title with default config') == 'Title with default config'
 
 def test_style():
     style = gg.style()

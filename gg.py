@@ -57,7 +57,7 @@ def post_template(canonical_url, body, md, root, config=None):
     raw_title = ''.join(md.Meta.get('title', ''))
     raw_description = ''.join(md.Meta.get('description', raw_title))
     base_url = config.get('site', {}).get('base_url', '')
-    logo_url = base_url + '/' + CONFIG.get('site', {}).get('logo', '')
+    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
     author_name = config.get('author', {}).get('name', '')
     author_url = config.get('author', {}).get('url', '')
     return \
@@ -69,7 +69,7 @@ f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 {csp_and_referrer()}
 
-<title>{pagetitle(title)}</title>
+<title>{pagetitle(title, config)}</title>
 <link rel="canonical" href="{canonical_url}">
 <link rel="shortcut icon" href="{logo_url}">
 
@@ -334,10 +334,13 @@ def convert_canonical(directory, targetpath):
         return f'{base_url}/{targetpath[:-10]}'
     return f'{base_url}/{targetpath}'
 
-def pagetitle(title):
-    root_title = CONFIG.get('site', {}).get('title', '')
+def pagetitle(title, config=None):
+    config = config or {}
+    root_title = config.get('site', {}).get('title', '')
     if len(title) and title != root_title:
-        return f'{title} | {root_title}'
+        if len(root_title):
+            return f'{title} | {root_title}'
+        return title
     return root_title
 
 def index(posts, config=None):
