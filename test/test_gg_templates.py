@@ -263,6 +263,28 @@ def test_sitemap():
   </url>
 </urlset>
 '''
+    config = {
+        'site': {
+            'additional_sitemap_entries': ['https://example.com/hallo']
+        }
+    }
+    sitemap = gg.sitemap(posts, config)
+    assert sitemap == \
+'''<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/</loc>
+    <lastmod>2020-02-20</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/blog</loc>
+    <lastmod>2020-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/hallo</loc>
+  </url>
+</urlset>
+'''
 
 def test_newpost():
     assert re.match(r'''---
