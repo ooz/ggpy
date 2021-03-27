@@ -213,13 +213,19 @@ def opengraph(title, url, description, date, config=None):
     config = config or {}
     image = config.get('site', {}).get('base_url', '') + '/' + config.get('site', {}).get('logo', '')
     optional_image_tag = f'''\n<meta property="og:image" content="{image}" />''' if image != '/' else ''
-    return \
-f'''<meta property="og:title" content="{title}" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="{url}" />
-<meta property="og:description" content="{description}" />{optional_image_tag}
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="{date}" />'''
+    meta_properties = [
+        ('og:title', title),
+        ('og:type', 'article'),
+        ('og:url', url),
+        ('og:description', description)
+    ]
+    if image != '/':
+        meta_properties.append(('og:image', image))
+    meta_properties.append(('og:locale', 'en-US'))
+    meta_properties.append(('article:published_time', date))
+    return '\n'.join([_meta_property_tag(prop[0], prop[1]) for prop in meta_properties])
+def _meta_property_tag(property, content):
+    return f'''<meta property="{property}" content="{content}" />'''
 
 def json_ld(title, url, description, config=None):
     config = config or {}
