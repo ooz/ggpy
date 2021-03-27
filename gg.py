@@ -51,8 +51,15 @@ def post_template(canonical_url, body, md, root, config=None):
     raw_description = ''.join(md.Meta.get('description', raw_title))
     base_url = config.get('site', {}).get('base_url', '')
     logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    logo_url = logo_url if logo_url != '/' else ''
     author_name = config.get('author', {}).get('name', '')
-    author_url = config.get('author', {}).get('url', '')
+    title_html = md.reset().convert('# ' + title) if len(title) else ''
+
+    footer_content = [
+        footer_navigation(base_url, root),
+        about_and_social_icons(config)
+    ]
+    footer_content = '\n'.join([content for content in footer_content if content != ''])
     return \
 f'''<!DOCTYPE html>
 <html lang="en-US">
@@ -64,7 +71,7 @@ f'''<!DOCTYPE html>
 
 <title>{pagetitle(title, config)}</title>
 <link rel="canonical" href="{canonical_url}">
-<link rel="shortcut icon" href="{logo_url}">
+{f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
 
 {style()}
 {meta(author_name, description, tags)}
@@ -74,20 +81,26 @@ f'''<!DOCTYPE html>
 </head>
 
 <body onload="initTheme()">
-<header>
-<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-{post_header(md.reset().convert('# ' + title) if len(title) else '', date, config)}
-</header>
+{header(logo_url, title_html, date, config)}
 <section>
 {body}
 </section>
 <footer>
-{footer_navigation(base_url, root)}
-{about_and_social_icons(config)}
+{footer_content}
 </footer>
 </body>
 </html>
 '''
+
+def header(logo_url, title_html, date, config=None):
+    config = config or {}
+    lines = ['<header>']
+    author_url = config.get('author', {}).get('url', '')
+    if len(author_url) and len(logo_url):
+        lines.append(f'<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>')
+    lines.append(post_header(title_html, date, config))
+    lines.append('</header>')
+    return '\n'.join([line for line in lines if len(line)])
 
 def style():
     return \
@@ -183,25 +196,29 @@ def about_and_social_icons(config=None):
 
 def footer_navigation(root_url, is_root):
     nav = []
-    if not is_root:
+    if len(root_url) and not is_root:
         nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
     nav.append('''<a href="#" class="nav">top</a>''')
     nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
     return '\n'.join(nav)
 
 def meta(author, description, tags):
-    meta_names = [
-        ('author', author),
-        ('description', description),
-        ('keywords', tags)
-    ]
+    meta_names = []
+    if len(author):
+        meta_names.append(('author', author))
+    if len(description):
+        meta_names.append(('description', description))
+    if len(tags):
+        meta_names.append(('keywords', tags))
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
-def twitter(twitter_username):
+def twitter(username):
+    if not len(username):
+        return ''
     meta_names = [
-        ('twitter:author', twitter_username),
+        ('twitter:author', username),
         ('twitter:card', 'summary'),
-        ('twitter:creator', twitter_username)
+        ('twitter:creator', username)
     ]
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
@@ -349,6 +366,7 @@ def index(posts, config=None):
     base_url = config.get('site', {}).get('base_url', '')
     root_title = config.get('site', {}).get('title', '')
     logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    logo_url = logo_url if logo_url != '/' else ''
     author_url = config.get('author', {}).get('url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
@@ -370,7 +388,7 @@ f'''<!DOCTYPE html>
 
 <title>Index | {root_title}</title>
 <link rel="canonical" href="{base_url}">
-<link rel="shortcut icon" href="{logo_url}">
+{f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
 
 {style()}
 </head>
@@ -386,7 +404,7 @@ f'''<!DOCTYPE html>
 </tbody></table>
 </section>
 <footer>
-{footer_navigation(None, True)}
+{footer_navigation('', True)}
 {about_and_social_icons(config)}
 </footer>
 </body>

@@ -333,7 +333,6 @@ def then_head_ends_with_meta_tags(result, title='', raw_title='', description=''
     meta = \
 f'''<meta name="author" content="Good Gen" />
 <meta name="description" content="{description}" />
-<meta name="keywords" content="" />
 <meta name="twitter:author" content="@oozgo" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />
