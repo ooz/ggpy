@@ -12,7 +12,7 @@ Yet another static site generator. Written in Python.
 It powers its [website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [circleci](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
 While I have been using it for [my website](https://ooz.github.io) and [blog](https://oliz.io/blog/) for years,
-the configuration format is not stable and there is no official release, yet.
+the configuration and header formats are not stable and there is no official release, yet.
 
 Things I would like to get done for version 1.0:
 
