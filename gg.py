@@ -77,7 +77,7 @@ f'''<!DOCTYPE html>
 {meta(author_name, description, tags)}
 {twitter(CONFIG.get('social', {}).get('twitter_username', ''))}
 {opengraph(title, canonical_url, description, date)}
-{json_ld(raw_title, canonical_url, raw_description)}
+{json_ld(raw_title, canonical_url, raw_description, config)}
 </head>
 
 <body onload="initTheme()">
@@ -218,8 +218,9 @@ f'''<meta property="og:title" content="{title}" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="{date}" />'''
 
-def json_ld(title, url, description):
-    root_title = CONFIG.get('site', {}).get('title', '')
+def json_ld(title, url, description, config=None):
+    config = config or {}
+    root_title = config.get('site', {}).get('title', '')
     json_escaped_root_title = root_title.replace('"', '\\"')
     json_escaped_title = title.replace('"', '\\"')
     json_escaped_description = description.replace('"', '\\"')

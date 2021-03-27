@@ -49,10 +49,14 @@ def test_opengraph():
 <meta property="article:published_time" content="2020-02-20" />'''
 
 def test_json_ld():
-    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"')
+    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"', gg.CONFIG)
     assert json_ld == \
 '''<script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
+    json_ld_default_config = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"')
+    assert json_ld_default_config == \
+'''<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
 
 def test_post_header():
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', gg.CONFIG)
