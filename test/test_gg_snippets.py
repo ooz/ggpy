@@ -38,13 +38,21 @@ def test_twitter():
 <meta name="twitter:creator" content="@oozgo" />'''
 
 def test_opengraph():
-    opengraph = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20')
+    opengraph = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20', gg.CONFIG)
     assert opengraph == \
 '''<meta property="og:title" content="Title!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ooz.github.io/ggpy/" />
 <meta property="og:description" content="Nice text!" />
 <meta property="og:image" content="https://ooz.github.io/ggpy/static/gg.png" />
+<meta property="og:locale" content="en-US" />
+<meta property="article:published_time" content="2020-02-20" />'''
+    opengraph_default_config = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20')
+    assert opengraph_default_config == \
+'''<meta property="og:title" content="Title!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ooz.github.io/ggpy/" />
+<meta property="og:description" content="Nice text!" />
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="2020-02-20" />'''
 

@@ -76,7 +76,7 @@ f'''<!DOCTYPE html>
 {style()}
 {meta(author_name, description, tags)}
 {twitter(CONFIG.get('social', {}).get('twitter_username', ''))}
-{opengraph(title, canonical_url, description, date)}
+{opengraph(title, canonical_url, description, date, config)}
 {json_ld(raw_title, canonical_url, raw_description, config)}
 </head>
 
@@ -207,15 +207,17 @@ f'''<meta name="twitter:author" content="{twitter_username}" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="{twitter_username}" />'''
 
-# URL should end with "/" for a directory!
-def opengraph(title, url, description, date,
-              image=CONFIG.get('site', {}).get('base_url', '') + '/' + CONFIG.get('site', {}).get('logo', '')):
+def opengraph(title, url, description, date, config=None):
+    '''url parameter should end with "/" to denote a directory!
+    '''
+    config = config or {}
+    image = config.get('site', {}).get('base_url', '') + '/' + config.get('site', {}).get('logo', '')
+    optional_image_tag = f'''\n<meta property="og:image" content="{image}" />''' if image != '/' else ''
     return \
 f'''<meta property="og:title" content="{title}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{url}" />
-<meta property="og:description" content="{description}" />
-<meta property="og:image" content="{image}" />
+<meta property="og:description" content="{description}" />{optional_image_tag}
 <meta property="og:locale" content="en-US" />
 <meta property="article:published_time" content="{date}" />'''
 
