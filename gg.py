@@ -213,7 +213,6 @@ def twitter(twitter_username):
     ]
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
-
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
     '''
