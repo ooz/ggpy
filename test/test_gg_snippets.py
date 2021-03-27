@@ -71,6 +71,25 @@ def test_json_ld():
 '''<script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
 
+def test_header():
+    header = gg.header('https://example.com/logo.png', '<h1>Title!</h1>', '2021-03-27', config)
+    assert header == \
+'''<header>
+<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
+<div style="text-align:right;">
+<h1>Title!</h1>
+<small><a href="https://oliz.io/ggpy">Good Gen</a>, 2021-03-27</small>
+</div>
+</header>'''
+    header_default_config = gg.header('', '<h1>Title!</h1>', '2021-03-27')
+    assert header_default_config == \
+'''<header>
+<div style="text-align:right;">
+<h1>Title!</h1>
+<small>2021-03-27</small>
+</div>
+</header>'''
+
 def test_post_header():
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
     assert post_header == \
