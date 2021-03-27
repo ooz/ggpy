@@ -4,12 +4,13 @@
 import re
 
 import gg
+from ggconfig import config
 
 def test_post_template():
     canonical_url = 'https://ooz.github.io/ggpy/'
     body = '<h1>Hey!</h1>'
     markdown = gg.configure_markdown()
-    post = gg.post_template(canonical_url, body, markdown, False)
+    post = gg.post_template(canonical_url, body, markdown, False, config)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -135,7 +136,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 def test_index():
     posts = given_posts()
-    index = gg.index(posts, gg.CONFIG)
+    index = gg.index(posts, config)
     assert index == \
 '''<!DOCTYPE html>
 <html lang="en-US">

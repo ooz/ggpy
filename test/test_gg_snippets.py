@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import gg
+from ggconfig import config
 
 def test_pagetitle():
-    assert gg.pagetitle('Good Generator.py', gg.CONFIG) == 'Good Generator.py'
-    assert gg.pagetitle('Some Page', gg.CONFIG) == 'Some Page | Good Generator.py'
+    assert gg.pagetitle('Good Generator.py', config) == 'Good Generator.py'
+    assert gg.pagetitle('Some Page', config) == 'Some Page | Good Generator.py'
     assert gg.pagetitle('Title with default config') == 'Title with default config'
     assert gg.pagetitle('') == ''
     assert gg.pagetitle() == ''
-    assert gg.pagetitle('', gg.CONFIG) == 'Good Generator.py'
+    assert gg.pagetitle('', config) == 'Good Generator.py'
 
 def test_style():
     style = gg.style()
@@ -42,7 +43,7 @@ def test_twitter():
 <meta name="twitter:creator" content="@oozgo" />'''
 
 def test_opengraph():
-    opengraph = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20', gg.CONFIG)
+    opengraph = gg.opengraph('Title!', 'https://ooz.github.io/ggpy/', 'Nice text!', '2020-02-20', config)
     assert opengraph == \
 '''<meta property="og:title" content="Title!" />
 <meta property="og:type" content="article" />
@@ -61,7 +62,7 @@ def test_opengraph():
 <meta property="article:published_time" content="2020-02-20" />'''
 
 def test_json_ld():
-    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"', gg.CONFIG)
+    json_ld = gg.json_ld('Title! "BAM!"', 'https://ooz.github.io/ggpy/', 'It says "BAM!"', config)
     assert json_ld == \
 '''<script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
@@ -71,7 +72,7 @@ def test_json_ld():
 {"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://ooz.github.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
 
 def test_post_header():
-    post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', gg.CONFIG)
+    post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
     assert post_header == \
 '''<div style="text-align:right;">
 <h1 id="title">Title!</h1>
@@ -92,7 +93,7 @@ def test_footer_navigation():
 <a href="javascript:toggleTheme()" class="nav">🌓</a>'''
 
 def test_about_and_social_icons():
-    about_and_social = gg.about_and_social_icons(gg.CONFIG)
+    about_and_social = gg.about_and_social_icons(config)
     assert about_and_social == \
 '''<a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>

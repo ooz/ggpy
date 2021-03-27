@@ -25,12 +25,7 @@ import sys
 import time
 import markdown
 
-CONFIG = {}
-try:
-    import ggconfig
-    CONFIG = ggconfig.config
-except ImportError:
-    print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
+
 
 def configure_markdown():
     return markdown.Markdown(
@@ -49,7 +44,7 @@ def configure_markdown():
     )
 
 def post_template(canonical_url, body, md, root, config=None):
-    config = config or CONFIG
+    config = config or {}
     title = convert_meta(md, 'title')
     date = convert_meta(md, 'date')
     tags = convert_meta(md, 'tags')
@@ -67,7 +62,7 @@ f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-{csp_and_referrer()}
+{csp_and_referrer(config)}
 
 <title>{pagetitle(title, config)}</title>
 <link rel="canonical" href="{canonical_url}">
@@ -279,20 +274,22 @@ tags: draft
 ---
 '''
 
-def read_post(directory, filepath, root=False):
+def read_post(directory, filepath, root=False, config=None):
+    config = config or {}
     MD = configure_markdown()
     with open(filepath, 'r') as infile:
         markdown_post = infile.read()
         html_post = MD.reset().convert(markdown_post)
         targetpath = convert_path(filepath)
-        canonical_url = convert_canonical(directory, targetpath)
+        canonical_url = convert_canonical(directory, targetpath, config)
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
         html = post_template(canonical_url,
             html_post,
             MD,
-            root
+            root,
+            config
         )
         return {
             'filepath': targetpath,
@@ -327,8 +324,9 @@ def convert_path(filepath):
     targetpath += '.html'
     return targetpath
 
-def convert_canonical(directory, targetpath):
-    base_url = CONFIG.get('site', {}).get('base_url', '')
+def convert_canonical(directory, targetpath, config=None):
+    config = config or {}
+    base_url = config.get('site', {}).get('base_url', '')
     targetpath = os.path.relpath(targetpath, directory)
     if targetpath.endswith('index.html'):
         return f'{base_url}/{targetpath[:-10]}'
@@ -365,7 +363,7 @@ f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-{csp_and_referrer()}
+{csp_and_referrer(config)}
 
 <title>Index | {root_title}</title>
 <link rel="canonical" href="{base_url}">
@@ -392,21 +390,23 @@ f'''<!DOCTYPE html>
 </html>
 '''
 
-def csp_and_referrer():
+def csp_and_referrer(config=None):
+    config = config or {}
     headers = [
-        CONFIG.get('site', {}).get('csp', ''),
-        CONFIG.get('site', {}).get('referrer', '')
+        config.get('site', {}).get('csp', ''),
+        config.get('site', {}).get('referrer', '')
     ]
     return '\n'.join(headers).strip()
 
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
-def sitemap(posts):
+def sitemap(posts, config=None):
+    config = config or {}
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    additional_entries = CONFIG.get('site', {}).get('additional_sitemap_entries', [])
+    additional_entries = config.get('site', {}).get('additional_sitemap_entries', [])
     all_entries = [(post['url'], post['last_modified']) for post in posts]
     all_entries = all_entries + [(entry, '') for entry in additional_entries]
     all_entries = sorted(all_entries, key=lambda entry: entry[0])
@@ -427,7 +427,7 @@ def create_newpost(title):
     write_file(kebab_case(title) + '.md', newpost(title))
 
 def generate(directories, config=None):
-    config = config or CONFIG
+    config = config or {}
     render_root_readme = config.get('site', {}).get('render_root_readme', True)
     posts = []
     for directory in directories:
@@ -435,7 +435,7 @@ def generate(directories, config=None):
         for path in paths:
             root_readme = is_root_readme(path)
             if not root_readme or render_root_readme:
-                post = read_post(directory, path, root=root_readme)
+                post = read_post(directory, path, root=root_readme, config=config)
                 write_file(post['filepath'], post['html'])
                 posts.append(post)
 
@@ -445,7 +445,15 @@ def generate(directories, config=None):
 
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
-        write_file('sitemap.xml', sitemap(posts))
+        write_file('sitemap.xml', sitemap(posts, config))
+
+def load_config():
+    try:
+        import ggconfig
+        return ggconfig.config
+    except ImportError:
+        print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
+    return {}
 
 if __name__ == '__main__': # pragma: no cover because main wrapper
     parser = argparse.ArgumentParser(description='The Good Generator for static websites and blogs.')
@@ -455,8 +463,12 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
                         help='Creates a new post with TITLE.')
     parser.add_argument('directories', metavar='DIR', type=str, nargs='*',
                         help='Directory to convert recursively.')
+
     args = vars(parser.parse_args())
+    config = load_config()
+
     if args.get('newpost', None):
         create_newpost(args.get('newpost'))
     if len(args.get('directories')):
-        generate(args.get('directories'))
+        print(repr(config))
+        generate(args.get('directories'), config)
