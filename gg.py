@@ -409,16 +409,10 @@ def html_head_body_boilerplate():
 <body onload="initTheme()">'''
 
 def html_section(content):
-    return \
-f'''<section>
-{content}
-</section>'''
+    return html_tag_block('section', content)
 
 def footer(content):
-    return \
-f'''<footer>
-{content}
-</footer>'''
+    return html_tag_block('footer', content)
 
 def html_tag_block(tag, content):
     return \
