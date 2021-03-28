@@ -480,7 +480,7 @@ def read_post(directory, filepath, root=False, config=None):
 
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
-    if len(field_value) > 0:
+    if len(field_value):
         return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
     return default
 
