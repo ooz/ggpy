@@ -98,21 +98,19 @@ def footer_navigation(root_url, is_root):
 
 def about_and_social_icons(config=None):
     config = config or {}
-    github = config.get('social', {}).get('github_url', '')
-    twitter = config.get('social', {}).get('twitter_url', '')
     email = config.get('social', {}).get('email', config.get('author', {}).get('email', ''))
-    about = config.get('site', {}).get('about_url', '')
-    icons = []
 
-    if len(email):
-        icons.append('<a href="mailto:%s" class="social">email</a>' % email)
-    if len(twitter):
-        icons.append('<a href="%s" class="social">twitter</a>' % twitter)
-    if len(github):
-        icons.append('<a href="%s" class="social">github</a>' % github)
-    if len(about):
-        icons.append('<a href="%s" class="social">about</a>' % about)
-    return '\n'.join(icons)
+    return '\n'.join([social for social in [
+        _social_link('email', f'mailto:{email}' if len(email) else ''),
+        _social_link('twitter', config.get('social', {}).get('twitter_url', '')),
+        _social_link('github', config.get('social', {}).get('github_url', '')),
+        _social_link('about', config.get('site', {}).get('about_url', ''))
+    ] if len(social)])
+
+def _social_link(label, link):
+    if len(link):
+        return f'<a href="{link}" class="social">{label}</a>'
+    return ''
 
 ## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
