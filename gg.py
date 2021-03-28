@@ -424,7 +424,6 @@ def template_sitemap(posts, config=None):
 ##############################################################################
 # PURE LIBRARY FUNCTIONS, UTILITIES AND HELPERS
 ##############################################################################
-
 _KEBAB_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz-'
 def kebab_case(word):
     return ''.join(c for c in word.lower().replace(' ', '-') if c in _KEBAB_ALPHABET)
