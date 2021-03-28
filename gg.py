@@ -87,7 +87,7 @@ def meta(author, description, tags):
         meta_names.append(('description', description))
     if len(tags):
         meta_names.append(('keywords', tags))
-    return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
+    return '\n'.join([_meta_tag('name', name[0], name[1]) for name in meta_names])
 
 def twitter(config=None):
     config = config or {}
@@ -99,10 +99,10 @@ def twitter(config=None):
         ('twitter:card', 'summary'),
         ('twitter:creator', username)
     ]
-    return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
+    return '\n'.join([_meta_tag('name', name[0], name[1]) for name in meta_names])
 
-def _meta_name_tag(name, content):
-    return f'''<meta name="{name}" content="{content}">'''
+def _meta_tag(type, type_value, content):
+    return html_tag_empty('meta', [(type, type_value), ('content', content)])
 
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
@@ -120,10 +120,7 @@ def opengraph(title, url, description, date, config=None):
         meta_properties.append(('og:image', image))
     meta_properties.append(('og:locale', 'en-US'))
     meta_properties.append(('article:published_time', date))
-    return '\n'.join([_meta_property_tag(prop[0], prop[1]) for prop in meta_properties])
-
-def _meta_property_tag(property, content):
-    return f'''<meta property="{property}" content="{content}">'''
+    return '\n'.join([_meta_tag('property', prop[0], prop[1]) for prop in meta_properties])
 
 def json_ld(title, url, description, config=None):
     config = config or {}
