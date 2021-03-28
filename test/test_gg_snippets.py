@@ -123,11 +123,7 @@ def test_about_and_social_icons():
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
-def test_footer():
-    assert gg.footer('<p>in closing</p>') == \
-'''<footer>
-<p>in closing</p>
-</footer>'''
+
 
 def test_html_opening_boilerplate():
     assert gg.html_opening_boilerplate() == \
@@ -143,6 +139,24 @@ def test_html_head_body_boilerplate():
 '''</head>
 
 <body onload="initTheme()">'''
+
+def test_html_section():
+    assert gg.html_section('<h1>Content!</h1>') == \
+'''<section>
+<h1>Content!</h1>
+</section>'''
+
+def test_footer():
+    assert gg.footer('<p>in closing</p>') == \
+'''<footer>
+<p>in closing</p>
+</footer>'''
+
+def test_html_tag_block():
+    assert gg.html_tag_block('footer', '<p>in closing</p>') == \
+'''<footer>
+<p>in closing</p>
+</footer>'''
 
 def test_html_closing_boilerplate():
     assert gg.html_closing_boilerplate() == \

@@ -75,9 +75,7 @@ f'''{html_opening_boilerplate()}
 {json_ld(raw_title, canonical_url, raw_description, config)}
 {html_head_body_boilerplate()}
 {header(logo_url, title_html, date, config)}
-<section>
-{body}
-</section>
+{html_section(body)}
 {footer(footer_content)}
 {html_closing_boilerplate()}
 '''
@@ -370,6 +368,9 @@ def index(posts, config=None):
         if (day != '' and title != ''):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = '\n'.join(posts_html)
+    section_content = f'''<table><tbody>
+{posts_html}
+</tbody></table>'''
     footer_content = f'''{footer_navigation('', True)}
 {about_and_social_icons(config)}'''
     return \
@@ -386,22 +387,12 @@ f'''{html_opening_boilerplate()}
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 <h1>Index</h1>
 </header>
-<section>
-<table><tbody>
-{posts_html}
-</tbody></table>
-</section>
+{html_section(section_content)}
 {footer(footer_content)}
 {html_closing_boilerplate()}
 '''
 
 # HTML SNIPPETS
-def footer(content):
-    return \
-f'''<footer>
-{content}
-</footer>'''
-
 def html_opening_boilerplate():
     return \
 '''<!DOCTYPE html>
@@ -416,6 +407,24 @@ def html_head_body_boilerplate():
 '''</head>
 
 <body onload="initTheme()">'''
+
+def html_section(content):
+    return \
+f'''<section>
+{content}
+</section>'''
+
+def footer(content):
+    return \
+f'''<footer>
+{content}
+</footer>'''
+
+def html_tag_block(tag, content):
+    return \
+f'''<{tag}>
+{content}
+</{tag}>'''
 
 def html_closing_boilerplate():
     return \
