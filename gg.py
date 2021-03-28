@@ -41,44 +41,9 @@ def configure_markdown():
         ]
     )
 
-def post_template(canonical_url, body, md, root, config=None):
-    config = config or {}
-    title = convert_meta(md, 'title')
-    date = convert_meta(md, 'date')
-    tags = convert_meta(md, 'tags')
-    description = convert_meta(md, 'description', default=title)
-    raw_title = ''.join(md.Meta.get('title', ''))
-    raw_description = ''.join(md.Meta.get('description', raw_title))
-    base_url = config.get('site', {}).get('base_url', '')
-    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
-    logo_url = logo_url if logo_url != '/' else ''
-    author_name = config.get('author', {}).get('name', '')
-    title_html = md.reset().convert('# ' + title) if len(title) else ''
-
-    footer_content = [
-        footer_navigation(base_url, root),
-        about_and_social_icons(config)
-    ]
-    footer_content = '\n'.join([content for content in footer_content if content != ''])
-    return \
-f'''{html_opening_boilerplate()}
-{csp_and_referrer(config)}
-{html_tag_line('title', pagetitle(title, config))}
-{html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)])}
-{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{html_tag_block('style', inline_style())}
-{html_tag_block('script', inline_javascript())}
-{meta(author_name, description, tags)}
-{twitter(config)}
-{opengraph(title, canonical_url, description, date, config)}
-{json_ld(raw_title, canonical_url, raw_description, config)}
-{html_head_body_boilerplate()}
-{html_tag_block('header', header(logo_url, title_html, date, config))}
-{html_tag_block('section', body)}
-{html_tag_block('footer', footer_content)}
-{html_closing_boilerplate()}
-'''
-
+##############################################################################
+# CONTENT SNIPPETS
+##############################################################################
 def header(logo_url, title_html, date, config=None):
     config = config or {}
     author_url = config.get('author', {}).get('url', '')
@@ -191,47 +156,6 @@ def post_header(title_html, date, config=None):
 </div>'''
     return header
 
-def newpost(title='Title', description='-'):
-    '''Deprecation: 'draft' tag may become '__draft' in the future
-    '''
-    now = time.localtime()
-    now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
-    return \
-f'''---
-title: {title}
-description: {description}
-date: {now_utc_formatted}
-tags: draft
----
-'''
-
-def read_post(directory, filepath, root=False, config=None):
-    config = config or {}
-    MD = configure_markdown()
-    with open(filepath, 'r') as infile:
-        markdown_post = infile.read()
-        html_post = MD.reset().convert(markdown_post)
-        targetpath = convert_path(filepath)
-        canonical_url = convert_canonical(directory, targetpath, config)
-        date = convert_meta(MD, 'date')
-        tags = convert_meta(MD, 'tags')
-        title = convert_meta(MD, 'title')
-        html = post_template(canonical_url,
-            html_post,
-            MD,
-            root,
-            config
-        )
-        return {
-            'filepath': targetpath,
-            'html': html,
-            'date': date,
-            'url': canonical_url,
-            'title': title,
-            'tags': tags,
-            'last_modified': last_modified(filepath)
-        }
-
 def last_modified(filepath):
     repo = git.Repo()
     for commit in repo.iter_commits(paths=filepath, max_count=1):
@@ -277,44 +201,9 @@ def pagetitle(title='', config=None):
         return title
     return root_title
 
-def index(posts, config=None):
-    config = config or {}
-    base_url = config.get('site', {}).get('base_url', '')
-    root_title = config.get('site', {}).get('title', '')
-    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
-    logo_url = logo_url if logo_url != '/' else ''
-    author_url = config.get('author', {}).get('url', '')
-    posts_html = []
-    for post in reversed(sorted(posts, key=lambda post: post['date'])):
-        day = post['date'][:10]
-        title = post['title']
-        url = post['url']
-        if (day != '' and title != ''):
-            posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
-    posts_html = '\n'.join(posts_html)
-    header_content = f'''<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-<h1>Index</h1>'''
-    section_content = f'''<table><tbody>
-{posts_html}
-</tbody></table>'''
-    footer_content = f'''{footer_navigation('', True)}
-{about_and_social_icons(config)}'''
-    return \
-f'''{html_opening_boilerplate()}
-{csp_and_referrer(config)}
-{html_tag_line('title', f'Index | {root_title}')}
-{html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)])}
-{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{html_tag_block('style', inline_style())}
-{html_tag_block('script', inline_javascript())}
-{html_head_body_boilerplate()}
-{html_tag_block('header', header_content)}
-{html_tag_block('section', section_content)}
-{html_tag_block('footer', footer_content)}
-{html_closing_boilerplate()}
-'''
-
+##############################################################################
 # HTML SNIPPETS
+##############################################################################
 def csp_and_referrer(config=None):
     config = config or {}
     headers = [
@@ -431,6 +320,103 @@ def inline_javascript():
     return '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }'''
 
+##############################################################################
+# TEMPLATES
+# For
+# * New markdown file
+# * Rendering markdown file as HTML
+# * Rendering index of all non-draft markdown files as HTML
+# * Rendering sitemap
+##############################################################################
+def newpost(title='Title', description='-'):
+    '''Deprecation: 'draft' tag may become '__draft' in the future
+    '''
+    now = time.localtime()
+    now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
+    return \
+f'''---
+title: {title}
+description: {description}
+date: {now_utc_formatted}
+tags: draft
+---
+'''
+
+def post_template(canonical_url, body, md, root, config=None):
+    config = config or {}
+    title = convert_meta(md, 'title')
+    date = convert_meta(md, 'date')
+    tags = convert_meta(md, 'tags')
+    description = convert_meta(md, 'description', default=title)
+    raw_title = ''.join(md.Meta.get('title', ''))
+    raw_description = ''.join(md.Meta.get('description', raw_title))
+    base_url = config.get('site', {}).get('base_url', '')
+    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    logo_url = logo_url if logo_url != '/' else ''
+    author_name = config.get('author', {}).get('name', '')
+    title_html = md.reset().convert('# ' + title) if len(title) else ''
+
+    footer_content = [
+        footer_navigation(base_url, root),
+        about_and_social_icons(config)
+    ]
+    footer_content = '\n'.join([content for content in footer_content if content != ''])
+    return \
+f'''{html_opening_boilerplate()}
+{csp_and_referrer(config)}
+{html_tag_line('title', pagetitle(title, config))}
+{html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)])}
+{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
+{html_tag_block('style', inline_style())}
+{html_tag_block('script', inline_javascript())}
+{meta(author_name, description, tags)}
+{twitter(config)}
+{opengraph(title, canonical_url, description, date, config)}
+{json_ld(raw_title, canonical_url, raw_description, config)}
+{html_head_body_boilerplate()}
+{html_tag_block('header', header(logo_url, title_html, date, config))}
+{html_tag_block('section', body)}
+{html_tag_block('footer', footer_content)}
+{html_closing_boilerplate()}
+'''
+
+def index(posts, config=None):
+    config = config or {}
+    base_url = config.get('site', {}).get('base_url', '')
+    root_title = config.get('site', {}).get('title', '')
+    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    logo_url = logo_url if logo_url != '/' else ''
+    author_url = config.get('author', {}).get('url', '')
+    posts_html = []
+    for post in reversed(sorted(posts, key=lambda post: post['date'])):
+        day = post['date'][:10]
+        title = post['title']
+        url = post['url']
+        if (day != '' and title != ''):
+            posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
+    posts_html = '\n'.join(posts_html)
+    header_content = f'''<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+<h1>Index</h1>'''
+    section_content = f'''<table><tbody>
+{posts_html}
+</tbody></table>'''
+    footer_content = f'''{footer_navigation('', True)}
+{about_and_social_icons(config)}'''
+    return \
+f'''{html_opening_boilerplate()}
+{csp_and_referrer(config)}
+{html_tag_line('title', f'Index | {root_title}')}
+{html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)])}
+{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
+{html_tag_block('style', inline_style())}
+{html_tag_block('script', inline_javascript())}
+{html_head_body_boilerplate()}
+{html_tag_block('header', header_content)}
+{html_tag_block('section', section_content)}
+{html_tag_block('footer', footer_content)}
+{html_closing_boilerplate()}
+'''
+
 def sitemap(posts, config=None):
     config = config or {}
     sitemap_xml = []
@@ -449,7 +435,9 @@ def sitemap(posts, config=None):
     sitemap_xml.append('</urlset>\n')
     return '\n'.join(sitemap_xml)
 
+##############################################################################
 # SIDE-EFFECT METHODS, interacting with filesystem
+##############################################################################
 def write_file(filepath, content=''):
     with open(filepath, 'w') as f:
         f.write(content)
@@ -481,7 +469,36 @@ def generate(directories, config=None):
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
+def read_post(directory, filepath, root=False, config=None):
+    config = config or {}
+    MD = configure_markdown()
+    with open(filepath, 'r') as infile:
+        markdown_post = infile.read()
+        html_post = MD.reset().convert(markdown_post)
+        targetpath = convert_path(filepath)
+        canonical_url = convert_canonical(directory, targetpath, config)
+        date = convert_meta(MD, 'date')
+        tags = convert_meta(MD, 'tags')
+        title = convert_meta(MD, 'title')
+        html = post_template(canonical_url,
+            html_post,
+            MD,
+            root,
+            config
+        )
+        return {
+            'filepath': targetpath,
+            'html': html,
+            'date': date,
+            'url': canonical_url,
+            'title': title,
+            'tags': tags,
+            'last_modified': last_modified(filepath)
+        }
+
+##############################################################################
 # MAIN PROGRAM
+##############################################################################
 if __name__ == '__main__': # pragma: no cover because main wrapper
     parser = argparse.ArgumentParser(description='The Good Generator for static websites and blogs.')
     parser.add_argument('-n', '--newpost', metavar='TITLE', type=str, nargs='?',
