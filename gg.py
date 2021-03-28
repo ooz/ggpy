@@ -66,7 +66,8 @@ f'''{html_opening_boilerplate()}
 {html_tag_line('title', pagetitle(title, config))}
 {html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)])}
 {html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{style()}
+{html_tag_block('style', inline_style())}
+{html_tag_block('script', inline_javascript())}
 {meta(author_name, description, tags)}
 {twitter(config)}
 {opengraph(title, canonical_url, description, date, config)}
@@ -86,77 +87,6 @@ def header(logo_url, title_html, date, config=None):
         lines.append(f'<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>')
     lines.append(post_header(title_html, date, config))
     return '\n'.join([line for line in lines if len(line)])
-
-def style():
-    style = '''body {
-    font-size: 18px;
-    font-family: sans-serif;
-    line-height: 1.6;
-    color: #363636;
-    background: #FFF;
-    margin: 1rem auto;
-    padding: 0 10px;
-    max-width: 700px;
-    scroll-behavior: smooth;
-}
-a { color: #07A; text-decoration: none; }
-blockquote {
-    background: #EAEAEA;
-    border-left: .3rem solid #07A;
-    border-radius: .3rem;
-    margin: 0 .2rem;
-    padding: 0 .5rem;
-}
-code {
-    font-size: 80%;
-    background: #EAEAEA;
-    padding: .2rem .5rem;
-    white-space: nowrap;
-}
-footer { margin-top: 1rem; }
-h1 { text-align: center; margin: 0 auto; }
-h1, h2, h3, h4, h5, h6 { font-family: serif; font-weight: bold; }
-header { text-align:center; }
-img { max-width: 100%; }
-ul.task-list, ul.task-list li.task-list-item {
-    list-style-type: none;
-    list-style-image: none;
-}
-pre { border-left: 0.3rem solid #07A; }
-pre > code {
-    font-size: 14px;
-    background: #EAEAEA;
-    box-sizing: inherit;
-    display: block;
-    overflow-x: auto;
-    margin: 0 .2rem;
-    white-space: pre;
-}
-table {
-    border-spacing: 0;
-    width: 100%;
-}
-td, th {
-    border-bottom: .1rem solid;
-    padding: .8rem 1rem;
-    text-align: left;
-    vertical-align: top;
-}
-
-.dark-mode { color: #CACACA; background: #363636; }
-.dark-mode a { color: #0A7; }
-.dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
-.dark-mode code { background: #222; }
-.dark-mode pre { border-left: 0.3rem solid #0A7; }
-
-.avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
-.nav { float: left; margin-right: 1rem; }
-.social { float: right; margin-left: 1rem; }'''
-    js = '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
-function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }'''
-    return f'''{html_tag_block('style', style)}
-{html_tag_block('script', js)}
-'''
 
 def about_and_social_icons(config=None):
     config = config or {}
@@ -375,7 +305,8 @@ f'''{html_opening_boilerplate()}
 {html_tag_line('title', f'Index | {root_title}')}
 {html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)])}
 {html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{style()}
+{html_tag_block('style', inline_style())}
+{html_tag_block('script', inline_javascript())}
 {html_head_body_boilerplate()}
 {html_tag_block('header', header_content)}
 {html_tag_block('section', section_content)}
@@ -419,6 +350,78 @@ def html_closing_boilerplate():
     return \
 '''</body>
 </html>'''
+
+# INLINE CSS AND JAVASCRIPT
+# From: https://raw.githubusercontent.com/ooz/templates/master/html/oz.css
+def inline_style():
+    return '''body {
+    font-size: 18px;
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #363636;
+    background: #FFF;
+    margin: 1rem auto;
+    padding: 0 10px;
+    max-width: 700px;
+    scroll-behavior: smooth;
+}
+a { color: #07A; text-decoration: none; }
+blockquote {
+    background: #EAEAEA;
+    border-left: .3rem solid #07A;
+    border-radius: .3rem;
+    margin: 0 .2rem;
+    padding: 0 .5rem;
+}
+code {
+    font-size: 80%;
+    background: #EAEAEA;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+}
+footer { margin-top: 1rem; }
+h1 { text-align: center; margin: 0 auto; }
+h1, h2, h3, h4, h5, h6 { font-family: serif; font-weight: bold; }
+header { text-align:center; }
+img { max-width: 100%; }
+ul.task-list, ul.task-list li.task-list-item {
+    list-style-type: none;
+    list-style-image: none;
+}
+pre { border-left: 0.3rem solid #07A; }
+pre > code {
+    font-size: 14px;
+    background: #EAEAEA;
+    box-sizing: inherit;
+    display: block;
+    overflow-x: auto;
+    margin: 0 .2rem;
+    white-space: pre;
+}
+table {
+    border-spacing: 0;
+    width: 100%;
+}
+td, th {
+    border-bottom: .1rem solid;
+    padding: .8rem 1rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.dark-mode { color: #CACACA; background: #363636; }
+.dark-mode a { color: #0A7; }
+.dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
+.dark-mode code { background: #222; }
+.dark-mode pre { border-left: 0.3rem solid #0A7; }
+
+.avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
+.nav { float: left; margin-right: 1rem; }
+.social { float: right; margin-left: 1rem; }'''
+# From: https://raw.githubusercontent.com/ooz/templates/master/html/oz-dark-mode.js
+def inline_javascript():
+    return '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
+function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }'''
 
 def csp_and_referrer(config=None):
     config = config or {}

@@ -93,7 +93,6 @@ td, th {
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
 </script>
-
 <meta name="author" content="Good Gen" />
 <meta name="twitter:author" content="@oozgo" />
 <meta name="twitter:card" content="summary" />
@@ -217,7 +216,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </script>
 
 
-
 <meta property="og:title" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="index.html" />
@@ -328,7 +326,6 @@ td, th {
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
 </script>
-
 </head>
 
 <body onload="initTheme()">

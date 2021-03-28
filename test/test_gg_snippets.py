@@ -12,22 +12,6 @@ def test_pagetitle():
     assert gg.pagetitle() == ''
     assert gg.pagetitle('', config) == 'Good Generator.py'
 
-def test_style():
-    style = gg.style()
-    # CSS
-    assert '<style>' in style
-    assert 'body {' in style
-    assert '.avatar' in style
-    assert '.nav' in style
-    assert '.social' in style
-    assert '.dark-mode' in style
-    assert '</style>' in style
-    # JS for dark-mode switch
-    assert '<script>' in style
-    assert 'function toggleTheme' in style
-    assert 'function initTheme' in style
-    assert '</script>' in style
-
 def test_meta():
     meta = gg.meta('oz', 'Nice text!', 'foo, bar, tags')
     assert meta == \
@@ -120,7 +104,6 @@ def test_about_and_social_icons():
     assert about_and_social_default_config == ''
 
 
-
 def test_html_opening_boilerplate():
     assert gg.html_opening_boilerplate() == \
 '''<!DOCTYPE html>
@@ -155,3 +138,16 @@ def test_html_closing_boilerplate():
     assert gg.html_closing_boilerplate() == \
 '''</body>
 </html>'''
+
+def test_inline_style():
+    style = gg.inline_style()
+    assert 'body {' in style
+    assert '.dark-mode' in style
+    assert '.avatar' in style
+    assert '.nav' in style
+    assert '.social' in style
+
+def test_inline_javascript():
+    js = gg.inline_javascript()
+    assert 'function toggleTheme' in js
+    assert 'function initTheme' in js
