@@ -235,7 +235,8 @@ def html_tag_empty(tag, attributes):
 def html_closing_boilerplate():
     return \
 '''</body>
-</html>'''
+</html>
+'''
 
 # INLINE CSS AND JAVASCRIPT
 # From: https://raw.githubusercontent.com/ooz/templates/master/html/oz.css
@@ -366,8 +367,7 @@ f'''{html_opening_boilerplate()}
 {html_tag_block('header', header(logo_url, title_html, date, config))}
 {html_tag_block('section', body)}
 {html_tag_block('footer', footer_content)}
-{html_closing_boilerplate()}
-'''
+{html_closing_boilerplate()}'''
 
 def template_index(posts, config=None):
     config = config or {}
@@ -388,20 +388,20 @@ def template_index(posts, config=None):
 <h1>Index</h1>'''
     section_content = html_tag_block('table', html_tag_block('tbody', posts_html))
     footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
-    return \
-f'''{html_opening_boilerplate()}
-{csp_and_referrer(config)}
-{html_tag_line('title', f'Index | {root_title}')}
-{html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)])}
-{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{html_tag_block('style', inline_style())}
-{html_tag_block('script', inline_javascript())}
-{html_head_body_boilerplate()}
-{html_tag_block('header', header_content)}
-{html_tag_block('section', section_content)}
-{html_tag_block('footer', footer_content)}
-{html_closing_boilerplate()}
-'''
+    return '\n'.join([
+        html_opening_boilerplate(),
+        csp_and_referrer(config),
+        html_tag_line('title', f'Index | {root_title}'),
+        html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)]),
+        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else '',
+        html_tag_block('style', inline_style()),
+        html_tag_block('script', inline_javascript()),
+        html_head_body_boilerplate(),
+        html_tag_block('header', header_content),
+        html_tag_block('section', section_content),
+        html_tag_block('footer', footer_content),
+        html_closing_boilerplate()
+    ])
 
 def template_sitemap(posts, config=None):
     config = config or {}

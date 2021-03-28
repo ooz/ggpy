@@ -137,7 +137,8 @@ def test_html_tag_empty():
 def test_html_closing_boilerplate():
     assert gg.html_closing_boilerplate() == \
 '''</body>
-</html>'''
+</html>
+'''
 
 def test_inline_style():
     style = gg.inline_style()
