@@ -215,7 +215,6 @@ def then_is_framed_by_html_boilerplate(result):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 <meta name="referrer" content="no-referrer">
-
 '''
     html_end = \
 '''</body>
@@ -245,7 +244,6 @@ def then_has_title_canonical_and_favicon(result, title='', canonical_url='', fav
 f'''<title>{title}</title>
 <link rel="canonical" href="{canonical_url}">
 <link rel="shortcut icon" href="{favicon_url}">
-
 '''
     assert result.startswith(title_and_links)
     return result.replace(title_and_links, '')

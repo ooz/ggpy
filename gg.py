@@ -63,11 +63,9 @@ def post_template(canonical_url, body, md, root, config=None):
     return \
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
-
 {html_tag_line('title', pagetitle(title, config))}
 <link rel="canonical" href="{canonical_url}">
 {f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
-
 {style()}
 {meta(author_name, description, tags)}
 {twitter(config)}

@@ -20,11 +20,9 @@ def test_post_template():
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 <meta name="referrer" content="no-referrer">
-
 <title>Good Generator.py</title>
 <link rel="canonical" href="https://oliz.io/ggpy/">
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
-
 <style>
 body {
     font-size: 18px;
@@ -144,10 +142,8 @@ def test_post_template_without_config():
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-
 <title></title>
 <link rel="canonical" href="index.html">
-
 
 <style>
 body {
