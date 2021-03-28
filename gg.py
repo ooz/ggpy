@@ -156,15 +156,7 @@ def post_header(title_html, date, config=None):
 </div>'''
     return header
 
-def last_modified(filepath):
-    repo = git.Repo()
-    for commit in repo.iter_commits(paths=filepath, max_count=1):
-        return time.strftime('%Y-%m-%d', time.gmtime(commit.authored_date))
-    return ''
 
-KEBAB_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz-'
-def kebab_case(word):
-    return ''.join(c for c in word.lower().replace(' ', '-') if c in KEBAB_ALPHABET)
 
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
@@ -436,7 +428,15 @@ def template_sitemap(posts, config=None):
     return '\n'.join(sitemap_xml)
 
 ##############################################################################
-# SIDE-EFFECT METHODS, interacting with filesystem
+# PURE LIBRARY FUNCTIONS, UTILITIES AND HELPERS
+##############################################################################
+
+_KEBAB_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz-'
+def kebab_case(word):
+    return ''.join(c for c in word.lower().replace(' ', '-') if c in _KEBAB_ALPHABET)
+
+##############################################################################
+# SIDE-EFFECTS, interacting with filesystem
 ##############################################################################
 def write_file(filepath, content=''):
     with open(filepath, 'w') as f:
@@ -495,6 +495,12 @@ def read_post(directory, filepath, root=False, config=None):
             'tags': tags,
             'last_modified': last_modified(filepath)
         }
+
+def last_modified(filepath):
+    repo = git.Repo()
+    for commit in repo.iter_commits(paths=filepath, max_count=1):
+        return time.strftime('%Y-%m-%d', time.gmtime(commit.authored_date))
+    return ''
 
 ##############################################################################
 # MAIN PROGRAM
