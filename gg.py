@@ -90,9 +90,7 @@ def header(logo_url, title_html, date, config=None):
     return '\n'.join([line for line in lines if len(line)])
 
 def style():
-    return \
-'''<style>
-body {
+    style = '''body {
     font-size: 18px;
     font-family: sans-serif;
     line-height: 1.6;
@@ -155,12 +153,11 @@ td, th {
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
-.social { float: right; margin-left: 1rem; }
-</style>
-<script>
-function toggleTheme() { document.body.classList.toggle("dark-mode") }
-function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
-</script>
+.social { float: right; margin-left: 1rem; }'''
+    js = '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
+function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }'''
+    return f'''{html_tag_block('style', style)}
+{html_tag_block('script', js)}
 '''
 
 def about_and_social_icons(config=None):
