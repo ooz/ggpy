@@ -59,31 +59,14 @@ def header(logo_url, title_html, date, config=None):
     lines.append(post_header(title_html, date, config))
     return '\n'.join([line for line in lines if len(line)])
 
-def about_and_social_icons(config=None):
+def pagetitle(title='', config=None):
     config = config or {}
-    github = config.get('social', {}).get('github_url', '')
-    twitter = config.get('social', {}).get('twitter_url', '')
-    email = config.get('social', {}).get('email', config.get('author', {}).get('email', ''))
-    about = config.get('site', {}).get('about_url', '')
-    icons = []
-
-    if len(email):
-        icons.append('<a href="mailto:%s" class="social">email</a>' % email)
-    if len(twitter):
-        icons.append('<a href="%s" class="social">twitter</a>' % twitter)
-    if len(github):
-        icons.append('<a href="%s" class="social">github</a>' % github)
-    if len(about):
-        icons.append('<a href="%s" class="social">about</a>' % about)
-    return '\n'.join(icons)
-
-def footer_navigation(root_url, is_root):
-    nav = []
-    if len(root_url) and not is_root:
-        nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
-    nav.append('''<a href="#" class="nav">top</a>''')
-    nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
-    return '\n'.join(nav)
+    root_title = config.get('site', {}).get('title', '')
+    if len(title):
+        if len(root_title) and title != root_title:
+            return f'{title} | {root_title}'
+        return title
+    return root_title
 
 def post_header(title_html, date, config=None):
     config = config or {}
@@ -105,20 +88,31 @@ def post_header(title_html, date, config=None):
 </div>'''
     return header
 
-def pagetitle(title='', config=None):
-    config = config or {}
-    root_title = config.get('site', {}).get('title', '')
-    if len(title):
-        if len(root_title) and title != root_title:
-            return f'{title} | {root_title}'
-        return title
-    return root_title
+def footer_navigation(root_url, is_root):
+    nav = []
+    if len(root_url) and not is_root:
+        nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
+    nav.append('''<a href="#" class="nav">top</a>''')
+    nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
+    return '\n'.join(nav)
 
-def convert_meta(md, field, default=''):
-    field_value = md.Meta.get(field, '')
-    if len(field_value) > 0:
-        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
-    return default
+def about_and_social_icons(config=None):
+    config = config or {}
+    github = config.get('social', {}).get('github_url', '')
+    twitter = config.get('social', {}).get('twitter_url', '')
+    email = config.get('social', {}).get('email', config.get('author', {}).get('email', ''))
+    about = config.get('site', {}).get('about_url', '')
+    icons = []
+
+    if len(email):
+        icons.append('<a href="mailto:%s" class="social">email</a>' % email)
+    if len(twitter):
+        icons.append('<a href="%s" class="social">twitter</a>' % twitter)
+    if len(github):
+        icons.append('<a href="%s" class="social">github</a>' % github)
+    if len(about):
+        icons.append('<a href="%s" class="social">about</a>' % about)
+    return '\n'.join(icons)
 
 ## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
@@ -493,6 +487,12 @@ def read_post(directory, filepath, root=False, config=None):
             'tags': tags,
             'last_modified': last_modified(filepath)
         }
+
+def convert_meta(md, field, default=''):
+    field_value = md.Meta.get(field, '')
+    if len(field_value) > 0:
+        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
+    return default
 
 def last_modified(filepath):
     repo = git.Repo()
