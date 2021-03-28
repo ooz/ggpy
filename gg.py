@@ -42,7 +42,7 @@ def configure_markdown():
     )
 
 ##############################################################################
-# CONTENT SNIPPETS
+# CONTENT FORMATTERS AND SNIPPETS
 ##############################################################################
 def logo_url(config=None):
     config = config or {}
