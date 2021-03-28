@@ -6,11 +6,11 @@ import re
 import gg
 from ggconfig import config
 
-def test_post_template():
+def test_template_post():
     canonical_url = 'https://oliz.io/ggpy/'
     body = '<h1>Hey!</h1>'
     markdown = gg.configure_markdown()
-    post = gg.post_template(canonical_url, body, markdown, False, config)
+    post = gg.template_post(canonical_url, body, markdown, False, config)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -128,11 +128,11 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </html>
 '''
 
-def test_post_template_without_config():
+def test_template_post_without_config():
     canonical_url = 'index.html'
     body = '<h1>Hey!</h1>'
     markdown = gg.configure_markdown()
-    post = gg.post_template(canonical_url, body, markdown, True)
+    post = gg.template_post(canonical_url, body, markdown, True)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">

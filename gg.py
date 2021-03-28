@@ -342,7 +342,7 @@ tags: draft
 ---
 '''
 
-def post_template(canonical_url, body, md, root, config=None):
+def template_post(canonical_url, body, md, root, config=None):
     config = config or {}
     title = convert_meta(md, 'title')
     date = convert_meta(md, 'date')
@@ -480,7 +480,7 @@ def read_post(directory, filepath, root=False, config=None):
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
-        html = post_template(canonical_url,
+        html = template_post(canonical_url,
             html_post,
             MD,
             root,
