@@ -315,6 +315,14 @@ f'''{html_opening_boilerplate()}
 '''
 
 # HTML SNIPPETS
+def csp_and_referrer(config=None):
+    config = config or {}
+    headers = [
+        config.get('site', {}).get('csp', ''),
+        config.get('site', {}).get('referrer', '')
+    ]
+    return '\n'.join(headers).strip()
+
 def html_opening_boilerplate():
     return \
 '''<!DOCTYPE html>
@@ -422,14 +430,6 @@ td, th {
 def inline_javascript():
     return '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }'''
-
-def csp_and_referrer(config=None):
-    config = config or {}
-    headers = [
-        config.get('site', {}).get('csp', ''),
-        config.get('site', {}).get('referrer', '')
-    ]
-    return '\n'.join(headers).strip()
 
 def sitemap(posts, config=None):
     config = config or {}
