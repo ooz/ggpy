@@ -74,20 +74,19 @@ f'''{html_opening_boilerplate()}
 {opengraph(title, canonical_url, description, date, config)}
 {json_ld(raw_title, canonical_url, raw_description, config)}
 {html_head_body_boilerplate()}
-{header(logo_url, title_html, date, config)}
-{html_section(body)}
-{footer(footer_content)}
+{html_tag_block('header', header(logo_url, title_html, date, config))}
+{html_tag_block('section', body)}
+{html_tag_block('footer', footer_content)}
 {html_closing_boilerplate()}
 '''
 
 def header(logo_url, title_html, date, config=None):
     config = config or {}
-    lines = ['<header>']
     author_url = config.get('author', {}).get('url', '')
+    lines = []
     if len(author_url) and len(logo_url):
         lines.append(f'<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>')
     lines.append(post_header(title_html, date, config))
-    lines.append('</header>')
     return '\n'.join([line for line in lines if len(line)])
 
 def style():
@@ -368,6 +367,8 @@ def index(posts, config=None):
         if (day != '' and title != ''):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = '\n'.join(posts_html)
+    header_content = f'''<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+<h1>Index</h1>'''
     section_content = f'''<table><tbody>
 {posts_html}
 </tbody></table>'''
@@ -383,12 +384,9 @@ f'''{html_opening_boilerplate()}
 
 {style()}
 {html_head_body_boilerplate()}
-<header>
-<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
-<h1>Index</h1>
-</header>
-{html_section(section_content)}
-{footer(footer_content)}
+{html_tag_block('header', header_content)}
+{html_tag_block('section', section_content)}
+{html_tag_block('footer', footer_content)}
 {html_closing_boilerplate()}
 '''
 
@@ -407,12 +405,6 @@ def html_head_body_boilerplate():
 '''</head>
 
 <body onload="initTheme()">'''
-
-def html_section(content):
-    return html_tag_block('section', content)
-
-def footer(content):
-    return html_tag_block('footer', content)
 
 def html_tag_block(tag, content):
     return \

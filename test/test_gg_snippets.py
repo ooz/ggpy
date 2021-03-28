@@ -76,21 +76,17 @@ def test_json_ld():
 def test_header():
     header = gg.header('https://example.com/logo.png', '<h1>Title!</h1>', '2021-03-27', config)
     assert header == \
-'''<header>
-<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
+'''<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
 <div style="text-align:right;">
 <h1>Title!</h1>
 <small><a href="https://oliz.io/ggpy">Good Gen</a>, 2021-03-27</small>
-</div>
-</header>'''
+</div>'''
     header_default_config = gg.header('', '<h1>Title!</h1>', '2021-03-27')
     assert header_default_config == \
-'''<header>
-<div style="text-align:right;">
+'''<div style="text-align:right;">
 <h1>Title!</h1>
 <small>2021-03-27</small>
-</div>
-</header>'''
+</div>'''
 
 def test_post_header():
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
@@ -139,18 +135,6 @@ def test_html_head_body_boilerplate():
 '''</head>
 
 <body onload="initTheme()">'''
-
-def test_html_section():
-    assert gg.html_section('<h1>Content!</h1>') == \
-'''<section>
-<h1>Content!</h1>
-</section>'''
-
-def test_footer():
-    assert gg.footer('<p>in closing</p>') == \
-'''<footer>
-<p>in closing</p>
-</footer>'''
 
 def test_html_tag_block():
     assert gg.html_tag_block('footer', '<p>in closing</p>') == \
