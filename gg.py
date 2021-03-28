@@ -73,9 +73,7 @@ f'''{html_opening_boilerplate()}
 {twitter(config.get('social', {}).get('twitter_username', ''))}
 {opengraph(title, canonical_url, description, date, config)}
 {json_ld(raw_title, canonical_url, raw_description, config)}
-</head>
-
-<body onload="initTheme()">
+{html_head_body_boilerplate()}
 {header(logo_url, title_html, date, config)}
 <section>
 {body}
@@ -381,9 +379,7 @@ f'''{html_opening_boilerplate()}
 {f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
 
 {style()}
-</head>
-
-<body onload="initTheme()">
+{html_head_body_boilerplate()}
 <header>
 <a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 <h1>Index</h1>
@@ -397,14 +393,13 @@ f'''{html_opening_boilerplate()}
 {html_closing_boilerplate()}
 '''
 
-# DYNAMIC HTML SNIPPETS
+# HTML SNIPPETS
 def footer(content):
     return \
 f'''<footer>
 {content}
 </footer>'''
 
-# STATIC HTML SNIPPETS
 def html_opening_boilerplate():
     return \
 '''<!DOCTYPE html>
@@ -413,6 +408,12 @@ def html_opening_boilerplate():
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">'''
+
+def html_head_body_boilerplate():
+    return \
+'''</head>
+
+<body onload="initTheme()">'''
 
 def html_closing_boilerplate():
     return \
@@ -426,9 +427,6 @@ def csp_and_referrer(config=None):
         config.get('site', {}).get('referrer', '')
     ]
     return '\n'.join(headers).strip()
-
-def is_root_readme(path):
-    return os.path.relpath(path) == 'README.md'
 
 def sitemap(posts, config=None):
     config = config or {}
@@ -448,6 +446,7 @@ def sitemap(posts, config=None):
     sitemap_xml.append('</urlset>\n')
     return '\n'.join(sitemap_xml)
 
+# SIDE-EFFECT METHODS, interacting with filesystem
 def write_file(filepath, content=''):
     with open(filepath, 'w') as f:
         f.write(content)
@@ -475,6 +474,9 @@ def generate(directories, config=None):
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts, config))
+
+def is_root_readme(path):
+    return os.path.relpath(path) == 'README.md'
 
 # MAIN PROGRAM
 if __name__ == '__main__': # pragma: no cover because main wrapper

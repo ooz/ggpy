@@ -136,6 +136,12 @@ def test_html_opening_boilerplate():
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1">'''
 
+def test_html_head_body_boilerplate():
+    assert gg.html_head_body_boilerplate() == \
+'''</head>
+
+<body onload="initTheme()">'''
+
 def test_html_closing_boilerplate():
     assert gg.html_closing_boilerplate() == \
 '''</body>
