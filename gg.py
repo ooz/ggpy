@@ -370,7 +370,6 @@ def template_post(canonical_url, body, md, root, config=None):
         html_closing_boilerplate()
     ])
 
-
 def template_index(posts, config=None):
     config = config or {}
     base_url = config.get('site', {}).get('base_url', '')
@@ -404,6 +403,10 @@ def template_index(posts, config=None):
         html_tag_block('footer', footer_content),
         html_closing_boilerplate()
     ])
+
+def _template_common(title, header, section, footer):
+    blocks = []
+    raise NotImplementedError
 
 def template_sitemap(posts, config=None):
     config = config or {}
