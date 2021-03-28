@@ -85,6 +85,42 @@ def footer_navigation(root_url, is_root):
     nav.append('''<a href="javascript:toggleTheme()" class="nav">🌓</a>''')
     return '\n'.join(nav)
 
+def post_header(title_html, date, config=None):
+    config = config or {}
+    name = config.get('author', {}).get('name', '')
+    author_url = config.get('author', {}).get('url', '')
+    name_and_date = date[:10]
+    if len(name) and len(name_and_date):
+        maybe_linked_author = name
+        if len(author_url):
+            maybe_linked_author = f'<a href="{author_url}">{name}</a>'
+        name_and_date = f'{maybe_linked_author}, {name_and_date}'
+    if len(name_and_date):
+        name_and_date = f'''<small>{name_and_date}</small>'''
+    header = ''
+    if len(title_html) or len(name_and_date):
+        header = f'''<div style="text-align:right;">
+{title_html}
+{name_and_date}
+</div>'''
+    return header
+
+def pagetitle(title='', config=None):
+    config = config or {}
+    root_title = config.get('site', {}).get('title', '')
+    if len(title):
+        if len(root_title) and title != root_title:
+            return f'{title} | {root_title}'
+        return title
+    return root_title
+
+def convert_meta(md, field, default=''):
+    field_value = md.Meta.get(field, '')
+    if len(field_value) > 0:
+        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
+    return default
+
+## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
     meta_names = []
     if len(author):
@@ -107,9 +143,6 @@ def twitter(config=None):
     ]
     return '\n'.join([_meta_tag('name', name[0], name[1]) for name in meta_names])
 
-def _meta_tag(type, type_value, content):
-    return html_tag_empty('meta', [(type, type_value), ('content', content)])
-
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
     '''
@@ -128,6 +161,9 @@ def opengraph(title, url, description, date, config=None):
     meta_properties.append(('article:published_time', date))
     return '\n'.join([_meta_tag('property', prop[0], prop[1]) for prop in meta_properties])
 
+def _meta_tag(type, type_value, content):
+    return html_tag_empty('meta', [(type, type_value), ('content', content)])
+
 def json_ld(title, url, description, config=None):
     config = config or {}
     root_title = config.get('site', {}).get('title', '')
@@ -138,41 +174,6 @@ def json_ld(title, url, description, config=None):
     return \
 f'''<script type="application/ld+json">
 {{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_title}","url":"{url}"{name_block},"description":"{json_escaped_description}"}}</script>'''
-
-def post_header(title_html, date, config=None):
-    config = config or {}
-    name = config.get('author', {}).get('name', '')
-    author_url = config.get('author', {}).get('url', '')
-    name_and_date = date[:10]
-    if len(name) and len(name_and_date):
-        maybe_linked_author = name
-        if len(author_url):
-            maybe_linked_author = f'<a href="{author_url}">{name}</a>'
-        name_and_date = f'{maybe_linked_author}, {name_and_date}'
-    if len(name_and_date):
-        name_and_date = f'''<small>{name_and_date}</small>'''
-    header = ''
-    if len(title_html) or len(name_and_date):
-        header = f'''<div style="text-align:right;">
-{title_html}
-{name_and_date}
-</div>'''
-    return header
-
-def convert_meta(md, field, default=''):
-    field_value = md.Meta.get(field, '')
-    if len(field_value) > 0:
-        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
-    return default
-
-def pagetitle(title='', config=None):
-    config = config or {}
-    root_title = config.get('site', {}).get('title', '')
-    if len(title):
-        if len(root_title) and title != root_title:
-            return f'{title} | {root_title}'
-        return title
-    return root_title
 
 ##############################################################################
 # HTML SNIPPETS
