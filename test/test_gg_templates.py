@@ -241,9 +241,9 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </html>
 '''
 
-def test_index():
+def test_template_index():
     posts = given_posts()
-    index = gg.index(posts, config)
+    index = gg.template_index(posts, config)
     assert index == \
 '''<!DOCTYPE html>
 <html lang="en-US">

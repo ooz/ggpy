@@ -380,7 +380,7 @@ f'''{html_opening_boilerplate()}
 {html_closing_boilerplate()}
 '''
 
-def index(posts, config=None):
+def template_index(posts, config=None):
     config = config or {}
     base_url = config.get('site', {}).get('base_url', '')
     root_title = config.get('site', {}).get('title', '')
@@ -460,7 +460,7 @@ def generate(directories, config=None):
 
     posts = [post for post in posts if 'draft' not in post['tags']]
     if not render_root_readme:
-        write_file('index.html', index(posts, config))
+        write_file('index.html', template_index(posts, config))
 
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
