@@ -88,7 +88,7 @@ def post_header(title_html, date, config=None):
 </div>'''
     return header
 
-def footer_navigation(root_url, is_root):
+def footer_navigation(root_url='', is_root=False):
     nav = []
     if len(root_url) and not is_root:
         nav.append(f'''<a href="{root_url}" class="nav">back</a>''')
@@ -351,7 +351,7 @@ def template_index(posts, config=None):
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>Index</h1>'''
     body = html_tag_block('table', html_tag_block('tbody', posts_html))
-    footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
+    footer_content = '\n'.join([footer_navigation(), about_and_social_icons(config)])
     return '\n'.join([
         _template_common_start(f'Index | {root_title}', canonical_url, config),
         _template_common_body_and_end(header_content, body, footer_content)
