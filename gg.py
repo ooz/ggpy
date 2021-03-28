@@ -355,8 +355,7 @@ def template_post(canonical_url, body, md, root, config=None):
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
     return '\n'.join([
-        html_opening_boilerplate(),
-        csp_and_referrer(config),
+        _template_common_start(config),
         html_tag_line('title', pagetitle(title, config)),
         html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)]),
         html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
@@ -366,7 +365,7 @@ def template_post(canonical_url, body, md, root, config=None):
         twitter(config),
         opengraph(title, canonical_url, description, date, config),
         json_ld(raw_title, canonical_url, raw_description, config),
-        _template_common_end(header_content, body, footer_content)
+        _template_common_body_and_end(header_content, body, footer_content)
     ])
 
 def template_index(posts, config=None):
@@ -388,17 +387,22 @@ def template_index(posts, config=None):
     body = html_tag_block('table', html_tag_block('tbody', posts_html))
     footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
     return '\n'.join([
-        html_opening_boilerplate(),
-        csp_and_referrer(config),
+        _template_common_start(config),
         html_tag_line('title', f'Index | {root_title}'),
         html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)]),
         html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
         html_tag_block('style', inline_style()),
         html_tag_block('script', inline_javascript()),
-        _template_common_end(header_content, body, footer_content)
+        _template_common_body_and_end(header_content, body, footer_content)
     ])
 
-def _template_common_end(header, section, footer):
+def _template_common_start(config):
+    return '\n'.join([
+        html_opening_boilerplate(),
+        csp_and_referrer(config)
+    ])
+
+def _template_common_body_and_end(header, section, footer):
     return '\n'.join([
         html_head_body_boilerplate(),
         html_tag_block('header', header),
