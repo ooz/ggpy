@@ -15,37 +15,37 @@ def test_pagetitle():
 def test_meta():
     meta = gg.meta('oz', 'Nice text!', 'foo, bar, tags')
     assert meta == \
-'''<meta name="author" content="oz" />
-<meta name="description" content="Nice text!" />
-<meta name="keywords" content="foo, bar, tags" />'''
+'''<meta name="author" content="oz">
+<meta name="description" content="Nice text!">
+<meta name="keywords" content="foo, bar, tags">'''
 
 def test_twitter():
     twitter = gg.twitter(config)
     assert twitter == \
-'''<meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@oozgo" />'''
+'''<meta name="twitter:author" content="@oozgo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@oozgo">'''
     twitter_not_configured = gg.twitter()
     assert twitter_not_configured == ''
 
 def test_opengraph():
     opengraph = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20', config)
     assert opengraph == \
-'''<meta property="og:title" content="Title!" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://oliz.io/ggpy/" />
-<meta property="og:description" content="Nice text!" />
-<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="2020-02-20" />'''
+'''<meta property="og:title" content="Title!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oliz.io/ggpy/">
+<meta property="og:description" content="Nice text!">
+<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
+<meta property="og:locale" content="en-US">
+<meta property="article:published_time" content="2020-02-20">'''
     opengraph_default_config = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20')
     assert opengraph_default_config == \
-'''<meta property="og:title" content="Title!" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://oliz.io/ggpy/" />
-<meta property="og:description" content="Nice text!" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="2020-02-20" />'''
+'''<meta property="og:title" content="Title!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oliz.io/ggpy/">
+<meta property="og:description" content="Nice text!">
+<meta property="og:locale" content="en-US">
+<meta property="article:published_time" content="2020-02-20">'''
 
 def test_json_ld():
     json_ld = gg.json_ld('Title! "BAM!"', 'https://oliz.io/ggpy/', 'It says "BAM!"', config)

@@ -102,7 +102,7 @@ def twitter(config=None):
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
 def _meta_name_tag(name, content):
-    return f'''<meta name="{name}" content="{content}" />'''
+    return f'''<meta name="{name}" content="{content}">'''
 
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
@@ -123,7 +123,7 @@ def opengraph(title, url, description, date, config=None):
     return '\n'.join([_meta_property_tag(prop[0], prop[1]) for prop in meta_properties])
 
 def _meta_property_tag(property, content):
-    return f'''<meta property="{property}" content="{content}" />'''
+    return f'''<meta property="{property}" content="{content}">'''
 
 def json_ld(title, url, description, config=None):
     config = config or {}

@@ -328,18 +328,18 @@ def then_head_ends_with_meta_tags(result, title='', raw_title='', description=''
     json_escaped_raw_title = raw_title.replace('"', '\\"')
     json_escaped_raw_description = raw_description.replace('"', '\\"')
     meta = \
-f'''<meta name="author" content="Good Gen" />
-<meta name="description" content="{description}" />
-<meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@oozgo" />
-<meta property="og:title" content="{title}" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="{canonical_url}" />
-<meta property="og:description" content="{description}" />
-<meta property="og:image" content="{LOGO_URL}" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="{creation_time}" />
+f'''<meta name="author" content="Good Gen">
+<meta name="description" content="{description}">
+<meta name="twitter:author" content="@oozgo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@oozgo">
+<meta property="og:title" content="{title}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="{LOGO_URL}">
+<meta property="og:locale" content="en-US">
+<meta property="article:published_time" content="{creation_time}">
 <script type="application/ld+json">
 {{"@context":"http://schema.org","@type":"WebSite","headline":"{json_escaped_raw_title}","url":"{canonical_url}","name":"Good Generator.py","description":"{json_escaped_raw_description}"}}</script>
 </head>

@@ -102,17 +102,17 @@ td, th {
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
 </script>
-<meta name="author" content="Good Gen" />
-<meta name="twitter:author" content="@oozgo" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@oozgo" />
-<meta property="og:title" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://oliz.io/ggpy/" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="" />
+<meta name="author" content="Good Gen">
+<meta name="twitter:author" content="@oozgo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@oozgo">
+<meta property="og:title" content="">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oliz.io/ggpy/">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
+<meta property="og:locale" content="en-US">
+<meta property="article:published_time" content="">
 <script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":""}</script>
 </head>
@@ -225,12 +225,12 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </script>
 
 
-<meta property="og:title" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="index.html" />
-<meta property="og:description" content="" />
-<meta property="og:locale" content="en-US" />
-<meta property="article:published_time" content="" />
+<meta property="og:title" content="">
+<meta property="og:type" content="article">
+<meta property="og:url" content="index.html">
+<meta property="og:description" content="">
+<meta property="og:locale" content="en-US">
+<meta property="article:published_time" content="">
 <script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"","url":"index.html","description":""}</script>
 </head>
