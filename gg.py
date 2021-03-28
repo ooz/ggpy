@@ -80,9 +80,7 @@ f'''{html_opening_boilerplate()}
 <section>
 {body}
 </section>
-<footer>
-{footer_content}
-</footer>
+{footer(footer_content)}
 {html_closing_boilerplate()}
 '''
 
@@ -372,7 +370,8 @@ def index(posts, config=None):
         if (day != '' and title != ''):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = '\n'.join(posts_html)
-
+    footer_content = f'''{footer_navigation('', True)}
+{about_and_social_icons(config)}'''
     return \
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
@@ -394,13 +393,18 @@ f'''{html_opening_boilerplate()}
 {posts_html}
 </tbody></table>
 </section>
-<footer>
-{footer_navigation('', True)}
-{about_and_social_icons(config)}
-</footer>
+{footer(footer_content)}
 {html_closing_boilerplate()}
 '''
 
+# DYNAMIC HTML SNIPPETS
+def footer(content):
+    return \
+f'''<footer>
+{content}
+</footer>'''
+
+# STATIC HTML SNIPPETS
 def html_opening_boilerplate():
     return \
 '''<!DOCTYPE html>
@@ -472,6 +476,7 @@ def generate(directories, config=None):
     if generate_sitemap:
         write_file('sitemap.xml', sitemap(posts, config))
 
+# MAIN PROGRAM
 if __name__ == '__main__': # pragma: no cover because main wrapper
     parser = argparse.ArgumentParser(description='The Good Generator for static websites and blogs.')
     parser.add_argument('-n', '--newpost', metavar='TITLE', type=str, nargs='?',

@@ -121,6 +121,12 @@ def test_about_and_social_icons():
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
+def test_footer():
+    assert gg.footer('<p>in closing</p>') == \
+'''<footer>
+<p>in closing</p>
+</footer>'''
+
 def test_html_opening_boilerplate():
     assert gg.html_opening_boilerplate() == \
 '''<!DOCTYPE html>
