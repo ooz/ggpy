@@ -214,8 +214,8 @@ def html_closing_boilerplate():
 </html>
 '''
 
-# INLINE CSS AND JAVASCRIPT
-# From: https://raw.githubusercontent.com/ooz/templates/master/html/oz.css
+## INLINE CSS AND JAVASCRIPT
+## From: https://raw.githubusercontent.com/ooz/templates/master/html/oz.css
 def inline_style():
     return '''body {
     font-size: 18px;
