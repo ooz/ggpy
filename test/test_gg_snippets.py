@@ -4,6 +4,13 @@
 import gg
 from ggconfig import config
 
+##############################################################################
+# CONTENT SNIPPETS
+##############################################################################
+def test_logo_url():
+    assert gg.logo_url(config) == 'https://oliz.io/ggpy/static/gg.png'
+    assert gg.logo_url() == ''
+
 def test_pagetitle():
     assert gg.pagetitle('Good Generator.py', config) == 'Good Generator.py'
     assert gg.pagetitle('Some Page', config) == 'Some Page | Good Generator.py'
@@ -103,7 +110,9 @@ def test_about_and_social_icons():
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
-
+##############################################################################
+# HTML SNIPPETS
+##############################################################################
 def test_html_opening_boilerplate():
     assert gg.html_opening_boilerplate() == \
 '''<!DOCTYPE html>

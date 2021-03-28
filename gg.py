@@ -44,6 +44,12 @@ def configure_markdown():
 ##############################################################################
 # CONTENT SNIPPETS
 ##############################################################################
+def logo_url(config=None):
+    config = config or {}
+    base_url = config.get('site', {}).get('base_url', '')
+    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
+    return logo_url if logo_url != '/' else ''
+
 def header(logo_url, title_html, date, config=None):
     config = config or {}
     author_url = config.get('author', {}).get('url', '')
@@ -341,8 +347,7 @@ def template_post(canonical_url, body, md, root, config=None):
     raw_title = ''.join(md.Meta.get('title', ''))
     raw_description = ''.join(md.Meta.get('description', raw_title))
     base_url = config.get('site', {}).get('base_url', '')
-    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
-    logo_url = logo_url if logo_url != '/' else ''
+    logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
     title_html = md.reset().convert('# ' + title) if len(title) else ''
 
@@ -356,7 +361,7 @@ def template_post(canonical_url, body, md, root, config=None):
         csp_and_referrer(config),
         html_tag_line('title', pagetitle(title, config)),
         html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)]),
-        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else '',
+        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
         html_tag_block('style', inline_style()),
         html_tag_block('script', inline_javascript()),
         meta(author_name, description, tags),
@@ -364,7 +369,7 @@ def template_post(canonical_url, body, md, root, config=None):
         opengraph(title, canonical_url, description, date, config),
         json_ld(raw_title, canonical_url, raw_description, config),
         html_head_body_boilerplate(),
-        html_tag_block('header', header(logo_url, title_html, date, config)),
+        html_tag_block('header', header(logo, title_html, date, config)),
         html_tag_block('section', body),
         html_tag_block('footer', footer_content),
         html_closing_boilerplate()
@@ -374,8 +379,7 @@ def template_index(posts, config=None):
     config = config or {}
     base_url = config.get('site', {}).get('base_url', '')
     root_title = config.get('site', {}).get('title', '')
-    logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
-    logo_url = logo_url if logo_url != '/' else ''
+    logo = logo_url(config)
     author_url = config.get('author', {}).get('url', '')
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
@@ -385,7 +389,7 @@ def template_index(posts, config=None):
         if (day != '' and title != ''):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = '\n'.join(posts_html)
-    header_content = f'''<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
+    header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>Index</h1>'''
     section_content = html_tag_block('table', html_tag_block('tbody', posts_html))
     footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
@@ -394,7 +398,7 @@ def template_index(posts, config=None):
         csp_and_referrer(config),
         html_tag_line('title', f'Index | {root_title}'),
         html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)]),
-        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else '',
+        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
         html_tag_block('style', inline_style()),
         html_tag_block('script', inline_javascript()),
         html_head_body_boilerplate(),
