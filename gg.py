@@ -351,23 +351,25 @@ def template_post(canonical_url, body, md, root, config=None):
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
-    return \
-f'''{html_opening_boilerplate()}
-{csp_and_referrer(config)}
-{html_tag_line('title', pagetitle(title, config))}
-{html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)])}
-{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
-{html_tag_block('style', inline_style())}
-{html_tag_block('script', inline_javascript())}
-{meta(author_name, description, tags)}
-{twitter(config)}
-{opengraph(title, canonical_url, description, date, config)}
-{json_ld(raw_title, canonical_url, raw_description, config)}
-{html_head_body_boilerplate()}
-{html_tag_block('header', header(logo_url, title_html, date, config))}
-{html_tag_block('section', body)}
-{html_tag_block('footer', footer_content)}
-{html_closing_boilerplate()}'''
+    return '\n'.join([
+        html_opening_boilerplate(),
+        csp_and_referrer(config),
+        html_tag_line('title', pagetitle(title, config)),
+        html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)]),
+        html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else '',
+        html_tag_block('style', inline_style()),
+        html_tag_block('script', inline_javascript()),
+        meta(author_name, description, tags),
+        twitter(config),
+        opengraph(title, canonical_url, description, date, config),
+        json_ld(raw_title, canonical_url, raw_description, config),
+        html_head_body_boilerplate(),
+        html_tag_block('header', header(logo_url, title_html, date, config)),
+        html_tag_block('section', body),
+        html_tag_block('footer', footer_content),
+        html_closing_boilerplate()
+    ])
+
 
 def template_index(posts, config=None):
     config = config or {}
