@@ -159,8 +159,6 @@ def post_header(title_html, date, config=None):
 </div>'''
     return header
 
-
-
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
     if len(field_value) > 0:
