@@ -136,6 +136,9 @@ def test_html_head_body_boilerplate():
 
 <body onload="initTheme()">'''
 
+def test_html_tag_line():
+    assert gg.html_tag_line('title', 'Nice!') == '<title>Nice!</title>'
+
 def test_html_tag_block():
     assert gg.html_tag_block('footer', '<p>in closing</p>') == \
 '''<footer>

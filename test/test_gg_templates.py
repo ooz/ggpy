@@ -259,11 +259,9 @@ def test_index():
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 <meta name="referrer" content="no-referrer">
-
 <title>Index | Good Generator.py</title>
 <link rel="canonical" href="https://oliz.io/ggpy">
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
-
 <style>
 body {
     font-size: 18px;

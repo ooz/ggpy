@@ -64,7 +64,7 @@ def post_template(canonical_url, body, md, root, config=None):
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
 
-<title>{pagetitle(title, config)}</title>
+{html_tag_line('title', pagetitle(title, config))}
 <link rel="canonical" href="{canonical_url}">
 {f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
 
@@ -377,11 +377,9 @@ def index(posts, config=None):
     return \
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
-
-<title>Index | {root_title}</title>
+{html_tag_line('title', f'Index | {root_title}')}
 <link rel="canonical" href="{base_url}">
 {f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
-
 {style()}
 {html_head_body_boilerplate()}
 {html_tag_block('header', header_content)}
@@ -405,6 +403,10 @@ def html_head_body_boilerplate():
 '''</head>
 
 <body onload="initTheme()">'''
+
+def html_tag_line(tag, content):
+    return \
+f'''<{tag}>{content}</{tag}>'''
 
 def html_tag_block(tag, content):
     return \
