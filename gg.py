@@ -61,12 +61,7 @@ def post_template(canonical_url, body, md, root, config=None):
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
     return \
-f'''<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
 
 <title>{pagetitle(title, config)}</title>
@@ -88,8 +83,7 @@ f'''<!DOCTYPE html>
 <footer>
 {footer_content}
 </footer>
-</body>
-</html>
+{html_closing_boilerplate()}
 '''
 
 def header(logo_url, title_html, date, config=None):
@@ -380,12 +374,7 @@ def index(posts, config=None):
     posts_html = '\n'.join(posts_html)
 
     return \
-f'''<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
 
 <title>Index | {root_title}</title>
@@ -409,9 +398,22 @@ f'''<!DOCTYPE html>
 {footer_navigation('', True)}
 {about_and_social_icons(config)}
 </footer>
-</body>
-</html>
+{html_closing_boilerplate()}
 '''
+
+def html_opening_boilerplate():
+    return \
+'''<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">'''
+
+def html_closing_boilerplate():
+    return \
+'''</body>
+</html>'''
 
 def csp_and_referrer(config=None):
     config = config or {}

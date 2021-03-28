@@ -120,3 +120,17 @@ def test_about_and_social_icons():
 <a href="https://oliz.io/ggpy/test/about" class="social">about</a>'''
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
+
+def test_html_opening_boilerplate():
+    assert gg.html_opening_boilerplate() == \
+'''<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">'''
+
+def test_html_closing_boilerplate():
+    assert gg.html_closing_boilerplate() == \
+'''</body>
+</html>'''
