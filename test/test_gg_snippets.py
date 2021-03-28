@@ -36,11 +36,13 @@ def test_meta():
 <meta name="keywords" content="foo, bar, tags" />'''
 
 def test_twitter():
-    twitter = gg.twitter('@oozgo')
+    twitter = gg.twitter(config)
     assert twitter == \
 '''<meta name="twitter:author" content="@oozgo" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@oozgo" />'''
+    twitter_not_configured = gg.twitter()
+    assert twitter_not_configured == ''
 
 def test_opengraph():
     opengraph = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20', config)

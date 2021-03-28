@@ -70,7 +70,7 @@ f'''{html_opening_boilerplate()}
 
 {style()}
 {meta(author_name, description, tags)}
-{twitter(config.get('social', {}).get('twitter_username', ''))}
+{twitter(config)}
 {opengraph(title, canonical_url, description, date, config)}
 {json_ld(raw_title, canonical_url, raw_description, config)}
 {html_head_body_boilerplate()}
@@ -202,7 +202,9 @@ def meta(author, description, tags):
         meta_names.append(('keywords', tags))
     return '\n'.join([_meta_name_tag(name[0], name[1]) for name in meta_names])
 
-def twitter(username):
+def twitter(config=None):
+    config = config or {}
+    username = config.get('social', {}).get('twitter_username', '')
     if not len(username):
         return ''
     meta_names = [
