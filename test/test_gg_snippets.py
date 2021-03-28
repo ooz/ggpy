@@ -145,6 +145,12 @@ def test_html_tag_block():
 <p>in closing</p>
 </footer>'''
 
+def test_html_tag_empty():
+    link_tag = gg.html_tag_empty('link', [('rel', 'canonical'), ('href','https://example.com')])
+    assert link_tag == '<link rel="canonical" href="https://example.com">'
+    omit_empty_tag = gg.html_tag_empty('link', [])
+    assert omit_empty_tag == ''
+
 def test_html_closing_boilerplate():
     assert gg.html_closing_boilerplate() == \
 '''</body>

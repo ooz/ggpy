@@ -64,8 +64,8 @@ def post_template(canonical_url, body, md, root, config=None):
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
 {html_tag_line('title', pagetitle(title, config))}
-<link rel="canonical" href="{canonical_url}">
-{f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
+{html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)])}
+{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
 {style()}
 {meta(author_name, description, tags)}
 {twitter(config)}
@@ -373,8 +373,8 @@ def index(posts, config=None):
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
 {html_tag_line('title', f'Index | {root_title}')}
-<link rel="canonical" href="{base_url}">
-{f'<link rel="shortcut icon" href="{logo_url}">' if len(logo_url) else ''}
+{html_tag_empty('link', [('rel', 'canonical'), ('href', base_url)])}
+{html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo_url)]) if len(logo_url) else ''}
 {style()}
 {html_head_body_boilerplate()}
 {html_tag_block('header', header_content)}
@@ -408,6 +408,12 @@ def html_tag_block(tag, content):
 f'''<{tag}>
 {content}
 </{tag}>'''
+
+def html_tag_empty(tag, attributes):
+    html_attributes = ' '.join([f'{attr[0]}="{attr[1]}"' for attr in attributes])
+    if len(html_attributes):
+        return f'<{tag} {html_attributes}>'
+    return ''
 
 def html_closing_boilerplate():
     return \
