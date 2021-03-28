@@ -165,26 +165,6 @@ def convert_meta(md, field, default=''):
         return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
     return default
 
-def convert_path(filepath):
-    targetpath = filepath[:-3]
-    if targetpath.endswith('README'):
-        targetpath = targetpath[:-6] + 'index'
-    targetpath += '.html'
-    return targetpath
-
-def convert_canonical(directory, targetpath, config=None):
-    config = config or {}
-    base_url = config.get('site', {}).get('base_url', '')
-    targetpath = os.path.relpath(targetpath, directory)
-    if len(base_url):
-        if targetpath.endswith('index.html'):
-            return f'{base_url}/{targetpath[:-10]}'
-        return f'{base_url}/{targetpath}'
-    else:
-        if targetpath.endswith('index.html') and targetpath != 'index.html':
-            return f'{targetpath[:-10]}'
-    return targetpath
-
 def pagetitle(title='', config=None):
     config = config or {}
     root_title = config.get('site', {}).get('title', '')
@@ -432,6 +412,13 @@ _KEBAB_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz-'
 def kebab_case(word):
     return ''.join(c for c in word.lower().replace(' ', '-') if c in _KEBAB_ALPHABET)
 
+def convert_path(filepath):
+    targetpath = filepath[:-3]
+    if targetpath.endswith('README'):
+        targetpath = targetpath[:-6] + 'index'
+    targetpath += '.html'
+    return targetpath
+
 ##############################################################################
 # SIDE-EFFECTS, interacting with filesystem
 ##############################################################################
@@ -462,6 +449,19 @@ def generate(directories, config=None):
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
         write_file('sitemap.xml', template_sitemap(posts, config))
+
+def convert_canonical(directory, targetpath, config=None):
+    config = config or {}
+    base_url = config.get('site', {}).get('base_url', '')
+    targetpath = os.path.relpath(targetpath, directory)
+    if len(base_url):
+        if targetpath.endswith('index.html'):
+            return f'{base_url}/{targetpath[:-10]}'
+        return f'{base_url}/{targetpath}'
+    else:
+        if targetpath.endswith('index.html') and targetpath != 'index.html':
+            return f'{targetpath[:-10]}'
+    return targetpath
 
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
