@@ -386,11 +386,8 @@ def template_index(posts, config=None):
     posts_html = '\n'.join(posts_html)
     header_content = f'''<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>
 <h1>Index</h1>'''
-    section_content = f'''<table><tbody>
-{posts_html}
-</tbody></table>'''
-    footer_content = f'''{footer_navigation('', True)}
-{about_and_social_icons(config)}'''
+    section_content = html_tag_block('table', html_tag_block('tbody', posts_html))
+    footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
     return \
 f'''{html_opening_boilerplate()}
 {csp_and_referrer(config)}
