@@ -326,7 +326,7 @@ def template_post(canonical_url, body, md, root, config=None):
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
     return '\n'.join([
-        _template_common_start(pagetitle(title, config), canonical_url, config),
+        _template_common_start(title, canonical_url, config),
         meta(author_name, description, tags),
         twitter(config),
         opengraph(title, canonical_url, description, date, config),
@@ -353,7 +353,7 @@ def template_index(posts, config=None):
     body = html_tag_block('table', html_tag_block('tbody', posts_html))
     footer_content = '\n'.join([footer_navigation(), about_and_social_icons(config)])
     return '\n'.join([
-        _template_common_start(f'Index | {root_title}', canonical_url, config),
+        _template_common_start('Index', canonical_url, config),
         _template_common_body_and_end(header_content, body, footer_content)
     ])
 
@@ -362,7 +362,7 @@ def _template_common_start(title, canonical_url, config):
     return '\n'.join([
         html_opening_boilerplate(),
         csp_and_referrer(config),
-        html_tag_line('title', title),
+        html_tag_line('title', pagetitle(title, config)),
         html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)]),
         html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
         html_tag_block('style', inline_style()),
