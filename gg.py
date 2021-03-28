@@ -108,9 +108,7 @@ def about_and_social_icons(config=None):
     ] if len(social)])
 
 def _social_link(label, link):
-    if len(link):
-        return f'<a href="{link}" class="social">{label}</a>'
-    return ''
+    return f'<a href="{link}" class="social">{label}</a>' if len(link) else ''
 
 ## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
