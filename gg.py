@@ -348,7 +348,7 @@ def template_post(canonical_url, body, md, root, config=None):
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
     title_html = md.reset().convert('# ' + title) if len(title) else ''
-
+    header_content = header(logo, title_html, date, config)
     footer_content = [
         footer_navigation(base_url, root),
         about_and_social_icons(config)
@@ -366,11 +366,7 @@ def template_post(canonical_url, body, md, root, config=None):
         twitter(config),
         opengraph(title, canonical_url, description, date, config),
         json_ld(raw_title, canonical_url, raw_description, config),
-        html_head_body_boilerplate(),
-        html_tag_block('header', header(logo, title_html, date, config)),
-        html_tag_block('section', body),
-        html_tag_block('footer', footer_content),
-        html_closing_boilerplate()
+        _template_common_end(header_content, body, footer_content)
     ])
 
 def template_index(posts, config=None):
@@ -389,7 +385,7 @@ def template_index(posts, config=None):
     posts_html = '\n'.join(posts_html)
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>Index</h1>'''
-    section_content = html_tag_block('table', html_tag_block('tbody', posts_html))
+    body = html_tag_block('table', html_tag_block('tbody', posts_html))
     footer_content = '\n'.join([footer_navigation('', True), about_and_social_icons(config)])
     return '\n'.join([
         html_opening_boilerplate(),
@@ -399,16 +395,17 @@ def template_index(posts, config=None):
         html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
         html_tag_block('style', inline_style()),
         html_tag_block('script', inline_javascript()),
-        html_head_body_boilerplate(),
-        html_tag_block('header', header_content),
-        html_tag_block('section', section_content),
-        html_tag_block('footer', footer_content),
-        html_closing_boilerplate()
+        _template_common_end(header_content, body, footer_content)
     ])
 
-def _template_common(title, header, section, footer):
-    blocks = []
-    raise NotImplementedError
+def _template_common_end(header, section, footer):
+    return '\n'.join([
+        html_head_body_boilerplate(),
+        html_tag_block('header', header),
+        html_tag_block('section', section),
+        html_tag_block('footer', footer),
+        html_closing_boilerplate()
+    ])
 
 def template_sitemap(posts, config=None):
     config = config or {}
