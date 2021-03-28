@@ -13,7 +13,7 @@ description: -
 date: \d+-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z
 tags: draft
 ---
-''', gg.newpost())
+''', gg.template_newpost())
 
 def test_template_post():
     canonical_url = 'https://oliz.io/ggpy/'

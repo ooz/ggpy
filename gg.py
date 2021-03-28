@@ -322,13 +322,13 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 ##############################################################################
 # TEMPLATES
-# For
+#
 # * New markdown file
 # * Rendering markdown file as HTML
 # * Rendering index of all non-draft markdown files as HTML
 # * Rendering sitemap
 ##############################################################################
-def newpost(title='Title', description='-'):
+def template_newpost(title='Title', description='-'):
     '''Deprecation: 'draft' tag may become '__draft' in the future
     '''
     now = time.localtime()
@@ -443,7 +443,7 @@ def write_file(filepath, content=''):
         f.write(content)
 
 def create_newpost(title):
-    write_file(kebab_case(title) + '.md', newpost(title))
+    write_file(kebab_case(title) + '.md', template_newpost(title))
 
 def generate(directories, config=None):
     config = config or {}
