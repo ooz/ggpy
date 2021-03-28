@@ -468,15 +468,9 @@ def read_post(directory, filepath, root=False, config=None):
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
-        html = template_post(canonical_url,
-            html_post,
-            MD,
-            root,
-            config
-        )
         return {
             'filepath': targetpath,
-            'html': html,
+            'html': template_post(canonical_url, html_post, MD, root, config),
             'date': date,
             'url': canonical_url,
             'title': title,
