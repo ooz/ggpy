@@ -6,6 +6,15 @@ import re
 import gg
 from ggconfig import config
 
+def test_newpost():
+    assert re.match(r'''---
+title: Title
+description: -
+date: \d+-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z
+tags: draft
+---
+''', gg.newpost())
+
 def test_template_post():
     canonical_url = 'https://oliz.io/ggpy/'
     body = '<h1>Hey!</h1>'
@@ -392,15 +401,6 @@ def test_template_sitemap_with_additional_entries():
   </url>
 </urlset>
 '''
-
-def test_newpost():
-    assert re.match(r'''---
-title: Title
-description: -
-date: \d+-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z
-tags: draft
----
-''', gg.newpost())
 
 def given_posts():
     return [
