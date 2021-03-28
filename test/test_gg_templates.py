@@ -112,7 +112,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <meta property="og:description" content="">
 <meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
 <meta property="og:locale" content="en-US">
-<meta property="article:published_time" content="">
 <script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":""}</script>
 </head>
@@ -230,7 +229,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <meta property="og:url" content="index.html">
 <meta property="og:description" content="">
 <meta property="og:locale" content="en-US">
-<meta property="article:published_time" content="">
 <script type="application/ld+json">
 {"@context":"http://schema.org","@type":"WebSite","headline":"","url":"index.html","description":""}</script>
 </head>
