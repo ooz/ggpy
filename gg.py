@@ -417,7 +417,7 @@ f'''{html_opening_boilerplate()}
 {html_closing_boilerplate()}
 '''
 
-def sitemap(posts, config=None):
+def template_sitemap(posts, config=None):
     config = config or {}
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
@@ -464,7 +464,7 @@ def generate(directories, config=None):
 
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
-        write_file('sitemap.xml', sitemap(posts, config))
+        write_file('sitemap.xml', template_sitemap(posts, config))
 
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'

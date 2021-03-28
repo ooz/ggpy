@@ -351,9 +351,9 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </html>
 '''
 
-def test_sitemap():
+def test_template_sitemap():
     posts = given_posts()
-    sitemap = gg.sitemap(posts)
+    sitemap = gg.template_sitemap(posts)
     assert sitemap == \
 '''<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -368,14 +368,14 @@ def test_sitemap():
 </urlset>
 '''
 
-def test_sitemap_with_additional_entries():
+def test_template_sitemap_with_additional_entries():
     posts = given_posts()
     config = {
         'site': {
             'additional_sitemap_entries': ['https://example.com/hallo']
         }
     }
-    sitemap = gg.sitemap(posts, config)
+    sitemap = gg.template_sitemap(posts, config)
     assert sitemap == \
 '''<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
