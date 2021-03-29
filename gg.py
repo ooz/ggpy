@@ -308,10 +308,10 @@ tags: draft
 ---
 '''
 
-def template_post(post, md, root, config=None):
+def template_post(post, root, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
-    body = post.get('content', '')
+    body = post.get('html_section', '')
     title = post.get('title', '')
     date = post.get('date', '')
     tags = post.get('tags', '')
@@ -321,8 +321,7 @@ def template_post(post, md, root, config=None):
     base_url = config.get('site', {}).get('base_url', '')
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
-    title_html = md.reset().convert('# ' + title) if len(title) else ''
-    header_content = header(logo, title_html, date, config)
+    header_content = header(logo, post['html_headline'], date, config)
     footer_content = [
         footer_navigation(base_url, root),
         about_and_social_icons(config)
@@ -474,6 +473,7 @@ def read_post(directory, filepath, root=False, config=None):
         raw_title = convert_meta(MD, 'title', raw=True)
         description = convert_meta(MD, 'description', default=title)
         raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
+        html_headline = MD.reset().convert('# ' + title) if len(title) else ''
         post = {
             'filepath': targetpath,
             'date': date,
@@ -484,9 +484,10 @@ def read_post(directory, filepath, root=False, config=None):
             'raw_description': raw_description,
             'tags': tags,
             'last_modified': last_modified(filepath),
-            'content': html_post
+            'html_headline': html_headline,
+            'html_section': html_post
         }
-        post['html'] = template_post(post, MD, root, config)
+        post['html'] = template_post(post, root, config)
         return post
 
 def convert_meta(md, field, default='', raw=False):

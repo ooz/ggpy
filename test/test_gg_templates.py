@@ -18,10 +18,10 @@ tags: draft
 def test_template_post():
     post = {
         'url': 'https://oliz.io/ggpy/',
-        'content': '<h1>Hey!</h1>'
+        'html_headline': '',
+        'html_section': '<h1>Hey!</h1>'
     }
-    markdown = gg.configure_markdown()
-    post = gg.template_post(post, markdown, False, config)
+    post = gg.template_post(post, False, config)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -141,10 +141,10 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 def test_template_post_without_config():
     post = {
         'url': 'index.html',
-        'content': '<h1>Hey!</h1>'
+        'html_headline': '',
+        'html_section': '<h1>Hey!</h1>'
     }
-    markdown = gg.configure_markdown()
-    post = gg.template_post(post, markdown, True)
+    post = gg.template_post(post, True)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
