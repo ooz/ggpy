@@ -20,7 +20,7 @@ def test_template_post():
         'url': 'https://oliz.io/ggpy/',
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_post(post, False, config)
+    post = gg.template_post(post, config)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -140,9 +140,10 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 def test_template_post_without_config():
     post = {
         'url': 'index.html',
+        'is_root_index': True,
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_post(post, True)
+    post = gg.template_post(post)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">

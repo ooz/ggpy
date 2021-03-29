@@ -308,7 +308,7 @@ tags: draft
 ---
 '''
 
-def template_post(post, root, config=None):
+def template_post(post, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
     body = post.get('html_section', '')
@@ -323,7 +323,7 @@ def template_post(post, root, config=None):
     author_name = config.get('author', {}).get('name', '')
     header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
-        footer_navigation(base_url, root),
+        footer_navigation(base_url, post.get('is_root_index', False)),
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
@@ -476,8 +476,9 @@ def read_post(directory, filepath, root=False, config=None):
         html_headline = MD.reset().convert('# ' + title) if len(title) else ''
         post = {
             'filepath': targetpath,
-            'date': date,
             'url': canonical_url,
+            'is_root_index': root,
+            'date': date,
             'title': title,
             'raw_title': raw_title,
             'description': description,
@@ -487,7 +488,7 @@ def read_post(directory, filepath, root=False, config=None):
             'html_headline': html_headline,
             'html_section': html_post
         }
-        post['html'] = template_post(post, root, config)
+        post['html'] = template_post(post, config)
         return post
 
 def convert_meta(md, field, default='', raw=False):
