@@ -312,10 +312,10 @@ def template_post(post, md, root, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
     body = post.get('content', '')
-    title = convert_meta(md, 'title')
-    date = convert_meta(md, 'date')
-    tags = convert_meta(md, 'tags')
-    description = convert_meta(md, 'description', default=title)
+    title = post.get('title', '')
+    date = post.get('date', '')
+    tags = post.get('tags', '')
+    description = post.get('description', '')
     raw_title = ''.join(md.Meta.get('title', ''))
     raw_description = ''.join(md.Meta.get('description', raw_title))
     base_url = config.get('site', {}).get('base_url', '')
@@ -471,11 +471,13 @@ def read_post(directory, filepath, root=False, config=None):
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
+        description = convert_meta(MD, 'description', default=title)
         post = {
             'filepath': targetpath,
             'date': date,
             'url': canonical_url,
             'title': title,
+            'description': description,
             'tags': tags,
             'last_modified': last_modified(filepath),
             'content': html_post
