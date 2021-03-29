@@ -316,8 +316,8 @@ def template_post(post, md, root, config=None):
     date = post.get('date', '')
     tags = post.get('tags', '')
     description = post.get('description', '')
-    raw_title = ''.join(md.Meta.get('title', ''))
-    raw_description = ''.join(md.Meta.get('description', raw_title))
+    raw_title = ''.join(post.get('raw_title', ''))
+    raw_description = ''.join(post.get('raw_description', ''))
     base_url = config.get('site', {}).get('base_url', '')
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
@@ -471,13 +471,17 @@ def read_post(directory, filepath, root=False, config=None):
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
+        raw_title = convert_meta(MD, 'title', raw=True)
         description = convert_meta(MD, 'description', default=title)
+        raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
         post = {
             'filepath': targetpath,
             'date': date,
             'url': canonical_url,
             'title': title,
+            'raw_title': raw_title,
             'description': description,
+            'raw_description': raw_description,
             'tags': tags,
             'last_modified': last_modified(filepath),
             'content': html_post
@@ -485,9 +489,11 @@ def read_post(directory, filepath, root=False, config=None):
         post['html'] = template_post(post, MD, root, config)
         return post
 
-def convert_meta(md, field, default=''):
+def convert_meta(md, field, default='', raw=False):
     field_value = md.Meta.get(field, '')
     if len(field_value):
+        if raw:
+            return field_value
         return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
     return default
 
