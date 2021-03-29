@@ -321,7 +321,7 @@ def template_post(post, root, config=None):
     base_url = config.get('site', {}).get('base_url', '')
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
-    header_content = header(logo, post['html_headline'], date, config)
+    header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
         footer_navigation(base_url, root),
         about_and_social_icons(config)

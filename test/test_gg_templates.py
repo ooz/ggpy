@@ -18,7 +18,6 @@ tags: draft
 def test_template_post():
     post = {
         'url': 'https://oliz.io/ggpy/',
-        'html_headline': '',
         'html_section': '<h1>Hey!</h1>'
     }
     post = gg.template_post(post, False, config)
@@ -141,7 +140,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 def test_template_post_without_config():
     post = {
         'url': 'index.html',
-        'html_headline': '',
         'html_section': '<h1>Hey!</h1>'
     }
     post = gg.template_post(post, True)
