@@ -308,8 +308,10 @@ tags: draft
 ---
 '''
 
-def template_post(canonical_url, body, md, root, config=None):
+def template_post(post, md, root, config=None):
     config = config or {}
+    canonical_url = post.get('url', '')
+    body = post.get('content', '')
     title = convert_meta(md, 'title')
     date = convert_meta(md, 'date')
     tags = convert_meta(md, 'tags')
@@ -469,15 +471,17 @@ def read_post(directory, filepath, root=False, config=None):
         date = convert_meta(MD, 'date')
         tags = convert_meta(MD, 'tags')
         title = convert_meta(MD, 'title')
-        return {
+        post = {
             'filepath': targetpath,
-            'html': template_post(canonical_url, html_post, MD, root, config),
             'date': date,
             'url': canonical_url,
             'title': title,
             'tags': tags,
-            'last_modified': last_modified(filepath)
+            'last_modified': last_modified(filepath),
+            'content': html_post
         }
+        post['html'] = template_post(post, MD, root, config)
+        return post
 
 def convert_meta(md, field, default=''):
     field_value = md.Meta.get(field, '')
