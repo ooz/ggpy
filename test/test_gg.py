@@ -37,6 +37,7 @@ def test_kebab_case():
 def test_kebab_case_filter_special_characters():
     assert gg.kebab_case('New Post :)') == 'new-post-'
 
+NAVIGATION_BACK_INDICATOR = ' class="nav">back</a>'
 def test_read_post():
     post = gg.read_post('.', "README.md", False, config)
     assert post['filepath'] == 'index.html'
@@ -46,6 +47,12 @@ def test_read_post():
     assert post['tags'] == ''
     assert post['title'] == ''
     assert post['url'] == 'https://oliz.io/ggpy/'
+    assert NAVIGATION_BACK_INDICATOR in post['html']
 
     post = gg.read_post('.', "README.md")
     assert post['url'] == 'index.html'
+    assert NAVIGATION_BACK_INDICATOR not in post['html']
+
+    post = gg.read_post('.', "README.md", True)
+    assert post['url'] == 'index.html'
+    assert NAVIGATION_BACK_INDICATOR not in post['html']
