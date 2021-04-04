@@ -113,6 +113,19 @@ the configuration and header formats are not stable and there is no official rel
 <li>Enable more configuration and rendering control to individual markdown files (e.g. whether to show header/foot, include further header tags etc.)</li>
 <li>Enable an image gallery use-case (for photo-centered websites)</li>
 </ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Static site generator supporting <a href="https://oliz.io/ggpy/test/features/">Markdown with various extensions</a>
+  and <a href="https://oliz.io/ggpy/test/features/meta.html">Markdown meta header format</a></li>
+<li>Renders all <code>*.md</code> to <code>*.html</code> files in the passed directories and recursively in their sub-directories</li>
+<li>Files named <code>README.md</code> are converted to <code>index.html</code>. Thus, it is fully compatible with GitHub Pages</li>
+<li>It may render a time-stamped index of all generated HTML files, suitable for blogs</li>
+<li>Built-in responsive style with light mode and dark mode</li>
+<li>Twitter Card, Open Graph and schema.org support</li>
+<li>Generates <code>sitemap.xml</code> with <code>lastmod</code> timestamps taken from git history</li>
+<li>Requires <code>python3</code>, <code>pip</code>, <code>git</code> and optionally <code>make</code> if you want to use the provided Makefile. Thus, it <a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html">runs in Termux on Android</a></li>
+<li>The provided <a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml">CircleCI configuration</a> may serve as a blueprint to let CircleCI build your page on every commit</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <ul>
 <li>Copy <code>gg.py</code>, <code>ggconfig.py</code> and <code>Makefile</code> to the root of your website/blog</li>
@@ -135,19 +148,6 @@ make init</code></pre></li>
 make init</code></pre></li>
 <li>Run tests with coverage
 <pre class="highlight"><code>make test</code></pre></li>
-</ul>
-<h2 id="features">Features</h2>
-<ul>
-<li>Static site generator supporting <a href="https://oliz.io/ggpy/test/features/">Markdown with various extensions</a>
-  and <a href="https://oliz.io/ggpy/test/features/meta.html">Markdown meta header format</a></li>
-<li>Renders all <code>*.md</code> to <code>*.html</code> files in the passed directories and recursively in their sub-directories</li>
-<li>Files named <code>README.md</code> are converted to <code>index.html</code>. Thus, it is fully compatible with GitHub Pages</li>
-<li>It may render a time-stamped index of all generated HTML files, suitable for blogs</li>
-<li>Built-in responsive style with light mode and dark mode</li>
-<li>Twitter Card, Open Graph and schema.org support</li>
-<li>Generates <code>sitemap.xml</code> with <code>lastmod</code> timestamps taken from git history</li>
-<li>Requires <code>python3</code>, <code>pip</code>, <code>git</code> and optionally <code>make</code> if you want to use the provided Makefile. Thus, it <a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html">runs in Termux on Android</a></li>
-<li>The provided <a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml">CircleCI configuration</a> may serve as a blueprint to let CircleCI build your page on every commit</li>
 </ul>
 <h2 id="license">License</h2>
 <p>This software is dual-licensed under GNU AGPLv3 or MIT License,
