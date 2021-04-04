@@ -7,11 +7,11 @@
 ----
 
 Yet another static site generator. Written in Python.
-[Why?](https://ooz.github.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
+[Why?](https://oliz.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
 
-It powers [its website](https://ooz.github.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
+It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
-While I have been using it for [my website](https://ooz.github.io) and [blog](https://oliz.io/blog/) for years,
+While I have been using it for [my website](https://oliz.io) and [blog](https://oliz.io/blog/) for years,
 the configuration and header formats are not stable and there is no official release, yet.
 
 Things I would like to get done for version 1.0:
@@ -29,7 +29,7 @@ Things I would like to get done for version 1.0:
 * Built-in responsive style with light mode and dark mode
 * Twitter Card, Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
-* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
+* Requires `python3`, `pip`, and optionally `git` (for more accurate, CI-friendly timestamps) and `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
 * The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
 
 ## Usage
