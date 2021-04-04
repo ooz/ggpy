@@ -45,7 +45,7 @@ def configure_markdown():
         ]
     )
 
-def markdown2post(content, config=None):
+def markdown2post(content='', config=None):
     config = config or {}
     MD = configure_markdown()
     html_section = MD.reset().convert(content)
@@ -506,7 +506,7 @@ def convert_meta(md, field, default='', raw=False):
     field_value = md.Meta.get(field, '')
     if len(field_value):
         if raw:
-            return field_value
+            return ''.join(field_value)
         return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
     return default
 
