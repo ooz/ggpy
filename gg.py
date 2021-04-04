@@ -415,6 +415,10 @@ def convert_path(filepath):
 ##############################################################################
 # SIDE-EFFECTS, interacting with filesystem
 ##############################################################################
+def read_file(path):
+    with open(path, 'r') as f:
+        return f.read()
+
 def write_file(filepath, content=''):
     with open(filepath, 'w') as f:
         f.write(content)
@@ -462,34 +466,33 @@ def is_root_readme(path):
 def read_post(directory, filepath, root=False, config=None):
     config = config or {}
     MD = configure_markdown()
-    with open(filepath, 'r') as infile:
-        markdown_post = infile.read()
-        html_post = MD.reset().convert(markdown_post)
-        targetpath = convert_path(filepath)
-        canonical_url = convert_canonical(directory, targetpath, config)
-        date = convert_meta(MD, 'date')
-        tags = convert_meta(MD, 'tags')
-        title = convert_meta(MD, 'title')
-        raw_title = convert_meta(MD, 'title', raw=True)
-        description = convert_meta(MD, 'description', default=title)
-        raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
-        html_headline = MD.reset().convert('# ' + title) if len(title) else ''
-        post = {
-            'filepath': targetpath,
-            'url': canonical_url,
-            'is_root_index': root,
-            'date': date,
-            'title': title,
-            'raw_title': raw_title,
-            'description': description,
-            'raw_description': raw_description,
-            'tags': tags,
-            'last_modified': last_modified(filepath),
-            'html_headline': html_headline,
-            'html_section': html_post
-        }
-        post['html'] = template_post(post, config)
-        return post
+    markdown_post = read_file(filepath)
+    html_post = MD.reset().convert(markdown_post)
+    targetpath = convert_path(filepath)
+    canonical_url = convert_canonical(directory, targetpath, config)
+    date = convert_meta(MD, 'date')
+    tags = convert_meta(MD, 'tags')
+    title = convert_meta(MD, 'title')
+    raw_title = convert_meta(MD, 'title', raw=True)
+    description = convert_meta(MD, 'description', default=title)
+    raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
+    html_headline = MD.reset().convert('# ' + title) if len(title) else ''
+    post = {
+        'filepath': targetpath,
+        'url': canonical_url,
+        'is_root_index': root,
+        'date': date,
+        'title': title,
+        'raw_title': raw_title,
+        'description': description,
+        'raw_description': raw_description,
+        'tags': tags,
+        'last_modified': last_modified(filepath),
+        'html_headline': html_headline,
+        'html_section': html_post
+    }
+    post['html'] = template_post(post, config)
+    return post
 
 def convert_meta(md, field, default='', raw=False):
     field_value = md.Meta.get(field, '')
