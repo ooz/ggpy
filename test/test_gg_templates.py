@@ -253,7 +253,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 def test_template_index():
     posts = given_posts()
-    index = gg.template_index(posts, config)
+    index = gg.template_index({}, posts, config)
     assert index == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -362,6 +362,12 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </body>
 </html>
 '''
+
+def test_template_index_with_custom_title():
+    posts = given_posts()
+    index = gg.template_index({'title': 'Blog'}, posts, config)
+    assert '<title>Blog | Good Generator.py</title>' in index
+    assert '<h1>Blog</h1>' in index
 
 def test_template_sitemap():
     posts = given_posts()
