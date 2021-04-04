@@ -477,12 +477,15 @@ def generate(directories, config=None):
     just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
         index['html'] = template_index(index, just_posts, config)
+    if config.get('site', {}).get('generate_sitemap', False):
+        sitemap = {
+            'filepath': 'sitemap.xml',
+            'html': template_sitemap(just_posts, config)
+        }
+        posts.append(sitemap)
 
     for post in posts:
         write_file(post['filepath'], post['html'])
-
-    if config.get('site', {}).get('generate_sitemap', False):
-        write_file('sitemap.xml', template_sitemap(just_posts, config))
 
 def convert_canonical(directory, targetpath, config=None):
     config = config or {}
