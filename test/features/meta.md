@@ -38,7 +38,7 @@ All keys are optional:
 | `title` | Document title |
 | `description` | Short description or summary of the document |
 | `date` | Creation date of the document |
-| `tags` | List of tags. Some tags may have special effects (see below). |
+| `tags` | List of tags. Some tags may have special effects (see below). This key may be used multiple times (see example above). |
 
 ## Special Tags
 
