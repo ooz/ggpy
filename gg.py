@@ -419,8 +419,8 @@ def read_file(path):
     with open(path, 'r') as f:
         return f.read()
 
-def write_file(filepath, content=''):
-    with open(filepath, 'w') as f:
+def write_file(path, content=''):
+    with open(path, 'w') as f:
         f.write(content)
 
 def create_newpost(title):
