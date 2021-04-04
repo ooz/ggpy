@@ -461,20 +461,19 @@ def create_newpost(title):
 
 def generate(directories, config=None):
     config = config or {}
-    render_root_readme = config.get('site', {}).get('render_root_readme', True)
     posts = []
     for directory in directories:
         paths = glob.glob(directory + '/**/*.md', recursive=True)
         for path in paths:
-            root_readme = is_root_readme(path)
-            if not root_readme or render_root_readme:
-                post = read_post(directory, path, root=root_readme, config=config)
+            post = read_post(directory, path, config=config)
+            posts.append(post)
+            if '__index' not in post['tags']:
                 write_file(post['filepath'], post['html'])
-                posts.append(post)
 
-    posts = [post for post in posts if '__draft' not in post['tags']]
-    if not render_root_readme:
-        write_file('index.html', template_index(posts, config))
+    posts = [post for post in posts if '__draft' not in post['tags'] and '__index' not in post['tags']]
+    indices = [post for post in posts if '__index' in post['tags']]
+    for index in indices:
+        write_file(post['filepath'], template_index(posts, config))
 
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
@@ -496,7 +495,7 @@ def convert_canonical(directory, targetpath, config=None):
 def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
-def read_post(directory, filepath, root=False, config=None):
+def read_post(directory, filepath, config=None):
     markdown_content = read_file(filepath)
     post = markdown2post(markdown_content, config)
     targetpath = convert_path(filepath)
@@ -504,7 +503,7 @@ def read_post(directory, filepath, root=False, config=None):
     post['filepath'] = targetpath
     post['url'] = canonical_url
     post['last_modified'] = last_modified(filepath)
-    post['is_root_index'] = root
+    post['is_root_index'] = is_root_readme(filepath)
     post['html'] = template_post(post, config)
     return post
 

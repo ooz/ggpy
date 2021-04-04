@@ -39,7 +39,7 @@ def test_kebab_case_filter_special_characters():
 
 NAVIGATION_BACK_INDICATOR = ' class="nav">back</a>'
 def test_read_post():
-    post = gg.read_post('.', "README.md", False, config)
+    post = gg.read_post('.', "README.md", config)
     assert post['filepath'] == 'index.html'
     assert len(post['html'])
     assert post['date'] == ''
@@ -47,12 +47,20 @@ def test_read_post():
     assert post['tags'] == ''
     assert post['title'] == ''
     assert post['url'] == 'https://oliz.io/ggpy/'
-    assert NAVIGATION_BACK_INDICATOR in post['html']
+    assert post['is_root_index'] == True
+    assert NAVIGATION_BACK_INDICATOR not in post['html']
 
     post = gg.read_post('.', "README.md")
     assert post['url'] == 'index.html'
+    assert post['is_root_index'] == True
     assert NAVIGATION_BACK_INDICATOR not in post['html']
 
-    post = gg.read_post('.', "README.md", True)
-    assert post['url'] == 'index.html'
+    post = gg.read_post('.', "test/features/README.md", config)
+    assert post['url'] == 'https://oliz.io/ggpy/test/features/'
+    assert post['is_root_index'] == False
+    assert NAVIGATION_BACK_INDICATOR in post['html']
+
+    post = gg.read_post('.', "test/features/README.md")
+    assert post['url'] == 'test/features/'
+    assert post['is_root_index'] == False
     assert NAVIGATION_BACK_INDICATOR not in post['html']
