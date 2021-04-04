@@ -478,11 +478,10 @@ def generate(directories, config=None):
     for index in indices:
         index['html'] = template_index(index, just_posts, config)
     if config.get('site', {}).get('generate_sitemap', False):
-        sitemap = {
+        posts.append({
             'filepath': 'sitemap.xml',
             'html': template_sitemap(just_posts, config)
-        }
-        posts.append(sitemap)
+        })
 
     for post in posts:
         write_file(post['filepath'], post['html'])
