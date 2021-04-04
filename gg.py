@@ -469,7 +469,7 @@ def generate(directories, config=None):
         for path in paths:
             post = read_post(directory, path, config=config)
             posts.append(post)
-            if '__index' not in post['tags']:
+            if TAG_INDEX not in post['tags']:
                 write_file(post['filepath'], post['html'])
 
     posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
