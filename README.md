@@ -56,7 +56,8 @@ make test
 
 ## Features
 
-* Static site generator supporting [Markdown with various extensions](https://ooz.github.io/ggpy/test/features/)
+* Static site generator supporting [Markdown with various extensions](https://oliz.io/ggpy/test/features/)
+  and [Markdown meta header format](https://oliz.io/ggpy/test/features/meta.html)
 * Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
 * Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
 * It may render a time-stamped index of all generated HTML files, suitable for blogs
