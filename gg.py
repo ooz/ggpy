@@ -68,6 +68,14 @@ def markdown2post(content='', config=None):
     }
     return post
 
+def convert_meta(md, field, default='', raw=False):
+    field_value = md.Meta.get(field, '')
+    if len(field_value):
+        if raw:
+            return ''.join(field_value)
+        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
+    return default
+
 ##############################################################################
 # CONTENT FORMATTERS AND SNIPPETS
 ##############################################################################
@@ -501,14 +509,6 @@ def read_post(directory, filepath, root=False, config=None):
     post['is_root_index'] = root
     post['html'] = template_post(post, config)
     return post
-
-def convert_meta(md, field, default='', raw=False):
-    field_value = md.Meta.get(field, '')
-    if len(field_value):
-        if raw:
-            return ''.join(field_value)
-        return escape(', '.join(field_value)) if field == 'tags' else escape(''.join(field_value))
-    return default
 
 def last_modified(filepath):
     repo = git.Repo()
