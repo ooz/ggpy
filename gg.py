@@ -476,7 +476,7 @@ def generate(directories, config=None):
     posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     indices = [post for post in posts if TAG_INDEX in post['tags']]
     for index in indices:
-        write_file(post['filepath'], template_index(index, posts, config))
+        write_file(index['filepath'], template_index(index, posts, config))
 
     generate_sitemap = config.get('site', {}).get('generate_sitemap', False)
     if generate_sitemap:
