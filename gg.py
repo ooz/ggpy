@@ -25,6 +25,10 @@ import sys
 import time
 import markdown
 
+##############################################################################
+# MARKDOWN CONVERSION
+##############################################################################
+
 def configure_markdown():
     return markdown.Markdown(
         extensions = [
@@ -40,6 +44,29 @@ def configure_markdown():
             'pymdownx.superfences'
         ]
     )
+
+def markdown2post(content, config=None):
+    config = config or {}
+    MD = configure_markdown()
+    html_section = MD.reset().convert(content)
+    date = convert_meta(MD, 'date')
+    tags = convert_meta(MD, 'tags')
+    title = convert_meta(MD, 'title')
+    raw_title = convert_meta(MD, 'title', raw=True)
+    description = convert_meta(MD, 'description', default=title)
+    raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
+    html_headline = MD.reset().convert('# ' + title) if len(title) else ''
+    post = {
+        'date': date,
+        'title': title,
+        'raw_title': raw_title,
+        'description': description,
+        'raw_description': raw_description,
+        'tags': tags,
+        'html_headline': html_headline,
+        'html_section': html_section
+    }
+    return post
 
 ##############################################################################
 # CONTENT FORMATTERS AND SNIPPETS
@@ -464,33 +491,14 @@ def is_root_readme(path):
     return os.path.relpath(path) == 'README.md'
 
 def read_post(directory, filepath, root=False, config=None):
-    config = config or {}
-    MD = configure_markdown()
-    markdown_post = read_file(filepath)
-    html_post = MD.reset().convert(markdown_post)
+    markdown_content = read_file(filepath)
+    post = markdown2post(markdown_content, config)
     targetpath = convert_path(filepath)
     canonical_url = convert_canonical(directory, targetpath, config)
-    date = convert_meta(MD, 'date')
-    tags = convert_meta(MD, 'tags')
-    title = convert_meta(MD, 'title')
-    raw_title = convert_meta(MD, 'title', raw=True)
-    description = convert_meta(MD, 'description', default=title)
-    raw_description = convert_meta(MD, 'description', default=raw_title, raw=True)
-    html_headline = MD.reset().convert('# ' + title) if len(title) else ''
-    post = {
-        'filepath': targetpath,
-        'url': canonical_url,
-        'is_root_index': root,
-        'date': date,
-        'title': title,
-        'raw_title': raw_title,
-        'description': description,
-        'raw_description': raw_description,
-        'tags': tags,
-        'last_modified': last_modified(filepath),
-        'html_headline': html_headline,
-        'html_section': html_post
-    }
+    post['filepath'] = targetpath
+    post['url'] = canonical_url
+    post['last_modified'] = last_modified(filepath)
+    post['is_root_index'] = root
     post['html'] = template_post(post, config)
     return post
 
