@@ -475,8 +475,8 @@ def generate(directories, config=None):
             if TAG_INDEX not in post['tags']:
                 write_file(post['filepath'], post['html'])
 
-    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     indices = [post for post in posts if TAG_INDEX in post['tags']]
+    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
         write_file(index['filepath'], template_index(index, posts, config))
 
