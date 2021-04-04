@@ -39,7 +39,6 @@ All keys are optional:
 | `description` | Short description or summary of the document |
 | `date` | Creation date of the document |
 | `tags` | List of tags. Some tags may have special effects (see below). |
-|-----|-------------|
 
 ## Special Tags
 
@@ -49,4 +48,3 @@ Special tags may be used to configure `ggpy`'s behavior. Such tags always start 
 |-----|--------------------|
 | `__draft` | Marks a document as "draft". Drafts are not included in the generated sitemap or index |
 | `__index` | Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered. |
-|-----|--------------------|
