@@ -330,8 +330,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 # * Rendering sitemap
 ##############################################################################
 def template_newpost(title='Title', description='-'):
-    '''Deprecation: 'draft' tag may become '__draft' in the future
-    '''
     now = time.localtime()
     now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
     return \
@@ -339,7 +337,7 @@ f'''---
 title: {title}
 description: {description}
 date: {now_utc_formatted}
-tags: draft
+tags: __draft
 ---
 '''
 
@@ -474,7 +472,7 @@ def generate(directories, config=None):
                 write_file(post['filepath'], post['html'])
                 posts.append(post)
 
-    posts = [post for post in posts if 'draft' not in post['tags']]
+    posts = [post for post in posts if '__draft' not in post['tags']]
     if not render_root_readme:
         write_file('index.html', template_index(posts, config))
 
