@@ -19,6 +19,19 @@ Things I would like to get done for version 1.0:
 * Enable more configuration and rendering control to individual markdown files (e.g. whether to show header/foot, include further header tags etc.)
 * Enable an image gallery use-case (for photo-centered websites)
 
+## Features
+
+* Static site generator supporting [Markdown with various extensions](https://oliz.io/ggpy/test/features/)
+  and [Markdown meta header format](https://oliz.io/ggpy/test/features/meta.html)
+* Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
+* Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
+* It may render a time-stamped index of all generated HTML files, suitable for blogs
+* Built-in responsive style with light mode and dark mode
+* Twitter Card, Open Graph and schema.org support
+* Generates `sitemap.xml` with `lastmod` timestamps taken from git history
+* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
+* The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
+
 ## Usage
 
 * Copy `gg.py`, `ggconfig.py` and `Makefile` to the root of your website/blog
@@ -53,19 +66,6 @@ make init
 ```
 make test
 ```
-
-## Features
-
-* Static site generator supporting [Markdown with various extensions](https://oliz.io/ggpy/test/features/)
-  and [Markdown meta header format](https://oliz.io/ggpy/test/features/meta.html)
-* Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
-* Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
-* It may render a time-stamped index of all generated HTML files, suitable for blogs
-* Built-in responsive style with light mode and dark mode
-* Twitter Card, Open Graph and schema.org support
-* Generates `sitemap.xml` with `lastmod` timestamps taken from git history
-* Requires `python3`, `pip`, `git` and optionally `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
-* The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
 
 ## License
 
