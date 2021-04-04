@@ -4,6 +4,8 @@
 import json
 import re
 
+from gg import read_file
+
 SITE_TITLE = 'Good Generator.py'
 LOGO_URL = 'https://oliz.io/ggpy/static/gg.png'
 GENERATED_FEATURE_HTML = \
@@ -121,7 +123,7 @@ def test_generate():
     gg.generate(['.'], config)
 
 def test_sitemap_generation():
-    sitemap_data = readfile('sitemap.xml')
+    sitemap_data = read_file('sitemap.xml')
     assert re.match(r'''<\?xml version="1.0" encoding="utf-8" standalone="yes" \?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -144,7 +146,7 @@ def test_sitemap_generation():
 ''', sitemap_data)
 
 def test_sitemap_does_not_include_drafts():
-    sitemap_data = readfile('sitemap.xml')
+    sitemap_data = read_file('sitemap.xml')
     assert 'draft-not-included-in-sitemap' not in sitemap_data
 
 def test_markdown_features_and_readme_generation():
@@ -152,7 +154,7 @@ def test_markdown_features_and_readme_generation():
     index_title = 'Markdown Feature Test without &quot;quotes bug&quot;'
     index_raw_title = 'Markdown Feature Test without "quotes bug"'
     canonical_url = 'https://oliz.io/ggpy/test/features/'
-    index_data = readfile('test/features/index.html')
+    index_data = read_file('test/features/index.html')
 
     # then
     index_data = then_is_framed_by_html_boilerplate(index_data)
@@ -181,7 +183,7 @@ def test_post_conversion():
     post_title = 'Some Post'
     description = 'Nice post!'
     canonical_url = 'https://oliz.io/ggpy/test/some-post.html'
-    post_data = readfile('test/some-post.html')
+    post_data = read_file('test/some-post.html')
 
     # then
     post_data = then_is_framed_by_html_boilerplate(post_data)
@@ -356,7 +358,3 @@ def then_has_body(result):
 '''
     assert result.startswith(body)
     return result.replace(body, '')
-
-def readfile(path):
-    with open(path, 'r') as f:
-        return f.read()
