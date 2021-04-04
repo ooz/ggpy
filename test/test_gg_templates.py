@@ -11,7 +11,7 @@ def test_newpost():
 title: Title
 description: -
 date: \d+-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z
-tags: __draft
+tags: __draft__
 ---
 ''', gg.template_newpost())
 

@@ -15,7 +15,7 @@ date: 2021-04-04T18:59:03Z
 tags: documentation
 ---
 
-`ggpy` supports Markdown headers [...]
+`ggpy` supports Markdown meta headers [...]
 ```
 
 Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:
@@ -23,11 +23,11 @@ Tags may be separated by commas or with a separate key, spaces are ignored, e.g.
 ```
 ---
 tags: topic, other
-tags: __draft
+tags: __draft__
 ---
 ```
 
-...produces three tags `topic`, `other` and `__draft`
+...produces three tags `topic`, `other` and `__draft__`
 
 ## Meta Keys
 
@@ -42,11 +42,11 @@ All keys are optional:
 
 ## Special Tags
 
-Special tags may be used to configure `ggpy`'s behavior. Such tags always start with double underscore (`__`):
+Special tags may be used to configure `ggpy`'s behavior. Such tags always start and end with double underscore (`__`, also called "dunder" in the Python world):
 
 | Tag | Description/Effect |
 |-----|--------------------|
-| `__draft` | Marks a document as "draft". Drafts are not included in the generated sitemap or index |
-| `__index` | Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered. |
-| `__no_header` | (not yet implemented) Omit the page header with site icon, title headline, author and date |
-| `__no_footer` | (not yet implemented) Omit the page footer with navigation, theme control and social links |
+| `__draft__` | Marks a document as "draft". Drafts are not included in the generated sitemap or index |
+| `__index__` | Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered. |
+| `__no_header__` | (not yet implemented) Omit the page header with site icon, title headline, author and date |
+| `__no_footer__` | (not yet implemented) Omit the page footer with navigation, theme control and social links |

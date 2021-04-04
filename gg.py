@@ -329,6 +329,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 # * Rendering index of all non-draft markdown files as HTML
 # * Rendering sitemap
 ##############################################################################
+TAG_DRAFT = '__draft__'
 def template_newpost(title='Title', description='-'):
     now = time.localtime()
     now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
@@ -337,7 +338,7 @@ f'''---
 title: {title}
 description: {description}
 date: {now_utc_formatted}
-tags: __draft
+tags: {TAG_DRAFT}
 ---
 '''
 
@@ -459,6 +460,7 @@ def write_file(path, content=''):
 def create_newpost(title):
     write_file(kebab_case(title) + '.md', template_newpost(title))
 
+TAG_INDEX = '__index__'
 def generate(directories, config=None):
     config = config or {}
     posts = []
@@ -470,8 +472,8 @@ def generate(directories, config=None):
             if '__index' not in post['tags']:
                 write_file(post['filepath'], post['html'])
 
-    posts = [post for post in posts if '__draft' not in post['tags'] and '__index' not in post['tags']]
-    indices = [post for post in posts if '__index' in post['tags']]
+    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
+    indices = [post for post in posts if TAG_INDEX in post['tags']]
     for index in indices:
         write_file(post['filepath'], template_index(posts, config))
 

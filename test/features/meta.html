@@ -113,15 +113,15 @@ date: 2021-04-04T18:59:03Z
 tags: documentation
 ---
 
-`ggpy` supports Markdown headers [...]</code></pre>
+`ggpy` supports Markdown meta headers [...]</code></pre>
 
 <p>Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:</p>
 <pre class="highlight"><code>---
 tags: topic, other
-tags: __draft
+tags: __draft__
 ---</code></pre>
 
-<p>...produces three tags <code>topic</code>, <code>other</code> and <code>__draft</code></p>
+<p>...produces three tags <code>topic</code>, <code>other</code> and <code>__draft__</code></p>
 <h2 id="meta-keys">Meta Keys</h2>
 <p>All keys are optional:</p>
 <table>
@@ -151,7 +151,7 @@ tags: __draft
 </tbody>
 </table>
 <h2 id="special-tags">Special Tags</h2>
-<p>Special tags may be used to configure <code>ggpy</code>'s behavior. Such tags always start with double underscore (<code>__</code>):</p>
+<p>Special tags may be used to configure <code>ggpy</code>'s behavior. Such tags always start and end with double underscore (<code>__</code>, also called "dunder" in the Python world):</p>
 <table>
 <thead>
 <tr>
@@ -161,19 +161,19 @@ tags: __draft
 </thead>
 <tbody>
 <tr>
-<td><code>__draft</code></td>
+<td><code>__draft__</code></td>
 <td>Marks a document as "draft". Drafts are not included in the generated sitemap or index</td>
 </tr>
 <tr>
-<td><code>__index</code></td>
+<td><code>__index__</code></td>
 <td>Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered.</td>
 </tr>
 <tr>
-<td><code>__no_header</code></td>
+<td><code>__no_header__</code></td>
 <td>(not yet implemented) Omit the page header with site icon, title headline, author and date</td>
 </tr>
 <tr>
-<td><code>__no_footer</code></td>
+<td><code>__no_footer__</code></td>
 <td>(not yet implemented) Omit the page footer with navigation, theme control and social links</td>
 </tr>
 </tbody>
