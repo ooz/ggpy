@@ -384,7 +384,9 @@ def template_index(index, posts, config=None):
         if (day != '' and title != ''):
             posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
     posts_html = '\n'.join(posts_html)
-    index_title = index.get('title', 'Index')
+    index_title = index.get('title', '')
+    if not len(index_title):
+        index_title = 'Index'
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>{index_title}</h1>'''
     body = html_tag_block('table', html_tag_block('tbody', posts_html))
