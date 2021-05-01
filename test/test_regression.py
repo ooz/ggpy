@@ -40,10 +40,8 @@ lines.</p>
 </ul>
 <h2 id="code">Code</h2>
 <pre class="highlight"><code># Code blocks work</code></pre>
-
 <pre class="highlight"><code class="language-python">def python_code_blocks():
     return "work, too!"</code></pre>
-
 <p>Let there be...</p>
 <pre><code>another
 code
