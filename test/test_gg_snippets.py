@@ -110,6 +110,21 @@ def test_about_and_social_icons():
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
+def test_post_index():
+    posts = gg.scan_posts(['.'])
+    assert len(posts) == 6
+    post_index = gg.post_index(posts)
+    assert post_index == \
+'''<table>
+<tbody>
+<tr><td>2021-04-04</td><td><a href="test/features/meta.html">Markdown Meta Data</a></td></tr>
+<tr><td>2018-05-06</td><td><a href="test/about/">About / Impress / Privacy / Legal</a></td></tr>
+<tr><td>2018-03-17</td><td><a href="test/features/draft-not-included-in-sitemap.html">Draft</a></td></tr>
+<tr><td>2018-03-17</td><td><a href="test/some-post.html">Some Post</a></td></tr>
+<tr><td>1337-06-06</td><td><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></td></tr>
+</tbody>
+</table>'''
+
 ##############################################################################
 # HTML SNIPPETS
 ##############################################################################

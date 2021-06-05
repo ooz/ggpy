@@ -145,6 +145,17 @@ def about_and_social_icons(config=None):
 def _social_link(label, link):
     return f'<a href="{link}" class="social">{label}</a>' if len(link) else ''
 
+def post_index(posts):
+    posts_html = []
+    for post in reversed(sorted(posts, key=lambda post: post['date'])):
+        day = post['date'][:10]
+        title = post['title']
+        url = post['url']
+        if (day != '' and title != ''):
+            posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
+    posts_html = '\n'.join(posts_html)
+    return html_tag_block('table', html_tag_block('tbody', posts_html))
+
 ## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
     meta_names = []
@@ -376,20 +387,12 @@ def template_index(index, posts, config=None):
     root_title = config.get('site', {}).get('title', '')
     logo = logo_url(config)
     author_url = config.get('author', {}).get('url', '')
-    posts_html = []
-    for post in reversed(sorted(posts, key=lambda post: post['date'])):
-        day = post['date'][:10]
-        title = post['title']
-        url = post['url']
-        if (day != '' and title != ''):
-            posts_html.append('<tr><td>%s</td><td><a href="%s">%s</a></td></tr>' % (day, url, title))
-    posts_html = '\n'.join(posts_html)
     index_title = index.get('title', '')
     if not len(index_title):
         index_title = 'Index'
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>{index_title}</h1>'''
-    body = html_tag_block('table', html_tag_block('tbody', posts_html))
+    body = post_index(posts)
     footer_content = '\n'.join([footer_navigation(), about_and_social_icons(config)])
     return '\n'.join([
         _template_common_start(index_title, canonical_url, config),
@@ -463,8 +466,7 @@ def write_file(path, content=''):
 def create_newpost(title):
     write_file(kebab_case(title) + '.md', template_newpost(title))
 
-TAG_INDEX = '__index__'
-def generate(directories, config=None):
+def scan_posts(directories, config=None):
     config = config or {}
     posts = []
     for directory in directories:
@@ -472,7 +474,12 @@ def generate(directories, config=None):
         for path in paths:
             post = read_post(directory, path, config=config)
             posts.append(post)
+    return posts
 
+TAG_INDEX = '__index__'
+def generate(directories, config=None):
+    config = config or {}
+    posts = scan_posts(directories, config)
     indices = [post for post in posts if TAG_INDEX in post['tags']]
     just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
@@ -482,7 +489,6 @@ def generate(directories, config=None):
             'filepath': 'sitemap.xml',
             'html': template_sitemap(just_posts, config)
         })
-
     for post in posts:
         write_file(post['filepath'], post['html'])
 
