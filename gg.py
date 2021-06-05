@@ -392,7 +392,11 @@ def template_index(index, posts, config=None):
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>{index_title}</h1>'''
     body = post_index(posts)
-    footer_content = '\n'.join([footer_navigation(), about_and_social_icons(config)])
+    footer_content = [
+        footer_navigation(),
+        about_and_social_icons(config)
+    ]
+    footer_content = '\n'.join([content for content in footer_content if content != ''])
     return '\n'.join([
         _template_common_start(index_title, canonical_url, config),
         _template_common_body_and_end(header_content, body, footer_content)
