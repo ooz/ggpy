@@ -28,7 +28,6 @@ import markdown
 ##############################################################################
 # MARKDOWN CONVERSION
 ##############################################################################
-
 def configure_markdown():
     return markdown.Markdown(
         extensions = [
