@@ -264,7 +264,7 @@ def test_template_index():
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 <meta name="referrer" content="no-referrer">
-<title>Index | Good Generator.py</title>
+<title>Good Generator.py</title>
 <link rel="canonical" href="https://oliz.io/ggpy">
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 <style>
@@ -342,7 +342,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <body onload="initTheme()">
 <header>
 <a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
-<h1>Index</h1>
 </header>
 <section>
 <table>
@@ -367,6 +366,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 def test_template_index_with_custom_title():
     index = {}
     index['title'] = 'Blog'
+    index['html_headline'] = '<h1>Blog</h1>'
     index['html_section'] = gg.posts_index(given_posts())
     index = gg.template_index(index, config)
     assert '<title>Blog | Good Generator.py</title>' in index

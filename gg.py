@@ -84,7 +84,7 @@ def logo_url(config=None):
     logo_url = base_url + '/' + config.get('site', {}).get('logo', '')
     return logo_url if logo_url != '/' else ''
 
-def header(logo_url, title_html, date, config=None):
+def header(logo_url, title_html, date='', config=None):
     config = config or {}
     author_url = config.get('author', {}).get('url', '')
     lines = []
@@ -102,7 +102,7 @@ def pagetitle(title='', config=None):
         return title
     return root_title
 
-def post_header(title_html, date, config=None):
+def post_header(title_html, date='', config=None):
     config = config or {}
     name = config.get('author', {}).get('name', '')
     author_url = config.get('author', {}).get('url', '')
@@ -382,21 +382,19 @@ def template_post(post, config=None):
 def template_index(post, config=None):
     config = config or {}
     canonical_url = config.get('site', {}).get('base_url', '')
+    title = post.get('title', '')
     root_title = config.get('site', {}).get('title', '')
+    date = post.get('date', '')
     logo = logo_url(config)
     author_url = config.get('author', {}).get('url', '')
-    index_title = post.get('title', '')
-    if not len(index_title):
-        index_title = 'Index'
-    header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
-<h1>{index_title}</h1>'''
+    header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
         footer_navigation(),
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
     return '\n'.join([
-        _template_common_start(index_title, canonical_url, config),
+        _template_common_start(title, canonical_url, config),
         _template_common_body_and_end(header_content, post.get('html_section', ''), footer_content)
     ])
 
