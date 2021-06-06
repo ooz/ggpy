@@ -353,6 +353,7 @@ tags: {TAG_DRAFT}
 '''
 
 TAG_NO_HEADER = '__no_header__'
+TAG_NO_FOOTER = '__no_footer__'
 def template_page(post, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
@@ -366,11 +367,13 @@ def template_page(post, config=None):
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
     header_content = header(logo, post.get('html_headline', ''), date, config) if TAG_NO_HEADER not in tags else ''
-    footer_content = [
-        footer_navigation(base_url, post.get('is_index', False), post.get('is_root', False)),
-        about_and_social_icons(config)
-    ]
-    footer_content = '\n'.join([content for content in footer_content if content != ''])
+    footer_content = ''
+    if TAG_NO_FOOTER not in tags:
+        footer_content = [
+            footer_navigation(base_url, post.get('is_index', False), post.get('is_root', False)),
+            about_and_social_icons(config)
+        ]
+        footer_content = '\n'.join([content for content in footer_content if len(content)])
     blocks = [_template_common_start(title, canonical_url, config)]
     if not post.get('is_index', False):
         blocks.extend([
@@ -395,13 +398,14 @@ def _template_common_start(title, canonical_url, config):
     ])
 
 def _template_common_body_and_end(header, section, footer):
-    return '\n'.join([
+    blocks = [
         html_head_body_boilerplate(),
         html_tag_block('header', header) if len(header) else '',
         html_tag_block('section', section),
-        html_tag_block('footer', footer),
+        html_tag_block('footer', footer) if len(footer) else '',
         html_closing_boilerplate()
-    ])
+    ]
+    return '\n'.join([block for block in blocks if len(block)])
 
 def template_sitemap(posts, config=None):
     config = config or {}
