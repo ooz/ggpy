@@ -345,10 +345,10 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
 </header>
 <section>
-<ul>
-<li>2020-02-01 <a href="https://example.com/blog">Blog</a></li>
-<li>2020-01-31 <a href="https://example.com/">Root</a></li>
-</ul>
+<div>
+<p>2020-02-01<br><a href="https://example.com/blog">Blog</a></p>
+<p>2020-01-31<br><a href="https://example.com/">Root</a></p>
+</div>
 </section>
 <footer>
 <a href="#" class="nav">top</a>
