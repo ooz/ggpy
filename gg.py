@@ -145,6 +145,7 @@ def _social_link(label, link):
     return f'<a href="{link}" class="social">{label}</a>' if len(link) else ''
 
 def posts_index(posts):
+    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
         day = post['date'][:10]
@@ -403,6 +404,7 @@ def _template_common_body_and_end(header, section, footer):
 
 def template_sitemap(posts, config=None):
     config = config or {}
+    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
@@ -462,14 +464,13 @@ def generate(directories, config=None):
     config = config or {}
     posts = scan_posts(directories, config)
     indices = [post for post in posts if TAG_INDEX in post['tags']]
-    just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
-        index['html_section'] = posts_index(just_posts)
+        index['html_section'] = posts_index(posts)
         index['html'] = template_page(index, config)
     if config.get('site', {}).get('generate_sitemap', False):
         posts.append({
             'filepath': 'sitemap.xml',
-            'html': template_sitemap(just_posts, config)
+            'html': template_sitemap(posts, config)
         })
     for post in posts:
         write_file(post['filepath'], post['html'])

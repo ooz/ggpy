@@ -419,12 +419,14 @@ def given_posts():
             'url': 'https://example.com/',
             'title': 'Root',
             'date': '2020-01-31',
-            'last_modified': '2020-02-20'
+            'last_modified': '2020-02-20',
+            'tags': []
         },
         {
             'url': 'https://example.com/blog',
             'title': 'Blog',
             'date': '2020-02-01',
-            'last_modified': '2020-02-21'
+            'last_modified': '2020-02-21',
+            'tags': []
         }
     ]

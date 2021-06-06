@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 <meta name="referrer" content="no-referrer">
-<title>Markdown Meta Data | Good Generator.py</title>
-<link rel="canonical" href="https://oliz.io/ggpy/test/features/meta.html">
+<title>Page without header | Good Generator.py</title>
+<link rel="canonical" href="https://oliz.io/ggpy/test/features/no-header.html">
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 <style>
 body {
@@ -80,106 +80,31 @@ function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
 </script>
 <meta name="author" content="Good Gen">
-<meta name="description" content="Meta data format and supported options">
-<meta name="keywords" content="documentation">
+<meta name="description" content="Page without header">
+<meta name="keywords" content="__no_header__, __draft__">
 <meta name="twitter:author" content="@oozgo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@oozgo">
-<meta property="og:title" content="Markdown Meta Data">
+<meta property="og:title" content="Page without header">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://oliz.io/ggpy/test/features/meta.html">
-<meta property="og:description" content="Meta data format and supported options">
+<meta property="og:url" content="https://oliz.io/ggpy/test/features/no-header.html">
+<meta property="og:description" content="Page without header">
 <meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
 <meta property="og:locale" content="en-US">
-<meta property="article:published_time" content="2021-04-04T18:59:03Z">
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"Markdown Meta Data","url":"https://oliz.io/ggpy/test/features/meta.html","name":"Good Generator.py","description":"Meta data format and supported options"}</script>
+{"@context":"http://schema.org","@type":"WebSite","headline":"Page without header","url":"https://oliz.io/ggpy/test/features/no-header.html","name":"Good Generator.py","description":"Page without header"}</script>
 </head>
 
 <body onload="initTheme()">
 <header>
 <a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
 <div style="text-align:right;">
-<h1 id="markdown-meta-data">Markdown Meta Data</h1>
-<small><a href="https://oliz.io/ggpy">Good Gen</a>, 2021-04-04</small>
+<h1 id="page-without-header">Page without header</h1>
+
 </div>
 </header>
 <section>
-<p><code>ggpy</code> supports Markdown meta headers at the beginning of each file, e.g. for this document:</p>
-<pre class="highlight"><code>---
-title: Markdown Meta Data
-description: Meta data format and supported options
-date: 2021-04-04T18:59:03Z
-tags: documentation
----
-
-`ggpy` supports Markdown meta headers [...]</code></pre>
-<p>Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:</p>
-<pre class="highlight"><code>---
-tags: topic, other
-tags: __draft__
----</code></pre>
-<p>...produces three tags <code>topic</code>, <code>other</code> and <code>__draft__</code></p>
-<h2 id="meta-keys">Meta Keys</h2>
-<p>All keys are optional:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>title</code></td>
-<td>Document title</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>Short description or summary of the document</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td>Creation date of the document</td>
-</tr>
-<tr>
-<td><code>tags</code></td>
-<td>List of tags. Some tags may have special effects (see below). This key may be used multiple times (see example above).</td>
-</tr>
-</tbody>
-</table>
-<h2 id="special-tags">Special Tags</h2>
-<p>Special tags may be used to configure <code>ggpy</code>'s behavior. Such tags always start and end with double underscore (<code>__</code>, also called "dunder" in the Python world):</p>
-<table>
-<thead>
-<tr>
-<th>Tag</th>
-<th>Description/Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>__draft__</code></td>
-<td>Marks a document as "draft". Drafts are not included in the generated sitemap or index</td>
-</tr>
-<tr>
-<td><code>__index__</code></td>
-<td>Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered.</td>
-</tr>
-<tr>
-<td><code>__no_meta__</code></td>
-<td>(not yet implemented) Don't render machine-readable meta data for social media etc.</td>
-</tr>
-<tr>
-<td><code>__no_header__</code></td>
-<td>(not yet implemented) Omit the page header with site icon, title headline, author and date</td>
-</tr>
-<tr>
-<td><code>__no_footer__</code></td>
-<td>(not yet implemented) Omit the page footer with navigation, theme control and social links</td>
-</tr>
-</tbody>
-</table>
+<p>No header due to <code>__no_header__</code> special tag.</p>
 </section>
 <footer>
 <a href="https://oliz.io/ggpy" class="nav">back</a>

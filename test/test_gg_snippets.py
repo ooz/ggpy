@@ -112,13 +112,12 @@ def test_about_and_social_icons():
 
 def test_posts_index():
     posts = gg.scan_posts(['.'])
-    assert len(posts) == 6
+    assert len(posts) == 7
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
 <p>2021-04-04<br><a href="test/features/meta.html">Markdown Meta Data</a></p>
 <p>2018-05-06<br><a href="test/about/">About / Impress / Privacy / Legal</a></p>
-<p>2018-03-17<br><a href="test/features/draft-not-included-in-sitemap.html">Draft</a></p>
 <p>2018-03-17<br><a href="test/some-post.html">Some Post</a></p>
 <p>1337-06-06<br><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></p>
 </div>'''
