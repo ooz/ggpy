@@ -16,7 +16,7 @@ def test_omit_page_header_when_no_header_tag_is_set():
     assert '<footer>' in rendered
 
 def test_omit_page_footer_when_no_footer_tag_is_set():
-    rendered = read_file('test/features/no-footer.html')
+    rendered = read_file('test/features/no-footer/index.html')
 
     assert '<header>' in rendered
 

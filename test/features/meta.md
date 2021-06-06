@@ -50,4 +50,4 @@ Special tags may be used to configure `ggpy`'s behavior. Such tags always start 
 | `__index__` | Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered. |
 | `__no_meta__` | (not yet implemented) Don't render machine-readable meta data for social media etc. |
 | `__no_header__` | Omit the page header with site icon, title headline, author and date |
-| `__no_footer__` | Omit the page footer with navigation, theme control and social links |
+| `__no_footer__` | [Omit the page footer with navigation, theme control and social links](no-footer/) |
