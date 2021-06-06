@@ -365,7 +365,7 @@ def template_page(post, config=None):
     author_name = config.get('author', {}).get('name', '')
     header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
-        footer_navigation(base_url, post.get('is_index', False)),
+        footer_navigation(base_url, post.get('is_index', False), post.get('is_root', False)),
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
