@@ -17,7 +17,7 @@ the configuration and header formats are not stable and there is no official rel
 Things I would like to get done for version 1.0:
 
 * [x] Enable more configuration and rendering control to individual markdown files (e.g. whether to show header/foot, include further header tags etc.)
-* Enable an image gallery use-case (for photo-centered websites)
+* [ ] Enable an image gallery use-case (for photo-centered websites)
 
 ## Features
 
