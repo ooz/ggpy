@@ -9,12 +9,14 @@ config = {
         'title': 'Good Generator.py',                # Default: no common title will be rendered across all pages
         'logo': 'static/gg.png',                     # Default: no common logo will be rendered across all pages
         'about_url': 'https://oliz.io/ggpy/test/about', # Deprecated, will be moved to social section. Default: no about link
-        'csp': '''<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">''', # Deprecated, see below
-        'referrer': '''<meta name="referrer" content="no-referrer">''' # Deprecated, will prob. be replaced with general way to inject header tags
+        'head': [                                    # Additioal head tags, default: none / empty
+            '''<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">''',
+            '''<meta name="referrer" content="no-referrer">'''
+        ]
     },
     'author': {
         'name': 'Good Gen',
-        'url': 'https://oliz.io/ggpy',
+        'url': 'https://oliz.io/ggpy'
     },
     'social': {
         'email': 'example@example.com',

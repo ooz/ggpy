@@ -215,13 +215,9 @@ f'''<script type="application/ld+json">
 ##############################################################################
 # HTML SNIPPETS
 ##############################################################################
-def csp_and_referrer(config=None):
+def additional_head_tags(config=None):
     config = config or {}
-    headers = [
-        config.get('site', {}).get('csp', ''),
-        config.get('site', {}).get('referrer', '')
-    ]
-    return '\n'.join(headers).strip()
+    return '\n'.join(config.get('site', {}).get('head', [])).strip()
 
 def html_opening_boilerplate():
     return \
@@ -390,7 +386,7 @@ def _template_common_start(title, canonical_url, config):
     logo = logo_url(config)
     return '\n'.join([
         html_opening_boilerplate(),
-        csp_and_referrer(config),
+        additional_head_tags(config),
         html_tag_line('title', pagetitle(title, config)),
         html_tag_empty('link', [('rel', 'canonical'), ('href', canonical_url)]),
         html_tag_empty('link', [('rel', 'shortcut icon'), ('href', logo)]) if len(logo) else '',
