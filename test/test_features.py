@@ -24,4 +24,3 @@ def test_omit_page_footer_when_no_footer_tag_is_set():
     assert '</footer>' not in rendered
     assert ' class="nav">' not in rendered
     assert ' class="social">' not in rendered
-    assert 'javascript:toggleTheme()' not in rendered

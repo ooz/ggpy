@@ -105,6 +105,14 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </header>
 <section>
 <p>No footer due to <code>__no_footer__</code> special tag.</p>
+<p>If you still want to control the theme, include</p>
+<pre class="highlight"><code>&lt;div style="text-align:center"&gt;
+&lt;a href="javascript:toggleTheme()"&gt;🌓&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<p>at the end of your <code>.md</code> file. Like so:</p>
+<div style="text-align:center">
+<a href="javascript:toggleTheme()">🌓</a>
+</div>
 </section>
 </body>
 </html>
