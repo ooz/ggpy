@@ -26,6 +26,8 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 * Requires `python3`, `pip`, and optionally `git` (for more accurate, CI-friendly timestamps) and `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
 * The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
 
+See [CHANGELOG](CHANGELOG.html) for versions and changes.
+
 ## Usage
 
 * Copy `gg.py`, `ggconfig.py` and `Makefile` to the root of your website/blog
