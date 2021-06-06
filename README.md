@@ -9,10 +9,9 @@
 Yet another static site generator. Written in Python.
 [Why?](https://oliz.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html)
 
-It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
-
-While I have been using it for [my website](https://oliz.io) and [blog](https://oliz.io/blog/) for years,
-there is no official release, yet.
+It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy).
+An infinite incepted loop!
+It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 
 ## Features
 
