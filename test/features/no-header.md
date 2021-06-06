@@ -1,5 +1,4 @@
 ---
-title: Page without header
 tags: __no_header__
 tags: __draft__
 ---
