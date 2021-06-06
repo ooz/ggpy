@@ -15,12 +15,12 @@ tags: __draft__
 ---
 ''', gg.template_newpost())
 
-def test_template_post():
+def test_template_page():
     post = {
         'url': 'https://oliz.io/ggpy/',
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_post(post, config)
+    post = gg.template_page(post, config)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -137,12 +137,12 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </html>
 '''
 
-def test_template_post_without_config():
+def test_template_page_without_config():
     post = {
         'url': 'index.html',
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_post(post)
+    post = gg.template_page(post)
     assert post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -255,7 +255,7 @@ def test_template_page_as_index():
     index['url'] = 'https://oliz.io/ggpy'
     index['is_index'] = True
     index['html_section'] = gg.posts_index(given_posts())
-    index = gg.template_post(index, config)
+    index = gg.template_page(index, config)
     assert index == \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -369,7 +369,7 @@ def test_template_page_with_custom_title():
     index['title'] = 'Blog'
     index['html_headline'] = '<h1>Blog</h1>'
     index['html_section'] = gg.posts_index(given_posts())
-    index = gg.template_post(index, config)
+    index = gg.template_page(index, config)
     assert '<title>Blog | Good Generator.py</title>' in index
     assert '<h1>Blog</h1>' in index
 

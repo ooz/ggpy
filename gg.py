@@ -336,7 +336,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 #
 # * New markdown file
 # * Rendering markdown file as HTML
-# * Rendering index of all non-draft markdown files as HTML
 # * Rendering sitemap
 ##############################################################################
 TAG_DRAFT = '__draft__'
@@ -352,7 +351,7 @@ tags: {TAG_DRAFT}
 ---
 '''
 
-def template_post(post, config=None):
+def template_page(post, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
     title = post.get('title', '')
@@ -466,7 +465,7 @@ def generate(directories, config=None):
     just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
         index['html_section'] = posts_index(just_posts)
-        index['html'] = template_post(index, config)
+        index['html'] = template_page(index, config)
     if config.get('site', {}).get('generate_sitemap', False):
         posts.append({
             'filepath': 'sitemap.xml',
@@ -497,7 +496,7 @@ def read_post(directory, filepath, config=None):
     post['url'] = canonical_url
     post['last_modified'] = last_modified(filepath)
     post['is_index'] = TAG_INDEX in post['tags']
-    post['html'] = template_post(post, config)
+    post['html'] = template_page(post, config)
     return post
 
 def last_modified(filepath):
