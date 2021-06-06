@@ -352,6 +352,7 @@ tags: {TAG_DRAFT}
 ---
 '''
 
+TAG_NO_META = '__no_meta__'
 TAG_NO_HEADER = '__no_header__'
 TAG_NO_FOOTER = '__no_footer__'
 def template_page(post, config=None):
@@ -375,7 +376,7 @@ def template_page(post, config=None):
         ]
         footer_content = '\n'.join([content for content in footer_content if len(content)])
     blocks = [_template_common_start(title, canonical_url, config)]
-    if not post.get('is_index', False):
+    if (not post.get('is_index', False)) and TAG_NO_META not in tags:
         blocks.extend([
             meta(author_name, description, tags),
             twitter(config),
