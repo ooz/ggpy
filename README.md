@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/ooz/ggpy.svg?style=shield)](https://circleci.com/gh/ooz/ggpy)
 [![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE.txt)
 [![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
-[CHANGELOG](CHANGELOG.html)
+[![Changelog](https://img.shields.io/badge/-CHANGELOG-blueviolet.svg)](CHANGELOG.html)
 
 ----
 
