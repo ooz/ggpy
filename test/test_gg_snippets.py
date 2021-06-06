@@ -115,15 +115,13 @@ def test_posts_index():
     assert len(posts) == 6
     posts_index = gg.posts_index(posts)
     assert posts_index == \
-'''<table>
-<tbody>
-<tr><td>2021-04-04</td><td><a href="test/features/meta.html">Markdown Meta Data</a></td></tr>
-<tr><td>2018-05-06</td><td><a href="test/about/">About / Impress / Privacy / Legal</a></td></tr>
-<tr><td>2018-03-17</td><td><a href="test/features/draft-not-included-in-sitemap.html">Draft</a></td></tr>
-<tr><td>2018-03-17</td><td><a href="test/some-post.html">Some Post</a></td></tr>
-<tr><td>1337-06-06</td><td><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></td></tr>
-</tbody>
-</table>'''
+'''<ul>
+<li>2021-04-04 <a href="test/features/meta.html">Markdown Meta Data</a></li>
+<li>2018-05-06 <a href="test/about/">About / Impress / Privacy / Legal</a></li>
+<li>2018-03-17 <a href="test/features/draft-not-included-in-sitemap.html">Draft</a></li>
+<li>2018-03-17 <a href="test/some-post.html">Some Post</a></li>
+<li>1337-06-06 <a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></li>
+</ul>'''
 
 ##############################################################################
 # HTML SNIPPETS
