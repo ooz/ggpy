@@ -352,6 +352,7 @@ tags: {TAG_DRAFT}
 ---
 '''
 
+TAG_NO_HEADER = '__no_header__'
 def template_page(post, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
@@ -364,7 +365,7 @@ def template_page(post, config=None):
     base_url = config.get('site', {}).get('base_url', '')
     logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
-    header_content = header(logo, post.get('html_headline', ''), date, config)
+    header_content = header(logo, post.get('html_headline', ''), date, config) if TAG_NO_HEADER not in tags else ''
     footer_content = [
         footer_navigation(base_url, post.get('is_index', False), post.get('is_root', False)),
         about_and_social_icons(config)
@@ -396,7 +397,7 @@ def _template_common_start(title, canonical_url, config):
 def _template_common_body_and_end(header, section, footer):
     return '\n'.join([
         html_head_body_boilerplate(),
-        html_tag_block('header', header),
+        html_tag_block('header', header) if len(header) else '',
         html_tag_block('section', section),
         html_tag_block('footer', footer),
         html_closing_boilerplate()

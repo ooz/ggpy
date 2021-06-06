@@ -236,9 +236,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 </head>
 
 <body onload="initTheme()">
-<header>
 
-</header>
 <section>
 <h1>Hey!</h1>
 </section>
