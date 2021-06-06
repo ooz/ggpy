@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/ooz/ggpy.svg?style=shield)](https://circleci.com/gh/ooz/ggpy)
 [![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE.txt)
 [![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
+[CHANGELOG](CHANGELOG.html)
 
 ----
 
@@ -25,8 +26,6 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
 * Requires `python3`, `pip`, and optionally `git` (for more accurate, CI-friendly timestamps) and `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
 * The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit
-
-See [CHANGELOG](CHANGELOG.html) for versions and changes.
 
 ## Usage
 
