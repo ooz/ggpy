@@ -112,7 +112,6 @@ def test_about_and_social_icons():
 
 def test_posts_index():
     posts = gg.scan_posts(['.'])
-    assert len(posts) == 7
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
