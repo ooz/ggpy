@@ -110,11 +110,11 @@ def test_about_and_social_icons():
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
-def test_post_index():
+def test_posts_index():
     posts = gg.scan_posts(['.'])
     assert len(posts) == 6
-    post_index = gg.post_index(posts)
-    assert post_index == \
+    posts_index = gg.posts_index(posts)
+    assert posts_index == \
 '''<table>
 <tbody>
 <tr><td>2021-04-04</td><td><a href="test/features/meta.html">Markdown Meta Data</a></td></tr>

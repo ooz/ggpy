@@ -144,7 +144,7 @@ def about_and_social_icons(config=None):
 def _social_link(label, link):
     return f'<a href="{link}" class="social">{label}</a>' if len(link) else ''
 
-def post_index(posts):
+def posts_index(posts):
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
         day = post['date'][:10]
@@ -355,7 +355,6 @@ tags: {TAG_DRAFT}
 def template_post(post, config=None):
     config = config or {}
     canonical_url = post.get('url', '')
-    body = post.get('html_section', '')
     title = post.get('title', '')
     date = post.get('date', '')
     tags = post.get('tags', '')
@@ -377,21 +376,20 @@ def template_post(post, config=None):
         twitter(config),
         opengraph(title, canonical_url, description, date, config),
         json_ld(raw_title, canonical_url, raw_description, config),
-        _template_common_body_and_end(header_content, body, footer_content)
+        _template_common_body_and_end(header_content, post.get('html_section', ''), footer_content)
     ])
 
-def template_index(index, posts, config=None):
+def template_index(post, config=None):
     config = config or {}
     canonical_url = config.get('site', {}).get('base_url', '')
     root_title = config.get('site', {}).get('title', '')
     logo = logo_url(config)
     author_url = config.get('author', {}).get('url', '')
-    index_title = index.get('title', '')
+    index_title = post.get('title', '')
     if not len(index_title):
         index_title = 'Index'
     header_content = f'''<a href="{author_url}"><img src="{logo}" class="avatar" /></a>
 <h1>{index_title}</h1>'''
-    body = post_index(posts)
     footer_content = [
         footer_navigation(),
         about_and_social_icons(config)
@@ -399,7 +397,7 @@ def template_index(index, posts, config=None):
     footer_content = '\n'.join([content for content in footer_content if content != ''])
     return '\n'.join([
         _template_common_start(index_title, canonical_url, config),
-        _template_common_body_and_end(header_content, body, footer_content)
+        _template_common_body_and_end(header_content, post.get('html_section', ''), footer_content)
     ])
 
 def _template_common_start(title, canonical_url, config):
@@ -486,7 +484,8 @@ def generate(directories, config=None):
     indices = [post for post in posts if TAG_INDEX in post['tags']]
     just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
-        index['html'] = template_index(index, just_posts, config)
+        index['html_section'] = posts_index(just_posts)
+        index['html'] = template_index(index, config)
     if config.get('site', {}).get('generate_sitemap', False):
         posts.append({
             'filepath': 'sitemap.xml',
