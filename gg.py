@@ -370,34 +370,16 @@ def template_post(post, config=None):
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
-    return '\n'.join([
-        _template_common_start(title, canonical_url, config),
-        meta(author_name, description, tags),
-        twitter(config),
-        opengraph(title, canonical_url, description, date, config),
-        json_ld(raw_title, canonical_url, raw_description, config),
-        _template_common_body_and_end(header_content, post.get('html_section', ''), footer_content)
-    ])
-
-def template_index(post, config=None):
-    config = config or {}
-    canonical_url = post.get('url', '')
-    title = post.get('title', '')
-    root_title = config.get('site', {}).get('title', '')
-    date = post.get('date', '')
-    base_url = config.get('site', {}).get('base_url', '')
-    logo = logo_url(config)
-    author_url = config.get('author', {}).get('url', '')
-    header_content = header(logo, post.get('html_headline', ''), date, config)
-    footer_content = [
-        footer_navigation(base_url, post.get('is_index', False)),
-        about_and_social_icons(config)
-    ]
-    footer_content = '\n'.join([content for content in footer_content if content != ''])
-    return '\n'.join([
-        _template_common_start(title, canonical_url, config),
-        _template_common_body_and_end(header_content, post.get('html_section', ''), footer_content)
-    ])
+    blocks = [_template_common_start(title, canonical_url, config)]
+    if not post.get('is_index', False):
+        blocks.extend([
+            meta(author_name, description, tags),
+            twitter(config),
+            opengraph(title, canonical_url, description, date, config),
+            json_ld(raw_title, canonical_url, raw_description, config)
+        ])
+    blocks.append(_template_common_body_and_end(header_content, post.get('html_section', ''), footer_content))
+    return '\n'.join(blocks)
 
 def _template_common_start(title, canonical_url, config):
     logo = logo_url(config)
@@ -484,7 +466,7 @@ def generate(directories, config=None):
     just_posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     for index in indices:
         index['html_section'] = posts_index(just_posts)
-        index['html'] = template_index(index, config)
+        index['html'] = template_post(index, config)
     if config.get('site', {}).get('generate_sitemap', False):
         posts.append({
             'filepath': 'sitemap.xml',
