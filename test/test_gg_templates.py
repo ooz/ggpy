@@ -140,7 +140,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 def test_template_post_without_config():
     post = {
         'url': 'index.html',
-        'is_root_index': True,
         'html_section': '<h1>Hey!</h1>'
     }
     post = gg.template_post(post)
@@ -253,6 +252,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 def test_template_index():
     index = {}
+    index['url'] = 'https://oliz.io/ggpy'
     index['is_index'] = True
     index['html_section'] = gg.posts_index(given_posts())
     index = gg.template_index(index, config)

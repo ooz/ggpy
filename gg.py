@@ -381,7 +381,7 @@ def template_post(post, config=None):
 
 def template_index(post, config=None):
     config = config or {}
-    canonical_url = config.get('site', {}).get('base_url', '')
+    canonical_url = post.get('url', '')
     title = post.get('title', '')
     root_title = config.get('site', {}).get('title', '')
     date = post.get('date', '')
