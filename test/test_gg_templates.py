@@ -253,6 +253,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 
 def test_template_index():
     index = {}
+    index['is_index'] = True
     index['html_section'] = gg.posts_index(given_posts())
     index = gg.template_index(index, config)
     assert index == \

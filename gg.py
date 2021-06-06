@@ -366,7 +366,7 @@ def template_post(post, config=None):
     author_name = config.get('author', {}).get('name', '')
     header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
-        footer_navigation(base_url, post.get('is_root_index', False)),
+        footer_navigation(base_url, post.get('is_index', False)),
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
@@ -385,11 +385,12 @@ def template_index(post, config=None):
     title = post.get('title', '')
     root_title = config.get('site', {}).get('title', '')
     date = post.get('date', '')
+    base_url = config.get('site', {}).get('base_url', '')
     logo = logo_url(config)
     author_url = config.get('author', {}).get('url', '')
     header_content = header(logo, post.get('html_headline', ''), date, config)
     footer_content = [
-        footer_navigation(),
+        footer_navigation(base_url, post.get('is_index', False)),
         about_and_social_icons(config)
     ]
     footer_content = '\n'.join([content for content in footer_content if content != ''])
@@ -505,9 +506,6 @@ def convert_canonical(directory, targetpath, config=None):
             return f'{targetpath[:-10]}'
     return targetpath
 
-def is_root_readme(path):
-    return os.path.relpath(path) == 'README.md'
-
 def read_post(directory, filepath, config=None):
     markdown_content = read_file(filepath)
     post = markdown2post(markdown_content, config)
@@ -516,7 +514,7 @@ def read_post(directory, filepath, config=None):
     post['filepath'] = targetpath
     post['url'] = canonical_url
     post['last_modified'] = last_modified(filepath)
-    post['is_root_index'] = is_root_readme(filepath)
+    post['is_index'] = TAG_INDEX in post['tags']
     post['html'] = template_post(post, config)
     return post
 

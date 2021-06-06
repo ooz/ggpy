@@ -8,9 +8,6 @@ from ggconfig import config
 
 DATE = r'''\d+-\d{2}-\d{2}'''
 
-def test_is_root_readme():
-    assert gg.is_root_readme('README.md')
-
 def test_last_modified():
     assert re.match(DATE, gg.last_modified('README.md'))
 
@@ -47,20 +44,20 @@ def test_read_post():
     assert post['tags'] == ''
     assert post['title'] == ''
     assert post['url'] == 'https://oliz.io/ggpy/'
-    assert post['is_root_index'] == True
-    assert NAVIGATION_BACK_INDICATOR not in post['html']
+    assert post['is_index'] == False
+    assert NAVIGATION_BACK_INDICATOR in post['html']
 
     post = gg.read_post('.', "README.md")
     assert post['url'] == 'index.html'
-    assert post['is_root_index'] == True
+    assert post['is_index'] == False
     assert NAVIGATION_BACK_INDICATOR not in post['html']
 
     post = gg.read_post('.', "test/features/README.md", config)
     assert post['url'] == 'https://oliz.io/ggpy/test/features/'
-    assert post['is_root_index'] == False
+    assert post['is_index'] == False
     assert NAVIGATION_BACK_INDICATOR in post['html']
 
     post = gg.read_post('.', "test/features/README.md")
     assert post['url'] == 'test/features/'
-    assert post['is_root_index'] == False
+    assert post['is_index'] == False
     assert NAVIGATION_BACK_INDICATOR not in post['html']
