@@ -138,7 +138,7 @@ def about_and_social_icons(config=None):
         _social_link('email', f'mailto:{email}' if len(email) else ''),
         _social_link('twitter', config.get('social', {}).get('twitter_url', '')),
         _social_link('github', config.get('social', {}).get('github_url', '')),
-        _social_link('about', config.get('site', {}).get('about_url', ''))
+        _social_link('about', config.get('social', {}).get('about_url', ''))
     ] if len(social)])
 
 def _social_link(label, link):

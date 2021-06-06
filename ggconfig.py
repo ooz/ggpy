@@ -8,7 +8,6 @@ config = {
         'additional_sitemap_entries': [],            # Default: none / empty
         'title': 'Good Generator.py',                # Default: no common title will be rendered across all pages
         'logo': 'static/gg.png',                     # Default: no common logo will be rendered across all pages
-        'about_url': 'https://oliz.io/ggpy/test/about', # Deprecated, will be moved to social section. Default: no about link
         'head': [                                    # Additioal head tags, default: none / empty
             '''<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">''',
             '''<meta name="referrer" content="no-referrer">'''
@@ -19,6 +18,7 @@ config = {
         'url': 'https://oliz.io/ggpy'
     },
     'social': {
+        'about_url': 'https://oliz.io/ggpy/test/about',
         'email': 'example@example.com',
         'github_url': 'https://github.com/ooz/ggpy',
         'twitter_url': 'https://twitter.com/oozgo',
