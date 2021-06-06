@@ -129,6 +129,10 @@ def test_sitemap_generation():
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
+    <loc>https://oliz.io/ggpy/CHANGELOG.html</loc>
+    <lastmod>[\d\-]{10}</lastmod>
+  </url>
+  <url>
     <loc>https://oliz.io/ggpy/test/about/</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
