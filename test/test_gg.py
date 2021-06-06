@@ -49,7 +49,7 @@ def test_read_post():
     assert post['url'] == 'https://oliz.io/ggpy/'
     assert post['is_root'] == True
     assert post['is_index'] == False
-    assert NAVIGATION_BACK_INDICATOR in post['html']
+    assert NAVIGATION_BACK_INDICATOR not in post['html']
 
     post = gg.read_post('.', "README.md")
     assert post['url'] == 'index.html'
