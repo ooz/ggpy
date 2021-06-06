@@ -12,12 +12,7 @@ Yet another static site generator. Written in Python.
 It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy). An infinite incepted loop!
 
 While I have been using it for [my website](https://oliz.io) and [blog](https://oliz.io/blog/) for years,
-the configuration and header formats are not stable and there is no official release, yet.
-
-Things I would like to get done for version 1.0:
-
-* [x] Enable more configuration and rendering control to individual markdown files (e.g. whether to show header/foot, include further header tags etc.)
-* [ ] Enable an image gallery use-case (for photo-centered websites)
+there is no official release, yet.
 
 ## Features
 
