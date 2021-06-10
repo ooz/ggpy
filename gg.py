@@ -280,6 +280,7 @@ blockquote {
     padding: 0 .5rem;
 }
 code {
+    font-size: .9rem;
     background: #EAEAEA;
     padding: .2rem .5rem;
     white-space: nowrap;
