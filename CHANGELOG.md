@@ -6,6 +6,7 @@ title: Changelog
 
 * Update included style:
     - smaller default font-size and line-spacing
+    - increase inline code font-size
     - use relative unit for body max-width
     - add footer control for bigger font-size
 
