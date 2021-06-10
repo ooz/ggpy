@@ -53,7 +53,6 @@ blockquote {
     padding: 0 .5rem;
 }
 code {
-    font-size: 80%;
     background: #EAEAEA;
     padding: .2rem .5rem;
     white-space: nowrap;
@@ -176,7 +175,6 @@ blockquote {
     padding: 0 .5rem;
 }
 code {
-    font-size: 80%;
     background: #EAEAEA;
     padding: .2rem .5rem;
     white-space: nowrap;
@@ -289,7 +287,6 @@ blockquote {
     padding: 0 .5rem;
 }
 code {
-    font-size: 80%;
     background: #EAEAEA;
     padding: .2rem .5rem;
     white-space: nowrap;
