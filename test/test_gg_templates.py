@@ -41,7 +41,7 @@ body {
     background: #FFF;
     margin: 1rem auto;
     padding: 0 .6rem;
-    max-width: 44rem;
+    max-width: 44em;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
@@ -164,7 +164,7 @@ body {
     background: #FFF;
     margin: 1rem auto;
     padding: 0 .6rem;
-    max-width: 44rem;
+    max-width: 44em;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
@@ -277,7 +277,7 @@ body {
     background: #FFF;
     margin: 1rem auto;
     padding: 0 .6rem;
-    max-width: 44rem;
+    max-width: 44em;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
