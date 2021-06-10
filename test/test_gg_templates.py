@@ -35,14 +35,13 @@ def test_template_page():
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 <style>
 body {
-    font-size: 18px;
     font-family: sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 10px;
-    max-width: 700px;
+    padding: 0 .6rem;
+    max-width: 44rem;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
@@ -68,9 +67,9 @@ ul.task-list, ul.task-list li.task-list-item {
     list-style-type: none;
     list-style-image: none;
 }
-pre { border-left: 0.3rem solid #07A; }
+pre { border-left: .3rem solid #07A; }
 pre > code {
-    font-size: 14px;
+    font-size: .9rem;
     background: #EAEAEA;
     box-sizing: inherit;
     display: block;
@@ -91,9 +90,10 @@ td, th {
 
 .dark-mode { color: #CACACA; background: #363636; }
 .dark-mode a { color: #0A7; }
-.dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
+.dark-mode blockquote { background: #222; border-left: .3rem solid #0A7; }
 .dark-mode code { background: #222; }
-.dark-mode pre { border-left: 0.3rem solid #0A7; }
+.dark-mode pre { border-left: .3rem solid #0A7; }
+.large-font { font-size: 1.2em; }
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
@@ -102,6 +102,7 @@ td, th {
 <script>
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
+function toggleFontSize() { document.body.classList.toggle("large-font") }
 </script>
 <meta name="author" content="Good Gen">
 <meta name="twitter:author" content="@oozgo">
@@ -128,6 +129,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <a href="https://oliz.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
+<a href="javascript:toggleFontSize()" class="nav">aA</a>
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
@@ -156,14 +158,13 @@ def test_template_page_without_config():
 
 <style>
 body {
-    font-size: 18px;
     font-family: sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 10px;
-    max-width: 700px;
+    padding: 0 .6rem;
+    max-width: 44rem;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
@@ -189,9 +190,9 @@ ul.task-list, ul.task-list li.task-list-item {
     list-style-type: none;
     list-style-image: none;
 }
-pre { border-left: 0.3rem solid #07A; }
+pre { border-left: .3rem solid #07A; }
 pre > code {
-    font-size: 14px;
+    font-size: .9rem;
     background: #EAEAEA;
     box-sizing: inherit;
     display: block;
@@ -212,9 +213,10 @@ td, th {
 
 .dark-mode { color: #CACACA; background: #363636; }
 .dark-mode a { color: #0A7; }
-.dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
+.dark-mode blockquote { background: #222; border-left: .3rem solid #0A7; }
 .dark-mode code { background: #222; }
-.dark-mode pre { border-left: 0.3rem solid #0A7; }
+.dark-mode pre { border-left: .3rem solid #0A7; }
+.large-font { font-size: 1.2em; }
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
@@ -223,6 +225,7 @@ td, th {
 <script>
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
+function toggleFontSize() { document.body.classList.toggle("large-font") }
 </script>
 
 
@@ -242,6 +245,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <footer>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
+<a href="javascript:toggleFontSize()" class="nav">aA</a>
 </footer>
 </body>
 </html>
@@ -267,14 +271,13 @@ def test_template_page_as_index():
 <link rel="shortcut icon" href="https://oliz.io/ggpy/static/gg.png">
 <style>
 body {
-    font-size: 18px;
     font-family: sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 10px;
-    max-width: 700px;
+    padding: 0 .6rem;
+    max-width: 44rem;
     scroll-behavior: smooth;
 }
 a { color: #07A; text-decoration: none; }
@@ -300,9 +303,9 @@ ul.task-list, ul.task-list li.task-list-item {
     list-style-type: none;
     list-style-image: none;
 }
-pre { border-left: 0.3rem solid #07A; }
+pre { border-left: .3rem solid #07A; }
 pre > code {
-    font-size: 14px;
+    font-size: .9rem;
     background: #EAEAEA;
     box-sizing: inherit;
     display: block;
@@ -323,9 +326,10 @@ td, th {
 
 .dark-mode { color: #CACACA; background: #363636; }
 .dark-mode a { color: #0A7; }
-.dark-mode blockquote { background: #222; border-left: 0.3rem solid #0A7; }
+.dark-mode blockquote { background: #222; border-left: .3rem solid #0A7; }
 .dark-mode code { background: #222; }
-.dark-mode pre { border-left: 0.3rem solid #0A7; }
+.dark-mode pre { border-left: .3rem solid #0A7; }
+.large-font { font-size: 1.2em; }
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
@@ -334,6 +338,7 @@ td, th {
 <script>
 function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
+function toggleFontSize() { document.body.classList.toggle("large-font") }
 </script>
 </head>
 
@@ -350,6 +355,7 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 <footer>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
+<a href="javascript:toggleFontSize()" class="nav">aA</a>
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
