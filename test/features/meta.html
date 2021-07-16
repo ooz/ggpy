@@ -73,6 +73,8 @@ td, th {
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
+.card { background: rgba(0, 0, 0, 0.1); box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.2); border-radius: 5px; padding: .8rem; margin-top: 1rem; transition: 0.1s; }
+.card:hover { box-shadow: 1px 3px 6px 3px rgba(0, 0, 0, 0.2); }
 .social { float: right; margin-left: 1rem; }
 </style>
 <script>
@@ -161,11 +163,15 @@ tags: __draft__
 <tbody>
 <tr>
 <td><code>__draft__</code></td>
-<td>Marks a document as "draft". Drafts are not included in the generated sitemap or index</td>
+<td>Marks a document as "draft". Drafts are not included in the generated sitemap or index or index of inlined posts</td>
 </tr>
 <tr>
 <td><code>__index__</code></td>
 <td>Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered</td>
+</tr>
+<tr>
+<td><code>__index_inline_posts__</code></td>
+<td>Document should inline all documents. Relative links in the documents must then be relative to this document. Other markdown content of the file is then ignored, not rendered. No <code>sitemap.xml</code> is generated</td>
 </tr>
 <tr>
 <td><code>__no_meta__</code></td>

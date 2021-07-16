@@ -46,8 +46,9 @@ Special tags may be used to configure `ggpy`'s behavior. Such tags always start 
 
 | Tag | Description/Effect |
 |-----|--------------------|
-| `__draft__` | Marks a document as "draft". Drafts are not included in the generated sitemap or index |
+| `__draft__` | Marks a document as "draft". Drafts are not included in the generated sitemap or index or index of inlined posts |
 | `__index__` | Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered |
+| `__index_inline_posts__` | Document should inline all documents. Relative links in the documents must then be relative to this document. Other markdown content of the file is then ignored, not rendered. No `sitemap.xml` is generated |
 | `__no_meta__` | Don't render machine-readable meta data for social media etc. |
 | `__no_header__` | Omit the page header with site icon, title headline, author and date |
 | `__no_footer__` | [Omit the page footer with navigation, theme control and social links](no-footer/) |

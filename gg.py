@@ -158,6 +158,30 @@ def posts_index(posts):
     posts_html = '\n'.join(posts_html)
     return html_tag_block('div', posts_html)
 
+def posts_index_inline_posts(posts):
+    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
+    posts_html = []
+    for post in reversed(sorted(posts, key=lambda post: post['date'])):
+        day = post['date'][:10]
+        title = post['title']
+        html_headline = post['html_headline']
+        anchor = html_headline[8:html_headline.find('">')] # Extract id from headline
+        description = post.get('description', '')
+        if description == title:
+            description = 'More...'
+        url = post['url']
+        content = post.get('html_section', '')
+        if (day != '' and title != ''):
+            #posts_html.append('<p>%s<br><a href="%s">%s</a></p>' % (day, url, title))
+            posts_html.append(f'''<div class="card"><small class="social">{day}</small>''')
+            posts_html.append(f'''<a href="#{anchor}">{html_headline.replace('h1', 'b')}</a>''')
+            posts_html.append(f'''<details><summary>{description}</summary>''')
+            posts_html.append(f'''{content}''')
+            posts_html.append(f'''</details>''')
+            posts_html.append(f'''</div>''')
+    posts_html = '\n'.join(posts_html)
+    return html_tag_block('div', posts_html)
+
 ## META, SOCIAL AND MACHINE-READABLES
 def meta(author, description, tags):
     meta_names = []
@@ -324,8 +348,10 @@ td, th {
 
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
+.card { background: rgba(0, 0, 0, 0.1); box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.2); border-radius: 5px; padding: .8rem; margin-top: 1rem; transition: 0.1s; }
+.card:hover { box-shadow: 1px 3px 6px 3px rgba(0, 0, 0, 0.2); }
 .social { float: right; margin-left: 1rem; }'''
-# From: https://raw.githubusercontent.com/ooz/templates/master/html/oz-dark-mode.js
+# From: https://raw.githubusercontent.com/ooz/templates/master/html/oz-accessibility.js
 def inline_javascript():
     return '''function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
@@ -465,6 +491,7 @@ def scan_posts(directories, config=None):
     return posts
 
 TAG_INDEX = '__index__'
+TAG_INDEX_INLINE = '__index_inline_posts__'
 def generate(directories, config=None):
     config = config or {}
     posts = scan_posts(directories, config)
@@ -472,13 +499,18 @@ def generate(directories, config=None):
     for index in indices:
         index['html_section'] = posts_index(posts)
         index['html'] = template_page(index, config)
-    if config.get('site', {}).get('generate_sitemap', False):
+    inline_indices = [post for post in posts if TAG_INDEX_INLINE in post['tags']]
+    for index in inline_indices:
+        index['html_section'] = posts_index_inline_posts(posts)
+        index['html'] = template_page(index, config)
+    if len(inline_indices) == 0 and config.get('site', {}).get('generate_sitemap', False):
         posts.append({
             'filepath': 'sitemap.xml',
             'html': template_sitemap(posts, config)
         })
     for post in posts:
-        write_file(post['filepath'], post['html'])
+        if len(inline_indices) == 0 or TAG_INDEX_INLINE in post['tags']:
+            write_file(post['filepath'], post['html'])
 
 def convert_canonical(directory, targetpath, config=None):
     config = config or {}
