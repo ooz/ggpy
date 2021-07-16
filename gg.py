@@ -154,7 +154,7 @@ def posts_index(posts):
         title = post['title']
         url = post['url']
         if (day != '' and title != ''):
-            posts_html.append('<p>%s<br><a href="%s">%s</a></p>' % (day, url, title))
+            posts_html.append(f'''<div class="card"><small class="social">{day}</small><a href="{url}">{title}</a></div>''')
     posts_html = '\n'.join(posts_html)
     return html_tag_block('div', posts_html)
 

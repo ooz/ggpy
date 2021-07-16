@@ -116,10 +116,10 @@ def test_posts_index():
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
-<p>2021-04-04<br><a href="test/features/meta.html">Markdown Meta Data</a></p>
-<p>2018-05-06<br><a href="test/about/">About / Impress / Privacy / Legal</a></p>
-<p>2018-03-17<br><a href="test/some-post.html">Some Post</a></p>
-<p>1337-06-06<br><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></p>
+<div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
+<div class="card"><small class="social">2018-05-06</small><a href="test/about/">About / Impress / Privacy / Legal</a></div>
+<div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html">Some Post</a></div>
+<div class="card"><small class="social">1337-06-06</small><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></div>
 </div>'''
 
 ##############################################################################
