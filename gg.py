@@ -167,16 +167,31 @@ def posts_index_inline_posts(posts):
         html_headline = post['html_headline']
         anchor = html_headline[8:html_headline.find('">')] # Extract id from headline
         description = post.get('description', '')
-        if description == title:
-            description = 'More...'
         url = post['url']
         content = post.get('html_section', '')
         if (day != '' and title != ''):
+            content_chars_count = len(content)
+            content_lines_count = content.count('\n') + 1
             posts_html.append(f'''<div class="card"><small class="social">{day}</small>''')
-            posts_html.append(f'''<a href="#{anchor}">{html_headline.replace('h1', 'b')}</a>''')
-            posts_html.append(f'''<details><summary>{description}</summary>''')
-            posts_html.append(f'''{content}''')
-            posts_html.append(f'''</details>''')
+            # 4 cases:
+            # 1. Lots of content but not description -> details block with title as summary
+            # 2. Lots of content with description    -> details block with description as summary
+            # 3. Has description but no content      -> only show description
+            # 4. Else                                -> show content directly
+            if content_chars_count > 500 or content_lines_count > 10:
+                if description == title:
+                    posts_html.append(f'''<details><summary><a href="#{anchor}">{html_headline.replace('h1', 'b')}</a></summary>''')
+                else:
+                    posts_html.append(f'''<a href="#{anchor}">{html_headline.replace('h1', 'b')}</a>''')
+                    posts_html.append(f'''<details><summary>{description}</summary>''')
+                posts_html.append(f'''{content}''')
+                posts_html.append(f'''</details>''')
+            else:
+                posts_html.append(f'''<a href="#{anchor}">{html_headline.replace('h1', 'b')}</a>''')
+                if description != title and content_chars_count == 0:
+                    posts_html.append(html_tag_block('div', f'{description}'))
+                else:
+                    posts_html.append(html_tag_block('div', f'{content}'))
             posts_html.append(f'''</div>''')
     posts_html = '\n'.join(posts_html)
     return html_tag_block('div', posts_html)
@@ -348,7 +363,6 @@ td, th {
 .avatar { border-radius: 50%; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); max-width: 3rem; }
 .nav { float: left; margin-right: 1rem; }
 .card { background: rgba(0, 0, 0, 0.1); box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.2); border-radius: 5px; padding: .8rem; margin-top: .8rem; }
-.card:hover { box-shadow: 1px 3px 6px 3px rgba(0, 0, 0, 0.2); }
 .social { float: right; margin-left: 1rem; }'''
 # From: https://raw.githubusercontent.com/ooz/templates/master/html/oz-accessibility.js
 def inline_javascript():
