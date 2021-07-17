@@ -12,7 +12,7 @@ Yet another static site generator. Written in Python.
 
 It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy).
 An infinite incepted loop!
-It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
+It also powers [my website](https://oliz.io), [my blog](https://oliz.io/blog/) and [my micro-blog](https://oliz.io/snippets/).
 
 ## Features
 
@@ -21,6 +21,7 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 * Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
 * Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
 * It may render a time-stamped index of all generated HTML files, suitable for blogs
+* It may render an index and inline all documents, suitable for micro-blogs
 * Built-in responsive style with light mode and dark mode
 * Twitter Card, Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
