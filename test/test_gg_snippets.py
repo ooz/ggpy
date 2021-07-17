@@ -116,10 +116,41 @@ def test_posts_index():
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
+<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-no-description.html">Lots of content, no description</a></div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
 <div class="card"><small class="social">2018-05-06</small><a href="test/about/">About / Impress / Privacy / Legal</a></div>
 <div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html">Some Post</a></div>
 <div class="card"><small class="social">1337-06-06</small><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></div>
+</div>'''
+
+def test_posts_index_inline():
+    '''Four cases:
+    1. Lots of content but not description -> details block with title as summary
+    2. Lots of content with description    -> details block with description as summary
+    3. Has description but no content      -> only show description
+    4. Else                                -> show content directly
+    '''
+    posts = gg.scan_posts(['test/features/index-inline-posts/'])
+    posts_index = gg.posts_index_inline(posts)
+    assert posts_index == \
+'''<div>
+<div class="card"><small class="social">2021-07-17</small>
+<details><summary><a href="#lots-of-content-no-description"><b id="lots-of-content-no-description">Lots of content, no description</b></a></summary>
+<ul>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+<li>Four</li>
+<li>Five</li>
+<li>Six</li>
+<li>Seven</li>
+<li>Eight</li>
+<li>Nine</li>
+<li>Ten</li>
+</ul>
+<p>... and some more lines.</p>
+</details>
+</div>
 </div>'''
 
 ##############################################################################

@@ -158,7 +158,7 @@ def posts_index(posts):
     posts_html = '\n'.join(posts_html)
     return html_tag_block('div', posts_html)
 
-def posts_index_inline_posts(posts):
+def posts_index_inline(posts):
     posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
     posts_html = []
     for post in reversed(sorted(posts, key=lambda post: post['date'])):
@@ -514,7 +514,7 @@ def generate(directories, config=None):
         index['html'] = template_page(index, config)
     inline_indices = [post for post in posts if TAG_INDEX_INLINE in post['tags']]
     for index in inline_indices:
-        index['html_section'] = posts_index_inline_posts(posts)
+        index['html_section'] = posts_index_inline(posts)
         index['html'] = template_page(index, config)
     if len(inline_indices) == 0 and config.get('site', {}).get('generate_sitemap', False):
         posts.append({
