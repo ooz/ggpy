@@ -172,7 +172,6 @@ def posts_index_inline_posts(posts):
         url = post['url']
         content = post.get('html_section', '')
         if (day != '' and title != ''):
-            #posts_html.append('<p>%s<br><a href="%s">%s</a></p>' % (day, url, title))
             posts_html.append(f'''<div class="card"><small class="social">{day}</small>''')
             posts_html.append(f'''<a href="#{anchor}">{html_headline.replace('h1', 'b')}</a>''')
             posts_html.append(f'''<details><summary>{description}</summary>''')
