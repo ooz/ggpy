@@ -485,9 +485,6 @@ def write_file(path, content=''):
     with open(path, 'w') as f:
         f.write(content)
 
-def create_newpost(title):
-    write_file(kebab_case(title) + '.md', template_newpost(title))
-
 def scan_posts(directories, config=None):
     config = config or {}
     posts = []
@@ -583,6 +580,7 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
         print('No ggconfig.py found, assuming defaults!', file=sys.stderr)
 
     if args.get('newpost', None):
-        create_newpost(args.get('newpost'))
+        title = args.get('newpost')
+        write_file(kebab_case(title) + '.md', template_newpost(title))
     if len(args.get('directories')):
         generate(args.get('directories'), config)
