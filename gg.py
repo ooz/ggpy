@@ -558,7 +558,7 @@ REPO = None
 try:
     import git
     REPO = git.Repo()
-except ImportError:
+except ImportError: # pragma: no cover because git package is normally present, last_modified tested without
     print('No gitpython package found, degrading functionality (no last_modified support)!', file=sys.stderr)
 
 def last_modified(filepath):
