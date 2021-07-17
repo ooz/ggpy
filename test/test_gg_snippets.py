@@ -116,6 +116,7 @@ def test_posts_index():
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
+<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-with-description.html">Lots of content, with description</a></div>
 <div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-no-description.html">Lots of content, no description</a></div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
 <div class="card"><small class="social">2018-05-06</small><a href="test/about/">About / Impress / Privacy / Legal</a></div>
@@ -134,6 +135,24 @@ def test_posts_index_inline():
     posts_index = gg.posts_index_inline(posts)
     assert posts_index == \
 '''<div>
+<div class="card"><small class="social">2021-07-17</small>
+<a href="#lots-of-content-with-description"><b id="lots-of-content-with-description">Lots of content, with description</b></a>
+<details><summary>Click here to expand...</summary>
+<ul>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+<li>Four</li>
+<li>Five</li>
+<li>Six</li>
+<li>Seven</li>
+<li>Eight</li>
+<li>Nine</li>
+<li>Ten</li>
+</ul>
+<p>... and some more lines.</p>
+</details>
+</div>
 <div class="card"><small class="social">2021-07-17</small>
 <details><summary><a href="#lots-of-content-no-description"><b id="lots-of-content-no-description">Lots of content, no description</b></a></summary>
 <ul>
