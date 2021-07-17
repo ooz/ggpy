@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2021-07-17: Version 1.3
+
+* Add micro-blog support via new `__index_inline_posts__` tag
+* For this, update included CSS
+* Improve layout of the regular blog-style post index
+
 ## 2021-06-10: Version 1.2
 
 * Update included style:
