@@ -173,11 +173,6 @@ def posts_index_inline(posts):
             content_chars_count = len(content)
             content_lines_count = content.count('\n') + 1
             posts_html.append(f'''<div class="card"><small class="social">{day}</small>''')
-            # 4 cases:
-            # 1. Lots of content but not description -> details block with title as summary
-            # 2. Lots of content with description    -> details block with description as summary
-            # 3. Has description but no content      -> only show description
-            # 4. Else                                -> show content directly
             if content_chars_count > 500 or content_lines_count > 10:
                 if description == title:
                     posts_html.append(f'''<details><summary><a href="#{anchor}">{html_headline.replace('h1', 'b')}</a></summary>''')
