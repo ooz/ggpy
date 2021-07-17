@@ -141,12 +141,18 @@ def test_sitemap_generation():
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
+    <loc>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</loc>
+  </url>
+  <url>
     <loc>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
     <loc>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</loc>
     <lastmod>[\d\-]{10}</lastmod>
+  </url>
+  <url>
+    <loc>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</loc>
   </url>
   <url>
     <loc>https://oliz.io/ggpy/test/features/meta.html</loc>

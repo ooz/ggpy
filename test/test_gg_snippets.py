@@ -116,6 +116,8 @@ def test_posts_index():
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
+<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/little-inline-content-no-description.html">Little inline content, no description</a></div>
+<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/no-content-with-description.html">No content, but with description</a></div>
 <div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-with-description.html">Lots of content, with description</a></div>
 <div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-no-description.html">Lots of content, no description</a></div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
@@ -135,6 +137,18 @@ def test_posts_index_inline():
     posts_index = gg.posts_index_inline(posts)
     assert posts_index == \
 '''<div>
+<div class="card"><small class="social">2021-07-17</small>
+<a href="#little-inline-content-no-description"><b id="little-inline-content-no-description">Little inline content, no description</b></a>
+<div>
+<p>This shows directly on the card, without details+summary blocks.</p>
+</div>
+</div>
+<div class="card"><small class="social">2021-07-17</small>
+<a href="#no-content-but-with-description"><b id="no-content-but-with-description">No content, but with description</b></a>
+<div>
+Just some more minor text from the description
+</div>
+</div>
 <div class="card"><small class="social">2021-07-17</small>
 <a href="#lots-of-content-with-description"><b id="lots-of-content-with-description">Lots of content, with description</b></a>
 <details><summary>Click here to expand...</summary>
