@@ -2,6 +2,11 @@
 title: Changelog
 ---
 
+## 2021-08-22: Version 2.0.1
+
+* Fix filtering single special tag
+* Make regular links to blog posts bold
+
 ## 2021-08-22: Version 2.0
 
 * Remove `__index_inline_posts__` tag support.

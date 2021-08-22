@@ -26,6 +26,12 @@ def test_meta():
 <meta name="description" content="Nice text!">
 <meta name="keywords" content="foo, bar, tags">'''
 
+def test_meta_single_special_tag():
+    meta = gg.meta('oz', 'Nice text!', '__draft__')
+    assert meta == \
+'''<meta name="author" content="oz">
+<meta name="description" content="Nice text!">'''
+
 def test_twitter():
     twitter = gg.twitter(config)
     assert twitter == \
@@ -119,10 +125,10 @@ def test_posts_index():
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
-<div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
-<div class="card"><small class="social">2018-05-06</small><a href="test/about/">About / Impress / Privacy / Legal</a></div>
-<div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html">Some Post</a></div>
-<div class="card"><small class="social">1337-06-06</small><a href="test/features/">Markdown Feature Test without &quot;quotes bug&quot;</a></div>
+<div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html"><b>Markdown Meta Data</b></a></div>
+<div class="card"><small class="social">2018-05-06</small><a href="test/about/"><b>About / Impress / Privacy / Legal</b></a></div>
+<div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html"><b>Some Post</b></a></div>
+<div class="card"><small class="social">1337-06-06</small><a href="test/features/"><b>Markdown Feature Test without &quot;quotes bug&quot;</b></a></div>
 </div>'''
 
 def test_posts_index_inline():
@@ -139,19 +145,19 @@ def test_posts_index_inline():
     assert posts_index == \
 '''<div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="little-inline-content-no-description.html"><b id="little-inline-content-no-description">Little inline content, no description</b></a>
+<a href="little-inline-content-no-description.html"><b>Little inline content, no description</b></a>
 <div>
 <p>This shows directly on the card, without details+summary blocks.</p>
 </div>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="no-content-with-description.html"><b id="no-content-but-with-description">No content, but with description</b></a>
+<a href="no-content-with-description.html"><b>No content, but with description</b></a>
 <div>
 Just some more minor text from the description
 </div>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="lots-of-content-with-description.html"><b id="lots-of-content-with-description">Lots of content, with description</b></a>
+<a href="lots-of-content-with-description.html"><b>Lots of content, with description</b></a>
 <details><summary>Click here to expand...</summary>
 <ul>
 <li>One</li>
@@ -169,7 +175,7 @@ Just some more minor text from the description
 </details>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<details><summary><a href="lots-of-content-no-description.html"><b id="lots-of-content-no-description">Lots of content, no description</b></a></summary>
+<details><summary><a href="lots-of-content-no-description.html"><b>Lots of content, no description</b></a></summary>
 <ul>
 <li>One</li>
 <li>Two</li>

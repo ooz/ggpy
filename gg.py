@@ -4,7 +4,7 @@
 Author: Oliver Z., https://oliz.io
 Description: Minimal static site generator easy to use with GitHub Pages o.s.
 Website: https://oliz.io/ggpy/
-Version: 2.0
+Version: 2.0.1
 License: Dual-licensed under GNU AGPLv3 or MIT License,
          see LICENSE.txt file for details.
 
@@ -175,7 +175,6 @@ def posts_index(posts):
         if (day != '' and title != ''):
             is_inlined = TAG_INLINE in post['tags']
             if is_inlined:
-                html_headline = post['html_headline']
                 content = post.get('html_section', '')
                 description = post.get('description', '')
                 content_chars_count = len(content)
@@ -183,21 +182,21 @@ def posts_index(posts):
                 posts_html.append(f'''<div class="card"><small class="social">{day}</small>''')
                 if content_chars_count > 500 or content_lines_count > 10:
                     if description == title:
-                        posts_html.append(f'''<details><summary><a href="{url}">{html_headline.replace('h1', 'b')}</a></summary>''')
+                        posts_html.append(f'''<details><summary><a href="{url}"><b>{title}</b></a></summary>''')
                     else:
-                        posts_html.append(f'''<a href="{url}">{html_headline.replace('h1', 'b')}</a>''')
+                        posts_html.append(f'''<a href="{url}"><b>{title}</b></a>''')
                         posts_html.append(f'''<details><summary>{description}</summary>''')
                     posts_html.append(f'''{content}''')
                     posts_html.append(f'''</details>''')
                 else:
-                    posts_html.append(f'''<a href="{url}">{html_headline.replace('h1', 'b')}</a>''')
+                    posts_html.append(f'''<a href="{url}"><b>{title}</b></a>''')
                     if description != title and content_chars_count == 0:
                         posts_html.append(html_tag_block('div', f'{description}'))
                     else:
                         posts_html.append(html_tag_block('div', f'{content}'))
                 posts_html.append(f'''</div>''')
             else:
-                posts_html.append(f'''<div class="card"><small class="social">{day}</small><a href="{url}">{title}</a></div>''')
+                posts_html.append(f'''<div class="card"><small class="social">{day}</small><a href="{url}"><b>{title}</b></a></div>''')
     posts_html = '\n'.join(posts_html)
     return html_tag_block('div', posts_html)
 
@@ -209,7 +208,7 @@ def meta(author, description, tags):
         meta_names.append(('author', author))
     if len(description):
         meta_names.append(('description', description))
-    if len(tags):
+    if len(keywords):
         meta_names.append(('keywords', keywords))
     return '\n'.join([_meta_tag('name', name[0], name[1]) for name in meta_names])
 
@@ -224,6 +223,8 @@ def _sanitize_special_tags(tags):
             sanitized = sanitized.replace(tag_in_center_or_at_end, '')
         elif tag_at_beginning in sanitized:
             sanitized = sanitized.replace(tag_at_beginning, '')
+        elif tag == sanitized:
+            sanitized = ''
     return sanitized
 
 def twitter(config=None):

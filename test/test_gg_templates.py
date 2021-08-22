@@ -351,8 +351,8 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </header>
 <section>
 <div>
-<div class="card"><small class="social">2020-02-01</small><a href="https://example.com/blog">Blog</a></div>
-<div class="card"><small class="social">2020-01-31</small><a href="https://example.com/">Root</a></div>
+<div class="card"><small class="social">2020-02-01</small><a href="https://example.com/blog"><b>Blog</b></a></div>
+<div class="card"><small class="social">2020-01-31</small><a href="https://example.com/"><b>Root</b></a></div>
 </div>
 </section>
 <footer>
