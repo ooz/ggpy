@@ -162,15 +162,15 @@ tags: __draft__
 <tbody>
 <tr>
 <td><code>__draft__</code></td>
-<td>Marks a document as "draft". Drafts are not included in the generated sitemap or index or index of inlined posts</td>
+<td>Marks a document as "draft". Drafts are not included in the generated sitemap or index</td>
 </tr>
 <tr>
 <td><code>__index__</code></td>
 <td>Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered</td>
 </tr>
 <tr>
-<td><code>__index_inline_posts__</code></td>
-<td>Document should inline all documents. Relative links in the documents must then be relative to this document. Other markdown content of the file is then ignored, not rendered. No <code>sitemap.xml</code> is generated</td>
+<td><code>__inline__</code></td>
+<td>Inline document in the index generated with <code>__index__</code>. Absolute links for images are advised, to not break rendering in the index and as a separate document.</td>
 </tr>
 <tr>
 <td><code>__no_meta__</code></td>

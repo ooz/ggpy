@@ -20,7 +20,7 @@ def test_pagetitle():
     assert gg.pagetitle('', config) == 'Good Generator.py'
 
 def test_meta():
-    meta = gg.meta('oz', 'Nice text!', 'foo, bar, tags')
+    meta = gg.meta('oz', 'Nice text!', '__draft__, foo, __inline__, bar, tags, __no_header__')
     assert meta == \
 '''<meta name="author" content="oz">
 <meta name="description" content="Nice text!">
@@ -112,14 +112,13 @@ def test_about_and_social_icons():
     assert about_and_social_default_config == ''
 
 def test_posts_index():
+    '''Generate index without inlined posts.
+    '''
     posts = gg.scan_posts(['.'])
+    posts = [post for post in posts if gg.TAG_INLINE not in post['tags']]
     posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
-<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/little-inline-content-no-description.html">Little inline content, no description</a></div>
-<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/no-content-with-description.html">No content, but with description</a></div>
-<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-with-description.html">Lots of content, with description</a></div>
-<div class="card"><small class="social">2021-07-17</small><a href="test/features/index-inline-posts/lots-of-content-no-description.html">Lots of content, no description</a></div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html">Markdown Meta Data</a></div>
 <div class="card"><small class="social">2018-05-06</small><a href="test/about/">About / Impress / Privacy / Legal</a></div>
 <div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html">Some Post</a></div>
@@ -127,30 +126,32 @@ def test_posts_index():
 </div>'''
 
 def test_posts_index_inline():
-    '''Four cases:
+    '''Generate index with inlined posts.
+
+    Four cases:
     1. Lots of content but not description -> details block with title as summary
     2. Lots of content with description    -> details block with description as summary
     3. Has description but no content      -> only show description
     4. Else                                -> show content directly
     '''
     posts = gg.scan_posts(['test/features/index-inline-posts/'])
-    posts_index = gg.posts_index_inline(posts)
+    posts_index = gg.posts_index(posts)
     assert posts_index == \
 '''<div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="#little-inline-content-no-description"><b id="little-inline-content-no-description">Little inline content, no description</b></a>
+<a href="little-inline-content-no-description.html"><b id="little-inline-content-no-description">Little inline content, no description</b></a>
 <div>
 <p>This shows directly on the card, without details+summary blocks.</p>
 </div>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="#no-content-but-with-description"><b id="no-content-but-with-description">No content, but with description</b></a>
+<a href="no-content-with-description.html"><b id="no-content-but-with-description">No content, but with description</b></a>
 <div>
 Just some more minor text from the description
 </div>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<a href="#lots-of-content-with-description"><b id="lots-of-content-with-description">Lots of content, with description</b></a>
+<a href="lots-of-content-with-description.html"><b id="lots-of-content-with-description">Lots of content, with description</b></a>
 <details><summary>Click here to expand...</summary>
 <ul>
 <li>One</li>
@@ -168,7 +169,7 @@ Just some more minor text from the description
 </details>
 </div>
 <div class="card"><small class="social">2021-07-17</small>
-<details><summary><a href="#lots-of-content-no-description"><b id="lots-of-content-no-description">Lots of content, no description</b></a></summary>
+<details><summary><a href="lots-of-content-no-description.html"><b id="lots-of-content-no-description">Lots of content, no description</b></a></summary>
 <ul>
 <li>One</li>
 <li>Two</li>

@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2021-08-22: Version 2.0
+
+* Remove `__index_inline_posts__` tag support.
+  To inline posts in the index, use `__inline__` tag on the respective post.
+* Filter special tags controlling ggpy behavior from the meta `keywords` list
+
 ## 2021-07-17: Version 1.3
 
 * Add micro-blog support via new `__index_inline_posts__` tag

@@ -41,7 +41,7 @@ def test_markdown2post():
     assert content_meta_ggconfig['raw_title'] == 'New Post'
     assert content_meta_ggconfig['description'] == 'Description'
     assert content_meta_ggconfig['raw_description'] == 'Description'
-    assert content_meta_ggconfig['tags'] == '__draft, some-tag, some-other-tag'
+    assert content_meta_ggconfig['tags'] == '__draft__, some-tag, some-other-tag'
     assert content_meta_ggconfig['html_headline'] == '<h1 id="new-post">New Post</h1>'
     assert content_meta_ggconfig['html_section'] == '<p>My new post!</p>'
 
@@ -51,7 +51,7 @@ def given_newpost():
 title: New Post
 description: Description
 date: 2021-04-04T15:33:17Z
-tags: __draft, some-tag
+tags: __draft__, some-tag
 tags: some-other-tag
 ---
 
