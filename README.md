@@ -12,7 +12,7 @@ Yet another static site generator. Written in Python.
 
 It powers [its website](https://oliz.io/ggpy), which is its [README.md](https://github.com/ooz/ggpy) rendered via [CircleCI](https://circleci.com/gh/ooz/ggpy).
 An infinite incepted loop!
-It also powers [my website](https://oliz.io), [my blog](https://oliz.io/blog/) and [my micro-blog](https://oliz.io/snippets/).
+It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 
 ## Features
 
