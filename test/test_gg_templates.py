@@ -124,7 +124,6 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 <h1>Hey!</h1>
 </section>
 <footer>
-<a href="https://oliz.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
 <a href="javascript:toggleFontSize()" class="nav">aA</a>

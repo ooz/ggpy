@@ -251,7 +251,6 @@ def then_is_framed_by_html_boilerplate(result):
 def then_has_bottom_navigation_and_social_links(result):
     navigation_and_social_links = \
 '''<footer>
-<a href="https://oliz.io/ggpy" class="nav">back</a>
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
 <a href="javascript:toggleFontSize()" class="nav">aA</a>

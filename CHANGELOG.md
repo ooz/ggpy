@@ -6,6 +6,8 @@ title: Changelog
 
 * Remove twitter meta tag support (opengraph is sufficient)
 * Change ggconfig social link to arbitrary key-value-map (link label to link)
+* Remove the 'back' navigation link from posts in the footer.
+  If you want to link to your post index, use the new ggconfig social link mechanism.
 
 TODO:
 * RSS feed generation
