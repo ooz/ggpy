@@ -18,10 +18,9 @@ config = {
         'url': 'https://oliz.io/ggpy'
     },
     'social': {
-        'about_url': 'https://oliz.io/ggpy/test/about',
-        'email': 'example@example.com',
-        'github_url': 'https://github.com/ooz/ggpy',
-        'twitter_url': 'https://twitter.com/oozgo',
-        'twitter_username': '@oozgo'
+        'about': 'https://oliz.io/ggpy/test/about',
+        'github': 'https://github.com/ooz/ggpy',
+        'twitter': 'https://twitter.com/oozgo',
+        'email': 'mailto:example@example.com'
     }
 }

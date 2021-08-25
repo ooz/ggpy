@@ -153,14 +153,14 @@ def footer_navigation(root_url='', is_index=False, is_root=False):
 
 def about_and_social_icons(config=None):
     config = config or {}
-    email = config.get('social', {}).get('email', config.get('author', {}).get('email', ''))
+    social_config = config.get('social', {})
 
-    return '\n'.join([social for social in [
-        _social_link('email', f'mailto:{email}' if len(email) else ''),
-        _social_link('twitter', config.get('social', {}).get('twitter_url', '')),
-        _social_link('github', config.get('social', {}).get('github_url', '')),
-        _social_link('about', config.get('social', {}).get('about_url', ''))
-    ] if len(social)])
+    social = []
+    for key in social_config.keys():
+        val = social_config[key]
+        social.append(_social_link(key, val))
+
+    return '\n'.join(reversed(social))
 
 def _social_link(label, link):
     return f'<a href="{link}" class="social">{label}</a>' if len(link) else ''
@@ -226,18 +226,6 @@ def _sanitize_special_tags(tags):
         elif tag == sanitized:
             sanitized = ''
     return sanitized
-
-def twitter(config=None):
-    config = config or {}
-    username = config.get('social', {}).get('twitter_username', '')
-    if not len(username):
-        return ''
-    meta_names = [
-        ('twitter:author', username),
-        ('twitter:card', 'summary'),
-        ('twitter:creator', username)
-    ]
-    return '\n'.join([_meta_tag('name', name[0], name[1]) for name in meta_names])
 
 def opengraph(title, url, description, date, config=None):
     '''url parameter should end with "/" to denote a directory!
@@ -433,7 +421,6 @@ def template_page(post, config=None):
     if (not post.get('is_index', False)) and TAG_NO_META not in tags:
         blocks.extend([
             meta(author_name, description, tags),
-            twitter(config),
             opengraph(title, canonical_url, description, date, config),
             json_ld(raw_title, canonical_url, raw_description, config)
         ])

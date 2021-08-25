@@ -2,6 +2,11 @@
 title: Changelog
 ---
 
+## ????-??-??: Version 3.0 (unreleased)
+
+* Remove twitter meta tag support (opengraph is sufficient)
+* Change ggconfig social link to arbitrary key-value-map (link label to link)
+
 ## 2021-08-22: Version 2.0.1
 
 * Fix filtering single special tag

@@ -106,9 +106,6 @@ function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { tog
 function toggleFontSize() { document.body.classList.toggle("large-font") }
 </script>
 <meta name="author" content="Good Gen">
-<meta name="twitter:author" content="@oozgo">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:creator" content="@oozgo">
 <meta property="og:title" content="">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://oliz.io/ggpy/">
@@ -229,7 +226,6 @@ function toggleTheme() { document.body.classList.toggle("dark-mode") }
 function initTheme() { let h=new Date().getHours(); if (h <= 8 || h >= 20) { toggleTheme() } }
 function toggleFontSize() { document.body.classList.toggle("large-font") }
 </script>
-
 
 <meta property="og:title" content="">
 <meta property="og:type" content="article">
