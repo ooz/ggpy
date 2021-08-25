@@ -103,7 +103,7 @@ def test_about_and_social_icons():
 '''<a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://oliz.io/ggpy/test/about" class="social">about</a>'''
+<a href="https://oliz.io/about.html" class="social">about</a>'''
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 
@@ -116,7 +116,6 @@ def test_posts_index():
     assert posts_index == \
 '''<div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html"><b>Markdown Meta Data</b></a></div>
-<div class="card"><small class="social">2018-05-06</small><a href="test/about/"><b>About / Impress / Privacy / Legal</b></a></div>
 <div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html"><b>Some Post</b></a></div>
 <div class="card"><small class="social">1337-06-06</small><a href="test/features/"><b>Markdown Feature Test without &quot;quotes bug&quot;</b></a></div>
 </div>'''

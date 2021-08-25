@@ -20,10 +20,9 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
   and [Markdown meta header format](https://oliz.io/ggpy/test/features/meta.html)
 * Renders all `*.md` to `*.html` files in the passed directories and recursively in their sub-directories
 * Files named `README.md` are converted to `index.html`. Thus, it is fully compatible with GitHub Pages
-* It may render a time-stamped index of all generated HTML files, suitable for blogs
-* It may render an index and inline all documents, suitable for micro-blogs
+* It may render a time-stamped index of all generated HTML files, suitable for blogs. Documents may also be inlined into the index, suitable for micro-blogs
 * Built-in responsive style with light mode and dark mode
-* Twitter Card, Open Graph and schema.org support
+* Open Graph and schema.org support
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
 * Requires `python3`, `pip`, and optionally `git` (for more accurate, CI-friendly timestamps) and `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
 * The provided [CircleCI configuration](https://github.com/ooz/ggpy/blob/master/.circleci/config.yml) may serve as a blueprint to let CircleCI build your page on every commit

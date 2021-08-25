@@ -133,10 +133,6 @@ def test_sitemap_generation():
     <lastmod>[\d\-]{10}</lastmod>
   </url>
   <url>
-    <loc>https://oliz.io/ggpy/test/about/</loc>
-    <lastmod>[\d\-]{10}</lastmod>
-  </url>
-  <url>
     <loc>https://oliz.io/ggpy/test/features/</loc>
     <lastmod>[\d\-]{10}</lastmod>
   </url>
@@ -257,7 +253,7 @@ def then_has_bottom_navigation_and_social_links(result):
 <a href="mailto:example@example.com" class="social">email</a>
 <a href="https://twitter.com/oozgo" class="social">twitter</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://oliz.io/ggpy/test/about" class="social">about</a>
+<a href="https://oliz.io/about.html" class="social">about</a>
 </footer>
 '''
     assert result.endswith(navigation_and_social_links)
