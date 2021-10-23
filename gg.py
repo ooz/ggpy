@@ -482,8 +482,11 @@ def template_rss(posts, config=None):
     rss_xml.append(f'''    <atom:link href="{'rss.xml' if base_url == '' else f'{base_url}/rss.xml'}" rel="self" type="application/rss+xml" />''')
     for post in posts:
         escaped_url = escape(post.get('url', ''))
+        escaped_title = escape(post.get('title', ''))
+        if escaped_title == '' and escaped_url != '':
+            escaped_title = escaped_url
         rss_xml.append(f'''    <item>''')
-        rss_xml.append(f'''      <title>{escape(post.get('title', ''))}</title>''')
+        rss_xml.append(f'''      <title>{escaped_title}</title>''')
         rss_xml.append(f'''      <link>{escaped_url}</link>''')
         rss_xml.append(f'''      <pubDate>{escape(post.get('last_modified', ''))}</pubDate>''')
         rss_xml.append(f'''      <guid>{escaped_url}</guid>''')
