@@ -65,4 +65,4 @@ make test
 ## License
 
 This software is dual-licensed under GNU AGPLv3 or MIT License,
-see [LICENSE.txt](https://oliz.io/ggpy/LICENSE.txt) file for details.
+see [https://oliz.io/ggpy/LICENSE.txt](https://oliz.io/ggpy/LICENSE.txt) file for details.
