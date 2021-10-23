@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sat, 23 Oct 2021 18:57:48 -0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Oct 2021 19:00:47 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Changelog</title>
@@ -79,6 +79,7 @@ It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a hr
 &lt;li&gt;Built-in responsive style with light mode and dark mode&lt;/li&gt;
 &lt;li&gt;Open Graph and schema.org support&lt;/li&gt;
 &lt;li&gt;Generates &lt;code&gt;sitemap.xml&lt;/code&gt; with &lt;code&gt;lastmod&lt;/code&gt; timestamps taken from git history&lt;/li&gt;
+&lt;li&gt;Generates &lt;code&gt;rss.xml&lt;/code&gt; RSS feed&lt;/li&gt;
 &lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html"&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The provided &lt;a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml"&gt;CircleCI configuration&lt;/a&gt; may serve as a blueprint to let CircleCI build your page on every commit&lt;/li&gt;
 &lt;/ul&gt;
