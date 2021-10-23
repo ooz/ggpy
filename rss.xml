@@ -119,91 +119,6 @@ see &lt;a href=&quot;LICENSE.txt&quot;&gt;LICENSE.txt&lt;/a&gt; file for details
 &lt;p&gt;More text!&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Markdown Meta Data</title>
-      <link>https://oliz.io/ggpy/test/features/meta.html</link>
-      <pubDate>2021-08-22</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/meta.html</guid>
-      <description>&lt;p&gt;&lt;code&gt;ggpy&lt;/code&gt; supports Markdown meta headers at the beginning of each file, e.g. for this document:&lt;/p&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Markdown Meta Data
-description: Meta data format and supported options
-date: 2021-04-04T18:59:03Z
-tags: documentation
----
-
-`ggpy` supports Markdown meta headers [...]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:&lt;/p&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-tags: topic, other
-tags: __draft__
----&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...produces three tags &lt;code&gt;topic&lt;/code&gt;, &lt;code&gt;other&lt;/code&gt; and &lt;code&gt;__draft__&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;meta-keys&quot;&gt;Meta Keys&lt;/h2&gt;
-&lt;p&gt;All keys are optional:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Key&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Document title&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Short description or summary of the document&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Creation date of the document&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;List of tags. Some tags may have special effects (see below). This key may be used multiple times (see example above).&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&quot;special-tags&quot;&gt;Special Tags&lt;/h2&gt;
-&lt;p&gt;Special tags may be used to configure &lt;code&gt;ggpy&lt;/code&gt;&#x27;s behavior. Such tags always start and end with double underscore (&lt;code&gt;__&lt;/code&gt;, also called &quot;dunder&quot; in the Python world):&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Tag&lt;/th&gt;
-&lt;th&gt;Description/Effect&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__draft__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Marks a document as &quot;draft&quot;. Drafts are not included in the generated sitemap or index&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__index__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__inline__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Inline document in the index generated with &lt;code&gt;__index__&lt;/code&gt;. Absolute links for images are advised, to not break rendering in the index and as a separate document.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__no_meta__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Don&#x27;t render machine-readable meta data for social media etc.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__no_header__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Omit the page header with site icon, title headline, author and date&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;__no_footer__&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;a href=&quot;no-footer/&quot;&gt;Omit the page footer with navigation, theme control and social links&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</description>
-    </item>
-    <item>
       <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
       <link>https://oliz.io/ggpy/test/features/</link>
       <pubDate>2021-03-27</pubDate>
@@ -291,6 +206,98 @@ block
 &lt;/div&gt;</description>
     </item>
     <item>
+      <title>Markdown Meta Data</title>
+      <link>https://oliz.io/ggpy/test/features/meta.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/meta.html</guid>
+      <description>&lt;p&gt;&lt;code&gt;ggpy&lt;/code&gt; supports Markdown meta headers at the beginning of each file, e.g. for this document:&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Markdown Meta Data
+description: Meta data format and supported options
+date: 2021-04-04T18:59:03Z
+tags: documentation
+---
+
+`ggpy` supports Markdown meta headers [...]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+tags: topic, other
+tags: __draft__
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...produces three tags &lt;code&gt;topic&lt;/code&gt;, &lt;code&gt;other&lt;/code&gt; and &lt;code&gt;__draft__&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;meta-keys&quot;&gt;Meta Keys&lt;/h2&gt;
+&lt;p&gt;All keys are optional:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Document title&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Short description or summary of the document&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Creation date of the document&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;List of tags. Some tags may have special effects (see below). This key may be used multiple times (see example above).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;special-tags&quot;&gt;Special Tags&lt;/h2&gt;
+&lt;p&gt;Special tags may be used to configure &lt;code&gt;ggpy&lt;/code&gt;&#x27;s behavior. Such tags always start and end with double underscore (&lt;code&gt;__&lt;/code&gt;, also called &quot;dunder&quot; in the Python world):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tag&lt;/th&gt;
+&lt;th&gt;Description/Effect&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__draft__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Marks a document as &quot;draft&quot;. Drafts are not included in the generated sitemap or index&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__index__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__inline__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Inline document in the index generated with &lt;code&gt;__index__&lt;/code&gt;. Absolute links for images are advised, to not break rendering in the index and as a separate document.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_meta__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Don&#x27;t render machine-readable meta data for social media etc.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_header__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Omit the page header with site icon, title headline, author and date&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_footer__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;no-footer/&quot;&gt;Omit the page footer with navigation, theme control and social links&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Lots of content, no description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</link>
       <pubDate>2021-08-22</pubDate>
@@ -308,13 +315,6 @@ block
 &lt;li&gt;Ten&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>No content, but with description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
-      <pubDate>2021-08-22</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
-      <description></description>
     </item>
     <item>
       <title>Lots of content, with description</title>
@@ -336,11 +336,11 @@ block
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Little inline content, no description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <title>No content, but with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
       <pubDate>2021-08-22</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
-      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
