@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sat, 23 Oct 2021 18:50:37 -0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Oct 2021 18:57:48 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Changelog</title>
@@ -112,7 +112,7 @@ see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file 
     <item>
       <title>Some Post</title>
       <link>https://oliz.io/ggpy/test/some-post.html</link>
-      <pubDate>Sat, 17 Mar 2018 13:37:42 -0000</pubDate>
+      <pubDate>Sat, 17 Mar 2018 13:37:42 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/some-post.html</guid>
       <description>&lt;p&gt;Yep! Intro text!&lt;/p&gt;
 &lt;h2 id="headline"&gt;Headline&lt;/h2&gt;
@@ -121,7 +121,7 @@ see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file 
     <item>
       <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
       <link>https://oliz.io/ggpy/test/features/</link>
-      <pubDate>Thu, 06 Jun 1996 13:37:42 -0000</pubDate>
+      <pubDate>Thu, 06 Jun 1996 13:37:42 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/</guid>
       <description>&lt;h2 id="headline-2"&gt;Headline 2&lt;/h2&gt;
 &lt;p&gt;Paragraph
@@ -208,7 +208,7 @@ block
     <item>
       <title>Markdown Meta Data</title>
       <link>https://oliz.io/ggpy/test/features/meta.html</link>
-      <pubDate>Sun, 04 Apr 2021 18:59:03 -0000</pubDate>
+      <pubDate>Sun, 04 Apr 2021 18:59:03 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/meta.html</guid>
       <description>&lt;p&gt;&lt;code&gt;ggpy&lt;/code&gt; supports Markdown meta headers at the beginning of each file, e.g. for this document:&lt;/p&gt;
 &lt;pre class="highlight"&gt;&lt;code&gt;---
@@ -293,14 +293,14 @@ tags: __draft__
     <item>
       <title>Little inline content, no description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:06 -0000</pubDate>
+      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
       <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lots of content, no description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:03 -0000</pubDate>
+      <pubDate>Sat, 17 Jul 2021 18:59:03 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;One&lt;/li&gt;
@@ -319,7 +319,7 @@ tags: __draft__
     <item>
       <title>Lots of content, with description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:04 -0000</pubDate>
+      <pubDate>Sat, 17 Jul 2021 18:59:04 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;One&lt;/li&gt;
@@ -338,7 +338,7 @@ tags: __draft__
     <item>
       <title>No content, but with description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:05 -0000</pubDate>
+      <pubDate>Sat, 17 Jul 2021 18:59:05 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
       <description></description>
     </item>
