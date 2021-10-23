@@ -19,6 +19,8 @@ SOFTWARE.
 
 import argparse
 
+import datetime
+from email import utils
 import glob
 from html import escape
 import os
@@ -466,10 +468,9 @@ def template_sitemap(posts, config=None):
 def template_rss(posts, config=None):
     config = config or {}
     posts = [post for post in posts if TAG_DRAFT not in post.get('tags', []) and TAG_INDEX not in post.get('tags', [])]
-    title = escape(config.get('site', {}).get('title', ''))
     base_url = escape(config.get('site', {}).get('base_url', ''))
-    if title == '' and base_url != '':
-        title = base_url
+    title = escape(config.get('site', {}).get('title', ''))
+    title = base_url if (title == '' and base_url != '') else title
     rss_xml = []
     rss_xml.append('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -478,17 +479,24 @@ def template_rss(posts, config=None):
     rss_xml.append(f'''    <link>{base_url}</link>''')
     rss_xml.append(f'''    <description></description>''')
     rss_xml.append(f'''    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>''')
-    rss_xml.append(f'''    <lastBuildDate>{now_utc_formatted()}</lastBuildDate>''')
+    rss_xml.append(f'''    <lastBuildDate>{utils.formatdate()}</lastBuildDate>''')
     rss_xml.append(f'''    <atom:link href="{'rss.xml' if base_url == '' else f'{base_url}/rss.xml'}" rel="self" type="application/rss+xml" />''')
     for post in posts:
         escaped_url = escape(post.get('url', ''))
         escaped_title = escape(post.get('title', ''))
-        if escaped_title == '' and escaped_url != '':
-            escaped_title = escaped_url
+        escaped_title = escaped_url if (escaped_title == '' and escaped_url != '') else escaped_title
+        date_to_format = post.get('date', '')
+        date_to_format = post.get('last_modified', '') if date_to_format == '' else date_to_format
+        date_to_format = now_utc_formatted() if date_to_format == '' else date_to_format
+        pub_date = ''
+        try:
+            pub_date = utils.format_datetime(datetime.datetime.strptime(date_to_format, '%Y-%m-%dT%H:%M:%SZ'))
+        except ValueError:
+            pub_date = utils.format_datetime(datetime.datetime.strptime(date_to_format, '%Y-%m-%d'))
         rss_xml.append(f'''    <item>''')
         rss_xml.append(f'''      <title>{escaped_title}</title>''')
         rss_xml.append(f'''      <link>{escaped_url}</link>''')
-        rss_xml.append(f'''      <pubDate>{escape(post.get('last_modified', ''))}</pubDate>''')
+        rss_xml.append(f'''      <pubDate>{escape(pub_date)}</pubDate>''')
         rss_xml.append(f'''      <guid>{escaped_url}</guid>''')
         rss_xml.append(f'''      <description>{escape(post.get('html_section', ''))}</description>''')
         rss_xml.append(f'''    </item>''')

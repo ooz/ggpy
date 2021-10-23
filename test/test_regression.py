@@ -198,7 +198,7 @@ def test_markdown_features_and_readme_generation():
         description=index_title,
         raw_description=index_raw_title,
         canonical_url=canonical_url,
-        creation_time='1337-06-06T13:37:42+01:00'
+        creation_time='1337-06-06T13:37:42Z'
     )
     index_data = then_has_body(index_data)
     assert GENERATED_FEATURE_HTML == index_data

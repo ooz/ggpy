@@ -425,19 +425,19 @@ def test_template_rss():
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
     <lastBuildDate>''')
-    assert rss.endswith('''Z</lastBuildDate>
+    assert rss.endswith('''</lastBuildDate>
     <atom:link href="rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Root</title>
       <link>https://example.com/</link>
-      <pubDate>2020-02-20</pubDate>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 -0000</pubDate>
       <guid>https://example.com/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
       <link>https://example.com/blog</link>
-      <pubDate>2020-02-21</pubDate>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 -0000</pubDate>
       <guid>https://example.com/blog</guid>
       <description></description>
     </item>
