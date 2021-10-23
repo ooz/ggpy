@@ -466,19 +466,20 @@ def template_sitemap(posts, config=None):
 def template_rss(posts, config=None):
     config = config or {}
     posts = [post for post in posts if TAG_DRAFT not in post.get('tags', []) and TAG_INDEX not in post.get('tags', [])]
-    title = config.get('site', {}).get('title', '')
-    base_url = config.get('site', {}).get('base_url', '')
+    title = escape(config.get('site', {}).get('title', ''))
+    base_url = escape(config.get('site', {}).get('base_url', ''))
     if title == '' and base_url != '':
         title = base_url
     rss_xml = []
     rss_xml.append('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>''')
-    rss_xml.append(f'''    <title>{escape(title)}</title>''')
-    rss_xml.append(f'''    <link>{escape(base_url)}</link>''')
+    rss_xml.append(f'''    <title>{title}</title>''')
+    rss_xml.append(f'''    <link>{base_url}</link>''')
     rss_xml.append(f'''    <description></description>''')
-    rss_xml.append(f'''    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy/</generator>''')
+    rss_xml.append(f'''    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>''')
     rss_xml.append(f'''    <lastBuildDate>{now_utc_formatted()}</lastBuildDate>''')
+    rss_xml.append(f'''    <atom:link href="{'rss.xml' if base_url == '' else f'{base_url}/rss.xml'}" rel="self" type="application/rss+xml" />''')
     for post in posts:
         escaped_url = escape(post.get('url', ''))
         rss_xml.append(f'''    <item>''')

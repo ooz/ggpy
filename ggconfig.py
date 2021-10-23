@@ -3,7 +3,7 @@
 
 config = {
     'site': {
-        'base_url': 'https://oliz.io/ggpy',          # Default: no base_url, then ggpy won't convert to absolute/canonical links
+        'base_url': 'https://oliz.io/ggpy',          # Default: no base_url, then ggpy won't convert to absolute/canonical links. Must not end with a "/"
         'generate_sitemap': True,                    # Default: False
         'generate_rss': True,                        # Default: False
         'additional_sitemap_entries': [],            # Default: none / empty
