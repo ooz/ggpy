@@ -117,7 +117,7 @@ def test_posts_index():
 '''<div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html"><b>Markdown Meta Data</b></a></div>
 <div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html"><b>Some Post</b></a></div>
-<div class="card"><small class="social">1337-06-06</small><a href="test/features/"><b>Markdown Feature Test without &quot;quotes bug&quot;</b></a></div>
+<div class="card"><small class="social">1996-06-06</small><a href="test/features/"><b>Markdown Feature Test without &quot;quotes bug&quot;</b></a></div>
 </div>'''
 
 def test_posts_index_inline():

@@ -13,7 +13,7 @@ f'''<header>
 <a href="https://oliz.io/ggpy"><img src="{LOGO_URL}" class="avatar" /></a>
 <div style="text-align:right;">
 <h1 id="markdown-feature-test-without-quotes-bug">Markdown Feature Test without &quot;quotes bug&quot;</h1>
-<small><a href="https://oliz.io/ggpy">Good Gen</a>, 1337-06-06</small>
+<small><a href="https://oliz.io/ggpy">Good Gen</a>, 1996-06-06</small>
 </div>
 </header>
 <section>
@@ -198,7 +198,7 @@ def test_markdown_features_and_readme_generation():
         description=index_title,
         raw_description=index_raw_title,
         canonical_url=canonical_url,
-        creation_time='1337-06-06T13:37:42Z'
+        creation_time='1996-06-06T13:37:42Z'
     )
     index_data = then_has_body(index_data)
     assert GENERATED_FEATURE_HTML == index_data
