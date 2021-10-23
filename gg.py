@@ -491,7 +491,7 @@ def template_rss(posts, config=None):
         date_to_format = now_utc_formatted() if date_to_format == '' else date_to_format
         pub_date = ''
         try:
-            pub_date = utils.format_datetime(datetime.datetime.strptime(date_to_format, '%Y-%m-%dT%H:%M:%SZ'))
+            pub_date = utils.format_datetime(datetime.datetime.strptime(date_to_format, '%Y-%m-%dT%H:%M:%S%z'))
         except ValueError:
             pub_date = utils.format_datetime(datetime.datetime.strptime(date_to_format, '%Y-%m-%d'))
         rss_xml.append(f'''    <item>''')
