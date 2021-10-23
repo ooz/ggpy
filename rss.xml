@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sat, 23 Oct 2021 18:34:29 -0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Oct 2021 18:36:15 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Changelog</title>
@@ -119,93 +119,6 @@ see &lt;a href=&quot;https://oliz.io/ggpy/LICENSE.txt&quot;&gt;LICENSE.txt&lt;/a
 &lt;p&gt;More text!&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
-      <link>https://oliz.io/ggpy/test/features/</link>
-      <pubDate>Thu, 06 Jun 1337 13:37:42 -0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/</guid>
-      <description>&lt;h2 id=&quot;headline-2&quot;&gt;Headline 2&lt;/h2&gt;
-&lt;p&gt;Paragraph
-with
-non-empty
-lines.&lt;/p&gt;
-&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Ordered list item, bold&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Ordered list item, italic&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;Normal unordered list item&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;Unordered list item, DELETED!&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Unordered list item, inline coded&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul class=&quot;task-list&quot;&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled/&gt; unchecked&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled checked/&gt; checked&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Code blocks work&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;def python_code_blocks():
-    return &quot;work, too!&quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let there be...&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;another
-code
-block
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Tables&lt;/th&gt;
-&lt;th&gt;work&lt;/th&gt;
-&lt;th align=&quot;right&quot;&gt;just&lt;/th&gt;
-&lt;th&gt;fine&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;for&lt;/td&gt;
-&lt;td&gt;real&lt;/td&gt;
-&lt;td align=&quot;right&quot;&gt;yep&lt;/td&gt;
-&lt;td&gt;yeah.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&quot;quotes&quot;&gt;Quotes&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&quot;So smart&quot;&lt;/p&gt;
-&lt;p&gt;&quot;So smart&quot; - me, sometimes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;image&quot;&gt;Image&lt;/h2&gt;
-&lt;p&gt;&lt;img alt=&quot;Good Generator Logo&quot; src=&quot;https://oliz.io/ggpy/static/gg.png&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Horizontal rule...&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&quot;other-markdown-extensions&quot;&gt;Other Markdown Extensions&lt;/h2&gt;
-&lt;h3 id=&quot;definition-lists-and-footnotes&quot;&gt;Definition Lists and Footnotes&lt;/h3&gt;
-&lt;dl&gt;
-&lt;dt&gt;Definition List&lt;/dt&gt;
-&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
-&lt;dt&gt;Other List&lt;/dt&gt;
-&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:here&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:here&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;h3 id=&quot;abbreviations&quot;&gt;Abbreviations&lt;/h3&gt;
-&lt;p&gt;&lt;abbr title=&quot;Hyper Text Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
-&lt;h2 id=&quot;leftovers&quot;&gt;Leftovers&lt;/h2&gt;
-&lt;p&gt;Yep, now the footnotes are arriving!&lt;/p&gt;
-&lt;div class=&quot;footnote&quot;&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id=&quot;fn:1&quot;&gt;
-&lt;p&gt;Numbered footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:1&quot; title=&quot;Jump back to footnote 1 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn:here&quot;&gt;
-&lt;p&gt;Labeled footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:here&quot; title=&quot;Jump back to footnote 2 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-    </item>
-    <item>
       <title>Markdown Meta Data</title>
       <link>https://oliz.io/ggpy/test/features/meta.html</link>
       <pubDate>Sun, 04 Apr 2021 18:59:03 -0000</pubDate>
@@ -291,11 +204,91 @@ tags: __draft__
 &lt;/table&gt;</description>
     </item>
     <item>
-      <title>Little inline content, no description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:06 -0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
-      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+      <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
+      <link>https://oliz.io/ggpy/test/features/</link>
+      <pubDate>Thu, 06 Jun 1996 13:37:42 -0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/</guid>
+      <description>&lt;h2 id=&quot;headline-2&quot;&gt;Headline 2&lt;/h2&gt;
+&lt;p&gt;Paragraph
+with
+non-empty
+lines.&lt;/p&gt;
+&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Ordered list item, bold&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Ordered list item, italic&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;Normal unordered list item&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;Unordered list item, DELETED!&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Unordered list item, inline coded&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled/&gt; unchecked&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled checked/&gt; checked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Code blocks work&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;def python_code_blocks():
+    return &quot;work, too!&quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let there be...&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;another
+code
+block
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tables&lt;/th&gt;
+&lt;th&gt;work&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;just&lt;/th&gt;
+&lt;th&gt;fine&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;for&lt;/td&gt;
+&lt;td&gt;real&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;yep&lt;/td&gt;
+&lt;td&gt;yeah.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;quotes&quot;&gt;Quotes&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;So smart&quot;&lt;/p&gt;
+&lt;p&gt;&quot;So smart&quot; - me, sometimes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;image&quot;&gt;Image&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&quot;Good Generator Logo&quot; src=&quot;https://oliz.io/ggpy/static/gg.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Horizontal rule...&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;other-markdown-extensions&quot;&gt;Other Markdown Extensions&lt;/h2&gt;
+&lt;h3 id=&quot;definition-lists-and-footnotes&quot;&gt;Definition Lists and Footnotes&lt;/h3&gt;
+&lt;dl&gt;
+&lt;dt&gt;Definition List&lt;/dt&gt;
+&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
+&lt;dt&gt;Other List&lt;/dt&gt;
+&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:here&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:here&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&quot;abbreviations&quot;&gt;Abbreviations&lt;/h3&gt;
+&lt;p&gt;&lt;abbr title=&quot;Hyper Text Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
+&lt;h2 id=&quot;leftovers&quot;&gt;Leftovers&lt;/h2&gt;
+&lt;p&gt;Yep, now the footnotes are arriving!&lt;/p&gt;
+&lt;div class=&quot;footnote&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn:1&quot;&gt;
+&lt;p&gt;Numbered footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:1&quot; title=&quot;Jump back to footnote 1 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn:here&quot;&gt;
+&lt;p&gt;Labeled footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:here&quot; title=&quot;Jump back to footnote 2 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     <item>
       <title>Lots of content, no description</title>
@@ -317,6 +310,13 @@ tags: __draft__
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>No content, but with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:05 -0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Lots of content, with description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
       <pubDate>Sat, 17 Jul 2021 18:59:04 -0000</pubDate>
@@ -336,11 +336,11 @@ tags: __draft__
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>No content, but with description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:05 -0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
-      <description></description>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:06 -0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
