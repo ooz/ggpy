@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Good Generator.py</title>
+    <link>https://oliz.io/ggpy</link>
+    <description></description>
+    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy/</generator>
+    <lastBuildDate>2021-10-23T19:34:04Z</lastBuildDate>
+    <item>
+      <title>Changelog</title>
+      <link>https://oliz.io/ggpy/CHANGELOG.html</link>
+      <pubDate>2021-08-25</pubDate>
+      <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
+      <description>&lt;h2 id=&quot;-version-30-unreleased&quot;&gt;????-??-??: Version 3.0 (unreleased)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove twitter meta tag support (opengraph is sufficient)&lt;/li&gt;
+&lt;li&gt;Change ggconfig social link to arbitrary key-value-map (link label to link)&lt;/li&gt;
+&lt;li&gt;Remove the &#x27;back&#x27; navigation link from posts in the footer.
+  If you want to link to your post index, use the new ggconfig social link mechanism.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TODO:
+* RSS feed generation&lt;/p&gt;
+&lt;h2 id=&quot;2021-08-22-version-201&quot;&gt;2021-08-22: Version 2.0.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix filtering single special tag&lt;/li&gt;
+&lt;li&gt;Make regular links to blog posts bold&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021-08-22-version-20&quot;&gt;2021-08-22: Version 2.0&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag support.
+  To inline posts in the index, use &lt;code&gt;__inline__&lt;/code&gt; tag on the respective post.&lt;/li&gt;
+&lt;li&gt;Filter special tags controlling ggpy behavior from the meta &lt;code&gt;keywords&lt;/code&gt; list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021-07-17-version-13&quot;&gt;2021-07-17: Version 1.3&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Add micro-blog support via new &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag&lt;/li&gt;
+&lt;li&gt;For this, update included CSS&lt;/li&gt;
+&lt;li&gt;Improve layout of the regular blog-style post index&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021-06-10-version-12&quot;&gt;2021-06-10: Version 1.2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update included style:&lt;ul&gt;
+&lt;li&gt;smaller default font-size and line-spacing&lt;/li&gt;
+&lt;li&gt;increase inline code font-size&lt;/li&gt;
+&lt;li&gt;use relative unit for body max-width&lt;/li&gt;
+&lt;li&gt;add footer control for bigger font-size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021-06-06-version-11&quot;&gt;2021-06-06: Version 1.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Make &lt;code&gt;gitpython&lt;/code&gt; dependency optional, degrading last-modified functionality e.g. for sitemap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021-06-06-version-10&quot;&gt;2021-06-06: Version 1.0&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://oliz.io/ggpy/</link>
+      <pubDate>2021-08-25</pubDate>
+      <guid>https://oliz.io/ggpy/</guid>
+      <description>&lt;h1 id=&quot;good-generatorpy&quot;&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://circleci.com/gh/ooz/ggpy&quot;&gt;&lt;img alt=&quot;CircleCI&quot; src=&quot;https://circleci.com/gh/ooz/ggpy.svg?style=shield&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;LICENSE.txt&quot;&gt;&lt;img alt=&quot;GNU AGPLv3 Badge&quot; src=&quot;https://img.shields.io/badge/license-AGPLv3-blue.svg&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;LICENSE.txt&quot;&gt;&lt;img alt=&quot;MIT License Badge&quot; src=&quot;https://img.shields.io/badge/license-MIT-blue.svg&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;CHANGELOG.html&quot;&gt;&lt;img alt=&quot;Changelog&quot; src=&quot;https://img.shields.io/badge/-CHANGELOG-blueviolet.svg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Yet another static site generator. Written in Python.
+&lt;a href=&quot;https://oliz.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html&quot;&gt;Why?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It powers &lt;a href=&quot;https://oliz.io/ggpy&quot;&gt;its website&lt;/a&gt;, which is its &lt;a href=&quot;https://github.com/ooz/ggpy&quot;&gt;README.md&lt;/a&gt; rendered via &lt;a href=&quot;https://circleci.com/gh/ooz/ggpy&quot;&gt;CircleCI&lt;/a&gt;.
+An infinite incepted loop!
+It also powers &lt;a href=&quot;https://oliz.io&quot;&gt;my website&lt;/a&gt; and &lt;a href=&quot;https://oliz.io/blog/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Static site generator supporting &lt;a href=&quot;https://oliz.io/ggpy/test/features/&quot;&gt;Markdown with various extensions&lt;/a&gt;
+  and &lt;a href=&quot;https://oliz.io/ggpy/test/features/meta.html&quot;&gt;Markdown meta header format&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Renders all &lt;code&gt;*.md&lt;/code&gt; to &lt;code&gt;*.html&lt;/code&gt; files in the passed directories and recursively in their sub-directories&lt;/li&gt;
+&lt;li&gt;Files named &lt;code&gt;README.md&lt;/code&gt; are converted to &lt;code&gt;index.html&lt;/code&gt;. Thus, it is fully compatible with GitHub Pages&lt;/li&gt;
+&lt;li&gt;It may render a time-stamped index of all generated HTML files, suitable for blogs. Documents may also be inlined into the index, suitable for micro-blogs&lt;/li&gt;
+&lt;li&gt;Built-in responsive style with light mode and dark mode&lt;/li&gt;
+&lt;li&gt;Open Graph and schema.org support&lt;/li&gt;
+&lt;li&gt;Generates &lt;code&gt;sitemap.xml&lt;/code&gt; with &lt;code&gt;lastmod&lt;/code&gt; timestamps taken from git history&lt;/li&gt;
+&lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href=&quot;https://oliz.io/blog/2018/code-and-deploy-using-termux.html&quot;&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The provided &lt;a href=&quot;https://github.com/ooz/ggpy/blob/master/.circleci/config.yml&quot;&gt;CircleCI configuration&lt;/a&gt; may serve as a blueprint to let CircleCI build your page on every commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy &lt;code&gt;gg.py&lt;/code&gt;, &lt;code&gt;ggconfig.py&lt;/code&gt; and &lt;code&gt;Makefile&lt;/code&gt; to the root of your website/blog&lt;/li&gt;
+&lt;li&gt;Adjust &lt;code&gt;ggconfig.py&lt;/code&gt; to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!&lt;/li&gt;
+&lt;li&gt;Place markdown files everywhere&lt;/li&gt;
+&lt;li&gt;Install dependencies
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make install_pipenv
+make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Generate your site
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;To update your &lt;code&gt;gg.py&lt;/code&gt; &quot;installation&quot;, run (your configuration will not be touched)
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make update&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;See all make targets with short documentation
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make help&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tests&quot;&gt;Tests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install dependencies (if you have not yet)
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make install_pipenv
+make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Run tests with coverage
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make test&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
+&lt;p&gt;This software is dual-licensed under GNU AGPLv3 or MIT License,
+see &lt;a href=&quot;LICENSE.txt&quot;&gt;LICENSE.txt&lt;/a&gt; file for details.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Some Post</title>
+      <link>https://oliz.io/ggpy/test/some-post.html</link>
+      <pubDate>2018-03-18</pubDate>
+      <guid>https://oliz.io/ggpy/test/some-post.html</guid>
+      <description>&lt;p&gt;Yep! Intro text!&lt;/p&gt;
+&lt;h2 id=&quot;headline&quot;&gt;Headline&lt;/h2&gt;
+&lt;p&gt;More text!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Markdown Meta Data</title>
+      <link>https://oliz.io/ggpy/test/features/meta.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/meta.html</guid>
+      <description>&lt;p&gt;&lt;code&gt;ggpy&lt;/code&gt; supports Markdown meta headers at the beginning of each file, e.g. for this document:&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Markdown Meta Data
+description: Meta data format and supported options
+date: 2021-04-04T18:59:03Z
+tags: documentation
+---
+
+`ggpy` supports Markdown meta headers [...]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+tags: topic, other
+tags: __draft__
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...produces three tags &lt;code&gt;topic&lt;/code&gt;, &lt;code&gt;other&lt;/code&gt; and &lt;code&gt;__draft__&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;meta-keys&quot;&gt;Meta Keys&lt;/h2&gt;
+&lt;p&gt;All keys are optional:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Document title&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Short description or summary of the document&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Creation date of the document&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;List of tags. Some tags may have special effects (see below). This key may be used multiple times (see example above).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;special-tags&quot;&gt;Special Tags&lt;/h2&gt;
+&lt;p&gt;Special tags may be used to configure &lt;code&gt;ggpy&lt;/code&gt;&#x27;s behavior. Such tags always start and end with double underscore (&lt;code&gt;__&lt;/code&gt;, also called &quot;dunder&quot; in the Python world):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tag&lt;/th&gt;
+&lt;th&gt;Description/Effect&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__draft__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Marks a document as &quot;draft&quot;. Drafts are not included in the generated sitemap or index&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__index__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Document should be an index of all documents. Other markdown content of the file is then ignored, not rendered&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__inline__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Inline document in the index generated with &lt;code&gt;__index__&lt;/code&gt;. Absolute links for images are advised, to not break rendering in the index and as a separate document.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_meta__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Don&#x27;t render machine-readable meta data for social media etc.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_header__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Omit the page header with site icon, title headline, author and date&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;__no_footer__&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;no-footer/&quot;&gt;Omit the page footer with navigation, theme control and social links&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
+      <link>https://oliz.io/ggpy/test/features/</link>
+      <pubDate>2021-03-27</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/</guid>
+      <description>&lt;h2 id=&quot;headline-2&quot;&gt;Headline 2&lt;/h2&gt;
+&lt;p&gt;Paragraph
+with
+non-empty
+lines.&lt;/p&gt;
+&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Ordered list item, bold&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Ordered list item, italic&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;Normal unordered list item&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;Unordered list item, DELETED!&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Unordered list item, inline coded&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled/&gt; unchecked&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled checked/&gt; checked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Code blocks work&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;def python_code_blocks():
+    return &quot;work, too!&quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let there be...&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;another
+code
+block
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tables&lt;/th&gt;
+&lt;th&gt;work&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;just&lt;/th&gt;
+&lt;th&gt;fine&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;for&lt;/td&gt;
+&lt;td&gt;real&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;yep&lt;/td&gt;
+&lt;td&gt;yeah.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;quotes&quot;&gt;Quotes&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;So smart&quot;&lt;/p&gt;
+&lt;p&gt;&quot;So smart&quot; - me, sometimes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;image&quot;&gt;Image&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&quot;Good Generator Logo&quot; src=&quot;https://oliz.io/ggpy/static/gg.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Horizontal rule...&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;other-markdown-extensions&quot;&gt;Other Markdown Extensions&lt;/h2&gt;
+&lt;h3 id=&quot;definition-lists-and-footnotes&quot;&gt;Definition Lists and Footnotes&lt;/h3&gt;
+&lt;dl&gt;
+&lt;dt&gt;Definition List&lt;/dt&gt;
+&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
+&lt;dt&gt;Other List&lt;/dt&gt;
+&lt;dd&gt;is defined here&lt;sup id=&quot;fnref:here&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;#fn:here&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&quot;abbreviations&quot;&gt;Abbreviations&lt;/h3&gt;
+&lt;p&gt;&lt;abbr title=&quot;Hyper Text Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
+&lt;h2 id=&quot;leftovers&quot;&gt;Leftovers&lt;/h2&gt;
+&lt;p&gt;Yep, now the footnotes are arriving!&lt;/p&gt;
+&lt;div class=&quot;footnote&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn:1&quot;&gt;
+&lt;p&gt;Numbered footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:1&quot; title=&quot;Jump back to footnote 1 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn:here&quot;&gt;
+&lt;p&gt;Labeled footnote&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;#fnref:here&quot; title=&quot;Jump back to footnote 2 in the text&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Lots of content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;One&lt;/li&gt;
+&lt;li&gt;Two&lt;/li&gt;
+&lt;li&gt;Three&lt;/li&gt;
+&lt;li&gt;Four&lt;/li&gt;
+&lt;li&gt;Five&lt;/li&gt;
+&lt;li&gt;Six&lt;/li&gt;
+&lt;li&gt;Seven&lt;/li&gt;
+&lt;li&gt;Eight&lt;/li&gt;
+&lt;li&gt;Nine&lt;/li&gt;
+&lt;li&gt;Ten&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;... and some more lines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>No content, but with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lots of content, with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;One&lt;/li&gt;
+&lt;li&gt;Two&lt;/li&gt;
+&lt;li&gt;Three&lt;/li&gt;
+&lt;li&gt;Four&lt;/li&gt;
+&lt;li&gt;Five&lt;/li&gt;
+&lt;li&gt;Six&lt;/li&gt;
+&lt;li&gt;Seven&lt;/li&gt;
+&lt;li&gt;Eight&lt;/li&gt;
+&lt;li&gt;Nine&lt;/li&gt;
+&lt;li&gt;Ten&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;... and some more lines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>2021-08-22</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

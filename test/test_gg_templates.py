@@ -414,6 +414,36 @@ def test_template_sitemap_with_additional_entries():
 </urlset>
 '''
 
+def test_template_rss():
+    posts = given_posts()
+    rss = gg.template_rss(posts)
+    assert rss.startswith('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link></link>
+    <description></description>
+    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy/</generator>
+    <lastBuildDate>''')
+    assert rss.endswith('''</lastBuildDate>
+    <item>
+      <title>Root</title>
+      <link>https://example.com/</link>
+      <pubDate>2020-02-20</pubDate>
+      <guid>https://example.com/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>https://example.com/blog</link>
+      <pubDate>2020-02-21</pubDate>
+      <guid>https://example.com/blog</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
+''')
+
 def given_posts():
     return [
         {

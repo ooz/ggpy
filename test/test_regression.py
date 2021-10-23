@@ -167,6 +167,13 @@ def test_sitemap_does_not_include_drafts():
     sitemap_data = read_file('sitemap.xml')
     assert 'draft-not-included-in-sitemap' not in sitemap_data
 
+def test_rss_generation():
+    rss = read_file('rss.xml')
+    assert rss.startswith('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>''')
+    assert rss.endswith('''</rss>\n''')
+
 def test_markdown_features_and_readme_generation():
     # given & when
     index_title = 'Markdown Feature Test without &quot;quotes bug&quot;'

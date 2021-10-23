@@ -4,7 +4,8 @@
 config = {
     'site': {
         'base_url': 'https://oliz.io/ggpy',          # Default: no base_url, then ggpy won't convert to absolute/canonical links
-        'generate_sitemap': True,                    # Default: False, could also make git dependency optional (only needed for timestamp)
+        'generate_sitemap': True,                    # Default: False
+        'generate_rss': True,                        # Default: False
         'additional_sitemap_entries': [],            # Default: none / empty
         'title': 'Good Generator.py',                # Default: no common title will be rendered across all pages
         'logo': 'static/gg.png',                     # Default: no common logo will be rendered across all pages

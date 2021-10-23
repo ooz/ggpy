@@ -7,6 +7,10 @@ import gg
 from ggconfig import config
 
 DATE = r'''\d+-\d{2}-\d{2}'''
+UTC_FORMATTED = DATE + r'''T\d{2}:\d{2}:\d{2}Z'''
+
+def test_now_utc_formatted():
+    assert re.match(UTC_FORMATTED, gg.now_utc_formatted())
 
 def test_last_modified():
     assert re.match(DATE, gg.last_modified('README.md'))

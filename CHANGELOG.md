@@ -8,9 +8,7 @@ title: Changelog
 * Change ggconfig social link to arbitrary key-value-map (link label to link)
 * Remove the 'back' navigation link from posts in the footer.
   If you want to link to your post index, use the new ggconfig social link mechanism.
-
-TODO:
-* RSS feed generation
+* Support RSS feed generation
 
 ## 2021-08-22: Version 2.0.1
 

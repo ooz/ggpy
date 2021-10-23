@@ -384,13 +384,11 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }'''
 # * Rendering sitemap
 ##############################################################################
 def template_newpost(title='Title', description='-'):
-    now = time.localtime()
-    now_utc_formatted = time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
     return \
 f'''---
 title: {title}
 description: {description}
-date: {now_utc_formatted}
+date: {now_utc_formatted()}
 tags: {TAG_DRAFT}
 ---
 '''
@@ -448,7 +446,7 @@ def _template_common_body_and_end(header, section, footer):
 
 def template_sitemap(posts, config=None):
     config = config or {}
-    posts = [post for post in posts if TAG_DRAFT not in post['tags'] and TAG_INDEX not in post['tags']]
+    posts = [post for post in posts if TAG_DRAFT not in post.get('tags', []) and TAG_INDEX not in post.get('tags', [])]
     sitemap_xml = []
     sitemap_xml.append('<?xml version="1.0" encoding="utf-8" standalone="yes" ?>')
     sitemap_xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
@@ -464,6 +462,35 @@ def template_sitemap(posts, config=None):
         sitemap_xml.append('  </url>')
     sitemap_xml.append('</urlset>\n')
     return '\n'.join(sitemap_xml)
+
+def template_rss(posts, config=None):
+    config = config or {}
+    posts = [post for post in posts if TAG_DRAFT not in post.get('tags', []) and TAG_INDEX not in post.get('tags', [])]
+    title = config.get('site', {}).get('title', '')
+    base_url = config.get('site', {}).get('base_url', '')
+    if title == '' and base_url != '':
+        title = base_url
+    rss_xml = []
+    rss_xml.append('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>''')
+    rss_xml.append(f'''    <title>{escape(title)}</title>''')
+    rss_xml.append(f'''    <link>{escape(base_url)}</link>''')
+    rss_xml.append(f'''    <description></description>''')
+    rss_xml.append(f'''    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy/</generator>''')
+    rss_xml.append(f'''    <lastBuildDate>{now_utc_formatted()}</lastBuildDate>''')
+    for post in posts:
+        escaped_url = escape(post.get('url', ''))
+        rss_xml.append(f'''    <item>''')
+        rss_xml.append(f'''      <title>{escape(post.get('title', ''))}</title>''')
+        rss_xml.append(f'''      <link>{escaped_url}</link>''')
+        rss_xml.append(f'''      <pubDate>{escape(post.get('last_modified', ''))}</pubDate>''')
+        rss_xml.append(f'''      <guid>{escaped_url}</guid>''')
+        rss_xml.append(f'''      <description>{escape(post.get('html_section', ''))}</description>''')
+        rss_xml.append(f'''    </item>''')
+    rss_xml.append('''  </channel>
+</rss>\n''')
+    return '\n'.join(rss_xml)
 
 ##############################################################################
 # PURE LIBRARY FUNCTIONS, UTILITIES AND HELPERS
@@ -507,11 +534,18 @@ def generate(directories, config=None):
     for index in indices:
         index['html_section'] = posts_index(posts)
         index['html'] = template_page(index, config)
+    sitemap_and_rss_files = []
     if config.get('site', {}).get('generate_sitemap', False):
-        posts.append({
+        sitemap_and_rss_files.append({
             'filepath': 'sitemap.xml',
             'html': template_sitemap(posts, config)
         })
+    if config.get('site', {}).get('generate_rss', False):
+        sitemap_and_rss_files.append({
+            'filepath': 'rss.xml',
+            'html': template_rss(posts, config)
+        })
+    posts.extend(sitemap_and_rss_files)
     for post in posts:
         write_file(post['filepath'], post['html'])
 
@@ -552,6 +586,10 @@ def last_modified(filepath):
         for commit in REPO.iter_commits(paths=filepath, max_count=1):
             return time.strftime('%Y-%m-%d', time.gmtime(commit.authored_date))
     return ''
+
+def now_utc_formatted():
+    now = time.localtime()
+    return time.strftime('%Y-%m-%dT%H:%M:%SZ', now)
 
 ##############################################################################
 # MAIN PROGRAM
