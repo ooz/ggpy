@@ -40,7 +40,7 @@ body {
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 .6rem;
+    padding: 0 .6rem 1rem .6rem;
     max-width: 44em;
     scroll-behavior: smooth;
 }
@@ -160,7 +160,7 @@ body {
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 .6rem;
+    padding: 0 .6rem 1rem .6rem;
     max-width: 44em;
     scroll-behavior: smooth;
 }
@@ -273,7 +273,7 @@ body {
     color: #363636;
     background: #FFF;
     margin: 1rem auto;
-    padding: 0 .6rem;
+    padding: 0 .6rem 1rem .6rem;
     max-width: 44em;
     scroll-behavior: smooth;
 }
