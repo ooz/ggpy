@@ -21,7 +21,7 @@ config = {
     'social': {
         'about': 'https://oliz.io/about.html',
         'github': 'https://github.com/ooz/ggpy',
-        'twitter': 'https://twitter.com/oozgo',
+        'twitter': 'https://nitter.net/',
         'email': 'mailto:example@example.com'
     }
 }
