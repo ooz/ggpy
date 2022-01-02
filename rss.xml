@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 02 Jan 2022 21:27:23 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jan 2022 21:46:27 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -102,36 +102,10 @@ tags: __draft__
 &lt;/table&gt;</description>
     </item>
     <item>
-      <title>Little inline content, no description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
-      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Lots of content, no description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</link>
       <pubDate>Sat, 17 Jul 2021 18:59:03 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;One&lt;/li&gt;
-&lt;li&gt;Two&lt;/li&gt;
-&lt;li&gt;Three&lt;/li&gt;
-&lt;li&gt;Four&lt;/li&gt;
-&lt;li&gt;Five&lt;/li&gt;
-&lt;li&gt;Six&lt;/li&gt;
-&lt;li&gt;Seven&lt;/li&gt;
-&lt;li&gt;Eight&lt;/li&gt;
-&lt;li&gt;Nine&lt;/li&gt;
-&lt;li&gt;Ten&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;... and some more lines.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Lots of content, with description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:04 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;One&lt;/li&gt;
 &lt;li&gt;Two&lt;/li&gt;
@@ -154,17 +128,44 @@ tags: __draft__
       <description></description>
     </item>
     <item>
+      <title>Lots of content, with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:04 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;One&lt;/li&gt;
+&lt;li&gt;Two&lt;/li&gt;
+&lt;li&gt;Three&lt;/li&gt;
+&lt;li&gt;Four&lt;/li&gt;
+&lt;li&gt;Five&lt;/li&gt;
+&lt;li&gt;Six&lt;/li&gt;
+&lt;li&gt;Seven&lt;/li&gt;
+&lt;li&gt;Eight&lt;/li&gt;
+&lt;li&gt;Nine&lt;/li&gt;
+&lt;li&gt;Ten&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;... and some more lines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Changelog</title>
       <link>https://oliz.io/ggpy/CHANGELOG.html</link>
       <pubDate>Sat, 23 Oct 2021 00:00:00 -0000</pubDate>
       <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
-      <description>&lt;h2 id="-version-30-unreleased"&gt;????-??-??: Version 3.0 (unreleased)&lt;/h2&gt;
+      <description>&lt;h2 id="2022-01-02-version-30"&gt;2022-01-02: Version 3.0&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Remove twitter meta tag support (opengraph is sufficient)&lt;/li&gt;
 &lt;li&gt;Change ggconfig social link to arbitrary key-value-map (link label to link)&lt;/li&gt;
 &lt;li&gt;Remove the 'back' navigation link from posts in the footer.
   If you want to link to your post index, use the new ggconfig social link mechanism.&lt;/li&gt;
-&lt;li&gt;Support RSS feed generation&lt;/li&gt;
+&lt;li&gt;Support RSS feed generation. It's limited to the 10 latest posts (creation date)&lt;/li&gt;
+&lt;li&gt;Cut-off sitemap after 50000 entries, see &lt;a href="https://www.sitemaps.org/faq.html"&gt;https://www.sitemaps.org/faq.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="2021-08-22-version-201"&gt;2021-08-22: Version 2.0.1&lt;/h2&gt;
 &lt;ul&gt;

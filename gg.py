@@ -4,7 +4,7 @@
 Author: Oliver Z., https://oliz.io
 Description: Minimal static site generator easy to use with GitHub Pages o.s.
 Website: https://oliz.io/ggpy/
-Version: 2.0.1+dev
+Version: 3.0
 License: Dual-licensed under GNU AGPLv3 or MIT License,
          see LICENSE.txt file for details.
 
@@ -457,7 +457,7 @@ def template_sitemap(posts, config=None):
     all_entries = [(post['url'], post['last_modified']) for post in posts]
     all_entries = all_entries + [(entry, '') for entry in additional_entries]
     all_entries = sorted(all_entries, key=lambda entry: entry[0])
-    for entry in all_entries:
+    for entry in all_entries[:50000]:
         sitemap_xml.append('  <url>')
         sitemap_xml.append('    <loc>%s</loc>' % escape(entry[0]))
         if len(entry[1]):
@@ -483,7 +483,7 @@ def template_rss(posts, config=None):
     rss_xml.append(f'''    <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>''')
     rss_xml.append(f'''    <lastBuildDate>{utils.formatdate()}</lastBuildDate>''')
     rss_xml.append(f'''    <atom:link href="{'rss.xml' if base_url == '' else f'{base_url}/rss.xml'}" rel="self" type="application/rss+xml" />''')
-    for post in posts:
+    for post in posts[-10:]: # Limit to the lastest 10 posts
         escaped_url = xmlescape(post.get('url', ''))
         escaped_title = xmlescape(post.get('title', ''))
         escaped_title = escaped_url if (escaped_title == '' and escaped_url != '') else escaped_title

@@ -2,13 +2,14 @@
 title: Changelog
 ---
 
-## ????-??-??: Version 3.0 (unreleased)
+## 2022-01-02: Version 3.0
 
 * Remove twitter meta tag support (opengraph is sufficient)
 * Change ggconfig social link to arbitrary key-value-map (link label to link)
 * Remove the 'back' navigation link from posts in the footer.
   If you want to link to your post index, use the new ggconfig social link mechanism.
-* Support RSS feed generation
+* Support RSS feed generation. It's limited to the 10 latest posts (creation date)
+* Cut-off sitemap after 50000 entries, see https://www.sitemaps.org/faq.html
 
 ## 2021-08-22: Version 2.0.1
 
