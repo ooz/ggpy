@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 02 Jan 2022 21:48:12 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jan 2022 21:55:06 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -308,7 +308,7 @@ block
 &lt;li&gt;Change ggconfig social link to arbitrary key-value-map (link label to link)&lt;/li&gt;
 &lt;li&gt;Remove the 'back' navigation link from posts in the footer.
   If you want to link to your post index, use the new ggconfig social link mechanism.&lt;/li&gt;
-&lt;li&gt;Support RSS feed generation. It's limited to the 10 latest posts (creation date)&lt;/li&gt;
+&lt;li&gt;Support RSS feed generation. It's limited to the 10 latest posts (by last_modified date)&lt;/li&gt;
 &lt;li&gt;Cut-off sitemap after 50000 entries, see &lt;a href="https://www.sitemaps.org/faq.html"&gt;https://www.sitemaps.org/faq.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="2021-08-22-version-201"&gt;2021-08-22: Version 2.0.1&lt;/h2&gt;
