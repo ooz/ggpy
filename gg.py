@@ -628,5 +628,5 @@ if __name__ == '__main__': # pragma: no cover because main wrapper
     if args.get('newpost', None):
         title = args.get('newpost')
         write_file(kebab_case(title) + '.md', template_newpost(title))
-    if len(args.get('directories')):
+    if len(args.get('directories')): # type: ignore
         generate(args.get('directories'), config)

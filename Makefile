@@ -29,6 +29,9 @@ init: ## Initial setup of pipenv
 	pipenv --python 3
 	pipenv install
 
+lint: ## Only typecheck for now
+	pipenv run mypy --install-types ./
+
 test: | clean_coverage ## Run ggpy tests
 	pipenv install --dev
 	pipenv run coverage run --source=. -m pytest -vv
