@@ -1,6 +1,6 @@
-.PHONY: clean clean_coverage \
+.PHONY: all help newpost openlatest update \
 install_pipenv init test deploy \
-all help newpost openlatest update
+clean clean_coverage
 
 all: ## Build the site, generate all pages from *.md files
 	pipenv run python gg.py ./
@@ -29,14 +29,12 @@ init: ## Initial setup of pipenv
 	pipenv --python 3
 	pipenv install
 
-lint: ## Only typecheck for now
-	pipenv run mypy --install-types ./
-
-test: | clean_coverage ## Run ggpy tests
+test: clean_coverage ## Run ggpy tests, coverage and lint (only typecheck for now)
 	pipenv install --dev
 	pipenv run coverage run --source=. -m pytest -vv
 	pipenv run coverage html --omit="test/*"
 	pipenv run coverage report --omit="test/*"
+	pipenv run mypy --install-types ./
 
 deploy: all ## Build and publish by CI
 	git add .
@@ -49,6 +47,7 @@ clean: ## Cleanup python artifacts
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
+	find . -name '.mypy_cache' -exec rm -rf {} +
 	find . -name '.pytest_cache' -exec rm -rf {} +
 	rm -rf .cache
 	rm -rf dist

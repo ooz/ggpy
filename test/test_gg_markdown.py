@@ -4,7 +4,7 @@
 import gg
 from ggconfig import config
 
-def test_markdown2post():
+def test_markdown2post() -> None:
     no_meta_no_config = gg.markdown2post()
     assert no_meta_no_config['date'] == ''
     assert no_meta_no_config['title'] == ''
@@ -45,7 +45,7 @@ def test_markdown2post():
     assert content_meta_ggconfig['html_headline'] == '<h1 id="new-post">New Post</h1>'
     assert content_meta_ggconfig['html_section'] == '<p>My new post!</p>'
 
-def given_newpost():
+def given_newpost() -> str:
     return \
 '''---
 title: New Post

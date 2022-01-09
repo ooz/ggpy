@@ -115,12 +115,12 @@ f'''<header>
 </section>
 '''
 
-def test_generate():
+def test_generate() -> None:
     import gg
     from ggconfig import config
     gg.generate(['.'], config)
 
-def test_sitemap_generation():
+def test_sitemap_generation() -> None:
     sitemap_data = read_file('sitemap.xml')
     assert re.match(r'''<\?xml version="1.0" encoding="utf-8" standalone="yes" \?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -163,18 +163,18 @@ def test_sitemap_generation():
 </urlset>
 ''', sitemap_data)
 
-def test_sitemap_does_not_include_drafts():
+def test_sitemap_does_not_include_drafts() -> None:
     sitemap_data = read_file('sitemap.xml')
     assert 'draft-not-included-in-sitemap' not in sitemap_data
 
-def test_rss_generation():
+def test_rss_generation() -> None:
     rss = read_file('rss.xml')
     assert rss.startswith('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>''')
     assert rss.endswith('''</rss>\n''')
 
-def test_markdown_features_and_readme_generation():
+def test_markdown_features_and_readme_generation() -> None:
     # given & when
     index_title = 'Markdown Feature Test without &quot;quotes bug&quot;'
     index_raw_title = 'Markdown Feature Test without "quotes bug"'
@@ -203,7 +203,7 @@ def test_markdown_features_and_readme_generation():
     index_data = then_has_body(index_data)
     assert GENERATED_FEATURE_HTML == index_data
 
-def test_post_conversion():
+def test_post_conversion() -> None:
     # given & when
     post_title = 'Some Post'
     description = 'Nice post!'
@@ -232,7 +232,7 @@ def test_post_conversion():
     post_data = then_has_body(post_data)
     assert GENERATED_POST_HTML == post_data
 
-def then_is_framed_by_html_boilerplate(result):
+def then_is_framed_by_html_boilerplate(result:str) -> str:
     html_start = \
 '''<!DOCTYPE html>
 <html lang="en-US">
@@ -251,7 +251,7 @@ def then_is_framed_by_html_boilerplate(result):
     assert result.endswith(html_end)
     return result.replace(html_start, '').replace(html_end, '')
 
-def then_has_bottom_navigation_and_social_links(result):
+def then_has_bottom_navigation_and_social_links(result:str) -> str:
     navigation_and_social_links = \
 '''<footer>
 <a href="#" class="nav">top</a>
@@ -266,7 +266,7 @@ def then_has_bottom_navigation_and_social_links(result):
     assert result.endswith(navigation_and_social_links)
     return result.replace(navigation_and_social_links, '')
 
-def then_has_title_canonical_and_favicon(result, title='', canonical_url='', favicon_url=''):
+def then_has_title_canonical_and_favicon(result:str, title:str='', canonical_url:str='', favicon_url:str='') -> str:
     title_and_links = \
 f'''<title>{title}</title>
 <link rel="canonical" href="{canonical_url}">
@@ -275,7 +275,7 @@ f'''<title>{title}</title>
     assert result.startswith(title_and_links)
     return result.replace(title_and_links, '')
 
-def then_has_style(result):
+def then_has_style(result:str) -> str:
     style = \
 '''<style>
 body {
@@ -353,7 +353,7 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
     assert result.startswith(style)
     return result.replace(style, '')
 
-def then_head_ends_with_meta_tags(result, title='', raw_title='', description='', raw_description='', canonical_url='', creation_time=''):
+def then_head_ends_with_meta_tags(result:str, title:str='', raw_title:str='', description:str='', raw_description:str='', canonical_url:str='', creation_time:str='') -> str:
     json_escaped_raw_title = raw_title.replace('"', '\\"')
     json_escaped_raw_description = raw_description.replace('"', '\\"')
     meta = \
@@ -376,7 +376,7 @@ f'''<meta name="author" content="Good Gen">
     assert result.startswith(meta)
     return result.replace(meta, '')
 
-def then_has_body(result):
+def then_has_body(result:str) -> str:
     body = \
 '''<body onload="initTheme()">
 '''

@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import re
+from typing import Any, Dict, List
 
 import gg
 from ggconfig import config
 
-def test_newpost():
+def test_newpost() -> None:
     assert re.match(r'''---
 title: Title
 description: -
@@ -15,13 +16,13 @@ tags: __draft__
 ---
 ''', gg.template_newpost())
 
-def test_template_page():
+def test_template_page() -> None:
     post = {
         'url': 'https://oliz.io/ggpy/',
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_page(post, config)
-    assert post == \
+    rendered_post = gg.template_page(post, config)
+    assert rendered_post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -136,13 +137,13 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </html>
 '''
 
-def test_template_page_without_config():
+def test_template_page_without_config() -> None:
     post = {
         'url': 'index.html',
         'html_section': '<h1>Hey!</h1>'
     }
-    post = gg.template_page(post)
-    assert post == \
+    rendered_post = gg.template_page(post)
+    assert rendered_post == \
 '''<!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -248,13 +249,13 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </html>
 '''
 
-def test_template_page_as_index():
-    index = {}
+def test_template_page_as_index() -> None:
+    index:Dict[str, Any] = {}
     index['url'] = 'https://oliz.io/ggpy'
     index['is_index'] = True
     index['html_section'] = gg.posts_index(given_posts())
-    index = gg.template_page(index, config)
-    assert index == \
+    rendered_index = gg.template_page(index, config)
+    assert rendered_index == \
 '''<!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -363,16 +364,16 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </html>
 '''
 
-def test_template_page_with_custom_title():
+def test_template_page_with_custom_title() -> None:
     index = {}
     index['title'] = 'Blog'
     index['html_headline'] = '<h1>Blog</h1>'
     index['html_section'] = gg.posts_index(given_posts())
-    index = gg.template_page(index, config)
-    assert '<title>Blog | Good Generator.py</title>' in index
-    assert '<h1>Blog</h1>' in index
+    rendered_index = gg.template_page(index, config)
+    assert '<title>Blog | Good Generator.py</title>' in rendered_index
+    assert '<h1>Blog</h1>' in rendered_index
 
-def test_template_sitemap():
+def test_template_sitemap() -> None:
     posts = given_posts()
     sitemap = gg.template_sitemap(posts)
     assert sitemap == \
@@ -389,7 +390,7 @@ def test_template_sitemap():
 </urlset>
 '''
 
-def test_template_sitemap_with_additional_entries():
+def test_template_sitemap_with_additional_entries() -> None:
     posts = given_posts()
     config = {
         'site': {
@@ -414,7 +415,7 @@ def test_template_sitemap_with_additional_entries():
 </urlset>
 '''
 
-def test_template_rss():
+def test_template_rss() -> None:
     posts = given_posts()
     rss = gg.template_rss(posts)
     assert rss.startswith('''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -445,7 +446,7 @@ def test_template_rss():
 </rss>
 ''')
 
-def given_posts():
+def given_posts() -> List[dict]:
     return [
         {
             'url': 'https://example.com/',
