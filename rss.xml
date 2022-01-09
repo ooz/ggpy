@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 09 Jan 2022 19:03:21 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jan 2022 21:14:48 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -102,6 +102,13 @@ tags: __draft__
 &lt;/table&gt;</description>
     </item>
     <item>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Lots of content, no description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-no-description.html</link>
       <pubDate>Sat, 17 Jul 2021 18:59:03 +0000</pubDate>
@@ -119,13 +126,6 @@ tags: __draft__
 &lt;li&gt;Ten&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>No content, but with description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:05 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
-      <description></description>
     </item>
     <item>
       <title>Lots of content, with description</title>
@@ -147,11 +147,11 @@ tags: __draft__
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Little inline content, no description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
-      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
+      <title>No content, but with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:05 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
+      <description></description>
     </item>
     <item>
       <title>https://oliz.io/ggpy/</title>
