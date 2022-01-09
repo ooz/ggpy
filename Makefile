@@ -34,7 +34,7 @@ test: clean_coverage ## Run ggpy tests, coverage and lint (only typecheck for no
 	pipenv run coverage run --source=. -m pytest -vv
 	pipenv run coverage html --omit="test/*"
 	pipenv run coverage report --omit="test/*"
-	pipenv run mypy --install-types ./
+	pipenv run mypy --install-types --non-interactive ./
 
 deploy: all ## Build and publish by CI
 	git add .
