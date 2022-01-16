@@ -2,6 +2,10 @@
 title: Changelog
 ---
 
+## 2022-01-16: Version 3.0.1
+
+* Improve determinism of RSS feed sort order (higher last_modified precision)
+
 ## 2022-01-02: Version 3.0
 
 * Remove twitter meta tag support (opengraph is sufficient)
