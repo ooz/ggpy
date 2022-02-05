@@ -79,31 +79,39 @@ def test_header() -> None:
 def test_post_header() -> None:
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
     assert post_header == \
-'''<div style="text-align:right;">
+'''
+<div style="text-align:right;">
 <h1 id="title">Title!</h1>
 <small><a href="https://oliz.io/ggpy">Good Gen</a>, 2020-02-20</small>
-</div>'''
+</div>
+'''.strip()
     post_header_default_config = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20')
     assert post_header_default_config == \
-'''<div style="text-align:right;">
+'''
+<div style="text-align:right;">
 <h1 id="title">Title!</h1>
 <small>2020-02-20</small>
-</div>'''
+</div>
+'''.strip()
 
 def test_footer_navigation() -> None:
     footer_nav = gg.footer_navigation()
     assert footer_nav == \
-'''<a href="#" class="nav">top</a>
+'''
+<a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
-<a href="javascript:toggleFontSize()" class="nav">aA</a>'''
+<a href="javascript:toggleFontSize()" class="nav">aA</a>
+'''.strip()
 
 def test_about_and_social_icons() -> None:
     about_and_social = gg.about_and_social_icons(config)
     assert about_and_social == \
-'''<a href="mailto:example@example.com" class="social">email</a>
-<a href="https://nitter.net/" class="social">twitter</a>
+'''
+<a href="https://oliz.io/about.html" class="social">about</a>
 <a href="https://github.com/ooz/ggpy" class="social">github</a>
-<a href="https://oliz.io/about.html" class="social">about</a>'''
+<a href="https://nitter.net/" class="social">twitter</a>
+<a href="mailto:example@example.com" class="social">email</a>
+'''.strip()
     about_and_social_default_config = gg.about_and_social_icons()
     assert about_and_social_default_config == ''
 

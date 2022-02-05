@@ -257,10 +257,10 @@ def then_has_bottom_navigation_and_social_links(result:str) -> str:
 <a href="#" class="nav">top</a>
 <a href="javascript:toggleTheme()" class="nav">🌓</a>
 <a href="javascript:toggleFontSize()" class="nav">aA</a>
-<a href="mailto:example@example.com" class="social">email</a>
-<a href="https://nitter.net/" class="social">twitter</a>
-<a href="https://github.com/ooz/ggpy" class="social">github</a>
 <a href="https://oliz.io/about.html" class="social">about</a>
+<a href="https://github.com/ooz/ggpy" class="social">github</a>
+<a href="https://nitter.net/" class="social">twitter</a>
+<a href="mailto:example@example.com" class="social">email</a>
 </footer>
 '''
     assert result.endswith(navigation_and_social_links)
