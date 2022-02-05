@@ -113,8 +113,7 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 <meta property="og:description" content="">
 <meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
 <meta property="og:locale" content="en-US">
-<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":""}</script>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":""}</script>
 </head>
 
 <body onload="initTheme()">
@@ -232,8 +231,7 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 <meta property="og:url" content="index.html">
 <meta property="og:description" content="">
 <meta property="og:locale" content="en-US">
-<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"index.html","description":""}</script>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","headline":"","url":"index.html","description":""}</script>
 </head>
 
 <body onload="initTheme()">

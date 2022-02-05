@@ -22,59 +22,73 @@ def test_pagetitle() -> None:
 def test_meta() -> None:
     meta = gg.meta('oz', 'Nice text!', '__draft__, foo, __inline__, bar, tags, __no_header__')
     assert meta == \
-'''<meta name="author" content="oz">
+'''
+<meta name="author" content="oz">
 <meta name="description" content="Nice text!">
-<meta name="keywords" content="foo, bar, tags">'''
+<meta name="keywords" content="foo, bar, tags">
+'''.strip()
 
 def test_meta_single_special_tag() -> None:
     meta = gg.meta('oz', 'Nice text!', '__draft__')
     assert meta == \
-'''<meta name="author" content="oz">
-<meta name="description" content="Nice text!">'''
+'''
+<meta name="author" content="oz">
+<meta name="description" content="Nice text!">
+'''.strip()
 
 def test_opengraph() -> None:
     opengraph = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20', config)
     assert opengraph == \
-'''<meta property="og:title" content="Title!">
+'''
+<meta property="og:title" content="Title!">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://oliz.io/ggpy/">
 <meta property="og:description" content="Nice text!">
 <meta property="og:image" content="https://oliz.io/ggpy/static/gg.png">
 <meta property="og:locale" content="en-US">
-<meta property="article:published_time" content="2020-02-20">'''
+<meta property="article:published_time" content="2020-02-20">
+'''.strip()
     opengraph_default_config = gg.opengraph('Title!', 'https://oliz.io/ggpy/', 'Nice text!', '2020-02-20')
     assert opengraph_default_config == \
-'''<meta property="og:title" content="Title!">
+'''
+<meta property="og:title" content="Title!">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://oliz.io/ggpy/">
 <meta property="og:description" content="Nice text!">
 <meta property="og:locale" content="en-US">
-<meta property="article:published_time" content="2020-02-20">'''
+<meta property="article:published_time" content="2020-02-20">
+'''.strip()
 
 def test_json_ld() -> None:
     json_ld = gg.json_ld('Title! "BAM!"', 'https://oliz.io/ggpy/', 'It says "BAM!"', config)
     assert json_ld == \
-'''<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>'''
+'''
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","name":"Good Generator.py","description":"It says \\"BAM!\\""}</script>
+'''.strip()
     json_ld_default_config = gg.json_ld('Title! "BAM!"', 'https://oliz.io/ggpy/', 'It says "BAM!"')
     assert json_ld_default_config == \
-'''<script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","description":"It says \\"BAM!\\""}</script>'''
+'''
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","headline":"Title! \\"BAM!\\"","url":"https://oliz.io/ggpy/","description":"It says \\"BAM!\\""}</script>
+'''.strip()
 
 def test_header() -> None:
     header = gg.header('https://example.com/logo.png', '<h1>Title!</h1>', '2021-03-27', config)
     assert header == \
-'''<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
+'''
+<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
 <div style="text-align:right;">
 <h1>Title!</h1>
 <small><a href="https://oliz.io/ggpy">Good Gen</a>, 2021-03-27</small>
-</div>'''
+</div>
+'''.strip()
     header_default_config = gg.header('', '<h1>Title!</h1>', '2021-03-27')
     assert header_default_config == \
-'''<div style="text-align:right;">
+'''
+<div style="text-align:right;">
 <h1>Title!</h1>
 <small>2021-03-27</small>
-</div>'''
+</div>
+'''.strip()
 
 def test_post_header() -> None:
     post_header = gg.post_header('<h1 id="title">Title!</h1>', '2020-02-20', config)
@@ -122,11 +136,13 @@ def test_posts_index() -> None:
     posts = [post for post in posts if gg.TAG_INLINE not in post['tags']]
     posts_index = gg.posts_index(posts)
     assert posts_index == \
-'''<div>
+'''
+<div>
 <div class="card"><small class="social">2021-04-04</small><a href="test/features/meta.html"><b>Markdown Meta Data</b></a></div>
 <div class="card"><small class="social">2018-03-17</small><a href="test/some-post.html"><b>Some Post</b></a></div>
 <div class="card"><small class="social">1996-06-06</small><a href="test/features/"><b>Markdown Feature Test without &quot;quotes bug&quot;</b></a></div>
-</div>'''
+</div>
+'''.strip()
 
 def test_posts_index_inline() -> None:
     '''Generate index with inlined posts.
@@ -140,7 +156,8 @@ def test_posts_index_inline() -> None:
     posts = gg.scan_posts(['test/features/index-inline-posts/'])
     posts_index = gg.posts_index(posts)
     assert posts_index == \
-'''<div>
+'''
+<div>
 <div class="card"><small class="social">2021-07-17</small>
 <a href="little-inline-content-no-description.html"><b>Little inline content, no description</b></a>
 <div>
@@ -188,34 +205,41 @@ Just some more minor text from the description
 <p>... and some more lines.</p>
 </details>
 </div>
-</div>'''
+</div>
+'''.strip()
 
 ##############################################################################
 # HTML SNIPPETS
 ##############################################################################
 def test_html_opening_boilerplate() -> None:
     assert gg.html_opening_boilerplate() == \
-'''<!DOCTYPE html>
+'''
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1">'''
+<meta name="viewport" content="width=device-width,initial-scale=1">
+'''.strip()
 
 def test_html_head_body_boilerplate() -> None:
     assert gg.html_head_body_boilerplate() == \
-'''</head>
+'''
+</head>
 
-<body onload="initTheme()">'''
+<body onload="initTheme()">
+'''.strip()
 
 def test_html_tag_line() -> None:
     assert gg.html_tag_line('title', 'Nice!') == '<title>Nice!</title>'
 
 def test_html_tag_block() -> None:
     assert gg.html_tag_block('footer', '<p>in closing</p>') == \
-'''<footer>
+'''
+<footer>
 <p>in closing</p>
-</footer>'''
+</footer>
+'''.strip()
 
 def test_html_tag_empty() -> None:
     link_tag = gg.html_tag_empty('link', [('rel', 'canonical'), ('href','https://example.com')])
