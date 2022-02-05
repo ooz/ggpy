@@ -2,6 +2,10 @@
 title: Changelog
 ---
 
+## 2022-??-??: Version 3.1 (in development)
+
+* Change default style: no shadows, greater max. logo size
+
 ## 2022-01-16: Version 3.0.1
 
 * Improve determinism of RSS feed sort order (higher last_modified precision)
