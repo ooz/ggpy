@@ -19,9 +19,9 @@ config = {
         'url': 'https://oliz.io/ggpy'
     },
     'social': {
-        'about': 'https://oliz.io/about.html',
-        'github': 'https://github.com/ooz/ggpy',
+        'email': 'mailto:example@example.com',
         'twitter': 'https://nitter.net/',
-        'email': 'mailto:example@example.com'
+        'github': 'https://github.com/ooz/ggpy',
+        'about': 'https://oliz.io/about.html'
     }
 }
