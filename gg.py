@@ -117,6 +117,7 @@ def header(post:dict, date:str='', config:Optional[dict]=None) -> str:
     if len(author_url) and len(logo):
         lines.append(f'<a href="{author_url}"><img src="{logo}" class="avatar" /></a>')
     lines.append(post_header(title_html, date, config))
+    lines.append(post_tags(post))
     return '\n'.join([line for line in lines if len(line)])
 
 def pagetitle(title:str='', config:Optional[dict]=None) -> str:
@@ -147,6 +148,15 @@ def post_header(title_html:str, date:str='', config:Optional[dict]=None) -> str:
 {name_and_date}
 </div>'''
     return header
+
+def post_tags(post:dict) -> str:
+    tags = post.get('tags', [])
+    tags = _sanitize_special_tags(tags)
+    if len(tags):
+        return f'''<div style="text-align:right;">
+{html_tag_line('small', tags)}
+</div>'''
+    return ''
 
 def footer_navigation() -> str:
     return '\n'.join([

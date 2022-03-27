@@ -3,6 +3,7 @@ title: Markdown Meta Data
 description: Meta data format and supported options
 date: 2021-04-04T18:59:03Z
 tags: documentation
+tags: example
 ---
 
 `ggpy` supports Markdown meta headers at the beginning of each file, e.g. for this document:

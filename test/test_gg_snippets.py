@@ -112,6 +112,14 @@ def test_post_header() -> None:
 </div>
 '''.strip()
 
+def test_post_tags() -> None:
+    post_tags = gg.post_tags({'tags': 'test, abc, foobar, __inline__'})
+    assert post_tags == '''<div style="text-align:right;">
+<small>test, abc, foobar</small>
+</div>'''
+    post_tags = gg.post_tags({})
+    assert post_tags == ''
+
 def test_footer_navigation() -> None:
     footer_nav = gg.footer_navigation()
     assert footer_nav == \
