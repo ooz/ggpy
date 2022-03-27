@@ -6,6 +6,7 @@ title: Changelog
 
 * Change default style: no shadows, greater max. logo size
 * Drop IE ("X-UA-Compatible" meta tag) support
+* Render post tags next to author and date
 
 ## 2022-01-16: Version 3.0.1
 

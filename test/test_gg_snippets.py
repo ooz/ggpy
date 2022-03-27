@@ -72,16 +72,20 @@ def test_json_ld() -> None:
 '''.strip()
 
 def test_header() -> None:
-    header = gg.header('https://example.com/logo.png', '<h1>Title!</h1>', '2021-03-27', config)
+    # 'https://example.com/logo.png', ''
+    post = {
+        'html_headline': '<h1>Title!</h1>'
+    }
+    header = gg.header(post, '2021-03-27', config)
     assert header == \
 '''
-<a href="https://oliz.io/ggpy"><img src="https://example.com/logo.png" class="avatar" /></a>
+<a href="https://oliz.io/ggpy"><img src="https://oliz.io/ggpy/static/gg.png" class="avatar" /></a>
 <div style="text-align:right;">
 <h1>Title!</h1>
 <small><a href="https://oliz.io/ggpy">Good Gen</a>, 2021-03-27</small>
 </div>
 '''.strip()
-    header_default_config = gg.header('', '<h1>Title!</h1>', '2021-03-27')
+    header_default_config = gg.header(post, '2021-03-27')
     assert header_default_config == \
 '''
 <div style="text-align:right;">

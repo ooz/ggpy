@@ -108,12 +108,14 @@ def logo_url(config:Optional[dict]=None) -> str:
     logo_url = base_url + '/' + str(config.get('site', {}).get('logo', ''))
     return logo_url if logo_url != '/' else ''
 
-def header(logo_url:str, title_html:str, date:str='', config:Optional[dict]=None) -> str:
+def header(post:dict, date:str='', config:Optional[dict]=None) -> str:
     config = config or {}
+    logo = logo_url(config)
+    title_html = post.get('html_headline', '')
     author_url = config.get('author', {}).get('url', '')
     lines = []
-    if len(author_url) and len(logo_url):
-        lines.append(f'<a href="{author_url}"><img src="{logo_url}" class="avatar" /></a>')
+    if len(author_url) and len(logo):
+        lines.append(f'<a href="{author_url}"><img src="{logo}" class="avatar" /></a>')
     lines.append(post_header(title_html, date, config))
     return '\n'.join([line for line in lines if len(line)])
 
@@ -404,9 +406,8 @@ def template_page(post:dict, config:Optional[dict]=None) -> str:
     description = post.get('description', '')
     raw_title = ''.join(post.get('raw_title', ''))
     raw_description = ''.join(post.get('raw_description', ''))
-    logo = logo_url(config)
     author_name = config.get('author', {}).get('name', '')
-    header_content = header(logo, post.get('html_headline', ''), date, config) if TAG_NO_HEADER not in tags else ''
+    header_content = header(post, date, config) if TAG_NO_HEADER not in tags else ''
     footer_content = ''
     if TAG_NO_FOOTER not in tags:
         footer_contents = [
