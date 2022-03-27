@@ -2,7 +2,7 @@
 title: Changelog
 ---
 
-## 2022-??-??: Version 3.1 (in development)
+## 2022-03-27: Version 3.1
 
 * Change default style: no shadows, greater max. logo size
 * Drop IE ("X-UA-Compatible" meta tag) support
