@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 27 Mar 2022 10:21:16 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Mar 2022 10:23:43 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -213,63 +213,6 @@ make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file for details.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Changelog</title>
-      <link>https://oliz.io/ggpy/CHANGELOG.html</link>
-      <pubDate>Sun, 27 Mar 2022 09:38:36 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
-      <description>&lt;h2 id="2022-version-31-in-development"&gt;2022-??-??: Version 3.1 (in development)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Change default style: no shadows, greater max. logo size&lt;/li&gt;
-&lt;li&gt;Drop IE ("X-UA-Compatible" meta tag) support&lt;/li&gt;
-&lt;li&gt;Render post tags next to author and date&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2022-01-16-version-301"&gt;2022-01-16: Version 3.0.1&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Improve determinism of RSS feed sort order (higher last_modified precision)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2022-01-02-version-30"&gt;2022-01-02: Version 3.0&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Remove twitter meta tag support (opengraph is sufficient)&lt;/li&gt;
-&lt;li&gt;Change ggconfig social link to arbitrary key-value-map (link label to link)&lt;/li&gt;
-&lt;li&gt;Remove the 'back' navigation link from posts in the footer.
-  If you want to link to your post index, use the new ggconfig social link mechanism.&lt;/li&gt;
-&lt;li&gt;Support RSS feed generation. It's limited to the 10 latest posts (by last_modified date)&lt;/li&gt;
-&lt;li&gt;Cut-off sitemap after 50000 entries, see &lt;a href="https://www.sitemaps.org/faq.html"&gt;https://www.sitemaps.org/faq.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-08-22-version-201"&gt;2021-08-22: Version 2.0.1&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Fix filtering single special tag&lt;/li&gt;
-&lt;li&gt;Make regular links to blog posts bold&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-08-22-version-20"&gt;2021-08-22: Version 2.0&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Remove &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag support.
-  To inline posts in the index, use &lt;code&gt;__inline__&lt;/code&gt; tag on the respective post.&lt;/li&gt;
-&lt;li&gt;Filter special tags controlling ggpy behavior from the meta &lt;code&gt;keywords&lt;/code&gt; list&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-07-17-version-13"&gt;2021-07-17: Version 1.3&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Add micro-blog support via new &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag&lt;/li&gt;
-&lt;li&gt;For this, update included CSS&lt;/li&gt;
-&lt;li&gt;Improve layout of the regular blog-style post index&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-06-10-version-12"&gt;2021-06-10: Version 1.2&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Update included style:&lt;ul&gt;
-&lt;li&gt;smaller default font-size and line-spacing&lt;/li&gt;
-&lt;li&gt;increase inline code font-size&lt;/li&gt;
-&lt;li&gt;use relative unit for body max-width&lt;/li&gt;
-&lt;li&gt;add footer control for bigger font-size&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-06-06-version-11"&gt;2021-06-06: Version 1.1&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Make &lt;code&gt;gitpython&lt;/code&gt; dependency optional, degrading last-modified functionality e.g. for sitemap&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="2021-06-06-version-10"&gt;2021-06-06: Version 1.0&lt;/h2&gt;</description>
-    </item>
-    <item>
       <title>Markdown Meta Data</title>
       <link>https://oliz.io/ggpy/test/features/meta.html</link>
       <pubDate>Sun, 04 Apr 2021 18:59:03 +0000</pubDate>
@@ -353,6 +296,63 @@ tags: __draft__
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>Changelog</title>
+      <link>https://oliz.io/ggpy/CHANGELOG.html</link>
+      <pubDate>Sun, 27 Mar 2022 10:22:21 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
+      <description>&lt;h2 id="2022-03-27-version-31"&gt;2022-03-27: Version 3.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Change default style: no shadows, greater max. logo size&lt;/li&gt;
+&lt;li&gt;Drop IE ("X-UA-Compatible" meta tag) support&lt;/li&gt;
+&lt;li&gt;Render post tags next to author and date&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2022-01-16-version-301"&gt;2022-01-16: Version 3.0.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Improve determinism of RSS feed sort order (higher last_modified precision)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2022-01-02-version-30"&gt;2022-01-02: Version 3.0&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove twitter meta tag support (opengraph is sufficient)&lt;/li&gt;
+&lt;li&gt;Change ggconfig social link to arbitrary key-value-map (link label to link)&lt;/li&gt;
+&lt;li&gt;Remove the 'back' navigation link from posts in the footer.
+  If you want to link to your post index, use the new ggconfig social link mechanism.&lt;/li&gt;
+&lt;li&gt;Support RSS feed generation. It's limited to the 10 latest posts (by last_modified date)&lt;/li&gt;
+&lt;li&gt;Cut-off sitemap after 50000 entries, see &lt;a href="https://www.sitemaps.org/faq.html"&gt;https://www.sitemaps.org/faq.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-08-22-version-201"&gt;2021-08-22: Version 2.0.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix filtering single special tag&lt;/li&gt;
+&lt;li&gt;Make regular links to blog posts bold&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-08-22-version-20"&gt;2021-08-22: Version 2.0&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag support.
+  To inline posts in the index, use &lt;code&gt;__inline__&lt;/code&gt; tag on the respective post.&lt;/li&gt;
+&lt;li&gt;Filter special tags controlling ggpy behavior from the meta &lt;code&gt;keywords&lt;/code&gt; list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-07-17-version-13"&gt;2021-07-17: Version 1.3&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Add micro-blog support via new &lt;code&gt;__index_inline_posts__&lt;/code&gt; tag&lt;/li&gt;
+&lt;li&gt;For this, update included CSS&lt;/li&gt;
+&lt;li&gt;Improve layout of the regular blog-style post index&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-06-10-version-12"&gt;2021-06-10: Version 1.2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update included style:&lt;ul&gt;
+&lt;li&gt;smaller default font-size and line-spacing&lt;/li&gt;
+&lt;li&gt;increase inline code font-size&lt;/li&gt;
+&lt;li&gt;use relative unit for body max-width&lt;/li&gt;
+&lt;li&gt;add footer control for bigger font-size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-06-06-version-11"&gt;2021-06-06: Version 1.1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Make &lt;code&gt;gitpython&lt;/code&gt; dependency optional, degrading last-modified functionality e.g. for sitemap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-06-06-version-10"&gt;2021-06-06: Version 1.0&lt;/h2&gt;</description>
     </item>
   </channel>
 </rss>
