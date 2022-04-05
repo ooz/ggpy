@@ -2,6 +2,10 @@
 title: Changelog
 ---
 
+## 2022-04-05: Version 3.1.1
+
+* Fix error if used without a git repo
+
 ## 2022-03-27: Version 3.1
 
 * Change default style: no shadows, greater max. logo size

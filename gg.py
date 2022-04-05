@@ -4,7 +4,7 @@
 Author: Oliver Z., https://oliz.io
 Description: Minimal static site generator easy to use with GitHub Pages o.s.
 Website: https://oliz.io/ggpy/
-Version: 3.1.0
+Version: 3.1.1
 License: Dual-licensed under GNU AGPLv3 or MIT License,
          see LICENSE.txt file for details.
 
