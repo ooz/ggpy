@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Tue, 05 Apr 2022 12:58:08 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Apr 2022 15:55:58 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -300,11 +300,12 @@ tags: __draft__
     <item>
       <title>Changelog</title>
       <link>https://oliz.io/ggpy/CHANGELOG.html</link>
-      <pubDate>Tue, 05 Apr 2022 12:52:59 +0000</pubDate>
+      <pubDate>Tue, 05 Apr 2022 15:54:38 +0000</pubDate>
       <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
       <description>&lt;h2 id="2022-04-05-version-311"&gt;2022-04-05: Version 3.1.1&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Fix error if used without a git repo&lt;/li&gt;
+&lt;li&gt;Omit empty or not set logo/avatar instead of rendering broken img tag&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="2022-03-27-version-31"&gt;2022-03-27: Version 3.1&lt;/h2&gt;
 &lt;ul&gt;
