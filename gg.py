@@ -106,7 +106,7 @@ def logo_url(config:Optional[dict]=None) -> str:
     config = config or {}
     base_url = str(config.get('site', {}).get('base_url', ''))
     logo_url = base_url + '/' + str(config.get('site', {}).get('logo', ''))
-    return logo_url if logo_url != '/' else ''
+    return logo_url if (logo_url != '/' and len(logo_url) > len(base_url) + 1) else ''
 
 def header(post:dict, date:str='', config:Optional[dict]=None) -> str:
     config = config or {}

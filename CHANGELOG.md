@@ -5,6 +5,7 @@ title: Changelog
 ## 2022-04-05: Version 3.1.1
 
 * Fix error if used without a git repo
+* Omit empty or not set logo/avatar instead of rendering broken img tag
 
 ## 2022-03-27: Version 3.1
 
