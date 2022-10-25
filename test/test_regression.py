@@ -53,7 +53,7 @@ block
 <tr>
 <th>Tables</th>
 <th>work</th>
-<th align="right">just</th>
+<th style="text-align: right;">just</th>
 <th>fine</th>
 </tr>
 </thead>
@@ -61,7 +61,7 @@ block
 <tr>
 <td>for</td>
 <td>real</td>
-<td align="right">yep</td>
+<td style="text-align: right;">yep</td>
 <td>yeah.</td>
 </tr>
 </tbody>

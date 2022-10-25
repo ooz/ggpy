@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Tue, 05 Apr 2022 15:55:58 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Oct 2022 16:32:12 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -15,13 +15,6 @@
       <description>&lt;p&gt;Yep! Intro text!&lt;/p&gt;
 &lt;h2 id="headline"&gt;Headline&lt;/h2&gt;
 &lt;p&gt;More text!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Little inline content, no description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
-      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lots of content, no description</title>
@@ -43,6 +36,13 @@
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>No content, but with description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:05 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Lots of content, with description</title>
       <link>https://oliz.io/ggpy/test/features/index-inline-posts/lots-of-content-with-description.html</link>
       <pubDate>Sat, 17 Jul 2021 18:59:04 +0000</pubDate>
@@ -62,11 +62,11 @@
 &lt;p&gt;... and some more lines.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>No content, but with description</title>
-      <link>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</link>
-      <pubDate>Sat, 17 Jul 2021 18:59:05 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/no-content-with-description.html</guid>
-      <description></description>
+      <title>Little inline content, no description</title>
+      <link>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</link>
+      <pubDate>Sat, 17 Jul 2021 18:59:06 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/test/features/index-inline-posts/little-inline-content-no-description.html</guid>
+      <description>&lt;p&gt;This shows directly on the card, without details+summary blocks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Markdown Feature Test without &amp;quot;quotes bug&amp;quot;</title>
@@ -109,7 +109,7 @@ block
 &lt;tr&gt;
 &lt;th&gt;Tables&lt;/th&gt;
 &lt;th&gt;work&lt;/th&gt;
-&lt;th align="right"&gt;just&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;just&lt;/th&gt;
 &lt;th&gt;fine&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
@@ -117,7 +117,7 @@ block
 &lt;tr&gt;
 &lt;td&gt;for&lt;/td&gt;
 &lt;td&gt;real&lt;/td&gt;
-&lt;td align="right"&gt;yep&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;yep&lt;/td&gt;
 &lt;td&gt;yeah.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
