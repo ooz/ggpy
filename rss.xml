@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Fri, 19 May 2023 17:26:33 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jul 2023 18:42:43 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -156,63 +156,6 @@ block
 &lt;/div&gt;</description>
     </item>
     <item>
-      <title>https://oliz.io/ggpy/</title>
-      <link>https://oliz.io/ggpy/</link>
-      <pubDate>Sat, 23 Oct 2021 18:59:50 +0000</pubDate>
-      <guid>https://oliz.io/ggpy/</guid>
-      <description>&lt;h1 id="good-generatorpy"&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;&lt;img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /&gt;&lt;/a&gt;
-&lt;a href="LICENSE.txt"&gt;&lt;img alt="GNU AGPLv3 Badge" src="https://img.shields.io/badge/license-AGPLv3-blue.svg" /&gt;&lt;/a&gt;
-&lt;a href="LICENSE.txt"&gt;&lt;img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /&gt;&lt;/a&gt;
-&lt;a href="CHANGELOG.html"&gt;&lt;img alt="Changelog" src="https://img.shields.io/badge/-CHANGELOG-blueviolet.svg" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Yet another static site generator. Written in Python.
-&lt;a href="https://oliz.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html"&gt;Why?&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It powers &lt;a href="https://oliz.io/ggpy"&gt;its website&lt;/a&gt;, which is its &lt;a href="https://github.com/ooz/ggpy"&gt;README.md&lt;/a&gt; rendered via &lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;CircleCI&lt;/a&gt;.
-An infinite incepted loop!
-It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a href="https://oliz.io/blog/"&gt;blog&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="features"&gt;Features&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Static site generator supporting &lt;a href="https://oliz.io/ggpy/test/features/"&gt;Markdown with various extensions&lt;/a&gt;
-  and &lt;a href="https://oliz.io/ggpy/test/features/meta.html"&gt;Markdown meta header format&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Renders all &lt;code&gt;*.md&lt;/code&gt; to &lt;code&gt;*.html&lt;/code&gt; files in the passed directories and recursively in their sub-directories&lt;/li&gt;
-&lt;li&gt;Files named &lt;code&gt;README.md&lt;/code&gt; are converted to &lt;code&gt;index.html&lt;/code&gt;. Thus, it is fully compatible with GitHub Pages&lt;/li&gt;
-&lt;li&gt;It may render a time-stamped index of all generated HTML files, suitable for blogs. Documents may also be inlined into the index, suitable for micro-blogs&lt;/li&gt;
-&lt;li&gt;Built-in responsive style with light mode and dark mode&lt;/li&gt;
-&lt;li&gt;Open Graph and schema.org support&lt;/li&gt;
-&lt;li&gt;Generates &lt;code&gt;sitemap.xml&lt;/code&gt; with &lt;code&gt;lastmod&lt;/code&gt; timestamps taken from git history&lt;/li&gt;
-&lt;li&gt;Generates &lt;code&gt;rss.xml&lt;/code&gt; RSS feed&lt;/li&gt;
-&lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html"&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;The provided &lt;a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml"&gt;CircleCI configuration&lt;/a&gt; may serve as a blueprint to let CircleCI build your page on every commit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Copy &lt;code&gt;gg.py&lt;/code&gt;, &lt;code&gt;ggconfig.py&lt;/code&gt; and &lt;code&gt;Makefile&lt;/code&gt; to the root of your website/blog&lt;/li&gt;
-&lt;li&gt;Adjust &lt;code&gt;ggconfig.py&lt;/code&gt; to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!&lt;/li&gt;
-&lt;li&gt;Place markdown files everywhere&lt;/li&gt;
-&lt;li&gt;Install dependencies
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Generate your site
-&lt;pre class="highlight"&gt;&lt;code&gt;make&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;To update your &lt;code&gt;gg.py&lt;/code&gt; "installation", run (your configuration will not be touched)
-&lt;pre class="highlight"&gt;&lt;code&gt;make update&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;See all make targets with short documentation
-&lt;pre class="highlight"&gt;&lt;code&gt;make help&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="tests"&gt;Tests&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Install dependencies (if you have not yet)
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Run tests with coverage
-&lt;pre class="highlight"&gt;&lt;code&gt;make test&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="license"&gt;License&lt;/h2&gt;
-&lt;p&gt;This software is dual-licensed under GNU AGPLv3 or MIT License,
-see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file for details.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Markdown Meta Data</title>
       <link>https://oliz.io/ggpy/test/features/meta.html</link>
       <pubDate>Sun, 04 Apr 2021 18:59:03 +0000</pubDate>
@@ -358,6 +301,63 @@ tags: __draft__
 &lt;li&gt;Make &lt;code&gt;gitpython&lt;/code&gt; dependency optional, degrading last-modified functionality e.g. for sitemap&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="2021-06-06-version-10"&gt;2021-06-06: Version 1.0&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title>https://oliz.io/ggpy/</title>
+      <link>https://oliz.io/ggpy/</link>
+      <pubDate>Sun, 09 Jul 2023 18:41:31 +0000</pubDate>
+      <guid>https://oliz.io/ggpy/</guid>
+      <description>&lt;h1 id="good-generatorpy"&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;&lt;img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /&gt;&lt;/a&gt;
+&lt;a href="LICENSE.txt"&gt;&lt;img alt="GNU AGPLv3 Badge" src="https://img.shields.io/badge/license-AGPLv3-blue.svg" /&gt;&lt;/a&gt;
+&lt;a href="LICENSE.txt"&gt;&lt;img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /&gt;&lt;/a&gt;
+&lt;a href="CHANGELOG.html"&gt;&lt;img alt="Changelog" src="https://img.shields.io/badge/-CHANGELOG-blueviolet.svg" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Yet another static site generator. Written in Python.
+&lt;a href="https://oliz.io/blog/2018/why-i-wrote-yet-another-static-site-gen.html"&gt;Why?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It powers &lt;a href="https://oliz.io/ggpy"&gt;its website&lt;/a&gt;, which is its &lt;a href="https://github.com/ooz/ggpy"&gt;README.md&lt;/a&gt; rendered via &lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;CircleCI&lt;/a&gt;.
+An infinite incepted loop!
+It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a href="https://oliz.io/blog/"&gt;blog&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="features"&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Static site generator supporting &lt;a href="https://oliz.io/ggpy/test/features/"&gt;Markdown with various extensions&lt;/a&gt;
+  and &lt;a href="https://oliz.io/ggpy/test/features/meta.html"&gt;Markdown meta header format&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Renders all &lt;code&gt;*.md&lt;/code&gt; to &lt;code&gt;*.html&lt;/code&gt; files in the passed directories and recursively in their sub-directories&lt;/li&gt;
+&lt;li&gt;Files named &lt;code&gt;README.md&lt;/code&gt; are converted to &lt;code&gt;index.html&lt;/code&gt;. Thus, it is fully compatible with GitHub Pages&lt;/li&gt;
+&lt;li&gt;It may render a time-stamped index of all generated HTML files, suitable for blogs. Documents may also be inlined into the index, suitable for micro-blogs&lt;/li&gt;
+&lt;li&gt;Built-in responsive style with light mode and dark mode&lt;/li&gt;
+&lt;li&gt;Open Graph and schema.org support&lt;/li&gt;
+&lt;li&gt;Generates &lt;code&gt;sitemap.xml&lt;/code&gt; with &lt;code&gt;lastmod&lt;/code&gt; timestamps taken from git history&lt;/li&gt;
+&lt;li&gt;Generates &lt;code&gt;rss.xml&lt;/code&gt; RSS feed&lt;/li&gt;
+&lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html"&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The provided &lt;a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml"&gt;CircleCI configuration&lt;/a&gt; may serve as a blueprint to let CircleCI build your page on every commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy &lt;code&gt;gg.py&lt;/code&gt;, &lt;code&gt;ggconfig.py&lt;/code&gt;, &lt;code&gt;Pipfile&lt;/code&gt; and &lt;code&gt;Makefile&lt;/code&gt; to the root of your website/blog&lt;/li&gt;
+&lt;li&gt;Adjust &lt;code&gt;ggconfig.py&lt;/code&gt; to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!&lt;/li&gt;
+&lt;li&gt;Place markdown files everywhere&lt;/li&gt;
+&lt;li&gt;Install dependencies
+&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
+make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Generate your site
+&lt;pre class="highlight"&gt;&lt;code&gt;make&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;To update your &lt;code&gt;gg.py&lt;/code&gt; "installation", run (your configuration will not be touched)
+&lt;pre class="highlight"&gt;&lt;code&gt;make update&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;See all make targets with short documentation
+&lt;pre class="highlight"&gt;&lt;code&gt;make help&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="tests"&gt;Tests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install dependencies (if you have not yet)
+&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
+make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Run tests with coverage
+&lt;pre class="highlight"&gt;&lt;code&gt;make test&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="license"&gt;License&lt;/h2&gt;
+&lt;p&gt;This software is dual-licensed under GNU AGPLv3 or MIT License,
+see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file for details.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
