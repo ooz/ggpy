@@ -30,7 +30,7 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 
 ## Usage
 
-* Copy `gg.py`, `ggconfig.py` and `Makefile` to the root of your website/blog
+* Copy `gg.py`, `ggconfig.py`, `Pipfile` and `Makefile` to the root of your website/blog
 * Adjust `ggconfig.py` to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!
 * Place markdown files everywhere
 * Install dependencies
