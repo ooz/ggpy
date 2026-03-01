@@ -106,21 +106,19 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </header>
 <section>
 <p><code>ggpy</code> supports Markdown meta headers at the beginning of each file, e.g. for this document:</p>
-<div class="highlight"><pre><span></span><code>---
+<pre class="highlight"><code>---
 title: Markdown Meta Data
 description: Meta data format and supported options
 date: 2021-04-04T18:59:03Z
 tags: documentation
 ---
 
-`ggpy` supports Markdown meta headers [...]
-</code></pre></div>
+`ggpy` supports Markdown meta headers [...]</code></pre>
 <p>Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:</p>
-<div class="highlight"><pre><span></span><code>---
+<pre class="highlight"><code>---
 tags: topic, other
 tags: __draft__
----
-</code></pre></div>
+---</code></pre>
 <p>...produces three tags <code>topic</code>, <code>other</code> and <code>__draft__</code></p>
 <h2 id="meta-keys">Meta Keys</h2>
 <p>All keys are optional:</p>
