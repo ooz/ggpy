@@ -26,7 +26,6 @@ install_uv: ## Install uv for initial setup or CI
 
 test: clean_coverage ## Run ggpy tests, coverage and lint (only typecheck for now)
 	uv sync
-	uv sync --script gg.py
 	uv run coverage run --source=. -m pytest -vv
 	uv run coverage html --omit="test/*"
 	uv run coverage report --omit="test/*"
