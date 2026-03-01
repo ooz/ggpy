@@ -12,10 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10.6'
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Install pipenv
         run: make install_uv
@@ -38,10 +37,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10.6'
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Install uv
         run: make install_uv
