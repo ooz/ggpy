@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 01 Mar 2026 23:34:55 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 23:42:22 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -305,7 +305,7 @@ tags: __draft__
     <item>
       <title>https://oliz.io/ggpy/</title>
       <link>https://oliz.io/ggpy/</link>
-      <pubDate>Sun, 09 Jul 2023 18:41:31 +0000</pubDate>
+      <pubDate>Sun, 01 Mar 2026 23:41:13 +0000</pubDate>
       <guid>https://oliz.io/ggpy/</guid>
       <description>&lt;h1 id="good-generatorpy"&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;&lt;img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /&gt;&lt;/a&gt;
@@ -334,12 +334,11 @@ It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a hr
 &lt;/ul&gt;
 &lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Copy &lt;code&gt;gg.py&lt;/code&gt;, &lt;code&gt;ggconfig.py&lt;/code&gt;, &lt;code&gt;Pipfile&lt;/code&gt; and &lt;code&gt;Makefile&lt;/code&gt; to the root of your website/blog&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;gg.py&lt;/code&gt;, &lt;code&gt;ggconfig.py&lt;/code&gt; and &lt;code&gt;Makefile&lt;/code&gt; to the root of your website/blog&lt;/li&gt;
 &lt;li&gt;Adjust &lt;code&gt;ggconfig.py&lt;/code&gt; to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!&lt;/li&gt;
 &lt;li&gt;Place markdown files everywhere&lt;/li&gt;
-&lt;li&gt;Install dependencies
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Install dependencies (requires Homebrew)
+&lt;pre class="highlight"&gt;&lt;code&gt;make install_uv&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Generate your site
 &lt;pre class="highlight"&gt;&lt;code&gt;make&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;To update your &lt;code&gt;gg.py&lt;/code&gt; "installation", run (your configuration will not be touched)
@@ -350,8 +349,7 @@ make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;h2 id="tests"&gt;Tests&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Install dependencies (if you have not yet)
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;make install_uv&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Run tests with coverage
 &lt;pre class="highlight"&gt;&lt;code&gt;make test&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
