@@ -1,4 +1,12 @@
-#!/usr/bin/env python
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "gitpython>=3.1.46",
+#     "markdown>=3.10.2",
+#     "pymdown-extensions>=10.21",
+# ]
+# ///
+
 # -*- coding: utf-8 -*-
 '''
 Author: Oliver Z., https://oliz.io

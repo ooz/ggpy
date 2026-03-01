@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 04 Feb 2024 23:11:35 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 23:24:30 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -95,9 +95,11 @@ lines.&lt;/p&gt;
 &lt;li class="task-list-item"&gt;&lt;input type="checkbox" disabled checked/&gt; checked&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="code"&gt;Code&lt;/h2&gt;
-&lt;pre class="highlight"&gt;&lt;code&gt;# Code blocks work&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class="highlight"&gt;&lt;code class="language-python"&gt;def python_code_blocks():
-    return "work, too!"&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# Code blocks work
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;python_code_blocks&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;work, too!&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Let there be...&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;another
 code
@@ -161,19 +163,21 @@ block
       <pubDate>Sun, 04 Apr 2021 18:59:03 +0000</pubDate>
       <guid>https://oliz.io/ggpy/test/features/meta.html</guid>
       <description>&lt;p&gt;&lt;code&gt;ggpy&lt;/code&gt; supports Markdown meta headers at the beginning of each file, e.g. for this document:&lt;/p&gt;
-&lt;pre class="highlight"&gt;&lt;code&gt;---
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
 title: Markdown Meta Data
 description: Meta data format and supported options
 date: 2021-04-04T18:59:03Z
 tags: documentation
 ---
 
-`ggpy` supports Markdown meta headers [...]&lt;/code&gt;&lt;/pre&gt;
+`ggpy` supports Markdown meta headers [...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Tags may be separated by commas or with a separate key, spaces are ignored, e.g.:&lt;/p&gt;
-&lt;pre class="highlight"&gt;&lt;code&gt;---
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
 tags: topic, other
 tags: __draft__
----&lt;/code&gt;&lt;/pre&gt;
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;...produces three tags &lt;code&gt;topic&lt;/code&gt;, &lt;code&gt;other&lt;/code&gt; and &lt;code&gt;__draft__&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="meta-keys"&gt;Meta Keys&lt;/h2&gt;
 &lt;p&gt;All keys are optional:&lt;/p&gt;
@@ -338,22 +342,28 @@ It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a hr
 &lt;li&gt;Adjust &lt;code&gt;ggconfig.py&lt;/code&gt; to your preferences. Since it is an imported Python file, you can use it for preprocessing hooks, too!&lt;/li&gt;
 &lt;li&gt;Place markdown files everywhere&lt;/li&gt;
 &lt;li&gt;Install dependencies
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make install_pipenv
+make init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;Generate your site
-&lt;pre class="highlight"&gt;&lt;code&gt;make&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;To update your &lt;code&gt;gg.py&lt;/code&gt; "installation", run (your configuration will not be touched)
-&lt;pre class="highlight"&gt;&lt;code&gt;make update&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;See all make targets with short documentation
-&lt;pre class="highlight"&gt;&lt;code&gt;make help&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="tests"&gt;Tests&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Install dependencies (if you have not yet)
-&lt;pre class="highlight"&gt;&lt;code&gt;make install_pipenv
-make init&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make install_pipenv
+make init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;Run tests with coverage
-&lt;pre class="highlight"&gt;&lt;code&gt;make test&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="license"&gt;License&lt;/h2&gt;
 &lt;p&gt;This software is dual-licensed under GNU AGPLv3 or MIT License,

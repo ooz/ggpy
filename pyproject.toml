@@ -1,0 +1,9 @@
+[dependency-groups]
+dev = [
+    "coverage>=7.13.4",
+    "gitpython>=3.1.46",
+    "markdown>=3.10.2",
+    "mypy>=1.19.1",
+    "pymdown-extensions>=10.21",
+    "pytest>=9.0.2",
+]

@@ -39,9 +39,11 @@ lines.</p>
 <li class="task-list-item"><input type="checkbox" disabled checked/> checked</li>
 </ul>
 <h2 id="code">Code</h2>
-<pre class="highlight"><code># Code blocks work</code></pre>
-<pre class="highlight"><code class="language-python">def python_code_blocks():
-    return "work, too!"</code></pre>
+<div class="highlight"><pre><span></span><code># Code blocks work
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">python_code_blocks</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;work, too!&quot;</span>
+</code></pre></div>
 <p>Let there be...</p>
 <pre><code>another
 code
