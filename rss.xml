@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 01 Mar 2026 23:42:22 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 23:48:20 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -305,10 +305,10 @@ tags: __draft__
     <item>
       <title>https://oliz.io/ggpy/</title>
       <link>https://oliz.io/ggpy/</link>
-      <pubDate>Sun, 01 Mar 2026 23:41:13 +0000</pubDate>
+      <pubDate>Sun, 01 Mar 2026 23:46:59 +0000</pubDate>
       <guid>https://oliz.io/ggpy/</guid>
       <description>&lt;h1 id="good-generatorpy"&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://circleci.com/gh/ooz/ggpy"&gt;&lt;img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href="https://github.com/ooz/ggpy/actions/workflows/ci.yml"&gt;&lt;img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/ooz/ggpy/ci.yml?label=build" /&gt;&lt;/a&gt;
 &lt;a href="LICENSE.txt"&gt;&lt;img alt="GNU AGPLv3 Badge" src="https://img.shields.io/badge/license-AGPLv3-blue.svg" /&gt;&lt;/a&gt;
 &lt;a href="LICENSE.txt"&gt;&lt;img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /&gt;&lt;/a&gt;
 &lt;a href="CHANGELOG.html"&gt;&lt;img alt="Changelog" src="https://img.shields.io/badge/-CHANGELOG-blueviolet.svg" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -329,8 +329,8 @@ It also powers &lt;a href="https://oliz.io"&gt;my website&lt;/a&gt; and &lt;a hr
 &lt;li&gt;Open Graph and schema.org support&lt;/li&gt;
 &lt;li&gt;Generates &lt;code&gt;sitemap.xml&lt;/code&gt; with &lt;code&gt;lastmod&lt;/code&gt; timestamps taken from git history&lt;/li&gt;
 &lt;li&gt;Generates &lt;code&gt;rss.xml&lt;/code&gt; RSS feed&lt;/li&gt;
-&lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html"&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;The provided &lt;a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml"&gt;CircleCI configuration&lt;/a&gt; may serve as a blueprint to let CircleCI build your page on every commit&lt;/li&gt;
+&lt;li&gt;Requires &lt;code&gt;python3&lt;/code&gt;, &lt;code&gt;brew&lt;/code&gt;, and optionally &lt;code&gt;git&lt;/code&gt; (for more accurate, CI-friendly timestamps) and &lt;code&gt;make&lt;/code&gt; if you want to use the provided Makefile. Thus, it &lt;a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html"&gt;runs in Termux on Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The provided &lt;a href="https://github.com/ooz/ggpy/blob/master/.github/workflows/ci.yml"&gt;GitHub Actions configuration&lt;/a&gt; may serve as a blueprint to let GitHub build your page on every commit&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
 &lt;ul&gt;

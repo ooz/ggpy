@@ -96,7 +96,7 @@ function toggleFontSize() { document.body.classList.toggle("large-font") }
 </header>
 <section>
 <h1 id="good-generatorpy">Good Generator<code>.py</code></h1>
-<p><a href="https://circleci.com/gh/ooz/ggpy"><img alt="CircleCI" src="https://circleci.com/gh/ooz/ggpy.svg?style=shield" /></a>
+<p><a href="https://github.com/ooz/ggpy/actions/workflows/ci.yml"><img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/ooz/ggpy/ci.yml?label=build" /></a>
 <a href="LICENSE.txt"><img alt="GNU AGPLv3 Badge" src="https://img.shields.io/badge/license-AGPLv3-blue.svg" /></a>
 <a href="LICENSE.txt"><img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 <a href="CHANGELOG.html"><img alt="Changelog" src="https://img.shields.io/badge/-CHANGELOG-blueviolet.svg" /></a></p>
@@ -117,8 +117,8 @@ It also powers <a href="https://oliz.io">my website</a> and <a href="https://oli
 <li>Open Graph and schema.org support</li>
 <li>Generates <code>sitemap.xml</code> with <code>lastmod</code> timestamps taken from git history</li>
 <li>Generates <code>rss.xml</code> RSS feed</li>
-<li>Requires <code>python3</code>, <code>pip</code>, and optionally <code>git</code> (for more accurate, CI-friendly timestamps) and <code>make</code> if you want to use the provided Makefile. Thus, it <a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html">runs in Termux on Android</a></li>
-<li>The provided <a href="https://github.com/ooz/ggpy/blob/master/.circleci/config.yml">CircleCI configuration</a> may serve as a blueprint to let CircleCI build your page on every commit</li>
+<li>Requires <code>python3</code>, <code>brew</code>, and optionally <code>git</code> (for more accurate, CI-friendly timestamps) and <code>make</code> if you want to use the provided Makefile. Thus, it <a href="https://oliz.io/blog/2018/code-and-deploy-using-termux.html">runs in Termux on Android</a></li>
+<li>The provided <a href="https://github.com/ooz/ggpy/blob/master/.github/workflows/ci.yml">GitHub Actions configuration</a> may serve as a blueprint to let GitHub build your page on every commit</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <ul>
