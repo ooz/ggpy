@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Sun, 08 Mar 2026 23:14:56 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 23:16:12 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -305,10 +305,10 @@ tags: __draft__
     <item>
       <title>https://oliz.io/ggpy/</title>
       <link>https://oliz.io/ggpy/</link>
-      <pubDate>Sun, 01 Mar 2026 23:46:59 +0000</pubDate>
+      <pubDate>Sun, 08 Mar 2026 23:14:59 +0000</pubDate>
       <guid>https://oliz.io/ggpy/</guid>
       <description>&lt;h1 id="good-generatorpy"&gt;Good Generator&lt;code&gt;.py&lt;/code&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://github.com/ooz/ggpy/actions/workflows/ci.yml"&gt;&lt;img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/ooz/ggpy/ci.yml?label=build" /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href="https://github.com/ooz/ggpy/actions/workflows/test-and-deploy.yml"&gt;&lt;img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/ooz/ggpy/test-and-deploy.yml?label=build" /&gt;&lt;/a&gt;
 &lt;a href="LICENSE.txt"&gt;&lt;img alt="GNU AGPLv3 Badge" src="https://img.shields.io/badge/license-AGPLv3-blue.svg" /&gt;&lt;/a&gt;
 &lt;a href="LICENSE.txt"&gt;&lt;img alt="MIT License Badge" src="https://img.shields.io/badge/license-MIT-blue.svg" /&gt;&lt;/a&gt;
 &lt;a href="CHANGELOG.html"&gt;&lt;img alt="Changelog" src="https://img.shields.io/badge/-CHANGELOG-blueviolet.svg" /&gt;&lt;/a&gt;&lt;/p&gt;
