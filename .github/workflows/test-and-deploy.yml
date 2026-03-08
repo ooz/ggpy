@@ -1,4 +1,4 @@
-name: Actions
+name: Test and deploy
 
 on:
   push:
