@@ -16,7 +16,7 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Install pipenv
+      - name: Install uv
         run: make install_uv
 
       - name: Run tests
