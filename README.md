@@ -1,6 +1,6 @@
 # Good Generator`.py`
 
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ooz/ggpy/ci.yml?label=build)](https://github.com/ooz/ggpy/actions/workflows/ci.yml)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ooz/ggpy/test-and-deploy.yml?label=build)](https://github.com/ooz/ggpy/actions/workflows/test-and-deploy.yml)
 [![GNU AGPLv3 Badge](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE.txt)
 [![MIT License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 [![Changelog](https://img.shields.io/badge/-CHANGELOG-blueviolet.svg)](CHANGELOG.html)
