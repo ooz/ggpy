@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2026-03-02: Infrastructure and Dependency Modernization
+
+* Not a new release, but:
+  - Replaced `pipenv` with `uv`
+  - Migrated from CircleCI to GitHub Actions
+
 ## 2022-04-05: Version 3.1.1
 
 * Fix error if used without a git repo
