@@ -5,7 +5,7 @@
     <link>https://oliz.io/ggpy</link>
     <description></description>
     <generator>Good Generator.py -- ggpy -- https://oliz.io/ggpy</generator>
-    <lastBuildDate>Fri, 12 Jun 2026 23:38:25 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 23:41:29 -0000</lastBuildDate>
     <atom:link href="https://oliz.io/ggpy/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Post</title>
@@ -298,9 +298,13 @@ see &lt;a href="https://oliz.io/ggpy/LICENSE.txt"&gt;LICENSE.txt&lt;/a&gt; file 
     <item>
       <title>Changelog</title>
       <link>https://oliz.io/ggpy/CHANGELOG.html</link>
-      <pubDate>Sun, 08 Mar 2026 23:48:58 +0000</pubDate>
+      <pubDate>Fri, 12 Jun 2026 23:40:09 +0000</pubDate>
       <guid>https://oliz.io/ggpy/CHANGELOG.html</guid>
-      <description>&lt;h2 id="2026-03-02-infrastructure-and-dependency-modernization"&gt;2026-03-02: Infrastructure and Dependency Modernization&lt;/h2&gt;
+      <description>&lt;h2 id="2026-06-13-version-312"&gt;2026-06-13: Version 3.1.2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dependency updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2026-03-02-infrastructure-and-dependency-modernization"&gt;2026-03-02: Infrastructure and Dependency Modernization&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Not a new release, but:&lt;/li&gt;
 &lt;li&gt;Replaced &lt;code&gt;pipenv&lt;/code&gt; with &lt;code&gt;uv&lt;/code&gt;&lt;/li&gt;
