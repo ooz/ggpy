@@ -2,6 +2,10 @@
 title: Changelog
 ---
 
+## 2026-06-13: Version 3.1.2
+
+* Dependency updates
+
 ## 2026-03-02: Infrastructure and Dependency Modernization
 
 * Not a new release, but:
