@@ -26,7 +26,7 @@ It also powers [my website](https://oliz.io) and [blog](https://oliz.io/blog/).
 * Generates `sitemap.xml` with `lastmod` timestamps taken from git history
 * Generates `rss.xml` RSS feed
 * Requires `python3`, `brew`, and optionally `git` (for more accurate, CI-friendly timestamps) and `make` if you want to use the provided Makefile. Thus, it [runs in Termux on Android](https://oliz.io/blog/2018/code-and-deploy-using-termux.html)
-* The provided [GitHub Actions configuration](https://github.com/ooz/ggpy/blob/master/.github/workflows/ci.yml) may serve as a blueprint to let GitHub build your page on every commit
+* The provided [GitHub Actions configuration](https://github.com/ooz/ggpy/blob/master/.github/workflows/test-and-deploy.yml) may serve as a blueprint to let GitHub build your page on every commit
 
 ## Usage
 
